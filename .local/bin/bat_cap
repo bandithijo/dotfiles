@@ -1,0 +1,52 @@
+#!/bin/env sh
+
+#  ██████                           ██ ██   ██   ██      ██ ██    ██
+# ░█░░░░██                         ░██░░   ░██  ░██     ░██░░    ░░
+# ░█   ░██   ██████   ███████      ░██ ██ ██████░██     ░██ ██    ██  ██████
+# ░██████   ░░░░░░██ ░░██░░░██  ██████░██░░░██░ ░██████████░██   ░██ ██░░░░██
+# ░█░░░░ ██  ███████  ░██  ░██ ██░░░██░██  ░██  ░██░░░░░░██░██   ░██░██   ░██
+# ░█    ░██ ██░░░░██  ░██  ░██░██  ░██░██  ░██  ░██     ░██░██ ██░██░██   ░██
+# ░███████ ░░████████ ███  ░██░░██████░██  ░░██ ░██     ░██░██░░███ ░░██████
+# ░░░░░░░   ░░░░░░░░ ░░░   ░░  ░░░░░░ ░░    ░░  ░░      ░░ ░░  ░░░   ░░░░░░
+
+# Copyright (C) 2018 BanditHijo
+#
+# This program is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your option)
+# any later version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+# more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see http://www.gnu.org/licenses/.
+
+# author  : Rizqi Nur Assyaufi
+# website : https://bandithijo.com
+# email   : bandithijo@gmail.com
+# created : 2018
+
+# RUMUS
+
+#        energy full design
+# efdx = ------------------
+#               100
+
+#       energy full
+# cap = -----------
+#          efdx
+
+#bat=${1}
+#efd=`(cat /sys/class/power_supply/$bat/energy_full_design)`
+#efdx=$((efd/100))
+#ef=`(cat /sys/class/power_supply/$bat/energy_full)`
+#cap=$((ef/efdx))
+#echo 'energy full design = '$efd
+#echo 'energy full        = '$ef
+#echo $cap%
+
+# upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep capacity | awk -F' ' '{print $2}' | head -c+5; echo '%'
+acpi -V | grep 'Battery 0: design' | awk -F' ' '{print $13}'

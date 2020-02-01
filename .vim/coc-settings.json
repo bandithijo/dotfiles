@@ -1,0 +1,3 @@
+{
+  "emmet.includeLanguages" : { "eruby": "html", "js": "javascript" }
+}

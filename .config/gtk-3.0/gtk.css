@@ -1,0 +1,41 @@
+.header-bar.default-decoration {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  min-height: 0px;
+  font-size: 0.6em;
+}
+
+.header-bar.default-decoration .button.titlebutton {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+/* .termite { */
+/*     padding: 0; */
+/* } */
+
+vte-terminal {
+    padding: 0;
+}
+
+/* TerminalScreen { */
+/*      -VteTerminal-inner-border: 10px 10px 10px 10px; */
+/*    } */
+/* .scrollbar.trough, */
+/* .scrollbar.trough.vertical { */
+/*   border: alpha (#073642, 0.0); */
+/*   background: alpha (#073642, 0.0); */
+/* } */
+
+/* *{ */
+/*   -GtkScrollbar-has-backward-stepper: 0; */
+/*   -GtkScrollbar-has-forward-stepper: 0; */
+/*   -GtkRange-slider-width: 23; */
+/*   -GtkScrollbar-trough-vertical-background: #073641; */
+/* } */
+
+/* No line below the title bar */
+/* .ssd .titlebar { */
+/*     border-width: 0; */
+/*     box-shadow: none; */
+/* } */

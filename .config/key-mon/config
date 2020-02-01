@@ -1,0 +1,32 @@
+[ui]
+visible_click_timeout = 0.2
+follow-mouse = 0
+key_timeout = 0.5
+scale = 0.8
+sticky_mode = 0
+theme = apple
+visible-click = 0
+opacity = 1.0
+backgroundless = 1
+mouse_timeout = 0.2
+no_press_fadeout = 0.0
+decorated = 0
+only_combo = 0
+
+[buttons]
+ctrl = 1
+meta = 1
+alt = 1
+mouse = 0
+shift = 1
+old-keys = 0
+
+[devices]
+emulate_middle = 0
+map = us.kbd
+swap_buttons = 0
+
+[position]
+x = 8
+y = 660
+

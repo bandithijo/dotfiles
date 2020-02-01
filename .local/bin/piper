@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Simple script to redirect url's opened from termite.
+
+# A function containing a case list of options
+open() {
+    case "$1" in
+        *youtube.com*|*youtu.be*|*vodlocker.com*|*.webm*|*.mp4*|*.avi)  mpv "$1";;
+        *.png|*.jpeg|*.gif*|*.jpg) sxiv "$1";;  # feh -. = opens to fit window.
+        *) firefox "$1";  # For everything else.;
+    esac
+}
+
+# Now a for loop to iterate the list of options,
+for url; do
+    open "$url"
+done

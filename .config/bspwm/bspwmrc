@@ -1,0 +1,173 @@
+#!/bin/env sh
+
+#  ██████                           ██   ██   ██      ██ ██    ██
+# ░█░░░░██                         ░██  ░██  ░██     ░██░░    ░░
+# ░█   ░██   ██████   ███████      ░██ ██████░██     ░██ ██    ██  ██████
+# ░██████   ░░░░░░██ ░░██░░░██  ██████░░░██░ ░██████████░██   ░██ ██░░░░██
+# ░█░░░░ ██  ███████  ░██  ░██ ██░░░██  ░██  ░██░░░░░░██░██   ░██░██   ░██
+# ░█    ░██ ██░░░░██  ░██  ░██░██  ░██  ░██  ░██     ░██░██ ██░██░██   ░██
+# ░███████ ░░████████ ███  ░██░░██████  ░░██ ░██     ░██░██░░███ ░░██████
+# ░░░░░░░   ░░░░░░░░ ░░░   ░░  ░░░░░░    ░░  ░░      ░░ ░░  ░░░   ░░░░░░
+
+#  ██
+# ░██              ██████
+# ░██       ██████░██░░░██ ███     ██ ██████████  ██████  █████
+# ░██████  ██░░░░ ░██  ░██░░██  █ ░██░░██░░██░░██░░██░░█ ██░░░██
+# ░██░░░██░░█████ ░██████  ░██ ███░██ ░██ ░██ ░██ ░██ ░ ░██  ░░
+# ░██  ░██ ░░░░░██░██░░░   ░████░████ ░██ ░██ ░██ ░██   ░██   ██
+# ░██████  ██████ ░██      ███░ ░░░██ ███ ░██ ░██░███   ░░█████
+# ░░░░░   ░░░░░░  ░░      ░░░    ░░░ ░░░  ░░  ░░ ░░░     ░░░░░
+
+
+# Startup Apps ---------------------------------------------------------------
+${HOME}/.config/bspwm/autostart
+# ----------------------------------------------------------------------------
+
+
+# Monitor --------------------------------------------------------------------
+bspc monitor LVDS1 -d 1 2 3 4 5 6 7 8 9
+bspc monitor HDMI2 -d 0
+# ----------------------------------------------------------------------------
+
+
+# Window Config --------------------------------------------------------------
+bspc config border_width         1
+bspc config border_radius        5
+bspc config window_gap           4
+bspc config top_padding          0
+bspc config bottom_padding       0
+bspc config right_padding        0
+bspc config left_padding         0
+# ----------------------------------------------------------------------------
+
+
+# Visual options -------------------------------------------------------------
+bspc config split_ratio          0.50
+bspc config borderless_monocle   false
+bspc config gapless_monocle      false
+bspc config focus_follows_pointer false
+bspc config pointer_follows_focus false
+bspc config pointer_follows_monitor false
+bspc config ignore_ewmh_fullscreen all
+bspc config remove_unplugged_monitors true
+bspc config normal_border_color "#001D24"
+bspc config active_border_color "#001D24"
+bspc config focused_border_color "#00181E"
+#bspc config presel_border_color "#001B22"
+#bspc config urgent_border_color "#CB4B16"
+#bspc config focused_locked_border_color "#B58900"
+#bspc config normal_frame_opacity 0.0
+#bspc config focused_frame_opacity 0.0
+#bspc config auto_alternate true
+#bspc config auto_cancel true
+# ----------------------------------------------------------------------------
+
+
+# Window Rules ---------------------------------------------------------------
+# for workspace
+bspc rule -a firefox desktop='^2'
+bspc rule -a Google-chrome desktop='^2'
+bspc rule -a Chromium desktop='^2'
+bspc rule -a qutebrowser desktop='^2'
+bspc rule -a Falkon desktop='^2'
+bspc rule -a Uget-gtk desktop='^5'
+bspc rule -a Irssi desktop='^6'
+bspc rule -a Pidgin desktop='^6' focus=off
+bspc rule -a Newsboat desktop='^7'
+bspc rule -a Thunderbird desktop='^7'
+bspc rule -a Claws-mail desktop='^7'
+bspc rule -a Geary desktop='^7'
+bspc rule -a Neomutt desktop='^7'
+bspc rule -a Sylpheed desktop='^7'
+bspc rule -a TelegramDesktop desktop='^8'
+bspc rule -a Slack desktop='^8'
+bspc rule -a Whatsie desktop='^8'
+bspc rule -a Skype desktop='^8'
+bspc rule -a Flock desktop='^8'
+
+# for individual apps
+bspc rule -a Conky sticky=on manage=off lower=on
+bspc rule -a Screenkey manage=off
+
+## floating
+bspc rule -a Gkamus state=floating center=on
+bspc rule -a GParted state=floating center=on
+bspc rule -a KBBI-Qt state=floating center=on
+bspc rule -a Gnome-power-statistics state=floating center=on
+bspc rule -a Xdotool-gui state=floating center=on
+bspc rule -a Gnome-system-monitor state=floating center=on
+bspc rule -a Nm-connection-editor state=floating center=on
+bspc rule -a File-roller state=floating center=on
+bspc rule -a Gpick state=floating center=off
+bspc rule -a Xfburn state=floating center=on
+bspc rule -a Arandr state=floating center=on
+bspc rule -a Woeusbgui state=floating center=on
+bspc rule -a flowbladesinglerender state=floating center=on
+bspc rule -a System-config-printer.py state=floating center=on
+bspc rule -a Gucharmap state=floating center=on
+bspc rule -a Pavucontrol state=floating center=on
+bspc rule -a Deadbeef state=floating center=off
+bspc rule -a guvcview state=floating center=off
+bspc rule -a flameshot state=floating center=on
+bspc rule -a Blueman-manager state=floating center=off
+bspc rule -a Gnome-usage state=floating center=on
+bspc rule -a Gcolor3 state=floating center=on
+bspc rule -a Connman-gtk state=floating center=on
+bspc rule -a lxqt-openssh-askpass state=floating center=on
+bspc rule -a Jitsi:* state=floating center=off
+bspc rule -a Gnome-calculator state=floating center=off rectangle=378x388+120+177
+bspc rule -a spectacle state=floating center=on rectangle=823x420-94+162
+bspc rule -a Ncpamixer state=floating rectangle=505x600+0+0 center=on sticky=on locked=off
+bspc rule -a Key-mon state=floating sticky=on focus=off
+bspc rule -a Pidgin state=floating center=off
+bspc rule -a Putty state=floating center=off
+bspc rule -a Gufw.py state=floating
+bspc rule -a org-languagetool-gui-Main state=floating
+bspc rule -a Transmission-gtk state=tiled center=off
+bspc rule -a Org.gnome.SoundRecorder state=floating center=off
+bspc rule -a Python3:SoundConverter state=floating center=off
+bspc rule -a Geary focus=off
+bspc rule -a scrcpy:* state=floating center=off rectangle=376x672-18+40
+bspc rule -a Skype center=off
+bspc rule -a Wine:balsamiq\ mockups\ 3.exe center=on
+bspc rule -a Yad state=floating center=off
+bspc rule -a Pulseeffects state=floating center=on
+bspc rule -a Pulsemixer state=floating center=on
+bspc rule -a XTerm state=floating center=off
+
+## non floating
+bspc rule -a Cmus center=off state=tiled
+bspc rule -a Xfburn state=tiled
+bspc rule -a Emacs state=tiled
+bspc rule -a Ntcardvt state=tiled
+bspc rule -a *:soffice state=floating
+bspc rule -a *:libreoffice state=tiled
+bspc rule -a Jak state=tiled
+bspc rule -a Ms-office-online state=tiled
+bspc rule -a Ms-word-online state=tiled
+bspc rule -a Ms-excel-online state=tiled
+bspc rule -a Ms-powerpoint-online state=tiled
+bspc rule -a Ms-onenote-online state=tiled
+bspc rule -a Adl state=tiled
+bspc rule -a Zathura state=tiled
+bspc rule -a Flock-chat state=tiled center=on
+bspc rule -a libreoffice-writer state=tiled
+bspc rule -a libreoffice-calc state=tiled
+bspc rule -a libreoffice-impress state=tiled
+bspc rule -a libreoffice-draw state=tiled
+# ----------------------------------------------------------------------------
+
+
+# External Rules -------------------------------------------------------------
+# For now, I'm not using this
+#bspc config external_rules_command ~/.config/bspwm/external_rules/bspwmrc
+#bspc config external_rules_command ~/.config/bspwm/loop/bspwmrc
+#bspc config external_rules_command ~/.config/bspwm/loop/wm
+#bspc config external_rules_command ~/.config/bspwm/overlapping_borders/bspwmrc
+#bspc config external_rules_command ~/.config/bspwm/panel/bspwmrc
+#bspc config external_rules_command ~/.config/bspwm/panel/panel
+#bspc config external_rules_command ~/.config/bspwm/panel/panel_bar
+#bspc config external_rules_command ~/.config/bspwm/receptacles/extract_canvas
+#bspc config external_rules_command ~/.config/bspwm/receptacles/induce_rules
+#bspc config external_rules_command ~/.config/bspwm/scripts/border_window_float
+# ----------------------------------------------------------------------------

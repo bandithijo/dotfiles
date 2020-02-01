@@ -1,0 +1,25 @@
+!------------------------------------------------------------------------------
+! UXTERM PREFERENCES
+!------------------------------------------------------------------------------
+UXTerm*termName:               xterm-256color
+UXTerm*vt100.locale:           true
+UXTerm*vt100.metaSendsEscape:  true
+UXTerm*vt100.backarrowKey:     false
+UXTerm*ttyModes:               erase ^?
+UXTerm*vt100.saveLines:        4096
+UXTerm*vt100.geometry:         100x32
+UXTerm*vt100.translations:     #override \n\
+                               Ctrl <Key> minus: smaller-vt-font() \n\
+                               Ctrl <Key> plus: larger-vt-font()
+UXTerm*vt100.faceName:         xos4 Terminess Powerline:size=16:antialias=true
+UXTerm*vt100.boldFont:         xos4 Terminess Powerline:bold:size=16:antialias=true
+UXTerm*vt100.allowTitleOps:    true
+UXTerm*border:                 off
+UXTerm*borderWidth:            0
+UXTerm*Thickness:              0
+UXTerm*loginShell:             true
+UXTerm*multiScroll:            on
+UXTerm*background:             #002B36
+!------------------------------------------------------------------------------
+
+! vim: ft=xdefaults

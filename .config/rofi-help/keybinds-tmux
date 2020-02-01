@@ -1,0 +1,26 @@
+<b>COMMON-----------------------------------------</b>
+Ctrl+b                   Prefix
+Ctrl+b c                 Create New Window
+Ctrl+b d                 Detach Session
+Ctrl+b r                 Redraw Interface
+Ctrl+b s                 Select Session List
+Ctrl+b z                 Maximize Pane
+<b>SPLIT------------------------------------------</b>
+Ctrl+b "                 Split Horizontal
+Ctrl+b %                 Split Vertical
+<b>SWAP-------------------------------------------</b>
+Ctrl+b {                 Swap Next Pane
+Ctrl+b }                 Swap Prev. Pane
+<b>RENAME-----------------------------------------</b>
+Ctrl+b $                 Rename Session
+Ctrl+b ,                 Rename Window
+<b>SELECT WINDOW----------------------------------</b>
+Ctrl+b n                 Next Window
+Ctrl+b p                 Prev. Window
+<b>COPY/PASTE BUFFER------------------------------</b>
+Ctrl+b [                 Enter Copy Mode
+Space                    Visual Block
+Ctrl+b ]                 Paste from Buffer
+<b>RESURECTION------------------------------------</b>
+Ctrl+b Ctrl+s            Save Session
+Ctrl+b Ctrl+r            Reload Session

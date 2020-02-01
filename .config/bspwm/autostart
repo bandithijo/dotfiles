@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+killall sxhkd; sxhkd &
+$HOME/.config/polybar/launch.sh
+#dunst -config ~/.config/dunst/dunstrc &
+#killall compton; compton --config ~/.config/compton/compton.conf --no-use-damage &
+killall picom; picom --config ~/.config/picom/picom.conf --no-use-damage &
+killall xautolock; xautolock -time 60 -locker "/usr/bin/lock-dark" && echo mem > /sys/power/state &
+xsetroot -solid "#002B36" &
+xsetroot -cursor_name left_ptr &
+xinput set-button-map "TPPS/2 IBM TrackPoint" 1 0 3 &
+xfce4-power-manager &
+sanitizer &
+kill -9 $(pidof notify-hightemp); notify-hightemp &
+killall notify-listener; # notify-listener.py &
+killall unclutter; unclutter &
+killall lxpolkit; lxpolkit &
+#feh --bg-fill -Z $HOME/pic/Wallpapers/archWallpaper/Arch-Wallpaper-11X-dark.png
+feh --bg-fill -Z $WALLPAPER1
+#$HOME/.config/conky/conky-launch.sh &

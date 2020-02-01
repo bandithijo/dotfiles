@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+rofi -dmenu -p 'CLIPBOARD' -lines 8 -width 400 -m 0

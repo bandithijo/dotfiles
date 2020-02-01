@@ -1,0 +1,11 @@
+#!/bin/env sh
+
+status=${1}
+
+if [[ $status == 'on' ]]; then
+    polybar traybspwm -r
+elif [[ $status == 'off' ]]; then
+    kill `ps -eo pid,args --cols=10000 | awk '/polybar traybspwm -r/ && $1 != PROCINFO["pid"] { print $1 }'`
+else
+    echo 'Wrong argument! [on/off]'
+fi

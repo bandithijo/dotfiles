@@ -1,0 +1,39 @@
+#!/usr/bin/env sh
+
+# SOURCE: https://github.com/thomas154/st-urlopener
+
+pathToScript=`dirname "$0"`
+
+# function to select video quality
+quality_select(){
+	quality=`echo -e 'low\nmedium\nhigh\naudio'| rofi -dmenu -i -width 300 -l 4 -p 'SELECT QUALITY'`
+	case "$quality" in
+    "Low (3gp)") echo "--ytdl-format=3gp $url" ;;
+    "Medium (Webm)") echo "--ytdl-format=webm $url" ;;
+    "High (Mp4)") echo "--ytdl-format=mp4 $url" ;;
+    "Audio (M4a)") echo "--ytdl-format=m4a $url" ;;
+	esac
+}
+
+
+url=`$pathToScript/extract| rofi -dmenu -i -l 10 -p URLS`
+
+[[ $url = "" ]] && exit 1
+
+#choose=`echo -e 'qutebrowser\ncopy\nmpv\nts-mpv\nmpv-best-quality\nfeh\naria2c\nfirefox\nchrome'| rofi -dmenu -i -width 300 -l 4 -p 'OPEN WITH'`
+choose=`echo -e 'Google Chrome\nCopy\nMpv\nSxiv'| rofi -dmenu -i -width 250 -l 4 -p 'OPEN WITH'`
+#choose=`echo -e 'Firefox\nCopy\nMpv\nSxiv'| rofi -dmenu -i -width 250 -l 4 -p 'OPEN WITH'`
+
+case "$choose" in
+	#"Firefox") firefox $url ;;
+	"Google Chrome") google-chrome-stable $url ;;
+	#"Qutebrowser") qutebrowser $url ;;
+	#"Copy") echo "$url" | xclip -selection clipboard ;;
+	"Chromium") chromium $url ;;
+	#"ts-mpv") video=`quality_select`; notify-send "Queued video";ts mpv $video ;;
+	"Mpv") video=`quality_select`; 	[[ $video = "" ]] && exit 1 ;notify-send "Playing video";mpv $video ;;
+	#"mpv-best-quality") notify-send "playing video";mpv $url ;;
+	"Sxiv") sxiv $url ;;
+	#"aria2c") aria2c $url ;;
+
+esac

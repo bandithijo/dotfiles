@@ -1,0 +1,11 @@
+text/plain; vim %s ;
+#text/html; openfile %s ; nametemplate=%s.html
+text/html; /usr/bin/google-chrome-stable %s & sleep 5; test=test -n $DISPLAY; nametemplate=%s.html; needsterminal;
+#text/html; /usr/bin/qutebrowser 'file://%s'; nametemplate=%s.html
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+#image/*; muttimage %s ; copiousoutput
+image/*; gpicview %s ; copiousoutput
+#image/*; sxiv %s ; copiousoutput
+video/*; setsid mpv --quiet %s &; copiousoutput
+application/pdf; openfile %s ;
+application/pgp-encrypted; gpg -d '%s'; copiousoutput;

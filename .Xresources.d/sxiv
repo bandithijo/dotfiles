@@ -1,0 +1,8 @@
+! These are all possible options, presented with default values.
+! xst will fallback to *.option if st.option is not present.
+! see src/config.h for more information about option meanings.
+
+*.font:         FuraCode Nerd Font:style=Medium:pixelsize=10:antialias=true:autohint=true;
+
+*.foreground:   #839496
+*.background:   #073642

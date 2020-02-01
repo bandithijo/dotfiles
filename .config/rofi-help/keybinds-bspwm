@@ -1,0 +1,48 @@
+<b>LAUNCHER---------------------------------------</b>
+mod+Enter            Terminal
+mod+Shift+End        Sessions Dialog
+mod+q                Close Window Focus
+mod+Shift+x          Lock Screen
+mod+Shift+q          Kill Window Focus
+mod+d                Rofi: App Launcher
+mod+F10              Rofi: Help
+mod+{p,Shift+p}      Rofi: Clipboard Show/Clear
+mod+Print            Screenshot Silently
+mod+Shift+Print      Screenshot GUI
+mod+F8               Rofi: NetworkManager_dmenu
+mod+{F9/Shift+F9}    Polybar Tray Show/Hide
+<b>STATE------------------------------------------</b>
+mod+t                State: Tiled []=
+mod+Shift+t          State: Pseudo Tiled [T]=
+mod+m                State: Monocle [M]=
+mod+s                State: Floating []=
+mod+f                State: Fullscreen []=&lt;&gt;&lt;
+mod+n                Blank Space (Receptacle)
+<b>FLAGS------------------------------------------</b>
+mod+Ctrl+m           Flags: Marked [*]
+mod+Ctrl+x           Flags: Locked [X]
+mod+Ctrl+y           Flags: Sticky [Y]
+mod+Ctrl+z           Flags: Private [Z]
+<b>NODE-------------------------------------------</b>
+mod+{c,Shift+c}      Change Focus Next/Previous
+mod+a                Focus Parent
+mod+b                Focus Brother
+mod+,                Focus First
+mod+.                Focus Second
+mod+Tab              Focus Last Node/Dekstop
+mod+{o,i}            Focus Old/New Node/Dekstop
+mod+{u,Shift+u}      Rotate +90/-90
+mod+{Shift+-,-}      Node Hide/Show
+mod+Space            Balance Split Ratio
+mod+Shift+Space      Equalize Split Ratio
+mod+F1               Move Focus Node to eDP1
+mod+F2               Move Focus Node to HDMI2
+<b>PRESELECT--------------------------------------</b>
+mod+Ctrl+{hjkl}      Preselect Direction
+mod+Ctrl+{1-9}       Preselect Ratio
+mod+Ctrl+Space       Preselect Dismissed
+<b>RESIZE/MOVE------------------------------------</b>
+mod+Alt+{hjkl}       Expand Outward
+mod+Alt+Shift+{hjkl} Expand Inward
+mod+ArrowKeys        Move Floating Window 10px
+mod+Shift+ArrowKeys  Move Floating Window 1px

@@ -1,0 +1,39 @@
+#!/usr/bin/env sh
+# Sync mail and give notification if there is new mail.
+
+# Checks for internet connection and set notification script.
+ping -q -c 1 1.1.1.1 > /dev/null || exit
+
+export DISPLAY=:0.0
+
+# Settings are different for MacOS (Darwin) systems.
+if [ "$(uname)" = "Darwin" ]; then
+	notify() { osascript -e "display notification \"$2 in $1\" with title \"You've got Mail\" subtitle \"Account: $account\"" && sleep 2 ;}
+else
+	notify() { notify-send "Email" "📬 You have $2 new mail(s) in <b>$1</b> account." && paplay /home/bandithijo/snd/Ringtones/Line_Ringtone/line_a_66.ogg ; }
+fi
+
+echo " 🔃" > /tmp/imapsyncicon
+pkill -RTMIN+12 i3blocks
+
+# Run mbsync. You can feed this script different settings.
+# Usage example:
+#  - fullsync: mbsync -a
+#  - fullsync of luffy: mbsync luffy
+#  - quicksync of luffy: mbsync -n -d luffy
+#  - only sync INBOX: mbsync luffy:INBOX
+mbsync -a "$@"
+rm -f /tmp/imapsyncicon
+pkill -RTMIN+12 i3blocks
+
+# Check all accounts/mailboxes for new mail. Notify if there is new content.
+for account in "$HOME/.local/share/mail/"*
+do
+	acc="$(echo "$account" | sed "s/.*\///")"
+	newcount=$(find "$HOME/.local/share/mail/$acc/INBOX/new/" "$HOME/.local/share/mail/$acc/Inbox/new/" "$HOME/.local/share/mail/$acc/inbox/new/" -type f -newer "$HOME/.config/mutt/.mailsynclastrun" 2> /dev/null | wc -l)
+	[ "$newcount" -gt "0" ] && notify "$acc" "$newcount" &
+done
+notmuch new 2>/dev/null
+
+#Create a touch file that indicates the time of the last run of mailsync
+touch "$HOME/.config/mutt/.mailsynclastrun"

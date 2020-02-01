@@ -1,0 +1,21 @@
+GIMP Palette
+Name : EarthTone
+Columns : 0
+#
+255 255 255 #ffffff White
+  0   0   0 #000000 Black
+ 73  56  41 #493829 Earth 1
+129 108  92 #816c5b Earth 2
+169 161 140 #a9a18c Earth 3
+ 97  51  24 #613318 Earth 4
+133  87  35 #855723 Earth 5
+185 156 107 #b99c6b Earth 6
+143  59  27 #8f3b1b Earth 7
+213 117   0 #d57500 Earth 8
+219 202 105 #dbca69 Earth 9
+ 64  79  36 #404f24 Earth 10
+102 141  60 #668d3c Earth 11
+189 208 159 #bdd09f Earth 12
+ 78  97 114 #4e6172 Earth 13
+131 146 159 #83929f Earth 14
+163 173 184 #a3adb8 Earth 15

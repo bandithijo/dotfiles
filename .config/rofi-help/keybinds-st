@@ -1,0 +1,18 @@
+<b>ST 8.0-----------------------------------------</b>
+(solarized both patch)
+F6                          Change Dark/Light
+<b>SCROLLING--------------------------------------</b>
+(KEYBOARD)
+Shift+PgUp                  Scroll Up
+Shift+PgDown                Scroll Down
+(MOUSE)
+Shift+ScrollUp              Scroll Up
+Shift+ScrollDwn             Scroll Down
+<b>ZOOM-------------------------------------------</b>
+Ctrl+Shift+PgUp             Zoom In
+Ctrl+Shift+PgDwn            Zoom Out
+Ctrl+Shift+Home             Zoom 1:1
+<b>COPY/PASTE-------------------------------------</b>
+(ST 8.0)
+Ctrl+Shift+c                Copy
+Ctrl+Shift+v                Paste

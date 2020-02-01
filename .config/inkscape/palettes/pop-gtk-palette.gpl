@@ -1,0 +1,11 @@
+GIMP Palette
+Name : pop-gtk-palette
+Columns : 0
+#
+255 255 255 #ffffff White
+  0   0   0 #000000 Black
+ 85  71  65 #554741 Pop 1
+153 145 141 #99918d Pop 2
+187 181 179 #bbb5b3 Pop 3
+250 164  26 #faa41a Pop 4
+ 72 185 199 #48b9c7 Pop 5

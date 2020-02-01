@@ -1,0 +1,5 @@
+# configuration for rofi-power tool
+# source : https://github.com/okraits/rofi-tools
+LAUNCHER="rofi -width 25 -lines 5 -dmenu -i -p SESSIONS"
+USE_LOCKER="false"
+LOCKER="i3lock"

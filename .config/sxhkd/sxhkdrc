@@ -1,0 +1,248 @@
+#
+# wm independent hotkeys -----------------------------------------------------
+#
+
+# terminal emulator
+super + Return
+	$TERMCMD
+
+# program launcher
+# j4-dmenu-desktop --dmenu="rofi -show drun -m 0 -lines 6 -width 300 -display-window 'RUN'"
+super + d
+    j4-dmenu-desktop --dmenu='rofi -dmenu -m 0 -lines 6 -width 300 -i -sort -p RUN'
+
+XF86Launch1
+	j4-dmenu-desktop --dmenu='rofi -dmenu -m 0 -lines 6 -width 300 -i -sort -p RUN'
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+#
+# bspwm hotkeys --------------------------------------------------------------
+#
+
+# quit/restart bspwm
+super + shift + r
+	bspc wm -r
+
+
+# quit bspwm
+super + shift + End
+    /usr/bin/rofi-power "bspc quit"
+
+# close and kill
+super + {_,shift + }q
+	bspc node -{c,k}
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest node
+super + g
+	bspc node -s biggest
+
+#
+# state/flags ----------------------------------------------------------------
+#
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap -----------------------------------------------------------------
+#
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+super + {a,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous node in the current desktop
+super + {_,shift + }c
+	bspc node -f {next,prev}.local
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop *desktop deleted*
+super + {Tab}
+	bspc {node} -f last
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+    bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect ------------------------------------------------------------------
+#
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize ----------------------------------------------------------------
+#
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -10 0,bottom 0 10,top 0 -10,right 10 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -10 0,top 0 10,bottom 0 -10,left 10 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-10 0,0 10,0 -10,10 0}
+
+super + shift + {Left,Down,Up,Right}
+	bspc node -v {-1 0,0 1,0 -1,1 0}
+
+#
+# ditambahkan oleh bandithijo ------------------------------------------------
+#
+
+# hide window
+super + shift + minus
+    bspc node -g hidden
+
+# unhide window
+super + minus
+    bspc node {,$(bspc query -N -n .hidden | tail -n1)} -g hidden=off --focus
+
+# lock screen
+super + shift + x
+    /usr/bin/lock-dark
+
+# wallpaper & conky for taking screenshot
+super + F5
+    feh --bg-fill -Z $WALLPAPER1 \
+    && killall conky
+
+super + shift + F5
+    feh --bg-fill -Z $WALLPAPER2 \
+    && killall conky
+
+super + F6
+    feh --bg-fill -Z $WALLPAPER1 \
+    && $HOME/.config/conky/conky-launch.sh
+
+super + shift + F6
+    feh --bg-fill -Z $WALLPAPER2 \
+    && $HOME/.config/conky/conky-launch-bg.sh
+
+# screenshot
+super + Print
+    /usr/bin/gnome-screenshot -d 0 \
+    ; notify-send "Scrot" "Screen has been captured!"
+
+super + ctrl + Print
+    /usr/bin/gnome-screenshot -d 5 \
+    ; notify-send "Scrot" "Screen has been captured!"
+
+super + shift + Print
+    /usr/bin/gnome-screenshot -a \
+    ; notify-send "GNOME ScreenShot" "Screen has been captured!"
+
+# pulse audio controls
+{XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute}
+    pamixer {--increase 2, --decrease 2, --toggle-mute}
+
+XF86AudioMicMute
+    pactl set-source-mute 1 toggle
+
+# screen brightness controls
+{XF86MonBrightnessUp, XF86MonBrightnessDown}
+    xbacklight {-inc 5, -dec 5}
+
+# pavucontrol
+super + F3
+    /usr/bin/pavucontrol
+
+# arandr
+super + F7
+    /usr/bin/arandr
+
+# networkmanager_dmenu
+super + F8
+    /usr/bin/networkmanager_dmenu
+
+# keybind helper
+super + F10
+    /usr/bin/keybind-helper
+
+# rofi-pass
+super + {_,shift + }backslash
+    {passman 0, /usr/bin/rofi-pass}
+
+# clipmenu
+super + {_,shift + }p
+    {/usr/bin/clipmenu, rm -rf /tmp/clipmenu/*}
+
+# receptacle (blank node)
+super + n
+  {smartsplit ; bspc node -i,\
+  for i in $(bspc query -N -n .leaf.!window.local); do bspc node $i -k; done}
+
+# rotate the tree rooted at the selected node.
+super + {_,shift + }u
+    bspc node @/ --rotate {90, -90}
+
+# balance the split ratio of the tree rooted at the selected node so
+# that all windows occupy the same area.
+super + {_,shift + }space
+    bspc node @/ {-B, -E}
+
+# rofi-emoji
+super + e
+    /usr/bin/rofi-emoji
+
+# move selected node to another monitor
+super + {F1, F2}
+    bspc node --to-monitor {^1, ^2}
+
+# key-mon
+super + ~F11
+    {/usr/bin/key-mon, killall key-mon}
+
+# polybar-tray
+super + ~F12
+    {~/bin/polybar-tray off; ~/bin/polybar-tray on, ~/bin/polybar-tray off}
+
+# application tab
+super + grave
+    j4-dmenu-desktop --dmenu="rofi -show window -lines 10 -width 380 -display-window 'APPLICATIONS'"

@@ -1,0 +1,76 @@
+#  ██████                           ██   ██   ██      ██ ██    ██
+# ░█░░░░██                         ░██  ░██  ░██     ░██░░    ░░
+# ░█   ░██   ██████   ███████      ░██ ██████░██     ░██ ██    ██  ██████
+# ░██████   ░░░░░░██ ░░██░░░██  ██████░░░██░ ░██████████░██   ░██ ██░░░░██
+# ░█░░░░ ██  ███████  ░██  ░██ ██░░░██  ░██  ░██░░░░░░██░██   ░██░██   ░██
+# ░█    ░██ ██░░░░██  ░██  ░██░██  ░██  ░██  ░██     ░██░██ ██░██░██   ░██
+# ░███████ ░░████████ ███  ░██░░██████  ░░██ ░██     ░██░██░░███ ░░██████
+# ░░░░░░░   ░░░░░░░░ ░░░   ░░  ░░░░░░    ░░  ░░      ░░ ░░  ░░░   ░░░░░░
+
+#                                      ██                           ██
+#                                     ░██                          ░██
+#  ███████   █████  ███     ██  ██████░██       ██████   ██████   ██████
+# ░░██░░░██ ██░░░██░░██  █ ░██ ██░░░░ ░██████  ██░░░░██ ░░░░░░██ ░░░██░
+#  ░██  ░██░███████ ░██ ███░██░░█████ ░██░░░██░██   ░██  ███████   ░██
+#  ░██  ░██░██░░░░  ░████░████ ░░░░░██░██  ░██░██   ░██ ██░░░░██   ░██
+#  ███  ░██░░██████ ███░ ░░░██ ██████ ░██████ ░░██████ ░░████████  ░░██
+# ░░░   ░░  ░░░░░░ ░░░    ░░░ ░░░░░░  ░░░░░    ░░░░░░   ░░░░░░░░    ░░
+
+
+auto-reload yes
+datetime-format "%Y/%m/%d, %R"
+
+external-url-viewer "urlview"
+
+bind-key j down
+bind-key k up
+#bind-key j next articlelist
+#bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key G end
+bind-key g home
+bind-key d pagedown
+bind-key u pageup
+bind-key l open
+bind-key h quit
+bind-key a toggle-article-read
+bind-key n next-unread
+bind-key N prev-unread
+#bind-key D pb-download
+bind-key x pb-delete
+bind-key D delete-article
+bind-key U show-urls
+
+
+# Dark solarized color scheme for newsbeuter, based on
+# Ethan Schoonover's Solarized.
+#
+# In order to use this color scheme, you must first configure
+# your terminal emulator to use the Solarized palette.
+# See <http://ethanschoonover.com/solarized/> for more information.
+
+color background         default   default
+color listnormal         default   default
+color listnormal_unread  white   default bold
+color listfocus          black     yellow
+color listfocus_unread   black     yellow bold
+color info               yellow    black
+color article            default   default
+
+# highlights
+highlight article "^(Title):.*$" blue default
+highlight article "https?://[^ ]+" red default
+highlight article "\\[image\\ [0-9]+\\]" green default
+
+#browser linkhandler
+browser "env GTK_THEME=Adwaita /usr/lib/firefox/firefox %u"
+macro . open-in-browser
+macro v set browser "i3 exec mpv"; open-in-browser ; set browser linkhandler
+macro y set browser "spawndl"; open-in-browser ; set browser linkhandler
+macro w set browser "w3m"; open-in-browser ; set browser linkhandler
+macro p set browser "dmnuhandler"; open-in-browser ; set browser linkhandler
+
+# c copies the link to the clipboard
+# The line below is probably the skiddiest lien i've ever writer.
+macro c set browser "copy(){ echo $1 | xclip ;}; copy "; open-in-browser ; set browser linkhandler

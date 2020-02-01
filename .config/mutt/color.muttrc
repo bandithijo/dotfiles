@@ -1,0 +1,52 @@
+# vim: filetype=neomuttrc
+
+# Higlight line indicator
+color indicator black yellow
+
+# Entire index line
+color index default default '.*'
+
+# Author name, %A %a %F %L %n
+# Give the author column a dark grey background
+color index_author white default '.*'
+
+# Highlight a particular from (~f)
+# color index_author brightyellow color234 '~fRay Charles'
+
+# Message flags, %S %Z
+# Highlight the flags for flagged (~F) emails
+color index_flags white default '~F'
+
+# Subject, %s
+# Look for a particular subject (~s)
+# color index_subject brightcyan default '~s\(closes #[0-9]+\)'
+color index_subject default default '~R'
+color index_subject default default '~U'
+
+# Number of messages in a collapsed thread, %M
+color index_collapsed yellow default
+
+# Date field
+color index_date yellow default
+
+# Message label, %y %Y
+color index_label yellow default
+
+# Message number, %C
+color index_number default default
+
+# Message size, %c %l
+color index_size default default
+
+# Message Display
+color header white default "^(Date)"
+color header white default "^(From)"
+color header white default "^(To)"
+color header white default "^(Cc)"
+color header white default "^(Subject)"
+color header white default "^(X-Mailer)"
+
+
+# Tambahan
+color index black        red        "!~N ~D"        # deleted messages
+color index black        red        "~N ~D"         # deleted new messages

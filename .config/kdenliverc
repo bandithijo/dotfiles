@@ -1,0 +1,140 @@
+[KFileDialog Settings]
+Recent Files[$e]=MPEG2_CENTURY.mpg,file:$HOME/dwn/MPEG2_CENTURY.mpg
+Recent URLs[$e]=file:$HOME/dwn/
+listViewIconSize=0
+
+[Layouts]
+BanditHijo-Layout-1_1=AAAA/wAAAAD9AAAAAQAAAAIAAAQAAAABZfwBAAAACvsAAAAYAG4AbwB0AGUAcwBfAHcAaQBkAGcAZQB0AAAAAAD/////AAAAYAEAAAP7AAAADgBsAGkAYgByAGEAcgB5AAAAAAD/////AAAAZAEAAAP7AAAAGgBhAHUAZABpAG8AcwBwAGUAYwB0AHIAdQBtAAAAAAD/////AAAAZQEAAAP8AAAAAAAAAcEAAAG6AP////oAAAAAAgAAAAX7AAAAFgBwAHIAbwBqAGUAYwB0AF8AYgBpAG4BAAAAOwAAASoAAACPAQAAAvsAAAAeAHQAcgBhAG4AcwBpAHQAaQBvAG4AXwBsAGkAcwB0AQAAAAD/////AAAApwEAAAL7AAAAFgBlAGYAZgBlAGMAdABfAGwAaQBzAHQBAAAAAP////8AAACnAQAAAvsAAAAYAGUAZgBmAGUAYwB0AF8AcwB0AGEAYwBrAQAAAAD/////AAAAjwEAAAL7AAAAHgBjAGwAaQBwAF8AcAByAG8AcABlAHIAdABpAGUAcwAAAAAA/////wAAAHIBAAAD/AAAAcIAAAI+AAABRAD////6AAAAAQEAAAAC+wAAABgAYwBsAGkAcABfAG0AbwBuAGkAdABvAHIBAAAAAP////8AAAFEAQAAA/sAAAAeAHAAcgBvAGoAZQBjAHQAXwBtAG8AbgBpAHQAbwByAQAAAAD/////AAABRAEAAAP7AAAAGAB1AG4AZABvAF8AaABpAHMAdABvAHIAeQAAAAAA/////wAAAGABAAAD+wAAABYAdgBlAGMAdABvAHIAcwBjAG8AcABlAAAAAAD/////AAABEgEAAAP7AAAAEAB3AGEAdgBlAGYAbwByAG0AAAAAAP////8AAACXAQAAA/sAAAAUAHIAZwBiAF8AcABhAHIAYQBkAGUAAAAAAP////8AAACRAQAAA/sAAAASAGgAaQBzAHQAbwBnAHIAYQBtAAAAAAD/////AAABIAEAAAMAAAQAAAAA6wAAAAQAAAAEAAAACAAAAAj8AAAAAQAAAAIAAAACAAAAFgBtAGEAaQBuAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAAAAAAAAAABgAZQB4AHQAcgBhAFQAbwBvAGwAQgBhAHIBAAACJP////8AAAAAAAAAAA==
+
+[MainWindow]
+Height 768=707
+State=AAAA/wAAAAD9AAAAAQAAAAIAAAP2AAABZfwBAAAAC/sAAAAYAG4AbwB0AGUAcwBfAHcAaQBkAGcAZQB0AAAAAAD/////AAAAYAEAAAP7AAAADgBsAGkAYgByAGEAcgB5AAAAAAD/////AAAAZAEAAAP7AAAAGgBhAHUAZABpAG8AcwBwAGUAYwB0AHIAdQBtAAAAAAD/////AAAAZwEAAAP8AAAAAAAAAb0AAACLAP////oAAAAAAgAAAAX7AAAAFgBwAHIAbwBqAGUAYwB0AF8AYgBpAG4BAAAAOwAAASoAAAB4AQAAAvsAAAAeAHQAcgBhAG4AcwBpAHQAaQBvAG4AXwBsAGkAcwB0AQAAAAD/////AAAAAwEAAAL7AAAAFgBlAGYAZgBlAGMAdABfAGwAaQBzAHQBAAAAAP////8AAAADAQAAAvsAAAAYAGUAZgBmAGUAYwB0AF8AcwB0AGEAYwBrAQAAAAD/////AAAAcwEAAAL7AAAAHgBjAGwAaQBwAF8AcAByAG8AcABlAHIAdABpAGUAcwAAAAAA/////wAAAHIBAAAD/AAAAb4AAAI4AAABRAD////6AAAAAQEAAAAC+wAAABgAYwBsAGkAcABfAG0AbwBuAGkAdABvAHIBAAAAAP////8AAAFEAQAAA/sAAAAeAHAAcgBvAGoAZQBjAHQAXwBtAG8AbgBpAHQAbwByAQAAAAD/////AAABRAEAAAP7AAAAGAB1AG4AZABvAF8AaABpAHMAdABvAHIAeQAAAAAA/////wAAAGABAAAD+wAAABYAdgBlAGMAdABvAHIAcwBjAG8AcABlAAAAAAD/////AAABKgEAAAP7AAAAEAB3AGEAdgBlAGYAbwByAG0AAAAAAP////8AAACiAQAAA/sAAAAUAHIAZwBiAF8AcABhAHIAYQBkAGUAAAAAAP////8AAACfAQAAA/sAAAASAGgAaQBzAHQAbwBnAHIAYQBtAAAAAAD/////AAABRgEAAAP7AAAAFABzAGMAcgBlAGUAbgBnAHIAYQBiAAAAAAD/////AAAAYAEAAAMAAAP2AAAA/AAAAAQAAAAEAAAACAAAAAj8AAAAAQAAAAIAAAACAAAAFgBtAGEAaQBuAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAAAAAAAAAABgAZQB4AHQAcgBhAFQAbwBvAGwAQgBhAHIBAAACMv////8AAAAAAAAAAA==
+ToolBarsMovable=Disabled
+Width 1024=1014
+
+[Recent Dirs]
+KdenliveClipFolder[$e]=$HOME/dwn/,$HOME/doc
+KdenliveProjectsFolder[$e]=$HOME/vid/kdenlive,$HOME/vid/kdenlive/,$HOME/doc
+
+[Recent Files]
+File1[$e]=$HOME/vid/kdenlive/pamer.kdenlive
+Name1[$e]=pamer.kdenlive
+
+[Scope_Histogram]
+autoRefresh=true
+bEnabled=true
+gEnabled=true
+rEnabled=true
+realtime=false
+rec601=false
+sEnabled=false
+yEnabled=true
+
+[Scope_RGB Parade]
+autoRefresh=true
+axis=false
+gradref=false
+paintmode=0
+realtime=false
+
+[Scope_Vectorscope]
+75PBox=false
+autoRefresh=true
+axis=false
+backgroundmode=0
+colorspace_ypbpr=false
+gain=1
+iqlines=false
+paintmode=0
+realtime=false
+
+[Scope_Waveform]
+autoRefresh=true
+paintmode=0
+realtime=false
+rec601=false
+
+[TitleWidget]
+background_alpha=255
+background_color=0,0,0
+dialog_geometry=AdnQywACAAAAAAAAAAAAHQAAA/8AAALiAAAAAAAAADQAAAP/AAAC4gAAAAACAAAABAA=
+font_color=255,255,255
+font_family=Fixedsys Excelsior 3.01,-1,50,5,50,0,0,0,0,0
+font_italic=false
+font_outline=0
+font_outline_color=invalid
+font_pixel_size=50
+font_underlined=false
+font_weight=50
+rect_background_alpha=255
+rect_background_color=0,0,0
+rect_foreground_alpha=255
+rect_foreground_color=0,0,0
+rect_line_width=0
+use_grid=false
+
+[UiSettings]
+ColorScheme=Breeze Dark
+
+[bin]
+treeviewheaders=AAAA/wAAAAAAAAABAAAAAQAAAAABAAAAAAAAAAAAAAADBgAAAAIAAAACAAAAZAAAAAEAAAA+AAAAZAAAAAMBAQABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAMAAABkAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAPoAAAAAEU=
+
+[capture]
+decklink_capturedevice=4294967295
+decklink_device_found=false
+decklink_extension=mov
+decklink_parameters=vcodec=dnxhd vb=145000k acodec=pcm_s16le threads=%threads
+defaultaudiocapture=0
+detectedv4ldevices=4294967295
+grab_extension=mov
+grab_parameters=-crf 25 -vcodec libx264 -preset veryfast -threads 0
+v4l_extension=mpg
+v4l_format=4294967295
+v4l_parameters=qscale=4 ab=192k vcodec=mpeg2video acodec=mp2 threads=%threads
+
+[env]
+customprojectfolder=true
+defaultprojectfolder[$e]=$HOME/vid/kdenlive
+ffmpegpath[$e]=/usr/bin/ffmpeg
+ffplaypath[$e]=/usr/bin/ffplay
+ffprobepath[$e]=/usr/bin/ffprobe
+mltpath[$e]=/tmp/.mount_kdenliHp3ixk/usr/share/mlt/profiles/
+rendererpath[$e]=/tmp/.mount_kdenliHp3ixk/usr/bin/melt
+
+[project]
+externalProxyProfile=../Sub;;S03.MP4;../Clip;;.MXF
+proxyextension=mkv
+proxyparams=-vf yadif,scale=960:-2 -qscale 3 -vcodec mjpeg -acodec pcm_s16le
+
+[sdl]
+audiobackend=sdl2_audio
+blackmagic_output_device=-1
+sdlAudioBackend=sdl2_audio
+
+[settings]
+dialogSize=922,691
+
+[shuttle]
+shuttlebuttons=button0=monitor_pause
+
+[timeline]
+showmarkers=true
+timelineheaderwidth=AAAA/wAAAAEAAAACAAAAqAAAA1cB/////wEAAAABAA==
+trackheight=40
+
+[unmanaged]
+automatictransitions=false
+current_profile=dv_pal
+default_profile=dv_pal
+defaultrescaleheight=256
+displayClipMonitorInfo=29
+displayProjectMonitorInfo=7
+force_breeze=true
+monitor_audio=false
+producerslist=avformat,avformat-novalidate,abnormal,color,colour,consumer,hold,loader,melt,melt_file,noise,timewarp,tone,decklink,frei0r.ising0r,frei0r.lissajous0r,frei0r.nois0r,frei0r.onecol0r,frei0r.partik0l,frei0r.plasma,frei0r.test_pat_B,frei0r.test_pat_C,frei0r.test_pat_G,frei0r.test_pat_I,frei0r.test_pat_L,frei0r.test_pat_R,pango,pixbuf,framebuffer,slowmotion,blipflash,count,qimage,qtext,kdenlivetitle,pgm,xml,xml-string,xml-nogl
+project_display_ratio=1.3333333333333333
+use_dark_breeze=true
+widgetstyle=Breeze
+
+[version]
+version=19.08.0

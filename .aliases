@@ -1,0 +1,114 @@
+# ------------------------------------------------------------LIST OF MY ALIAS
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+
+# list ls
+alias ll="ls -l"
+
+# Firefox with Tor
+alias fireprox="proxychains env GTK_THEME=Adwaita firefox --private-window"
+
+# Chromium with Tor
+alias chromeprox="chromium --proxy-server='socks5://127.0.0.1:9050'"
+
+# BACKUP ENTIRE SYSTEM
+alias devika!="sudo rsync -avhAXP --progress --delete --exclude=dev --exclude=proc --exclude=sys --exclude=tmp --exclude=run --exclude=mnt --exclude=swapfile --exclude=snap --exclude=home/.ecryptfs / /run/media/bandithijo/BACKUP_X61/ARCH"
+
+# tty-clock
+alias clock="tty-clock -nscDC 7"
+
+# termdown
+alias termdown="termdown -f nancyj"
+
+# vimdiff
+alias vimdiff="vim -d"
+
+alias cal="cal -y"
+
+# Enabling Menu Item Gnome
+alias menuitem-enable="gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{'Gtk/ButtonImages': <1>, 'Gtk/MenuImages': <1>}\""
+
+# Upgrade all packages PIP
+alias pip-superupgrade="pip freeze > list && sudo pip install -r list -U && rm list"
+alias pip-upgrade="pip freeze > list && pip install -r list -U && rm list"
+
+alias pip2-superupgrade="pip2 freeze > list && sudo pip2 install -r list -U && rm list"
+alias pip2-upgrade="pip2 freeze > list && pip2 install -r list -U && rm list"
+
+# XAMPP
+alias lampp="sudo /opt/lampp/lampp"
+alias lampp-start="sudo /opt/lampp/lampp start"
+alias lampp-stop="sudo /opt/lampp/lampp stop"
+
+# key-mon
+alias key-mon="xhost +; key-mon"
+
+# Wacom Area
+alias wacom-move="xsetwacom --set \"Wacom One by Wacom S Pen stylus\" Area 1000 1000 3800 2375"
+alias wacom-draw="xsetwacom --set \"Wacom One by Wacom S Pen stylus\" ResetArea"
+
+# geteltorito
+alias geteltorito="geteltorito.pl"
+
+# Disable WebCam
+alias webcam-enable="echo '' | sudo tee /etc/modprobe.d/blacklist.conf; echo '[Enable] WebCam'"
+alias webcam-disable="echo 'blacklist uvcvideo' | sudo tee /etc/modprobe.d/blacklist.conf; echo '[Disable] WebCam'"
+
+# Presentation Mode XFCE4-POWER-MANAGER
+alias presentationmode-on="xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/presentation-mode -s true; killall xautolock; echo 'Presentation Mode ON'; notify-send '[ON] Presentation Mode'"
+alias presentationmode-off="xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/presentation-mode -s false; xautolock -time 15 -locker '/usr/bin/lock-dark' && echo mem > /sys/power/state & ; echo 'Presentation Mode OFF'; notify-send '[OFF] Presentation Mode'"
+
+# scrot
+alias scrot="scrot 'Screenshot\ from\ %Y-%m-%d %H-%M-%S.png' -e 'mv *.png ~/pic/ScreenShot/' -d 3 -c"
+
+# ncpamixer
+alias ncpamixer="ncpamixer -c .ncpamixer.conf"
+
+# macchanger
+alias macchanger-on="sudo mv /etc/systemd/network/00-default.link.bak /etc/systemd/network/00-default.link && echo 'Reboot to take effect !'"
+alias macchanger-off="sudo mv /etc/systemd/network/00-default.link /etc/systemd/network/00-default.link.bak && echo 'Reboot to take effect !'"
+
+# nameserver dnscrypt
+alias dnscrypt-proxy-on="sudo systemctl start dnscrypt-proxy && sudo sed -i s/192.168.1.1/127.0.0.1/g /etc/resolv.conf"
+alias dnscrypt-proxy-off="sudo systemctl stop dnscrypt-proxy && sudo sed -i s/static domain_name_servers=127.0.0.1/#static domain_name_servers=127.0.0.1/g /etc/dhcpcd.conf"
+
+# Speedup TrackPoint
+alias trackpoint-speedup="echo 240 | sudo tee /sys/devices/platform/i8042/serio1/serio2/sensitivity"
+
+# Enable/Disable TouchPad
+alias touchpad-enable="xinput --enable 'SynPS/2 Synaptics TouchPad'"
+alias touchpad-disable="xinput --disable 'SynPS/2 Synaptics TouchPad'"
+
+# cli-visualizer
+#alias vis="vis -c ~/.config/vis/config"
+
+# lsblk
+alias lsblk="lsblk --output=NAME,FSTYPE,SIZE,TYPE,LABEL,MOUNTPOINT"
+
+# Check total user
+alias usercheck="~/.local/bin/usercheck"
+
+# emacs on terminal
+alias emacs="emacs -nw"
+
+# scrcpy
+#alias scrcpy="scrcpy -b2M -m800"
+
+# RedShift
+alias redshift="redshift -P -O"
+
+# TLP ChargeOnce
+alias tlp-chargeonce="sudo tlp chargeonce BAT0"
+
+# MPV Image
+alias mvi='mpv -profile image'
+
+# Spicific for dwm, reset the master repo
+alias dwm-fullclean="make clean && rm -f config.h && git reset --hard origin/master"
+
+# youtube-dl playlist
+alias youtube-dl-playlist="youtube-dl -f 'bestvideo+bestaudio[ext=m4a]/bestvideo+bestaudio/best' --merge-output-format mp4 -o '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s' -i"
+
+# -------------------------------------------------------------------END ALIAS

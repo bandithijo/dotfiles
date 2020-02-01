@@ -1,0 +1,25 @@
+!------------------------------------------------------------------------------
+! XTERM PREFERENCES
+!------------------------------------------------------------------------------
+XTerm*termName:               xterm-256color
+XTerm*vt100.locale:           true
+XTerm*vt100.metaSendsEscape:  true
+XTerm*vt100.backarrowKey:     false
+XTerm*ttyModes:               erase ^?
+XTerm*vt100.saveLines:        4096
+XTerm*vt100.geometry:         100x32
+XTerm*vt100.translations:     #override \n\
+                              Ctrl <Key> minus: smaller-vt-font() \n\
+                              Ctrl <Key> plus: larger-vt-font()
+XTerm*vt100.faceName:         Fira Code:pixelsize=10:antialias=true
+XTerm*vt100.boldFont:         Fira Code:bold:pixelsize=10:antialias=true
+XTerm*vt100.allowTitleOps:    true
+XTerm*border:                 off
+xTerm*borderWidth:            0
+XTerm*Thickness:              0
+xTerm*loginShell:             true
+XTerm*multiScroll:            on
+XTerm*background:             #002B36
+!------------------------------------------------------------------------------
+
+! vim: ft=xdefaults

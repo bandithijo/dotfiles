@@ -1,0 +1,52 @@
+<b>COMMON-----------------------------------------</b>
+, ev               Open .vimrc
+, ed               Open Jekyll Draft
+, Space            Clear HighLight
+, Shift+w          Clear WhiteSpace
+q #                Macro Register on #
+@ #                Call Macro on #
+m #                Marking on # lines
+' #                Go To Marking on #
+Ctrl+y ,           Emmet
+Ctrl+v             Multiline Char Select
+F12                NerdTree
+F11                TagBar
+F10                MiniMap
+Ctrl+p             FZF :Buffers
+Ctrl+f             FZF :Files
+gcc                Comment/Uncomment line/block
+<b>SPLIT------------------------------------------</b>
+(NT) i             Open File Split Horizontal
+(NT) s             Open File Split Vertical
+Ctrl+w s (, s)     Create Horizontal Split
+Ctrl+w v (, v)     Create Vertical Split
+Ctrl+w r           Switch Between 2 Split
+Ctrl+w Shift+k     Move Horizontal AP to Top
+Ctrl+w Shift+j     Move Horizontal AP to Bottom
+Ctrl+w Shift+h     Move Vertical AP to Left
+Ctrl+w Shift+l     Move Vertical AP to Right
+Ctrl+w Shift++     Resize Horizontal Split Out
+Ctrl+w -           Resize Horizontal Split In
+Ctrl+w Shift+.     Resize Vertical Split Out
+Ctrl+w Shift+,     Resize Vertical Split In
+Ctrl+w Shift+-     Resize Window to Max Height
+Ctrl+w Shift+&#92;     Resize Window to Max Width
+Ctrl+w =           Resize Hor/Ver Equal
+<b>CURSOR POSITIONING-----------------------------</b>
+Shift+t            Move Cursor to Top
+Shift+m            Move Cursor to Middle
+Shift+l            Move Cursor to Bottom
+zt                 Move Focus to Top
+zz                 Move Focus to Middle
+zb                 Move Focus to Bottom
+<b>FOLDING----------------------------------------</b>
+zf#j               Create Folds # lines
+z Shift+r          Open All Folding
+z Shift+m          Close All Folding
+zo                 Open Selected Folding
+zc                 Close Selected Folding
+:mkview            Save Folding
+:loadview          Load Saved Folding
+<b>COMMAND----------------------------------------</b>
+:set ft=(...)
+:set conceallevel=0

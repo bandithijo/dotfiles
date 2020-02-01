@@ -1,0 +1,13 @@
+#!/bin/env sh
+
+pilihan="BSPWM\nMPV\nST\nTMUX\nVIM"
+
+terpilih=$(echo -e "$pilihan" | rofi -dmenu -i -p KEYBINDS: -lines 6 -width 200)
+
+case "$terpilih" in
+    BSPWM) dunstify "$terpilih KEYBINDS:" "`tail -n 55 $HOME/.config/rofi-help/keybinds-bspwm`" ;;
+    MPV) dunstify "$terpilih KEYBINDS:" "`tail -n 55 $HOME/.config/rofi-help/keybinds-mpv`" ;;
+    ST) dunstify "$terpilih KEYBINDS:" "`tail -n 55 $HOME/.config/rofi-help/keybinds-st`" ;;
+    TMUX) dunstify "$terpilih KEYBINDS:" "`tail -n 55 $HOME/.config/rofi-help/keybinds-tmux`" ;;
+    VIM) dunstify "$terpilih KEYBINDS:" "`tail -n 55 $HOME/.config/rofi-help/keybinds-vim`" ;;
+esac

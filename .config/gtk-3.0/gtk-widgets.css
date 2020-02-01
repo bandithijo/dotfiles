@@ -1,0 +1,9 @@
+.scrollbar,
+.scrollbar.vertical {
+    -GtkScrollbar-has-backward-stepper: 10;
+    -GtkScrollbar-has-forward-stepper: 10;
+    -GtkRange-stepper-size: 20;
+    -GtkRange-slider-width: 20;
+    border-radius: 20px;
+    border-image: none;
+}
