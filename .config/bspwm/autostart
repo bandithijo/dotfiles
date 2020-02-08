@@ -11,6 +11,7 @@ xsetroot -cursor_name left_ptr &
 xinput set-button-map "TPPS/2 IBM TrackPoint" 1 0 3 &
 xfce4-power-manager &
 sanitizer &
+bluetooth off &
 kill -9 $(pidof notify-hightemp); notify-hightemp &
 killall notify-listener; # notify-listener.py &
 killall unclutter; unclutter &

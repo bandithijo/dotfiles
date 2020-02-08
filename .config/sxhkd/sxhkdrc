@@ -246,3 +246,7 @@ super + ~F12
 # application tab
 super + grave
     j4-dmenu-desktop --dmenu="rofi -show window -lines 10 -width 380 -display-window 'APPLICATIONS'"
+
+# dmenu_record
+super + shift + Pause
+    ~/bin/dmenu_record

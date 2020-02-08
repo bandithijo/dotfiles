@@ -38,8 +38,8 @@
     background-color: @background;
     border:           1;
     padding:          5;
-    border-radius:    4;
-    /* border-radius:    0; */
+    /* border-radius:    4; */
+    border-radius:    0;
 }
 #mainbox {
     border:           0;

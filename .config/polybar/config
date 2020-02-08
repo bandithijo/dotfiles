@@ -213,7 +213,7 @@ content-background = ${colors.background}
 type = custom/text
 ;content = "%{T3}%{T-} BANDITHIJO"
 ;content = "%{T3}%{T-} BANDITHIJO %{F#56696F}|%{F-} %{T3}%{T-} THINKPAD-X61"
-content = " %{T3}%{T-} %{T4}BANDITHIJO%{T-} %{F#BCC3C3}%{B#657B83}%{B-}%{F-}%{F#002B36}%{B#657B83} %{T3}%{T-} THINKPAD-X61  ArchLinux %{F-}%{B-}"
+content = " %{T3}%{T-} %{T4}BANDITHIJO%{T-} %{F#BCC3C3}%{B#657B83}%{B-}%{F-}%{F#002B36}%{B#657B83} %{T3}%{T-} THINKPAD-X61  Arch Linux %{F-}%{B-}"
 content-foreground = ${colors.background}
 content-background = ${colors.foreground}
 

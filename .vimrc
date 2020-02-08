@@ -304,10 +304,10 @@ autocmd FileType jinja.html setlocal shiftwidth=2 tabstop=2 ft=jinja
 autocmd FileType jinja setlocal shiftwidth=2 tabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType scss setlocal shiftwidth=2 tabstop=2
-autocmd FileType org setlocal shiftwidth=2 tabstop=2 foldmethod=expr
+autocmd FileType org setlocal shiftwidth=2 tabstop=2 foldmethod=expr nowrap
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 wrap textwidth=79 formatoptions+=t
-autocmd FileType markdown highlight htmlItalic cterm=italic
-autocmd FileType liquid set conceallevel=0
+autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 highlight htmlItalic cterm=italic
+autocmd FileType liquid setlocal shiftwidth=2 tabstop=2 conceallevel=0
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
 " }}}
@@ -795,7 +795,15 @@ let g:vim_markdown_conceal_code_blocks = 0
 " ----------------------------------------------------------------------------
 " Default fzf layout
 " - down / up / left / right
-"let g:fzf_layout = { 'down': '~50%' }
+let g:fzf_layout = { 'down': '~50%' }
+" Required:
+" - width [float]
+" - height [float]
+"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+" Optional:
+" - highlight [string default 'Comment']: Highlight group for border
+" - rounded [boolean default v:true]: Use rounded border
+"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7, 'highlight': 'Normal', 'rounded': v:false } }
 
 " In Neovim, you can set up fzf window using a Vim command
 "let g:fzf_layout = { 'window': 'enew' }
@@ -818,30 +826,45 @@ let g:vim_markdown_conceal_code_blocks = 0
 " \   'spinner': ['fg', 'Label'],
 " \   'header':  ['fg', 'Comment'] }
 
+let g:fzf_colors =
+\ { 'fg':         ['fg', 'Normal'],
+\   'bg':         ['bg', 'Normal'],
+\   'preview-fg': ['bg', 'Normal'],
+\   'preview-bg': ['bg', 'Normal'],
+\   'hl':         ['fg', 'Search'],
+\   'fg+':        ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+\   'bg+':        ['bg', 'CursorLine', 'CursorColumn'],
+\   'hl+':        ['fg', 'Search'],
+\   'info':       ['fg', 'Search'],
+\   'border':     ['fg', 'Normal'],
+\   'prompt':     ['fg', 'Search'],
+\   'pointer':    ['fg', 'Search'],
+\   'marker':     ['fg', 'Search'],
+\   'spinner':    ['fg', 'Search'],
+\   'header':     ['fg', 'Comment'] }
+
 " let g:fzf_colors =
-" \ { 'fg':      [7],
-" \   'bg':      [8],
-" \   'hl':      [1],
-" \   'hl+':     [1],
-" \   'fg+':     [7],
-" \   'bg+':     [3],
-" \   'info':    [3],
-" \   'border':  ['fg', 'Ignore'],
-" \   'prompt':  [1],
-" \   'pointer': [1],
-" \   'marker':  [1],
-" \   'spinner': [1],
-" \   'header':  ['fg', 'Comment'] }
+" \ { 'fg':         ['fg', 'Normal'],
+" \   'bg':         ['bg', 'Normal'],
+" \   'preview-fg': ['bg', 'Normal'],
+" \   'preview-bg': ['bg', 'Normal'],
+" \   'hl':         ['fg', 'Search'],
+" \   'fg+':        ['fg', 'Ignore'],
+" \   'bg+':        ['bg', 'Search'],
+" \   'hl+':        ['fg', 'Search'],
+" \   'info':       ['fg', 'Search'],
+" \   'border':     ['fg', 'Normal'],
+" \   'prompt':     ['fg', 'Search'],
+" \   'pointer':    ['fg', 'Ignore'],
+" \   'marker':     ['fg', 'Search'],
+" \   'spinner':    ['fg', 'Search'],
+" \   'header':     ['fg', 'Comment'] }
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
 " previous-history instead of down and up. If you don't like the change,
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 "let g:fzf_history_dir = '~/.local/share/fzf-history'
-
-" # --color=[BASE_SCHEME][,COLOR:ANSI]
-"fzf --color=bg+:3
-"fzf --color=light,fg:7,bg:3,bg+:3,info:7
 
 " Custom statusline
 function! s:fzf_statusline()
@@ -853,6 +876,10 @@ function! s:fzf_statusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
+"use less to preview
+let g:fzf_files_options =
+\ '--preview "(coderay {} || less {}) 2> /dev/null | head -'.&lines.'"'
 " ----------------------------------------------------------------------------
 " }}}
 
