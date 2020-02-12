@@ -49,6 +49,7 @@ bspc config focus_follows_pointer false
 bspc config pointer_follows_focus false
 bspc config pointer_follows_monitor false
 bspc config ignore_ewmh_fullscreen all
+bspc config ignore_ewmh_focus false
 bspc config remove_unplugged_monitors true
 bspc config normal_border_color "#001D24"
 bspc config active_border_color "#001D24"
@@ -159,15 +160,6 @@ bspc rule -a libreoffice-draw state=tiled
 
 
 # External Rules -------------------------------------------------------------
-# For now, I'm not using this
-#bspc config external_rules_command ~/.config/bspwm/external_rules/bspwmrc
-#bspc config external_rules_command ~/.config/bspwm/loop/bspwmrc
-#bspc config external_rules_command ~/.config/bspwm/loop/wm
-#bspc config external_rules_command ~/.config/bspwm/overlapping_borders/bspwmrc
-#bspc config external_rules_command ~/.config/bspwm/panel/bspwmrc
-#bspc config external_rules_command ~/.config/bspwm/panel/panel
-#bspc config external_rules_command ~/.config/bspwm/panel/panel_bar
-#bspc config external_rules_command ~/.config/bspwm/receptacles/extract_canvas
-#bspc config external_rules_command ~/.config/bspwm/receptacles/induce_rules
-#bspc config external_rules_command ~/.config/bspwm/scripts/border_window_float
+# I'm using external rules for handle the receptacle
+bspc config external_rules_command ~/bin/bspwm_external_rules
 # ----------------------------------------------------------------------------

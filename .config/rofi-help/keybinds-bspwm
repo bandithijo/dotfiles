@@ -42,7 +42,7 @@ mod+Ctrl+{hjkl}      Preselect Direction
 mod+Ctrl+{1-9}       Preselect Ratio
 mod+Ctrl+Space       Preselect Dismissed
 <b>RESIZE/MOVE------------------------------------</b>
-mod+Alt+{hjkl}       Expand Outward
-mod+Alt+Shift+{hjkl} Expand Inward
-mod+ArrowKeys        Move Floating Window 10px
-mod+Shift+ArrowKeys  Move Floating Window 1px
+mod+r:{hjkl}         Expand Outward
+mod+Shift+r:{hjkl}   Expand Inward
+mod+r:Arrow          Move Floating Window 10px
+mod+Shift+r:Arrow    Move Floating Window 1px

@@ -9,8 +9,8 @@
 static char *font = "FuraCode Nerd Font:style=Medium:pixelsize=10:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-	"Noto Color Emoji:pixelsize=10:antialias=true:autohint=true",
 	"Symbola:pixelsize=10:antialias=true:autohint=true",
+	"Noto Color Emoji:pixelsize=10:antialias=true:autohint=true",
 };
 static int borderpx = 0;
 

@@ -42,6 +42,15 @@ Plug 'scrooloose/nerdtree'
 " system default application for file or directory
 Plug 'ivalkeen/nerdtree-execute'
 
+" The dark powered file explorer implementation
+"if has('nvim')
+"  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+"  Plug 'Shougo/defx.nvim'
+"  Plug 'roxma/nvim-yarp'
+"  Plug 'roxma/vim-hug-neovim-rpc'
+"endif
+
 " A light and configurable statusline/tabline plugin for Vim
 Plug 'itchyny/lightline.vim'
 
@@ -306,7 +315,7 @@ autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType scss setlocal shiftwidth=2 tabstop=2
 autocmd FileType org setlocal shiftwidth=2 tabstop=2 foldmethod=expr nowrap
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 wrap textwidth=79 formatoptions+=t
-autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 highlight htmlItalic cterm=italic
+autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 conceallevel=0
 autocmd FileType liquid setlocal shiftwidth=2 tabstop=2 conceallevel=0
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
@@ -594,6 +603,17 @@ let g:spaceline_seperate_style= 'none'
 "        endif
 "    endfor
 "endfunction
+" ----------------------------------------------------------------------------
+" }}}
+
+" Tmuxline {{{
+" ----------------------------------------------------------------------------
+" let g:tmuxline_preset = {
+"       \'a'    : '#S',
+"       \'win'  : '#I #W',
+"       \'cwin' : '#I #W',
+"       \'y'    : '0%u%Y%m%d%H%M',
+"       \'z'    : '#[bold]#H'}
 " ----------------------------------------------------------------------------
 " }}}
 
@@ -926,6 +946,14 @@ let g:languagetool_jar='/home/bandithijo/app/LanguageTool/LanguageTool-4.6/langu
 
 " CoC {{{
 " ----------------------------------------------------------------------------
+" Enable if want to install the extensions
+" let g:coc_global_extensions = [
+"             \ 'coc-yank', 'coc-vimlsp', 'coc-ultisnips', 'coc-snippets',
+"             \ 'coc-lists', 'coc-highlight', 'coc-git', 'coc-emmet',
+"             \ 'coc-yaml', 'coc-tsserver', 'coc-svg', 'coc-solargraph',
+"             \ 'coc-rls', 'coc-python', 'coc-phpls', 'coc-json', 'coc-java',
+"             \ 'coc-html', 'coc-css', 'coc-angular']
+
 let g:coc_force_debug = 1
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -1000,7 +1028,6 @@ command! -nargs=0 Format :call CocAction('format')
 
 " Use `:Fold` to fold current buffer
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
 
 " Using CocList
 " Show all diagnostics
