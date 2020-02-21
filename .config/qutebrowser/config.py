@@ -114,7 +114,7 @@ c.input.insert_mode.leave_on_load = False
 # `{protocol}`: Protocol (http/https/...) of the current web page. *
 # `{audio}`: Indicator for audio/mute status.
 # Type: FormatString
-c.tabs.title.format = '{index}: {perc}{title}{audio}'
+c.tabs.title.format = '{index}: {perc}{audio}'
 
 # Search engines which can be used via the address bar. Maps a search
 # engine name (such as `DEFAULT`, or `ddg`) to a URL with a `{}`
@@ -135,7 +135,7 @@ c.window.hide_decoration = True
 # Format to use for the window title. The same placeholders like for
 # `tabs.title.format` are defined.
 # Type: FormatString
-c.window.title_format = '{title}{title_sep}qutebrowser'
+c.window.title_format = '{title_sep}qutebrowser'
 
 # Default zoom level.
 # Type: Perc
@@ -498,7 +498,7 @@ c.colors.tabs.selected.odd.fg = solarized['base3']
 # Default monospace fonts. Whenever "monospace" is used in a font
 # setting, it's replaced with the fonts listed here.
 # Type: Font
-c.fonts.monospace = 'Fira Code Retina'
+#c.fonts.monospace = 'Fira Code Retina'
 
 # Font used in the completion widget.
 # Type: Font

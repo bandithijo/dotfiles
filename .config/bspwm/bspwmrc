@@ -156,6 +156,7 @@ bspc rule -a libreoffice-writer state=tiled
 bspc rule -a libreoffice-calc state=tiled
 bspc rule -a libreoffice-impress state=tiled
 bspc rule -a libreoffice-draw state=tiled
+bspc rule -a Udeler state=tiled
 # ----------------------------------------------------------------------------
 
 

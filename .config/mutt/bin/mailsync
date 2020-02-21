@@ -10,7 +10,7 @@ export DISPLAY=:0.0
 if [ "$(uname)" = "Darwin" ]; then
 	notify() { osascript -e "display notification \"$2 in $1\" with title \"You've got Mail\" subtitle \"Account: $account\"" && sleep 2 ;}
 else
-	notify() { notify-send "Email" "📬 You have $2 new mail(s) in <b>$1</b> account." && paplay /home/bandithijo/snd/Ringtones/Line_Ringtone/line_a_66.ogg ; }
+	notify() { notify-send "Email" "📬 You have $2 new mail(s) in <b>$1</b> account." && paplay /home/bandithijo/snd/Ringtones/Alert/Email/tiny-bell.ogg ; }
 fi
 
 echo " 🔃" > /tmp/imapsyncicon

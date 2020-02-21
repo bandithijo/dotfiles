@@ -5,7 +5,6 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-// static char *font = "DejaVuSansMono Nerd Font:style=Book:pixelsize=10:antialias=true:autohint=true";
 static char *font = "FuraCode Nerd Font:style=Medium:pixelsize=10:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {

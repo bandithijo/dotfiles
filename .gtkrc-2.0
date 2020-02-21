@@ -4,7 +4,7 @@
 include "/home/bandithijo/.gtkrc-2.0.mine"
 gtk-theme-name="NumixSolarizedDarkYellow"
 gtk-icon-theme-name="DarK-Dark"
-gtk-font-name="FuraCode Nerd Font Medium 8"
+gtk-font-name="FuraCode Nerd Font weight=450 8"
 gtk-cursor-theme-name="ComixCursors-Opaque-White"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_ICONS

@@ -142,7 +142,7 @@ DISABLE_AUTO_TITLE="true"
 
 
 
-export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+#export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
 # Import PATH from .profile
 source ~/.profile # get my PATH setup

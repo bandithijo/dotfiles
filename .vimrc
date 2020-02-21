@@ -40,7 +40,7 @@ Plug 'scrooloose/nerdtree'
 
 " Plugin for NERD Tree that provides an execute menu item, that executes
 " system default application for file or directory
-Plug 'ivalkeen/nerdtree-execute'
+"Plug 'ivalkeen/nerdtree-execute'
 
 " The dark powered file explorer implementation
 "if has('nvim')
@@ -206,6 +206,9 @@ Plug 'makerj/vim-pdf'
 " gtags, etc. on the fly for both vim and neovim.
 "Plug 'Yggdroot/LeaderF'
 
+" A Vim highlighting & completion for MiniTest
+Plug 'sunaku/vim-ruby-minitest'
+
 
 call plug#end()
 " }}}
@@ -317,6 +320,8 @@ autocmd FileType org setlocal shiftwidth=2 tabstop=2 foldmethod=expr nowrap
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 wrap textwidth=79 formatoptions+=t
 autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 conceallevel=0
 autocmd FileType liquid setlocal shiftwidth=2 tabstop=2 conceallevel=0
+autocmd FileType vim setlocal shiftwidth=2 tabstop=2 conceallevel=0
+autocmd FileType defx setlocal shiftwidth=2 tabstop=2 conceallevel=2
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
 " }}}
@@ -400,6 +405,7 @@ vnoremap <F1> <ESC>
 
 " toggle NerdTree plugin
 nmap <F12> :NERDTreeToggle<cr>
+"nmap <F12> :Defx<cr>
 
 " toggle vim-minimap
 "let g:minimap_toggle='<F10>'
@@ -432,7 +438,8 @@ nmap <F9> :PymodeLintToggle<cr>
 " fzf.vim
 "nmap <leader>b :Buffers<cr>
 nmap <C-p> :Buffers<cr>
-nmap <C-f> :Files<cr>
+nmap <C-f> :FZF<cr>
+"nmap <C-f> :Files<cr>
 
 " disable arrow keys on insert mode and make up & down arrow as line bubbling
 "no <down> ddp
@@ -467,6 +474,86 @@ nnoremap <C-W>s Hmx`` \|:split<CR>`xzt``
 " ----------------------------------------------------------------------------
 " Plugins Settings {{{
 " ----------------------------------------------------------------------------
+
+" Defx {{{
+" ----------------------------------------------------------------------------
+" Set appearance
+"call defx#custom#option('_', {
+"      \ 'winwidth': 35,
+"      \ 'split': 'vertical',
+"      \ 'direction': 'topleft',
+"      \ 'show_ignored_files': 0,
+"      \ 'buffer_name': 'defxplorer',
+"      \ 'toggle': 1,
+"      \ 'resume': 1,
+"      \ })
+
+" Define mappings
+"autocmd FileType defx call s:defx_my_settings()
+"function! s:defx_my_settings() abort
+"  nnoremap <silent><buffer><expr> <CR> defx#do_action('drop')
+"  nnoremap <silent><buffer><expr> c
+"  \ defx#do_action('copy')
+"  nnoremap <silent><buffer><expr> m
+"  \ defx#do_action('move')
+"  nnoremap <silent><buffer><expr> p
+"  \ defx#do_action('paste')
+"  nnoremap <silent><buffer><expr> l
+"  \ defx#do_action('open')
+"  nnoremap <silent><buffer><expr> E
+"  \ defx#do_action('open', 'vsplit')
+"  nnoremap <silent><buffer><expr> P
+"  \ defx#do_action('open', 'pedit')
+"  nnoremap <silent><buffer><expr> o
+"  \ defx#do_action('open_or_close_tree')
+"  nnoremap <silent><buffer><expr> K
+"  \ defx#do_action('new_directory')
+"  nnoremap <silent><buffer><expr> N
+"  \ defx#do_action('new_file')
+"  nnoremap <silent><buffer><expr> M
+"  \ defx#do_action('new_multiple_files')
+"  nnoremap <silent><buffer><expr> C
+"  \ defx#do_action('toggle_columns',
+"  \                'mark:indent:icon:filename:type:size:time')
+"  nnoremap <silent><buffer><expr> S
+"  \ defx#do_action('toggle_sort', 'time')
+"  nnoremap <silent><buffer><expr> d
+"  \ defx#do_action('remove')
+"  nnoremap <silent><buffer><expr> r
+"  \ defx#do_action('rename')
+"  nnoremap <silent><buffer><expr> !
+"  \ defx#do_action('execute_command')
+"  nnoremap <silent><buffer><expr> x
+"  \ defx#do_action('execute_system')
+"  nnoremap <silent><buffer><expr> yy
+"  \ defx#do_action('yank_path')
+"  nnoremap <silent><buffer><expr> .
+"  \ defx#do_action('toggle_ignored_files')
+"  nnoremap <silent><buffer><expr> ;
+"  \ defx#do_action('repeat')
+"  nnoremap <silent><buffer><expr> h
+"  \ defx#do_action('cd', ['..'])
+"  nnoremap <silent><buffer><expr> ~
+"  \ defx#do_action('cd')
+"  nnoremap <silent><buffer><expr> q
+"  \ defx#do_action('quit')
+"  nnoremap <silent><buffer><expr> <Space>
+"  \ defx#do_action('toggle_select') . 'j'
+"  nnoremap <silent><buffer><expr> *
+"  \ defx#do_action('toggle_select_all')
+"  nnoremap <silent><buffer><expr> j
+"  \ line('.') == line('$') ? 'gg' : 'j'
+"  nnoremap <silent><buffer><expr> k
+"  \ line('.') == 1 ? 'G' : 'k'
+"  nnoremap <silent><buffer><expr> <C-l>
+"  \ defx#do_action('redraw')
+"  nnoremap <silent><buffer><expr> <C-g>
+"  \ defx#do_action('print')
+"  nnoremap <silent><buffer><expr> cd
+"  \ defx#do_action('change_vim_cwd')
+"endfunction
+" ----------------------------------------------------------------------------
+" }}}
 
 " NerdTree {{{
 " ----------------------------------------------------------------------------
@@ -680,21 +767,22 @@ function! LightlineFugitive()
     return fugitive#head()
 endfunction
 
-" Can I trim the bar between the filename and modified sign?
-" Add this to component_function: 'filename': 'LightlineFilename'
-"function! LightlineFilename()
-"  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-"  return filename
-"endfunction
+" function! LightlineGitGutter()
+"     let [a,m,r] = GitGutterGetHunkSummary()
+"     let l:branch = fugitive#head()
+"     if l:branch == ""
+"         return ''
+"     else
+"         return printf('+%d ~%d -%d  %s', a, m, r, l:branch)
+"     endif
+" endfunction
 
 " Can I trim the file format and encoding information on narrow windows?
 function! LightlineFileformat()
-  "return winwidth(0) > 70 ? &fileformat : ''
   return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
 
 function! LightlineFiletype()
-  "return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
 endfunction
 
@@ -1053,7 +1141,8 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " ----------------------------------------------------------------------------
 let g:indentLine_color_term = 11
 let g:indentLine_char = '┊'
-let g:indentLine_fileTypeExclude = ['markdown', 'json', 'liquid', 'org']
+let g:indentLine_fileTypeExclude = [
+            \ 'markdown', 'json', 'liquid', 'org', 'defx']
 let g:indentLine_leadingSpaceEnabled = 0
 let g:indentLine_leadingSpaceChar = '·'
 " ----------------------------------------------------------------------------
@@ -1061,9 +1150,9 @@ let g:indentLine_leadingSpaceChar = '·'
 
 " vim-gitgutter {{{
 " ----------------------------------------------------------------------------
-"let g:gitgutter_async = 1
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
+let g:gitgutter_async = 0
+"let g:gitgutter_realtime = 1
+"let g:gitgutter_eager = 1
 " ----------------------------------------------------------------------------
 " }}}
 
