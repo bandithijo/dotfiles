@@ -42,15 +42,6 @@ Plug 'scrooloose/nerdtree'
 " system default application for file or directory
 "Plug 'ivalkeen/nerdtree-execute'
 
-" The dark powered file explorer implementation
-"if has('nvim')
-"  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-"else
-"  Plug 'Shougo/defx.nvim'
-"  Plug 'roxma/nvim-yarp'
-"  Plug 'roxma/vim-hug-neovim-rpc'
-"endif
-
 " A light and configurable statusline/tabline plugin for Vim
 Plug 'itchyny/lightline.vim'
 
@@ -73,6 +64,9 @@ Plug 'tpope/vim-fugitive'
 " A command-line fuzzy finder.
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+" A Plugin to handle fzf powerfully with neovim
+"Plug 'yuki-ycino/fzf-preview.vim'
 
 " Better whitespace highlighting for Vim.
 Plug 'ntpeters/vim-better-whitespace'
@@ -321,7 +315,6 @@ autocmd FileType python setlocal shiftwidth=4 tabstop=4 wrap textwidth=79 format
 autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 conceallevel=0
 autocmd FileType liquid setlocal shiftwidth=2 tabstop=2 conceallevel=0
 autocmd FileType vim setlocal shiftwidth=2 tabstop=2 conceallevel=0
-autocmd FileType defx setlocal shiftwidth=2 tabstop=2 conceallevel=2
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
 " }}}
@@ -405,7 +398,6 @@ vnoremap <F1> <ESC>
 
 " toggle NerdTree plugin
 nmap <F12> :NERDTreeToggle<cr>
-"nmap <F12> :Defx<cr>
 
 " toggle vim-minimap
 "let g:minimap_toggle='<F10>'
@@ -474,86 +466,6 @@ nnoremap <C-W>s Hmx`` \|:split<CR>`xzt``
 " ----------------------------------------------------------------------------
 " Plugins Settings {{{
 " ----------------------------------------------------------------------------
-
-" Defx {{{
-" ----------------------------------------------------------------------------
-" Set appearance
-"call defx#custom#option('_', {
-"      \ 'winwidth': 35,
-"      \ 'split': 'vertical',
-"      \ 'direction': 'topleft',
-"      \ 'show_ignored_files': 0,
-"      \ 'buffer_name': 'defxplorer',
-"      \ 'toggle': 1,
-"      \ 'resume': 1,
-"      \ })
-
-" Define mappings
-"autocmd FileType defx call s:defx_my_settings()
-"function! s:defx_my_settings() abort
-"  nnoremap <silent><buffer><expr> <CR> defx#do_action('drop')
-"  nnoremap <silent><buffer><expr> c
-"  \ defx#do_action('copy')
-"  nnoremap <silent><buffer><expr> m
-"  \ defx#do_action('move')
-"  nnoremap <silent><buffer><expr> p
-"  \ defx#do_action('paste')
-"  nnoremap <silent><buffer><expr> l
-"  \ defx#do_action('open')
-"  nnoremap <silent><buffer><expr> E
-"  \ defx#do_action('open', 'vsplit')
-"  nnoremap <silent><buffer><expr> P
-"  \ defx#do_action('open', 'pedit')
-"  nnoremap <silent><buffer><expr> o
-"  \ defx#do_action('open_or_close_tree')
-"  nnoremap <silent><buffer><expr> K
-"  \ defx#do_action('new_directory')
-"  nnoremap <silent><buffer><expr> N
-"  \ defx#do_action('new_file')
-"  nnoremap <silent><buffer><expr> M
-"  \ defx#do_action('new_multiple_files')
-"  nnoremap <silent><buffer><expr> C
-"  \ defx#do_action('toggle_columns',
-"  \                'mark:indent:icon:filename:type:size:time')
-"  nnoremap <silent><buffer><expr> S
-"  \ defx#do_action('toggle_sort', 'time')
-"  nnoremap <silent><buffer><expr> d
-"  \ defx#do_action('remove')
-"  nnoremap <silent><buffer><expr> r
-"  \ defx#do_action('rename')
-"  nnoremap <silent><buffer><expr> !
-"  \ defx#do_action('execute_command')
-"  nnoremap <silent><buffer><expr> x
-"  \ defx#do_action('execute_system')
-"  nnoremap <silent><buffer><expr> yy
-"  \ defx#do_action('yank_path')
-"  nnoremap <silent><buffer><expr> .
-"  \ defx#do_action('toggle_ignored_files')
-"  nnoremap <silent><buffer><expr> ;
-"  \ defx#do_action('repeat')
-"  nnoremap <silent><buffer><expr> h
-"  \ defx#do_action('cd', ['..'])
-"  nnoremap <silent><buffer><expr> ~
-"  \ defx#do_action('cd')
-"  nnoremap <silent><buffer><expr> q
-"  \ defx#do_action('quit')
-"  nnoremap <silent><buffer><expr> <Space>
-"  \ defx#do_action('toggle_select') . 'j'
-"  nnoremap <silent><buffer><expr> *
-"  \ defx#do_action('toggle_select_all')
-"  nnoremap <silent><buffer><expr> j
-"  \ line('.') == line('$') ? 'gg' : 'j'
-"  nnoremap <silent><buffer><expr> k
-"  \ line('.') == 1 ? 'G' : 'k'
-"  nnoremap <silent><buffer><expr> <C-l>
-"  \ defx#do_action('redraw')
-"  nnoremap <silent><buffer><expr> <C-g>
-"  \ defx#do_action('print')
-"  nnoremap <silent><buffer><expr> cd
-"  \ defx#do_action('change_vim_cwd')
-"endfunction
-" ----------------------------------------------------------------------------
-" }}}
 
 " NerdTree {{{
 " ----------------------------------------------------------------------------
@@ -903,7 +815,7 @@ let g:vim_markdown_conceal_code_blocks = 0
 " ----------------------------------------------------------------------------
 " Default fzf layout
 " - down / up / left / right
-let g:fzf_layout = { 'down': '~50%' }
+"let g:fzf_layout = { 'down': '~50%' }
 " Required:
 " - width [float]
 " - height [float]
@@ -911,7 +823,7 @@ let g:fzf_layout = { 'down': '~50%' }
 " Optional:
 " - highlight [string default 'Comment']: Highlight group for border
 " - rounded [boolean default v:true]: Use rounded border
-"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7, 'highlight': 'Normal', 'rounded': v:false } }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7, 'highlight': 'Normal', 'rounded': v:false } }
 
 " In Neovim, you can set up fzf window using a Vim command
 "let g:fzf_layout = { 'window': 'enew' }
@@ -940,33 +852,16 @@ let g:fzf_colors =
 \   'preview-fg': ['bg', 'Normal'],
 \   'preview-bg': ['bg', 'Normal'],
 \   'hl':         ['fg', 'Search'],
-\   'fg+':        ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-\   'bg+':        ['bg', 'CursorLine', 'CursorColumn'],
-\   'hl+':        ['fg', 'Search'],
+\   'fg+':        ['bg', 'Search'],
+\   'bg+':        ['fg', 'Search'],
+\   'hl+':        ['bg', 'CursorLine'],
 \   'info':       ['fg', 'Search'],
 \   'border':     ['fg', 'Normal'],
 \   'prompt':     ['fg', 'Search'],
 \   'pointer':    ['fg', 'Search'],
 \   'marker':     ['fg', 'Search'],
 \   'spinner':    ['fg', 'Search'],
-\   'header':     ['fg', 'Comment'] }
-
-" let g:fzf_colors =
-" \ { 'fg':         ['fg', 'Normal'],
-" \   'bg':         ['bg', 'Normal'],
-" \   'preview-fg': ['bg', 'Normal'],
-" \   'preview-bg': ['bg', 'Normal'],
-" \   'hl':         ['fg', 'Search'],
-" \   'fg+':        ['fg', 'Ignore'],
-" \   'bg+':        ['bg', 'Search'],
-" \   'hl+':        ['fg', 'Search'],
-" \   'info':       ['fg', 'Search'],
-" \   'border':     ['fg', 'Normal'],
-" \   'prompt':     ['fg', 'Search'],
-" \   'pointer':    ['fg', 'Ignore'],
-" \   'marker':     ['fg', 'Search'],
-" \   'spinner':    ['fg', 'Search'],
-" \   'header':     ['fg', 'Comment'] }
+\   'header':     ['fg', 'Search'] }
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
@@ -985,9 +880,8 @@ endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
-"use less to preview
-let g:fzf_files_options =
-\ '--preview "(coderay {} || less {}) 2> /dev/null | head -'.&lines.'"'
+" preview
+let  $FZF_DEFAULT_OPTS='--reverse --margin=1,1 --preview-window=right:50% --preview="bat --style=plain --color=always {}"'
 " ----------------------------------------------------------------------------
 " }}}
 
@@ -1142,7 +1036,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 let g:indentLine_color_term = 11
 let g:indentLine_char = '┊'
 let g:indentLine_fileTypeExclude = [
-            \ 'markdown', 'json', 'liquid', 'org', 'defx']
+            \ 'markdown', 'json', 'liquid', 'org']
 let g:indentLine_leadingSpaceEnabled = 0
 let g:indentLine_leadingSpaceChar = '·'
 " ----------------------------------------------------------------------------

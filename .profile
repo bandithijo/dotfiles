@@ -90,6 +90,6 @@ export TERM=st-256color
 # --color dark,hl:33,hl+:37,fg+:235,bg+:136,fg+:254
 # --color info:254,prompt:37,spinner:108,pointer:235,marker:235
 export FZF_DEFAULT_OPTS='
---color=light,fg:7,fg+:7,bg:8,bg+:3,hl:1,hl+:1,info:3,prompt:1,spinner:1,pointer:1,marker:1'
+--color=light,fg:7,fg+:7,bg:8,bg+:3,hl:3,hl+:8,info:3,prompt:3,spinner:3,pointer:3,marker:3'
 
 # --------------------------------------------------------------END MY EXPORTS
