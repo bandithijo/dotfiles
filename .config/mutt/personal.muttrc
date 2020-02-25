@@ -66,6 +66,7 @@ macro index O "<shell-escape>mailsync -Va<enter>" "run offlineimap to sync all m
 macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'Enter a search term to find with notmuch: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" "show only messages matching a notmuch pattern"
 macro index A "<limit>all\n" "show all messages (undo limit)"
 macro compose A "<shell-escape>bash $HOME/.config/mutt/bin/rangerpick<enter><enter-command>source /tmp/rangerpick<enter><shell-escape>bash $HOME/.config/mutt/bin/rangerpick clean<enter>" "Attach with Ranger"
+macro attach W "<save-entry><bol>$HOME/dwn/<eol>" "Save to Downloads"
 
 # Sidebar mappings
 set sidebar_visible = yes
@@ -84,23 +85,33 @@ bind index,pager \Cn sidebar-next-new
 bind index,pager B sidebar-toggle-visible
 
 # Default index colors:
-color index yellow default '.*'
+color index default default '.*'
 color index_author white default '.*'
-color index_number blue default
+color index_number default default
 color index_subject default default '.*'
+color index_subject default default '~R'
+color index_subject default default '~U'
+color index_flags white default '~F'
+color index_collapsed yellow default
+color index_date yellow default
+color index_label default default
+color index_size default default
 
 # New mail is boldened:
-color index yellow black "~N"
-color index_author red black "~N"
-color index_subject default black "~N"
+color index red default "~N"
+color index_author red default "~N"
+color index_subject red default "~N"
+
+# Higlight line indicator
+color indicator black yellow
 
 # Other colors and aesthetic settings:
 mono bold bold
 mono underline underline
 mono indicator reverse
 mono error bold
+
 color normal default default
-color indicator black white
 color sidebar_divider default default
 color sidebar_highlight black yellow
 color sidebar_new red default
@@ -108,42 +119,42 @@ color sidebar_flagged yellow default
 color normal yellow default
 color error red default
 color tilde black default
-color message cyan default
+color message white default
 color markers red white
 color attachment white default
-color search magenta default
+color search red default
 color status yellow black
-color hdrdefault green default
-color quoted green default
-color quoted1 blue default
-color quoted2 cyan default
+color hdrdefault yellow default
+color quoted yellow default
+color quoted1 yellow default
+color quoted2 yellow default
 color quoted3 yellow default
-color quoted4 red default
-color quoted5 red default
-color signature green default
+color quoted4 yellow default
+color quoted5 yellow default
+color signature red default
 color bold black default
 color underline black default
 color normal default default
 
 # Regex highlighting:
-color header blue default ".*"
-color header magenta default "^(From)"
-color header cyan default "^(Subject)"
+color header white default ".*"
+color header white default "^(From)"
+color header white default "^(Subject)"
 color header white default "^(CC|BCC)"
 color body red default "[\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+" # Email addresses
-color body blue default "(https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+" # URL
-color body green default "\`[^\`]*\`" # Green text between ` and `
-color body blue default "^# \.*" # Headings as bold blue
-color body cyan default "^## \.*" # Subheadings as bold cyan
-color body green default "^### \.*" # Subsubheadings as bold green
+color body red default "(https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+" # URL
+color body yellow default "\`[^\`]*\`" # Green text between ` and `
+color body red default "^# \.*" # Headings as bold blue
+color body red default "^## \.*" # Subheadings as bold cyan
+color body red default "^### \.*" # Subsubheadings as bold green
 color body yellow default "^(\t| )*(-|\\*) \.*" # List items as yellow
-color body cyan default "[;:][-o][)/(|]" # emoticons
-color body cyan default "[;:][)(|]" # emoticons
-color body cyan default "[ ][*][^*]*[*][ ]?" # more emoticon?
-color body cyan default "[ ]?[*][^*]*[*][ ]" # more emoticon?
+color body yellow default "[;:][-o][)/(|]" # emoticons
+color body yellow default "[;:][)(|]" # emoticons
+color body yellow default "[ ][*][^*]*[*][ ]?" # more emoticon?
+color body yellow default "[ ]?[*][^*]*[*][ ]" # more emoticon?
 color body red default "(BAD signature)"
-color body cyan default "(Good signature)"
-color body black default "^gpg: Good signature .*"
+color body green default "(Good signature)"
+color body green default "^gpg: Good signature .*"
 color body yellow default "^gpg: "
 color body yellow red "^gpg: BAD signature from.*"
 mono body bold "^gpg: Good signature"

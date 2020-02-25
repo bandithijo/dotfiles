@@ -315,6 +315,7 @@ autocmd FileType python setlocal shiftwidth=4 tabstop=4 wrap textwidth=79 format
 autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 conceallevel=0
 autocmd FileType liquid setlocal shiftwidth=2 tabstop=2 conceallevel=0
 autocmd FileType vim setlocal shiftwidth=2 tabstop=2 conceallevel=0
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 conceallevel=0
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
 " }}}
@@ -815,7 +816,7 @@ let g:vim_markdown_conceal_code_blocks = 0
 " ----------------------------------------------------------------------------
 " Default fzf layout
 " - down / up / left / right
-"let g:fzf_layout = { 'down': '~50%' }
+let g:fzf_layout = { 'down': '~50%' }
 " Required:
 " - width [float]
 " - height [float]
@@ -823,7 +824,7 @@ let g:vim_markdown_conceal_code_blocks = 0
 " Optional:
 " - highlight [string default 'Comment']: Highlight group for border
 " - rounded [boolean default v:true]: Use rounded border
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7, 'highlight': 'Normal', 'rounded': v:false } }
+"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8, 'highlight': 'Normal', 'rounded': v:false } }
 
 " In Neovim, you can set up fzf window using a Vim command
 "let g:fzf_layout = { 'window': 'enew' }
@@ -881,7 +882,8 @@ endfunction
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 " preview
-let  $FZF_DEFAULT_OPTS='--reverse --margin=1,1 --preview-window=right:50% --preview="bat --style=plain --color=always {}"'
+"let  $FZF_DEFAULT_OPTS='--reverse --margin=1,1 --preview-window=right:50% --preview="bat --style=plain --color=never {}"'
+"let  $FZF_DEFAULT_OPTS='--margin=1,1 --preview-window=right:50% --preview="less {}"'
 " ----------------------------------------------------------------------------
 " }}}
 
