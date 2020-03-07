@@ -1,48 +1,41 @@
-# ------------------------------------------------------------------MY EXPORTS
+# $FreeBSD: releng/12.1/share/skel/dot.profile 337497 2018-08-08 19:24:20Z asomers $
+#
+# .profile - Bourne Shell startup script for login shells
+#
+# see also sh(1), environ(7).
+#
 
-# CONFIG DIRECTORY
-export XDG_CONFIG_HOME=$HOME/.config
+# These are normally set through /etc/login.conf.  You may override them here
+# if wanted.
+# PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:$HOME/bin; export PATH
+# BLOCKSIZE=K;	export BLOCKSIZE
 
-# For Uniform look Qt and GTK
-export QT_QPA_PLATFORMTHEME=qt5ct
-export GTK2_RC_FILES=$HOME/.gtkrc-2.0
+# Setting TERM is normally done through /etc/ttys.  Do only override
+# if you're sure that you'll never log in via telnet or xterm or a
+# serial line.
 
+EDITOR=vim;   	                export EDITOR
+PAGER=less;  	                export PAGER
+
+LANG=en_US.UTF-8;               export LANG
+MM_CHARSET=UTF-8;               export MM_CHARSET
+
+# set ENV to a file invoked each time sh is started for interactive use.
+ENV=$HOME/.zshrc;               export ENV
+
+# Query terminal size; useful for serial lines.
+if [ -x /usr/bin/resizewin ] ; then /usr/bin/resizewin -z ; fi
+
+# Display a random cookie on each login.
+if [ -x /usr/bin/fortune ] ; then /usr/bin/fortune freebsd-tips ; fi
+
+#export SSH_AUTH_SOCK
+
+# For Qt5 environment
+export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_SCREEN_SCALE_FACTORS=1
 export QT_SCALE_FACTOR=1
-
-export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
-export ANDROID_HOME=/opt/android-sdk
-
-# Font config
-export FONTCONFIG_PATH=/etc/fonts
-
-# Clipmenu Environment Variables
-export CM_LAUNCHER=rofi-clipmenu
-export CM_DIR=/tmp/clipmenu
-
-# TimeZone
-#TZ='Asia/Jakarta'; export TZ
-TZ='Asia/Makassar'; export TZ
-
-# For modifying st terminal titelbar, only work on ZSH shell
-# Source: http://www.faqs.org/docs/Linux-mini/Xterm-Title.html#s5
-case $TERM in
-  st*)
-    precmd () {
-      print -Pn "\e]0;st:%~\a"
-    }
-    preexec () {
-      print -Pn "\e]0;st:$1\a"
-    }
-  ;;
-esac
-
-# For Ranger define Terminal
-export TERMCMD="st"
-
-# For Ranger define Text Editor
-export VISUAL="vim"
 
 # PATH: GO
 export PATH=$PATH:/usr/local/go/bin
@@ -66,30 +59,6 @@ PERL_MM_OPT="INSTALL_BASE=$HOME/.config/perl5"; export PERL_MM_OPT;
 PATH="$HOME/bin:$HOME/src:$HOME/.local/bin:$PATH"
 export PATH
 
-# JAVA_HOME, this path maybe only works on Arch
-export JAVA_HOME="/usr/lib/jvm/default/"
-#export JAVA_HOME="/usr/lib/jvm/java-8-openjdk/"
-#export JAVA_HOME="/usr/lib/jvm/java-10-openjdk/"
-#export JAVA_HOME="/usr/lib/jvm/java-12-openjdk/"
-export PATH="$JAVA_HOME/bin:$PATH"
-
 # For smooth the font for some Java apps
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
-# Environment akan berpengaruh ke tmux color and italic dan emacs color
-export TERM=st-256color
-
-# Vim as Manpager
-# for Vim
-#export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
-# for NeoVim
-# export MANPAGER="nvim +set\ filetype=man -"
-
-# FZF Solarized colors
-# EXAMPLE:
-# --color dark,hl:33,hl+:37,fg+:235,bg+:136,fg+:254
-# --color info:254,prompt:37,spinner:108,pointer:235,marker:235
-export FZF_DEFAULT_OPTS='
---color=light,fg:7,fg+:7,bg:8,bg+:3,hl:3,hl+:8,info:3,prompt:3,spinner:3,pointer:3,marker:3'
-
-# --------------------------------------------------------------END MY EXPORTS

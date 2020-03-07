@@ -49,7 +49,6 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/postgres
     zgen oh-my-zsh plugins/pass
     zgen oh-my-zsh plugins/ruby
-    zgen oh-my-zsh plugins/rails
     zgen oh-my-zsh plugins/rake
     zgen oh-my-zsh plugins/rbenv
     zgen oh-my-zsh plugins/sudo
@@ -142,8 +141,6 @@ DISABLE_AUTO_TITLE="true"
 
 
 
-#export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
-
 # Import PATH from .profile
 source ~/.profile # get my PATH setup
 
@@ -151,8 +148,12 @@ source ~/.profile # get my PATH setup
 source ~/.aliases
 
 # For handle Delete key
-bindkey    "^[[3~"          delete-char
-bindkey    "^[3;5~"         delete-char
+#bindkey    "[3~"          delete-char
+#bindkey    "3;5~"         delete-char
+
+# FZF FreeBSD color
+export FZF_DEFAULT_OPTS='
+--color=dark,fg:7,fg+:0,bg+:7,hl:7,hl+:9,info:7,prompt:7,spinner:7,pointer:7,marker:7'
 
 # Should to put at very bottom of this file config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

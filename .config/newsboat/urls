@@ -40,50 +40,7 @@ https://tsarafatma.com/feed.xml "~Teh TsaraFatma" "dotfriends"
 http://vederis.id/feed/ "~Vederis Leunardus" "dotFriends"
 https://protesilaos.com/master.xml "~Protesilaos Stavrou" "dotFriends"
 https://irrellia.github.io/rss.xml "~Manusia Bernapas" "dotfriends"
-
-# News
--------------------------------------------------LINUX_MAGAZINES
-https://www.systutorials.com/feed/ "Tech News"
-https://www.thelinuxrain.com/feed "Tech News"
-https://www.hackerone.com/blog.rss "Tech News"
-https://blog.webjeda.com/feed.xml "~WebJeda | A Modern Web Development Blog" "Tech News"
-https://igurublog.wordpress.com/feed/ "Tech News"
-http://feeds.arstechnica.com/arstechnica/index "Tech News"
-http://www.linux-mag.com/feed/ "Tech News"
-http://www.python.or.id/feeds/posts/default "Tech News"
-https://arcan-fe.com/feed/ "Tech News"
-https://chromplex.com/feed/ "Tech News"
-https://katahugo.info/feed/ "~KataHugo" "Tech News"
-https://linux-audit.com/feed/ "Tech News"
-http://feeds.feedburner.com/TheHackersNews "Tech News"
-http://fossbytes.com/feed/ "Tech News"
-https://www.cyberciti.biz/atom/atom.xml "~nixCraft" "Tech News"
-https://www.archlinux.org/feeds/news/ "Tech News"
-http://planet.gnome.org/atom.xml "Tech News"
-https://www.linuxinsider.com/perl/syndication/rssfull.pl "Tech News"
-https://www.linuxtoday.com/biglt.rss "Tech News"
-http://stallman.org/rss/rss.xml "Tech News"
-http://www.kalitutorials.net/feeds/posts/default "Tech News"
-https://kabarlinux.id/feed/ "Tech News"
-https://www.phoronix.com/rss.php "Tech News"
-https://fedoramagazine.org/feed/ "Tech News"
-https://opensuse.id/feed/ "Tech News"
-https://www.linux.or.id/feed "Tech News"
-http://www.linuxku.com/atom.xml?redirect=false&start-index=1&max-results=100 "~Linuxku.com" "Tech News"
-https://www.gimp.org/feeds/atom.xml "Tech News"
-https://shannonmorse.podbean.com/feed.xml "Tech News"
-https://tutorialinux.com/feed/ "Tech News"
-https://hub.packtpub.com/feed/ "Tech News"
-https://blog.cilsy.id/feed "Tech News"
-http://feeds2.feedburner.com/tympanus "Tech News"
-https://hackernoon.com/feed "Tech News"
-https://www.smashingmagazine.com/feed/ "~Smashing Magazine" "Tech News"
-https://blog.mozilla.org/feed/ "~ Mozilla Blog" "Tech News"
-
-# Podcast
----------------------------------------------------------PODCAST
-https://rss.simplecast.com/podcasts/4543/rss "Podcast"
-https://offtopical.net/pg/feed.xml "Podcast"
+https://yeripratama.com/ "~Yeri Pratama | Tic Tech Toe" "dotfriends"
 
 # Programming Language & Framework
 --------------------------------------------PROGRAMMING_LANGUAGE
@@ -91,13 +48,10 @@ https://www.python.org/dev/peps/peps.rss/ "Programming Language"
 https://www.ruby-lang.org/en/feeds/news.rss "Programming Language"
 https://www.djangoproject.com/rss/weblog/ "Web Framework"
 https://jekyllrb.com/feed.xml "SSG"
+https://www.rubypigeon.com/feed.xml "~Ruby Pigeon"
 
-# Islam
-------------------------------------------------------MUSLIM_RSS
-http://muflihsafitra.com/feed/ "~Muflih Safitra" "Islam"
-http://www.voa-islam.com/rss/all "Islam"
+# Podcast
+---------------------------------------------------------PODCAST
+https://rss.simplecast.com/podcasts/4543/rss "Podcast"
+https://offtopical.net/pg/feed.xml "Podcast"
 
-
-# ThinkPad
---------------------------------------------------------THINKPAD
-https://pcsupport.lenovo.com/id/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x260/20f5/20f5s0w206/pc0h7mkm?p=rss&source=psp

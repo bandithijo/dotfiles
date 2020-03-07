@@ -4,6 +4,9 @@
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+# sudo as a doas
+alias doas="sudo"
+
 # list ls
 alias ll="ls -l"
 
@@ -110,5 +113,9 @@ alias dwm-fullclean="make clean && rm -f config.h && git reset --hard origin/mas
 
 # youtube-dl playlist
 alias youtube-dl-playlist="youtube-dl -f 'bestvideo+bestaudio[ext=m4a]/bestvideo+bestaudio/best' --merge-output-format mp4 -o '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s' -i"
+
+alias tmux="env TERM=screen-256color tmux"
+
+alias xpdf="xpdf -cfg ~/.config/xpdf/xpdfrc"
 
 # -------------------------------------------------------------------END ALIAS

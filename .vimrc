@@ -76,6 +76,8 @@ Plug 'mattn/emmet-vim'
 
 " Vastly improved Javascript indentation and syntax support in Vim.
 Plug 'pangloss/vim-javascript'
+Plug 'elzr/vim-json'
+Plug 'jparise/vim-graphql'
 
 " rsi.vim: Readline style insertion (saya pakai untuk alt+delete: menghapus 1 kata).
 Plug 'tpope/vim-rsi'
@@ -143,9 +145,6 @@ Plug 'maxmellon/vim-jsx-pretty'
 
 " A Vim runtime files for Haml, Sass, and SCSS
 Plug 'tpope/vim-haml'
-
-" A Optimized Solarized colorschemes. Best served with true-color terminals!
-"Plug 'lifepillar/vim-solarized8'
 
 " A one colorscheme pack to rule them all!
 "Plug 'flazz/vim-colorschemes'
@@ -240,13 +239,17 @@ set modifiable
 "set cryptmethod=blowfish2  " only for Vim, not Neovim
 au CursorHold,CursorHoldI * checktime " auto update trigger when cursor stops moving
 au FocusGained,BufEnter * :checktime " auto update trigger on buffer change or terminal focus
+" for italic on tmux
+set t_ZH=[3m
+set t_ZR=[23m
 " }}}
 " ----------------------------------------------------------------------------
 
 " ----------------------------------------------------------------------------
 " VIM User Interface {{{
 " ----------------------------------------------------------------------------
-colorscheme solarized-bandit
+let g:vim_monokai_tasty_italic = 0
+colorscheme Tomorrow-Night-Bandit
 set background=dark
 set incsearch " incremental search aka search as you type
 set hlsearch " highlight search matches
@@ -279,7 +282,7 @@ set cursorline " visually mark current line
 hi clear ModeMsg " disable Color StatusLine on Insert Mode and Visual Mode
 hi HighlightedyankRegion term=bold ctermfg=0 ctermbg=3
 if &diff " change colorscheme when using vimdiff
-  colorscheme solarized-bandit
+  colorscheme Tomorrow-Night-Bandit
 endif
 " }}}
 " ----------------------------------------------------------------------------
@@ -338,7 +341,7 @@ nmap <leader>ed :e ~/dex/bandithijo.com/_drafts/2018-01-01-format-penulisan-post
 nmap <leader>eu :e ~/.vim/plugged/utl.vim/plugin/utl_rc.vim<cr>
 
 " for edit utl.vim
-nmap <leader>eo :e ~/.orgguide.txt<cr>
+nmap <leader>eo :e ~/.vim/plugged/vim-orgmode/doc/orgguide.txt<cr>
 
 " source vimrc
 nmap <leader>es :so $MYVIMRC
@@ -360,6 +363,9 @@ nmap <leader>g <C-]>
 " strip all trailing whitespace in the current file
 nmap <leader>W :StripWhitespace<cr>
 
+" Automatically deletes all trailing whitespace on save.
+autocmd BufWritePre * %s/\s\+$//e
+
 " open vertical split and switch to it
 "nnoremap <leader>v <C-w>v<C-w>l
 
@@ -368,9 +374,6 @@ nnoremap <leader>s <C-w>s<C-w>l
 
 " Map Ctrl-Backspace to delete the previous word in insert mode.
 imap <C-BS> <C-W>
-
-" Automatically deletes all trailing whitespace on save.
-autocmd BufWritePre * %s/\s\+$//e
 
 " Run xrdb whenever Xdefaults or Xresources are updated.
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
@@ -620,7 +623,7 @@ let g:spaceline_seperate_style= 'none'
 " LightLine {{{
 " ----------------------------------------------------------------------------
 let g:lightline = {
-\   'colorscheme': 'lightline_solarized',
+\   'colorscheme': 'freebsd',
 \   'active': {
 \    'left' :[[ 'mode', 'paste' ],
 \             [ 'gitbranch', 'readonly' ],
@@ -641,17 +644,13 @@ let g:lightline = {
 \     'filetype': 'LightlineFiletype',
 \   }
 \}
-"   'left': '', 'right': ''
-"   'left': '', 'right': ''
-"   'left': '', 'right': ''
+"  'left': '', 'right': ''
 let g:lightline.separator = {
-\  'left': '', 'right': ''
+\   'left': '', 'right': ''
 \}
-"   'left': '', 'right': ''
 "   'left': '', 'right': ''
-"   'left': '│', 'right': '│'
 let g:lightline.subseparator = {
-\   'left': '', 'right': ''
+\   'left': '│', 'right': '│'
 \}
 let g:lightline.tabline = {
 \   'left': [['buffers']],
@@ -665,19 +664,19 @@ let g:lightline.component_type = {
 \}
 
 function! LightlineModified()
-    return &modified ? '●' : ''
+  return &modified ? '●' : ''
 endfunction
 
 function! LightlineReadonly()
-    return &readonly ? '' : ''
+  return &readonly ? '' : ''
 endfunction
 
 function! LightlineFugitive()
-    if exists('*fugitive#head')
-        let branch = fugitive#head()
-        return branch !=# '' ? ' '.branch : ''
-    endif
-    return fugitive#head()
+  if exists('*fugitive#head')
+    let branch = fugitive#head()
+    return branch !=# '' ? ' '.branch : ''
+  endif
+  return fugitive#head()
 endfunction
 
 " function! LightlineGitGutter()
@@ -832,37 +831,37 @@ let g:fzf_layout = { 'down': '~50%' }
 "let g:fzf_layout = { 'window': '10new' }
 
 " Customize fzf colors to match your color scheme
-" let g:fzf_colors =
-" \ { 'fg':      ['fg', 'Normal'],
-" \   'bg':      ['bg', 'Normal'],
-" \   'hl':      ['fg', 'Comment'],
-" \   'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-" \   'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-" \   'hl+':     ['fg', 'Statement'],
-" \   'info':    ['fg', 'PreProc'],
-" \   'border':  ['fg', 'Ignore'],
-" \   'prompt':  ['fg', 'Conditional'],
-" \   'pointer': ['fg', 'Exception'],
-" \   'marker':  ['fg', 'Keyword'],
-" \   'spinner': ['fg', 'Label'],
-" \   'header':  ['fg', 'Comment'] }
-
 let g:fzf_colors =
-\ { 'fg':         ['fg', 'Normal'],
-\   'bg':         ['bg', 'Normal'],
-\   'preview-fg': ['bg', 'Normal'],
-\   'preview-bg': ['bg', 'Normal'],
-\   'hl':         ['fg', 'Search'],
-\   'fg+':        ['bg', 'Search'],
-\   'bg+':        ['fg', 'Search'],
-\   'hl+':        ['bg', 'CursorLine'],
-\   'info':       ['fg', 'Search'],
-\   'border':     ['fg', 'Normal'],
-\   'prompt':     ['fg', 'Search'],
-\   'pointer':    ['fg', 'Search'],
-\   'marker':     ['fg', 'Search'],
-\   'spinner':    ['fg', 'Search'],
-\   'header':     ['fg', 'Search'] }
+\ { 'fg':      ['fg', 'Normal'],
+\   'bg':      ['bg', 'Normal'],
+\   'hl':      ['fg', 'Comment'],
+\   'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+\   'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+\   'hl+':     ['fg', 'Statement'],
+\   'info':    ['fg', 'PreProc'],
+\   'border':  ['fg', 'Ignore'],
+\   'prompt':  ['fg', 'Conditional'],
+\   'pointer': ['fg', 'Exception'],
+\   'marker':  ['fg', 'Keyword'],
+\   'spinner': ['fg', 'Label'],
+\   'header':  ['fg', 'Comment'] }
+
+" let g:fzf_colors =
+" \ { 'fg':         ['fg', 'Normal'],
+" \   'bg':         ['bg', 'Normal'],
+" \   'preview-fg': ['bg', 'Normal'],
+" \   'preview-bg': ['bg', 'Normal'],
+" \   'hl':         ['fg', 'Search'],
+" \   'fg+':        ['bg', 'Search'],
+" \   'bg+':        ['fg', 'Search'],
+" \   'hl+':        ['bg', 'CursorLine'],
+" \   'info':       ['fg', 'Search'],
+" \   'border':     ['fg', 'Normal'],
+" \   'prompt':     ['fg', 'Search'],
+" \   'pointer':    ['fg', 'Search'],
+" \   'marker':     ['fg', 'Search'],
+" \   'spinner':    ['fg', 'Search'],
+" \   'header':     ['fg', 'Search'] }
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
@@ -873,9 +872,9 @@ let g:fzf_colors =
 " Custom statusline
 function! s:fzf_statusline()
   " Override statusline as you like
-  highlight fzf1 ctermfg=7 ctermbg=0
-  highlight fzf2 ctermfg=7 ctermbg=0
-  highlight fzf3 ctermfg=7 ctermbg=0
+  highlight fzf1 ctermfg=0 ctermbg=15
+  highlight fzf2 ctermfg=0 ctermbg=15
+  highlight fzf3 ctermfg=0 ctermbg=15
   setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
 endfunction
 
@@ -894,8 +893,8 @@ autocmd! User FzfStatusLine call <SID>fzf_statusline()
 "let g:pymode_rope_lookup_project = 0
 "let g:pymode_rope_complete_on_dot = 0
 "let g:pymode_rope_autoimport = 0
-let g:python_host_prog = '/usr/bin/python2'
-let g:python3_host_prog = '/usr/bin/python'
+let g:python_host_prog = '/usr/local/bin/python2.7'
+let g:python3_host_prog = '/usr/local/bin/python3.7'
 " linter syntax checker : pylint, pycodestyle, pyflakes, pep8, flake8
 "let g:pymode_lint_checkers = ['pylint']
 " ----------------------------------------------------------------------------
@@ -1035,10 +1034,10 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " indentLine {{{
 " ----------------------------------------------------------------------------
-let g:indentLine_color_term = 11
+let g:indentLine_color_term = 10
 let g:indentLine_char = '┊'
 let g:indentLine_fileTypeExclude = [
-            \ 'markdown', 'json', 'liquid', 'org']
+            \ 'markdown', 'json', 'liquid', 'org', 'conf']
 let g:indentLine_leadingSpaceEnabled = 0
 let g:indentLine_leadingSpaceChar = '·'
 " ----------------------------------------------------------------------------
@@ -1130,7 +1129,6 @@ inoreabbrev <expr> __
           \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 " ----------------------------------------------------------------------------
 " }}}
-
 
 
 

@@ -1,4 +1,4 @@
-#!/bin/env ruby
+#!/usr/local/bin/ruby
 
 # Inspired from lolban owned by BudRich (budlabs YouTube Channel)
 
@@ -21,6 +21,6 @@ Usage:
   '''
 else
   system """
-  figlet -d /usr/share/figlet -f 3d -t \"$(printf '%s\n' #{kalimat})\"
+  figlet -d /usr/local/share/figlet -f 3d -t \"$(printf '%s\n' #{kalimat})\"
   """
 end

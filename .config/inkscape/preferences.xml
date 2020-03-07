@@ -348,8 +348,8 @@
        align_mode="0"
        outer_style="0">
       <group
-         id="lineheight"
-         display_unit="1" />
+         display_unit="1"
+         id="lineheight" />
     </eventcontext>
     <eventcontext
        id="nodes"
@@ -439,15 +439,15 @@
        offset="0"
        offsetunits="pt" />
     <group
-       unit="mm"
-       fontsize="10"
-       id="measure"
-       precision="2"
+       offset="5"
        scale="100"
-       offset="5" />
+       precision="2"
+       id="measure"
+       fontsize="10"
+       unit="mm" />
     <group
-       mode="drag"
-       id="geometric" />
+       id="geometric"
+       mode="drag" />
   </group>
   <group
      id="palette">
@@ -594,8 +594,8 @@
        page="0"
        x="0"
        y="0"
-       w="326"
-       h="328"
+       w="396"
+       h="492"
        visible="1"
        state="2"
        placement="5" />
@@ -627,8 +627,8 @@
        panel_border="0"
        x="0"
        y="0"
-       w="326"
-       h="328"
+       w="396"
+       h="492"
        visible="1"
        state="2"
        placement="5"
@@ -710,8 +710,8 @@
        panel_border="0"
        x="0"
        y="0"
-       w="326"
-       h="328"
+       w="396"
+       h="492"
        visible="1"
        state="2"
        placement="5">
@@ -722,8 +722,8 @@
          id="defaultxdpi"
          value="300" />
       <group
-         id="hideexceptselected"
-         value="0" />
+         value="0"
+         id="hideexceptselected" />
     </group>
     <group
        id="save_as"
@@ -751,8 +751,8 @@
        scale="optimizeQuality"
        forcexdpi="0">
       <group
-         id="defaultxdpi"
-         value="300" />
+         value="300"
+         id="defaultxdpi" />
     </group>
     <group
        id="debug"
@@ -799,8 +799,8 @@
        panel_border="0"
        x="0"
        y="0"
-       w="326"
-       h="328"
+       w="396"
+       h="492"
        visible="1"
        state="2"
        placement="5" />
@@ -834,54 +834,54 @@
        on-blur="0.50"
        animate-time="100" />
     <group
-       placement="1"
-       state="2"
-       visible="0"
-       h="254"
+       id="livepatheffect"
+       panel_size="1"
+       panel_ratio="100"
+       panel_mode="1"
+       panel_wrap="0"
+       panel_border="0"
+       x="0"
+       y="0"
        w="275"
-       y="0"
-       x="0"
-       panel_border="0"
-       panel_wrap="0"
-       panel_mode="1"
-       panel_ratio="100"
-       panel_size="1"
-       id="livepatheffect" />
-    <group
-       id="printing"
-       asbitmap="0" />
-    <group
-       id="objectattr"
-       panel_ratio="100"
-       panel_size="1"
-       panel_mode="1"
-       panel_wrap="0"
-       panel_border="0"
-       x="0"
-       y="0"
-       w="316"
-       h="214"
-       visible="0"
-       state="2"
-       placement="1">
-      <group
-         id=""
-         panel_size="0" />
-    </group>
-    <group
-       id="pixelart"
-       panel_size="1"
-       panel_ratio="100"
-       panel_mode="1"
-       panel_wrap="0"
-       panel_border="0"
-       x="0"
-       y="0"
-       w="316"
-       h="236"
+       h="254"
        visible="0"
        state="2"
        placement="1" />
+    <group
+       asbitmap="0"
+       id="printing" />
+    <group
+       placement="1"
+       state="2"
+       visible="0"
+       h="214"
+       w="316"
+       y="0"
+       x="0"
+       panel_border="0"
+       panel_wrap="0"
+       panel_mode="1"
+       panel_size="1"
+       panel_ratio="100"
+       id="objectattr">
+      <group
+         panel_size="0"
+         id="" />
+    </group>
+    <group
+       placement="1"
+       state="2"
+       visible="0"
+       h="236"
+       w="316"
+       y="0"
+       x="0"
+       panel_border="0"
+       panel_wrap="0"
+       panel_mode="1"
+       panel_ratio="100"
+       panel_size="1"
+       id="pixelart" />
   </group>
   <group
      id="printing">
@@ -1172,14 +1172,14 @@
        partialdynamic="0"
        floatallowed="0" />
     <group
-       value="0"
-       id="spacepans" />
+       id="spacepans"
+       value="0" />
     <group
-       id="bitmapoversample"
-       value="1" />
+       value="1"
+       id="bitmapoversample" />
     <group
-       id="threading"
-       numthreads="1" />
+       numthreads="1"
+       id="threading" />
     <group
        id="rendering" />
   </group>
@@ -1206,7 +1206,7 @@
      org.inkscape.print.eps.cairo.textToPath="paths" />
   <group
      id="desktop"
-     style="fill:#e93223;fill-opacity:1;stroke:none;font-size:26.66666667px;-inkscape-font-specification:Impact;font-family:Impact;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;opacity:1;stroke-opacity:1;stroke-width:3.048;stroke-miterlimit:4;stroke-dasharray:none;stroke-linecap:butt;stroke-linejoin:round;stroke-dashoffset:0;text-anchor:start;text-align:start;writing-mode:lr;fill-rule:nonzero;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;paint-order:markers stroke fill;line-height:25px">
+     style="fill:#e93223;fill-opacity:1;stroke:none;font-size:26.66666667000000146px;-inkscape-font-specification:Impact;font-family:Impact;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;opacity:1;stroke-opacity:1;stroke-width:3.048;stroke-miterlimit:4;stroke-dasharray:none;stroke-linecap:butt;stroke-linejoin:round;stroke-dashoffset:0;text-anchor:start;text-align:start;writing-mode:lr;fill-rule:nonzero;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;paint-order:markers stroke fill;line-height:25px">
     <group
        width="1270"
        height="775"
@@ -1314,14 +1314,14 @@
   <group
      id="whiteboard">
     <group
-       id="server"
-       name="jabber.org"
-       port="5222"
+       ssl="0"
        username=""
-       ssl="0" />
+       port="5222"
+       name="jabber.org"
+       id="server" />
     <group
-       id="room"
+       server="gristle.org"
        name="inkboard"
-       server="gristle.org" />
+       id="room" />
   </group>
 </inkscape>

@@ -17,7 +17,7 @@
 
 Process.setproctitle("notify-hightemp")
 
-require 'open3'
+#require 'open3'
 
 CPU_TEMP_THRESHOLD = 90  # <- Normaly 90-100
 NOTIF_DURATION = 2.5     # <- Second
@@ -29,16 +29,23 @@ end
 
 begin
   while true
-    capture_temp = "cat /sys/class/thermal/thermal_zone0/temp"
-    temp = Open3.capture2(capture_temp)
-    temp_cpu = (temp[0].to_i / 1000)
+    # For GNU/Linux
+    #capture_temp = "cat /sys/class/thermal/thermal_zone0/temp"
+    #temp = Open3.capture2(capture_temp)
+    #temp_cpu = (temp[0].to_i / 1000)
+    # For FreeBSD
+    capture_temp = `sysctl -n dev.cpu.0.temperature`
+    temp_cpu = capture_temp.delete_suffix(".0C\n").to_i
     temp_threshold = CPU_TEMP_THRESHOLD
     notif_duration = (NOTIF_DURATION * 1000).to_i
     notif_volume = notif_volume_converter(NOTIF_VOLUME)
 
     if temp_cpu >= temp_threshold
-      system("notify-send 'High CPU Temperature''!' 'The CPU has been hard at work in the past minute.' --urgency=critical --expire-time=#{notif_duration}")
-      system("paplay /home/bandithijo/snd/Ringtones/Alert/aircraftalarm.wav --volume=#{notif_volume}")
+      # If using dunst
+      #system("notify-send 'High CPU Temperature''!' 'The CPU has been hard at work in the past minute.' --urgency=critical --expire-time=#{notif_duration}")
+      # If using xfce4-notify
+      system("notify-send 'High CPU Temperature''!' 'The CPU has been hard at work in the past minute.'")
+      system("paplay /usr/home/bandithijo/snd/Ringtones/Alert/aircraftalarm.wav --volume=#{notif_volume}")
     end
 
     sleep(5)
