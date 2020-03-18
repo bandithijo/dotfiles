@@ -14,6 +14,12 @@
 # if you're sure that you'll never log in via telnet or xterm or a
 # serial line.
 
+# gnome-keyring
+if [ -n "$DESKTOP_SESSION" ];then
+    eval $(gnome-keyring-daemon --start)
+    export SSH_AUTH_SOCK
+fi
+
 EDITOR=vim;   	                export EDITOR
 PAGER=less;  	                export PAGER
 
@@ -28,8 +34,6 @@ if [ -x /usr/bin/resizewin ] ; then /usr/bin/resizewin -z ; fi
 
 # Display a random cookie on each login.
 if [ -x /usr/bin/fortune ] ; then /usr/bin/fortune freebsd-tips ; fi
-
-#export SSH_AUTH_SOCK
 
 # For Qt5 environment
 export QT_QPA_PLATFORMTHEME="qt5ct"

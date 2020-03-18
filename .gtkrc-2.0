@@ -3,12 +3,12 @@
 
 include "/home/bandithijo/.gtkrc-2.0.mine"
 gtk-theme-name="Adwaita-Red"
-gtk-icon-theme-name="gnome"
-gtk-font-name="Open Sans 10"
+gtk-icon-theme-name="Gnome"
+gtk-font-name="Fira Sans 8"
 gtk-cursor-theme-name="ComixCursors-Opaque-White"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_ICONS
-gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+gtk-toolbar-icon-size=GTK_ICON_SIZE_SMALL_TOOLBAR
 gtk-button-images=0
 gtk-menu-images=1
 gtk-enable-event-sounds=1

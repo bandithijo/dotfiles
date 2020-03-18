@@ -11,7 +11,7 @@ alias doas="sudo"
 alias ll="ls -l"
 
 # Firefox with Tor
-alias fireprox="proxychains env GTK_THEME=Adwaita firefox --private-window"
+alias fireprox="torsocks env firefox --private-window"
 
 # Chromium with Tor
 alias chromeprox="chromium --proxy-server='socks5://127.0.0.1:9050'"

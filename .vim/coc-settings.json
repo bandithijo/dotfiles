@@ -1,3 +1,9 @@
 {
-  "emmet.includeLanguages" : { "eruby": "html", "js": "javascript" }
+  "emmet.includeLanguages": {
+    "eruby": "html",
+    "js": "javascript"
+  },
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
+  "python.linting.pylamaEnabled": false
 }

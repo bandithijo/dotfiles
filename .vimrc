@@ -38,19 +38,15 @@ call plug#begin('~/.vim/plugged')
 " A tree explorer plugin for vim.
 Plug 'scrooloose/nerdtree'
 
-" Plugin for NERD Tree that provides an execute menu item, that executes
-" system default application for file or directory
-"Plug 'ivalkeen/nerdtree-execute'
-
 " A light and configurable statusline/tabline plugin for Vim
-Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/lightline.vim'
 
 " A lightweight plugin to display the list of buffers in the lightline vim plugin
-Plug 'mengelbrecht/lightline-bufferline'
+"Plug 'mengelbrecht/lightline-bufferline'
 
 " A lean & mean status/tabline for vim that's light as air
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks.
 Plug 'airblade/vim-gitgutter'
@@ -113,7 +109,7 @@ Plug 'tpope/vim-liquid'
 "Plug 'severin-lemaignan/vim-minimap'
 
 " Install nightly build, replace ./install.sh with install.cmd on windows
-Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+"Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 " Or install latest release tag
 Plug 'neoclide/coc.nvim', {'do': './install.sh'}
 " Or build from source code
@@ -135,7 +131,7 @@ Plug 'tpope/vim-bundler'
 Plug 'Yggdroot/indentLine'
 
 " A Zoom in/out of windows (toggle between one window and multi-window)
-Plug 'rchicoli/vim-zoomwin'
+"Plug 'rchicoli/vim-zoomwin'
 
 " A Typescript syntax files for Vim
 Plug 'leafgarland/typescript-vim'
@@ -150,11 +146,11 @@ Plug 'tpope/vim-haml'
 "Plug 'flazz/vim-colorschemes'
 
 " A vim-snipmate default snippets (Previously snipmate-snippets)
-Plug 'honza/vim-snippets'
+"Plug 'honza/vim-snippets'
 
 " Simple tmux statusline generator with support for powerline symbols and
 " statusline / airline / lightline integration
-Plug 'edkolev/tmuxline.vim'
+"Plug 'edkolev/tmuxline.vim'
 
 " A plugin for automatically restoring file's cursor position and folding
 Plug 'vim-scripts/restore_view.vim'
@@ -173,7 +169,7 @@ Plug 'chrisbra/NrrwRgn'
 " Univeral Text Linking - Execute URLs, footnotes, open emails, organize ideas
 Plug 'vim-scripts/utl.vim'
 
-" VIM Table Mode for instant table creation.
+" Vim Table Mode for instant table creation.
 Plug 'dhruvasagar/vim-table-mode'
 " (vim-orgmode need this) }}}
 
@@ -187,10 +183,10 @@ Plug 'idbrii/vim-notgrep'
 Plug 'terryma/vim-multiple-cursors'
 
 " A Open selected text in https://carbon.now.sh
-Plug 'kristijanhusak/vim-carbon-now-sh'
+"Plug 'kristijanhusak/vim-carbon-now-sh'
 
 " A Make VIM as a PDF reader
-Plug 'makerj/vim-pdf'
+"Plug 'makerj/vim-pdf'
 
 " Directory viewer for Vim
 "Plug 'justinmk/vim-dirvish'
@@ -201,6 +197,9 @@ Plug 'makerj/vim-pdf'
 
 " A Vim highlighting & completion for MiniTest
 Plug 'sunaku/vim-ruby-minitest'
+
+" A modern vim plugin for editing LaTeX files
+Plug 'lervag/vimtex'
 
 
 call plug#end()
@@ -237,8 +236,8 @@ set ttimeoutlen=0  " make Esc work faster
 set autoread " make vim monitor realtime changes to a file
 set modifiable
 "set cryptmethod=blowfish2  " only for Vim, not Neovim
-au CursorHold,CursorHoldI * checktime " auto update trigger when cursor stops moving
-au FocusGained,BufEnter * :checktime " auto update trigger on buffer change or terminal focus
+"au CursorHold,CursorHoldI * checktime " auto update trigger when cursor stops moving
+"au FocusGained,BufEnter * :checktime  " auto update trigger on buffer change or terminal focus
 " for italic on tmux
 set t_ZH=[3m
 set t_ZR=[23m
@@ -291,8 +290,8 @@ endif
 " Text Formatting/Layout {{{
 " ----------------------------------------------------------------------------
 set wrap " wrap text
-"set textwidth=79 " to 79 characters
-set colorcolumn=79 " and warn me if my line gets over 85 characters
+"set textwidth=80 " to 80 characters
+set colorcolumn=80 " and warn me if my line gets over 85 characters
 set formatoptions=cqt " see :help fo-table
 set infercase " case inferred by default
 set shiftround " round the indent to shiftwidth (when at 3 spaces, and I hit > go to 4, n    ot 5)
@@ -319,6 +318,8 @@ autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 conceallevel=0
 autocmd FileType liquid setlocal shiftwidth=2 tabstop=2 conceallevel=0
 autocmd FileType vim setlocal shiftwidth=2 tabstop=2 conceallevel=0
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 conceallevel=0
+autocmd FileType tex setlocal shiftwidth=2 tabstop=2 conceallevel=0
+au BufRead,BufNewFile *.tex setlocal ft=tex
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
 " }}}
@@ -370,7 +371,7 @@ autocmd BufWritePre * %s/\s\+$//e
 "nnoremap <leader>v <C-w>v<C-w>l
 
 " open horizontal split and switch to it
-nnoremap <leader>s <C-w>s<C-w>l
+"nnoremap <leader>s <C-w>s<C-w>l
 
 " Map Ctrl-Backspace to delete the previous word in insert mode.
 imap <C-BS> <C-W>
@@ -379,7 +380,7 @@ imap <C-BS> <C-W>
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 
 " Compile document, be it groff/LaTeX/markdown/etc.
-"map <leader>c :w! \| !compiled <c-r>%<CR>
+map <leader>C :w! \| !compiler <c-r>%<CR>
 
 " Remap exit from terminal mode
 tnoremap <Esc> <C-\><C-n>
@@ -432,7 +433,6 @@ nmap ga <Plug>(EasyAlign)
 nmap <F9> :PymodeLintToggle<cr>
 
 " fzf.vim
-"nmap <leader>b :Buffers<cr>
 nmap <C-p> :Buffers<cr>
 nmap <C-f> :FZF<cr>
 "nmap <C-f> :Files<cr>
@@ -457,14 +457,6 @@ nmap <C-f> :FZF<cr>
 
 " prevent Vim scrolling when splitting a window
 nnoremap <C-W>s Hmx`` \|:split<CR>`xzt``
-
-" Code folding saved after exit vim
-"augroup AutoSaveFolds
-"  autocmd!
-"autocmd BufWinLeave * mkview
-"autocmd BufWinEnter *.* silent! loadview
-"augroup END
-" }}}
 " ----------------------------------------------------------------------------
 
 " ----------------------------------------------------------------------------
@@ -499,8 +491,8 @@ autocmd FileType nerdtree setlocal signcolumn=no
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Open NERDTree when open a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | wincmd p | ene | exe 'NERDTree' argv()[0] | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | wincmd p | ene | exe 'NERDTree' argv()[0] | endif
 " ----------------------------------------------------------------------------
 " }}}
 
@@ -541,82 +533,49 @@ let g:user_emmet_mode='a'                "enable all function in all mode
 " ----------------------------------------------------------------------------
 " }}}
 
-" Spaceline {{{
-" ----------------------------------------------------------------------------
-" spaceline provide separator groups, include arrow curve slant.the default group is arrow
-let g:spaceline_seperate_style= 'none'
-
-" Custom
-" you can custom every symbol in spaceline. there are some very useful settings.
-" first you should set the g:seperate_mode to 1
-"let g:spaceline_seperate_mode = 0
-"let g:spaceline_homemode_right = ''
-"let g:spaceline_filename_left  = ''
-"let g:spaceline_filesize_right = ''
-"let g:spaceline_gitinfo_left   = ''
-"let g:spaceline_gitinfo_right  = ''
-"let g:spaceline_cocexts_right  = ''
-"let g:spaceline_lineformat_right = ''
-"let g:spaceline_seperate_endseperate = ''
-"let g:spaceline_seperate_emptyseperate = ''
-" ----------------------------------------------------------------------------
-" }}}
-
 " Vim-Airline {{{
 " ----------------------------------------------------------------------------
-"let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 
 " Enable the list of buffers
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#show_buffers = 1
-"let g:airline#extensions#tabline#show_tabs = 1
-"let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
-"let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 " Here is a complete list of formatters with screenshots:
 " default, jsformatter, unique_tail, unique_tail_improved
 
 " enable/disable fugitive/lawrencium integration
-"let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#enabled = 1
 
 " enable/disable showing a summary of changed hunks under source control.
-"let g:airline#extensions#hunks#enabled = 1
+let g:airline#extensions#hunks#enabled = 1
 
 " enable/disable showing only non-zero hunks.
-"let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline#extensions#hunks#non_zero_only = 1
 
-"let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#whitespace#enabled = 0
 
-"let g:airline#extensions#tmuxline#enabled = 1
+let g:airline#extensions#tmuxline#enabled = 0
 
 " Vim-Airline-Theme
-"let g:airline_theme='solarized_bandit'
-"let g:airline_theme='onehalfdark'
+let g:airline_theme='minimalist_bandit'
 
-" Patching for status line Terminal color
-"let s:saved_theme = []
-"let g:airline_theme_patch_func = 'AirlineThemePatch'
-"function! AirlineThemePatch(palette)
-"    for colors in values(a:palette)
-"        if has_key(colors, 'airline_c') && len(s:saved_theme) ==# 0
-"            let s:saved_theme = colors.airline_c
-"        endif
-"        if has_key(colors, 'airline_term')
-"            let colors.airline_term = s:saved_theme
-"        endif
-"    endfor
-"endfunction
-" ----------------------------------------------------------------------------
-" }}}
-
-" Tmuxline {{{
-" ----------------------------------------------------------------------------
-" let g:tmuxline_preset = {
-"       \'a'    : '#S',
-"       \'win'  : '#I #W',
-"       \'cwin' : '#I #W',
-"       \'y'    : '0%u%Y%m%d%H%M',
-"       \'z'    : '#[bold]#H'}
+" Patching for middle section status line Terminal color
+let s:saved_theme = []
+let g:airline_theme_patch_func = 'AirlineThemePatch'
+function! AirlineThemePatch(palette)
+  for colors in values(a:palette)
+    if has_key(colors, 'airline_c') && len(s:saved_theme) ==# 0
+      let s:saved_theme = colors.airline_c
+    endif
+    if has_key(colors, 'airline_term')
+      let colors.airline_term = s:saved_theme
+    endif
+  endfor
+endfunction
 " ----------------------------------------------------------------------------
 " }}}
 
@@ -679,17 +638,6 @@ function! LightlineFugitive()
   return fugitive#head()
 endfunction
 
-" function! LightlineGitGutter()
-"     let [a,m,r] = GitGutterGetHunkSummary()
-"     let l:branch = fugitive#head()
-"     if l:branch == ""
-"         return ''
-"     else
-"         return printf('+%d ~%d -%d  %s', a, m, r, l:branch)
-"     endif
-" endfunction
-
-" Can I trim the file format and encoding information on narrow windows?
 function! LightlineFileformat()
   return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
@@ -749,48 +697,6 @@ let g:syntastic_python_checkers = ['pylint']  "" or ['flake8', 'pylint'], etc
 let g:syntastic_python_pylint_args = '-E'
 "" to show it accepts a string of args, also:
 " let g:syntastic_python_pylint_args = '--rcfile=/path/to/rc -E'
-" ----------------------------------------------------------------------------
-" }}}
-
-" Markdown Preview {{{
-" ----------------------------------------------------------------------------
-let g:mkdp_path_to_chrome = "/usr/bin/google-chrome-stable"
-" path to the chrome or the command to open chrome(or other modern browsers)
-" if set, g:mkdp_browserfunc would be ignored
-
-let g:mkdp_browserfunc = 'MKDP_browserfunc_default'
-" callback vim function to open browser, the only param is the url to open
-
-let g:mkdp_auto_start = 0
-" set to 1, the vim will open the preview window once enter the markdown
-" buffer
-
-let g:mkdp_auto_open = 0
-" set to 1, the vim will auto open preview window when you edit the
-" markdown file
-
-let g:mkdp_auto_close = 1
-" set to 1, the vim will auto close current preview window when change
-" from markdown buffer to another buffer
-
-let g:mkdp_refresh_slow = 1
-" set to 1, the vim will just refresh markdown when save the buffer or
-" leave from insert mode, default 0 is auto refresh markdown as you edit or
-" move the cursor
-
-let g:mkdp_command_for_global = 0
-" set to 1, the MarkdownPreview command can be use for all files,
-" by default it just can be use in markdown file
-
-" disable highlight when italic and bold italic
-" let html_no_rendering = 1
-
-" Mapping for markdown-preview
-" ----------------------------------------------------------------------------
-"nmap <F10> <Plug>MarkdownPreview        " for normal mode
-"imap <F10> <Plug>MarkdownPreview        " for insert mode
-"nmap <F11> <Plug>StopMarkdownPreview    " for normal mode
-"imap <F11> <Plug>StopMarkdownPreview    " for insert mode
 " ----------------------------------------------------------------------------
 " }}}
 
@@ -897,21 +803,6 @@ let g:python_host_prog = '/usr/local/bin/python2.7'
 let g:python3_host_prog = '/usr/local/bin/python3.7'
 " linter syntax checker : pylint, pycodestyle, pyflakes, pep8, flake8
 "let g:pymode_lint_checkers = ['pylint']
-" ----------------------------------------------------------------------------
-" }}}
-
-" YouCompleteMe {{{
-" ----------------------------------------------------------------------------
-"let g:loaded_youcompleteme = 1
-" using CTRL+Space to open dialog
-" ----------------------------------------------------------------------------
-" }}}
-
-" calendar {{{
-" ----------------------------------------------------------------------------
-"let g:calendar_frame = 'default'
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
 " ----------------------------------------------------------------------------
 " }}}
 
@@ -1037,7 +928,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 let g:indentLine_color_term = 10
 let g:indentLine_char = '┊'
 let g:indentLine_fileTypeExclude = [
-            \ 'markdown', 'json', 'liquid', 'org', 'conf']
+            \ '', 'markdown', 'json', 'liquid', 'org', 'conf', 'tex']
 let g:indentLine_leadingSpaceEnabled = 0
 let g:indentLine_leadingSpaceChar = '·'
 " ----------------------------------------------------------------------------
@@ -1045,7 +936,7 @@ let g:indentLine_leadingSpaceChar = '·'
 
 " vim-gitgutter {{{
 " ----------------------------------------------------------------------------
-let g:gitgutter_async = 0
+let g:gitgutter_async = 1
 "let g:gitgutter_realtime = 1
 "let g:gitgutter_eager = 1
 " ----------------------------------------------------------------------------
@@ -1055,16 +946,6 @@ let g:gitgutter_async = 0
 " ----------------------------------------------------------------------------
 autocmd FileType desktop setlocal commentstring=#\ %s
 autocmd FileType vim setlocal commentstring=\"\ %s
-" ----------------------------------------------------------------------------
-" }}}
-
-" vim-colors-github {{{
-" ----------------------------------------------------------------------------
-" use a slightly darker background, like GitHub inline code blocks
-let g:github_colors_soft = 1
-
-" more blocky diff markers in signcolumn (e.g. GitGutter)
-let g:github_colors_block_diffmark = 0
 " ----------------------------------------------------------------------------
 " }}}
 
@@ -1129,6 +1010,53 @@ inoreabbrev <expr> __
           \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 " ----------------------------------------------------------------------------
 " }}}
+
+" vimtex {{{
+" ----------------------------------------------------------------------------
+" Default keybindings: https://github.com/lervag/vimtex/wiki/usage
+" https://github.com/lervag/vimtex/wiki/introduction
+let g:vimtex_compiler_progname='nvr'
+
+let g:vimtex_latexmk_enabled=1
+let g:vimtex_latexmk_continuous=1
+
+let g:vimtex_compiler_latexmk = {
+        \ 'executable' : 'latexmk',
+        \ 'options' : [
+        \   '-xelatex',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
+
+let g:vimtex_quickfix_mode=2
+let g:vimtex_quickfix_open_on_warning=0
+
+let g:vimtex_quickfix_autoclose_after_keystrokes=1
+
+let g:vimtex_quickfix_latexlog = {
+      \ 'default'       : 1,
+      \ 'general'       : 1,
+      \ 'references'    : 1,
+      \ 'overfull'      : 1,
+      \ 'underfull'     : 1,
+      \ 'font'          : 1,
+      \ 'packages' : {
+      \   'default'     : 1,
+      \   'general'     : 1,
+      \   'babel'       : 1,
+      \   'biblatex'    : 1,
+      \   'fixltx2e'    : 1,
+      \   'hyperref'    : 1,
+      \   'natbib'      : 1,
+      \   'scrreprt'    : 1,
+      \   'titlesec'    : 1,
+      \ },
+      \}
+" ----------------------------------------------------------------------------
+" }}}
+
 
 
 

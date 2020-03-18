@@ -11,7 +11,6 @@ application/xhtml+xml=userapp-Firefox-MYNXG0.desktop
 application/x-extension-xhtml=userapp-Firefox-MYNXG0.desktop
 application/x-extension-xht=userapp-Firefox-MYNXG0.desktop
 video/x-matroska=mpv.desktop
-text/plain=nvim.desktop
 x-scheme-handler/mailto=userapp-Thunderbird-DSFLG0.desktop
 message/rfc822=userapp-Thunderbird-DSFLG0.desktop
 image/jpeg=ristretto.desktop
@@ -19,7 +18,7 @@ image/png=ristretto.desktop
 text/x-c++src=nvim.desktop
 image/gif=gpicview.desktop
 audio/x-opus+ogg=mpv.desktop
-application/pdf=xpdf.desktop
+application/pdf=xreader.desktop
 application/vnd.kde.kxmlguirc=nvim.desktop
 
 [Added Associations]
@@ -36,14 +35,13 @@ application/x-extension-xhtml=userapp-Firefox-MYNXG0.desktop;
 application/x-extension-xht=userapp-Firefox-MYNXG0.desktop;
 image/png=gimp.desktop;ristretto.desktop;gpicview.desktop;
 video/x-matroska=org.xfce.Parole.desktop;mpv.desktop;
-application/x-theme=mousepad.desktop;
-text/plain=nvim.desktop;mousepad.desktop;
+application/x-theme=nvim.desktop;mousepad.desktop;
 image/x-xpixmap=gpicview.desktop;ristretto.desktop;gimp.desktop;userapp-"gimp"-5CRLG0.desktop;
 x-scheme-handler/mailto=userapp-Thunderbird-DSFLG0.desktop;
 message/rfc822=userapp-Thunderbird-DSFLG0.desktop;
 image/jpeg=gimp.desktop;gpicview.desktop;ristretto.desktop;
 video/mp4=mpv.desktop;deadbeef.desktop;
-image/svg+xml=gpicview.desktop;
+image/svg+xml=inkscape.desktop;gpicview.desktop;
 text/x-c++src=mousepad.desktop;nvim.desktop;
 application/x-ruby=nvim.desktop;
 text/markdown=nvim.desktop;
@@ -60,5 +58,10 @@ application/x-wine-extension-ini=nvim.desktop;
 image/x-portable-anymap=gimp.desktop;ristretto.desktop;
 application/vnd.kde.kxmlguirc=nvim.desktop;
 audio/x-wav=audacious.desktop;
+application/x-desktop=nvim.desktop;
+image/heif=ristretto.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
+image/x-xcf=gimp.desktop;
 
 [Removed Associations]
+text/plain=nvim.desktop;
