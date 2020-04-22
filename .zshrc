@@ -16,6 +16,7 @@
 #  ██████ ██████ ░██  ░██░███   ░░█████
 # ░░░░░░ ░░░░░░  ░░   ░░ ░░░     ░░░░░
 
+zmodload zsh/zprof
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -154,6 +155,9 @@ source ~/.aliases
 # FZF FreeBSD color
 export FZF_DEFAULT_OPTS='
 --color=dark,fg:7,fg+:0,bg+:7,hl:7,hl+:9,info:7,prompt:7,spinner:7,pointer:7,marker:7'
+
+# Keychain
+eval $(keychain --eval --noask --quiet bandithijodotcom)
 
 # Should to put at very bottom of this file config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

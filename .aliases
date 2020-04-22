@@ -6,6 +6,7 @@
 
 # sudo as a doas
 alias doas="sudo"
+alias doasedit="sudoedit"
 
 # list ls
 alias ll="ls -l"
@@ -64,7 +65,7 @@ alias presentationmode-on="xfconf-query -c xfce4-power-manager -p /xfce4-power-m
 alias presentationmode-off="xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/presentation-mode -s false; xautolock -time 15 -locker '/usr/bin/lock-dark' && echo mem > /sys/power/state & ; echo 'Presentation Mode OFF'; notify-send '[OFF] Presentation Mode'"
 
 # scrot
-alias scrot="scrot 'Screenshot\ from\ %Y-%m-%d %H-%M-%S.png' -e 'mv *.png ~/pic/ScreenShot/' -d 3 -c"
+#alias scrot="scrot 'Screenshot\ from\ %Y-%m-%d %H-%M-%S.png' -e 'mv *.png ~/pic/ScreenShot/' -d 3 -c"
 
 # ncpamixer
 alias ncpamixer="ncpamixer -c .ncpamixer.conf"
@@ -94,7 +95,7 @@ alias touchpad-disable="xinput --disable 'SynPS/2 Synaptics TouchPad'"
 alias usercheck="~/.local/bin/usercheck"
 
 # emacs on terminal
-alias emacs="emacs -nw"
+#alias emacs="emacs -nw"
 
 # scrcpy
 #alias scrcpy="scrcpy -b2M -m800"
@@ -109,7 +110,7 @@ alias tlp-chargeonce="sudo tlp chargeonce BAT0"
 alias mvi='mpv -profile image'
 
 # Spicific for dwm, reset the master repo
-alias dwm-fullclean="make clean && rm -f config.h && git reset --hard origin/master"
+alias suckclean="make clean && rm -f config.h && git reset --hard origin/master"
 
 # youtube-dl playlist
 alias youtube-dl-playlist="youtube-dl -f 'bestvideo+bestaudio[ext=m4a]/bestvideo+bestaudio/best' --merge-output-format mp4 -o '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s' -i"

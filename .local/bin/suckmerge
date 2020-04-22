@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+suckdiff &&
+git reset --hard origin/master &&
+for branch in $(git for-each-ref --format='%(refname)' refs/heads/ | cut -d'/' -f3); do
+	if [ "$branch" != "master" ];then
+		echo $branch
+		git merge $branch -m $branch
+	fi
+done
+make && sudo make clean install

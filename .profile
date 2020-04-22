@@ -14,12 +14,6 @@
 # if you're sure that you'll never log in via telnet or xterm or a
 # serial line.
 
-# gnome-keyring
-if [ -n "$DESKTOP_SESSION" ];then
-    eval $(gnome-keyring-daemon --start)
-    export SSH_AUTH_SOCK
-fi
-
 EDITOR=vim;   	                export EDITOR
 PAGER=less;  	                export PAGER
 
@@ -64,5 +58,10 @@ PATH="$HOME/bin:$HOME/src:$HOME/.local/bin:$PATH"
 export PATH
 
 # For smooth the font for some Java apps
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+#export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
+export WALLPAPER1="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11-dark.png"
+export WALLPAPER2="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11X-dark.png"
+
+# For disable Spring load when running Rails Console
+export DISABLE_SPRING=true

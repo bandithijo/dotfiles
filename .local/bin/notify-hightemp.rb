@@ -50,9 +50,9 @@ begin
 
     if temp_cpu >= temp_threshold
       # If using dunst
-      #system("notify-send 'High CPU Temperature''!' 'The CPU has been hard at work in the past minute.' --urgency=critical --expire-time=#{notif_duration}")
+      system("notify-send 'High CPU Temperature''!' 'The CPU has been hard at work in the past minute.' --urgency=critical --expire-time=#{notif_duration}")
       # If using xfce4-notify
-      system("notify-send 'High CPU Temperature''!' 'The CPU has been hard at work in the past minute.'")
+      #system("notify-send 'High CPU Temperature''!' 'The CPU has been hard at work in the past minute.'")
       system("paplay /usr/home/bandithijo/snd/Ringtones/Alert/aircraftalarm.wav --volume=#{notif_volume}")
     end
 

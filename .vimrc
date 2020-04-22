@@ -39,14 +39,14 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 
 " A light and configurable statusline/tabline plugin for Vim
-"Plug 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 
 " A lightweight plugin to display the list of buffers in the lightline vim plugin
-"Plug 'mengelbrecht/lightline-bufferline'
+Plug 'mengelbrecht/lightline-bufferline'
 
 " A lean & mean status/tabline for vim that's light as air
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 
 " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks.
 Plug 'airblade/vim-gitgutter'
@@ -54,15 +54,9 @@ Plug 'airblade/vim-gitgutter'
 " fugitive.vim: A Git wrapper so awesome, it should be illegal.
 Plug 'tpope/vim-fugitive'
 
-" A simple, easy-to-use Vim alignment plugin.
-"Plug 'junegunn/vim-easy-align'
-
 " A command-line fuzzy finder.
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-
-" A Plugin to handle fzf powerfully with neovim
-"Plug 'yuki-ycino/fzf-preview.vim'
 
 " Better whitespace highlighting for Vim.
 Plug 'ntpeters/vim-better-whitespace'
@@ -96,17 +90,14 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 " Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
 Plug 'plasticboy/vim-markdown'
 
-" Real-time markdown preview plugin for vim.
-"Plug 'iamcco/markdown-preview.vim'
+" A markdown preview plugin for (neo)vim
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Adds file type glyphs/icons to popular Vim plugins: NERDTree, vim-airline, Powerline, Unite, vim-startify and more.
 Plug 'ryanoasis/vim-devicons'
 
 " Vim Liquid runtime files with Jekyll enhancements.
 Plug 'tpope/vim-liquid'
-
-" A Sublime-like minimap for VIM, based on the Drawille console-based drawing library
-"Plug 'severin-lemaignan/vim-minimap'
 
 " Install nightly build, replace ./install.sh with install.cmd on windows
 "Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
@@ -130,23 +121,17 @@ Plug 'tpope/vim-bundler'
 " A vim plugin to display the indention levels with thin vertical lines
 Plug 'Yggdroot/indentLine'
 
-" A Zoom in/out of windows (toggle between one window and multi-window)
-"Plug 'rchicoli/vim-zoomwin'
-
 " A Typescript syntax files for Vim
-Plug 'leafgarland/typescript-vim'
+"Plug 'leafgarland/typescript-vim'
 
 " A JSX syntax pretty highlighting for vim.
-Plug 'maxmellon/vim-jsx-pretty'
+"Plug 'maxmellon/vim-jsx-pretty'
 
 " A Vim runtime files for Haml, Sass, and SCSS
 Plug 'tpope/vim-haml'
 
 " A one colorscheme pack to rule them all!
-"Plug 'flazz/vim-colorschemes'
-
-" A vim-snipmate default snippets (Previously snipmate-snippets)
-"Plug 'honza/vim-snippets'
+Plug 'flazz/vim-colorschemes'
 
 " Simple tmux statusline generator with support for powerline symbols and
 " statusline / airline / lightline integration
@@ -180,20 +165,7 @@ Plug 'wakatime/vim-wakatime'
 Plug 'idbrii/vim-notgrep'
 
 " A True Sublime Text style multiple selections for Vim
-Plug 'terryma/vim-multiple-cursors'
-
-" A Open selected text in https://carbon.now.sh
-"Plug 'kristijanhusak/vim-carbon-now-sh'
-
-" A Make VIM as a PDF reader
-"Plug 'makerj/vim-pdf'
-
-" Directory viewer for Vim
-"Plug 'justinmk/vim-dirvish'
-
-" A An efficient fuzzy finder that helps to locate files, buffers, mrus,
-" gtags, etc. on the fly for both vim and neovim.
-"Plug 'Yggdroot/LeaderF'
+"Plug 'terryma/vim-multiple-cursors'
 
 " A Vim highlighting & completion for MiniTest
 Plug 'sunaku/vim-ruby-minitest'
@@ -458,6 +430,8 @@ nmap <C-f> :FZF<cr>
 " prevent Vim scrolling when splitting a window
 nnoremap <C-W>s Hmx`` \|:split<CR>`xzt``
 " ----------------------------------------------------------------------------
+" }}}
+" ----------------------------------------------------------------------------
 
 " ----------------------------------------------------------------------------
 " Plugins Settings {{{
@@ -700,20 +674,90 @@ let g:syntastic_python_pylint_args = '-E'
 " ----------------------------------------------------------------------------
 " }}}
 
-" vim-markdown {{{
+" markdown-preview {{{
 " ----------------------------------------------------------------------------
-" vim-markdown
-let g:vim_markdown_conceal = 0
+" set to 1, nvim will open the preview window after entering the markdown buffer
+" default: 0
+let g:mkdp_auto_start = 0
 
-" disable folding
-let g:vim_markdown_folding_disabled=1
+" set to 1, the nvim will auto close current preview window when change
+" from markdown buffer to another buffer
+" default: 1
+let g:mkdp_auto_close = 1
 
-" folding level is a number between 1 and 6. By default, if not specified, it
-" is set to 1.
-let g:vim_markdown_folding_level = 6
+" set to 1, the vim will refresh markdown when save the buffer or
+" leave from insert mode, default 0 is auto refresh markdown as you edit or
+" move the cursor
+" default: 0
+let g:mkdp_refresh_slow = 0
 
-" disabling conceal for code fences requires an additional setting.
-let g:vim_markdown_conceal_code_blocks = 0
+" set to 1, the MarkdownPreview command can be use for all files,
+" by default it can be use in markdown file
+" default: 0
+let g:mkdp_command_for_global = 0
+
+" set to 1, preview server available to others in your network
+" by default, the server listens on localhost (127.0.0.1)
+" default: 0
+let g:mkdp_open_to_the_world = 0
+
+" use custom IP to open preview page
+" useful when you work in remote vim and preview on local browser
+" more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
+" default empty
+let g:mkdp_open_ip = ''
+
+" specify browser to open preview page
+" default: ''
+let g:mkdp_browser = ''
+
+" set to 1, echo preview page url in command line when open preview page
+" default is 0
+let g:mkdp_echo_preview_url = 0
+
+" a custom vim function name to open preview page
+" this function will receive url as param
+" default is empty
+let g:mkdp_browserfunc = ''
+
+" options for markdown render
+" mkit: markdown-it options for render
+" katex: katex options for math
+" uml: markdown-it-plantuml options
+" maid: mermaid options
+" disable_sync_scroll: if disable sync scroll, default 0
+" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
+"   middle: mean the cursor position alway show at the middle of the preview page
+"   top: mean the vim top viewport alway show at the top of the preview page
+"   relative: mean the cursor position alway show at the relative positon of the preview page
+" hide_yaml_meta: if hide yaml metadata, default is 1
+" sequence_diagrams: js-sequence-diagrams options
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {},
+    \ 'flowchart_diagrams': {}
+    \ }
+
+" use a custom markdown style must be absolute path
+" like '/Users/username/markdown.css' or expand('~/markdown.css')
+let g:mkdp_markdown_css = ''
+
+" use a custom highlight style must absolute path
+" like '/Users/username/highlight.css' or expand('~/highlight.css')
+let g:mkdp_highlight_css = ''
+
+" use a custom port to start server or random for empty
+let g:mkdp_port = ''
+
+" preview page title
+" ${name} will be replace with the file name
+let g:mkdp_page_title = '「${name}」'
 " ----------------------------------------------------------------------------
 " }}}
 
@@ -721,7 +765,7 @@ let g:vim_markdown_conceal_code_blocks = 0
 " ----------------------------------------------------------------------------
 " Default fzf layout
 " - down / up / left / right
-let g:fzf_layout = { 'down': '~50%' }
+"let g:fzf_layout = { 'down': '~50%' }
 " Required:
 " - width [float]
 " - height [float]
@@ -729,7 +773,7 @@ let g:fzf_layout = { 'down': '~50%' }
 " Optional:
 " - highlight [string default 'Comment']: Highlight group for border
 " - rounded [boolean default v:true]: Use rounded border
-"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8, 'highlight': 'Normal', 'rounded': v:false } }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8, 'highlight': 'Normal', 'rounded': v:false } }
 
 " In Neovim, you can set up fzf window using a Vim command
 "let g:fzf_layout = { 'window': 'enew' }

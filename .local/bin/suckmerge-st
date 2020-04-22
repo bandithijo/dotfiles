@@ -1,0 +1,27 @@
+#!/usr/local/bin/ruby
+
+puts "=> Convert All Branch to Patch"
+system """
+suckdiff &&
+git reset --hard origin/master
+"""
+puts "=> Converting COMPLETE!"
+
+branches = [
+'config',
+'boxdraw',
+]
+
+puts "\n=> Patching All Branch to Master"
+for branch in branches do
+  print "Patching #{branch}... "
+  `git merge #{branch} -m #{branch}`
+  print "DONE\n"
+end
+puts "=> Patching COMPLETE!"
+
+puts "\n=> Installing"
+system """
+make && sudo make clean install
+"""
+puts "=> Installation COMPLETE!"
