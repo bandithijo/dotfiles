@@ -35,6 +35,18 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_SCREEN_SCALE_FACTORS=1
 export QT_SCALE_FACTOR=1
 
+# Clipmenu Environment Variables
+export CM_LAUNCHER=dmenu-clipmenu
+
+# For BSPWM and Ranger define Terminal
+export TERMCMD="st"
+
+# For Ranger define Text Editor
+export VISUAL="vim"
+
+# For Pager always use Less
+export LESS="-SRXF"
+
 # PATH: GO
 export PATH=$PATH:/usr/local/go/bin
 

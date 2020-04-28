@@ -11,14 +11,23 @@ branches = [
 'config',
 'actualfullscreen',
 'autostart',
-'fakefullscreen',
 'movestack',
 'pertag',
-'singularborders',
-'noborder',
+'resizecorners',
+'focusonnetactive',
+'statusallmons',
+'zoomswap',
 'center',
-'rules',
-'keys',
+'rules',              # merge /w: center
+'fullgaps',           # merge /w: config
+'cfacts',             # merge /w: config, movestack, fullgaps
+'keys',               # merge /w: config
+
+# Disable branch
+#'singularborders',
+#'noborder',
+#'gaps',
+#'attachbottom',
 ]
 
 puts "\n=> Patching All Branch to Master"

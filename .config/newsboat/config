@@ -50,18 +50,19 @@ bind-key U show-urls
 # your terminal emulator to use the Solarized palette.
 # See <http://ethanschoonover.com/solarized/> for more information.
 
-color background         default   default
-color listnormal         default   default
-color listnormal_unread  white     default bold
-color listfocus          white     red
-color listfocus_unread   white     red bold
-color info               black     white
-color article            default   default
+#color background         default   default
+#color listnormal         default   default
+#color listnormal_unread  white     default bold
+#color listfocus          white     red
+#color listfocus_unread   white     red bold
+#color info               black     white
+#color article            default   default
 
 # highlights
-highlight article "^(Title):.*$"         red default
-highlight article "https?://[^ ]+"       red default
-highlight article "\\[image\\ [0-9]+\\]" red default
+highlight article "^(Title):.*$"         default default bold
+highlight article "^(Author):.*$"        default default bold
+highlight article "https?://[^ ]+"       default default
+highlight article "\\[image\\ [0-9]+\\]" default default
 
 #browser linkhandler
 browser "env GTK_THEME=Adwaita /usr/lib/firefox/firefox %u"
@@ -74,3 +75,15 @@ macro p set browser "dmnuhandler"; open-in-browser ; set browser linkhandler
 # c copies the link to the clipboard
 # The line below is probably the skiddiest lien i've ever writer.
 macro c set browser "copy(){ echo $1 | xclip ;}; copy "; open-in-browser ; set browser linkhandler
+
+
+# plain color scheme for newsbeuter <http://www.newsbeuter.org/>
+# boring black and white color configuration that resembles the classic look of really old terminals
+
+color listnormal        default default
+color listnormal_unread default default bold
+color listfocus         default default reverse bold
+color listfocus_unread  default default reverse bold
+color info              default default reverse
+color background        default default
+color article           default default

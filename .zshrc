@@ -142,11 +142,8 @@ DISABLE_AUTO_TITLE="true"
 
 
 
-# Import PATH from .profile
-source ~/.profile # get my PATH setup
-
 # Import alias from .aliases
-source ~/.aliases
+[ -f ~/.aliases ] && source ~/.aliases
 
 # For handle Delete key
 #bindkey    "[3~"          delete-char

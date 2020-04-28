@@ -9,7 +9,17 @@ puts "=> Converting COMPLETE!"
 
 branches = [
 'config',
+'xresources',
 'boxdraw',
+'scrollback',
+'scrollback-mouse',
+'bold-is-not-bright',
+'alpha',                # merge /w: boxdraw
+
+# Disable branch
+#'ligatures',
+#'ligatures-boxdraw',
+#'no-bold-colors',
 ]
 
 puts "\n=> Patching All Branch to Master"
