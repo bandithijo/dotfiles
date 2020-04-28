@@ -110,7 +110,7 @@ alias tlp-chargeonce="sudo tlp chargeonce BAT0"
 alias mvi='mpv -profile image'
 
 # Spicific for dwm, reset the master repo
-alias suckclean="make clean && rm -f config.h && git reset --hard origin/master"
+#alias suckclean="make clean && rm -f config.h && git reset --hard origin/master"
 
 # youtube-dl playlist
 alias youtube-dl-playlist="youtube-dl -f 'bestvideo+bestaudio[ext=m4a]/bestvideo+bestaudio/best' --merge-output-format mp4 -o '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s' -i"
