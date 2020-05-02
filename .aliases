@@ -119,4 +119,6 @@ alias tmux="env TERM=screen-256color tmux"
 
 alias xpdf="xpdf -cfg ~/.config/xpdf/xpdfrc"
 
+alias xfreerdp="xfreerdp /h:751 /w:1023 /sound:sys:oss /video"
+
 # -------------------------------------------------------------------END ALIAS

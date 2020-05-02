@@ -18,7 +18,7 @@ branches = [
 'statusallmons',
 'zoomswap',
 'center',
-'rules',              # merge /w: center
+'rules',              # merge /w: config, center
 'fullgaps',           # merge /w: config
 'cfacts',             # merge /w: config, movestack, fullgaps
 'keys',               # merge /w: config

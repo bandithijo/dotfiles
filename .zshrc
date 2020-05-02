@@ -146,8 +146,8 @@ DISABLE_AUTO_TITLE="true"
 [ -f ~/.aliases ] && source ~/.aliases
 
 # For handle Delete key
-#bindkey    "[3~"          delete-char
-#bindkey    "3;5~"         delete-char
+bindkey    "[3~"          delete-char
+bindkey    "3;5~"         delete-char
 
 # FZF FreeBSD color
 export FZF_DEFAULT_OPTS='
