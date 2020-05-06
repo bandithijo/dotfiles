@@ -68,7 +68,7 @@ PATH="$HOME/bin:$HOME/src:$HOME/.local/bin:$PATH"
 export PATH
 
 # For smooth the font for some Java apps
-#export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 export WALLPAPER1="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11-dark.png"
 export WALLPAPER2="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11H-dark.png"

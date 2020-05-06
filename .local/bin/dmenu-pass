@@ -1,7 +1,10 @@
 #!/usr/bin/bash
 
 # call sanitizer for sanitize the dust
-/usr/local/bin/sanitizer
+sanitizer > /dev/null 2>&1
+
+# GnuPG clear cache time out
+gpg-connect-agent reloadagent /bye
 
 shopt -s nullglob globstar
 
