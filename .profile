@@ -23,20 +23,17 @@ MM_CHARSET=UTF-8;               export MM_CHARSET
 # set ENV to a file invoked each time sh is started for interactive use.
 ENV=$HOME/.zshrc;               export ENV
 
-# Query terminal size; useful for serial lines.
-if [ -x /usr/bin/resizewin ] ; then /usr/bin/resizewin -z ; fi
-
-# Display a random cookie on each login.
-if [ -x /usr/bin/fortune ] ; then /usr/bin/fortune freebsd-tips ; fi
-
-# For Qt5 environment
-export QT_QPA_PLATFORMTHEME="qt5ct"
+# For Uniform look Qt and GTK
+export GTK2_RC_FILES=$HOME/.gtkrc-2.0
+export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_SCREEN_SCALE_FACTORS=1
 export QT_SCALE_FACTOR=1
+export QT_FONT_DPI=86
 
 # Clipmenu Environment Variables
 export CM_LAUNCHER=dmenu-clipmenu
+export CM_DIR=/tmp
 
 # For BSPWM and Ranger define Terminal
 export TERMCMD="st"
@@ -48,11 +45,12 @@ export VISUAL="vim"
 export LESS="-SRXF"
 
 # PATH: GO
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/bin
 
 # PATH: RBENV
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
 # PATH: NPM
 PATH="$HOME/.node_modules/bin:$PATH"
@@ -73,7 +71,7 @@ export PATH
 #export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 export WALLPAPER1="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11-dark.png"
-export WALLPAPER2="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11X-dark.png"
+export WALLPAPER2="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11H-dark.png"
 
 # For disable Spring load when running Rails Console
 export DISABLE_SPRING=true

@@ -65,7 +65,7 @@ highlight article "https?://[^ ]+"       default default
 highlight article "\\[image\\ [0-9]+\\]" default default
 
 #browser linkhandler
-browser "env GTK_THEME=Adwaita /usr/lib/firefox/firefox %u"
+browser "/usr/local/bin/firefox %u"
 macro . open-in-browser
 macro v set browser "i3 exec mpv"; open-in-browser ; set browser linkhandler
 macro y set browser "spawndl"; open-in-browser ; set browser linkhandler

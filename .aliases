@@ -29,7 +29,11 @@ alias termdown="termdown -f nancyj"
 # vimdiff
 alias vimdiff="vim -d"
 
-alias cal="cal -y"
+# cal with monday as a first day in week
+alias cal="cal -ym"
+
+# neofetch
+alias neofetch="neofetch --ascii ~/.config/neofetch/ascii-dwm"
 
 # Enabling Menu Item Gnome
 alias menuitem-enable="gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{'Gtk/ButtonImages': <1>, 'Gtk/MenuImages': <1>}\""
@@ -118,5 +122,7 @@ alias youtube-dl-playlist="youtube-dl -f 'bestvideo+bestaudio[ext=m4a]/bestvideo
 alias tmux="env TERM=screen-256color tmux"
 
 alias xpdf="xpdf -cfg ~/.config/xpdf/xpdfrc"
+
+alias xfreerdp="xfreerdp /h:751 /w:1023 /sound:sys:oss /video"
 
 # -------------------------------------------------------------------END ALIAS

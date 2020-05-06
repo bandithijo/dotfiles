@@ -3,7 +3,6 @@
 puts "=> Convert All Branch to Patch"
 system """
 suckdiff &&
-git checkout master
 git reset --hard origin/master
 """
 puts "=> Converting COMPLETE!"
@@ -11,15 +10,6 @@ puts "=> Converting COMPLETE!"
 branches = [
 # Enable branch
 'config',
-'xresources',
-'boxdraw',
-'scrollback',
-'scrollback-mouse',
-'bold-is-not-bright',
-'ligatures-boxdraw',
-
-# Disable branch
-#'alpha',                # merge /w: boxdraw
 ]
 
 puts "\n=> Patching All Branch to Master"

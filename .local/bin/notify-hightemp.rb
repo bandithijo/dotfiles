@@ -1,35 +1,27 @@
 #!/usr/bin/env ruby
 
-# Copyright (c) 2020 Rizqi Nur Assyaufi (bandithijo@gmail.com)
+# Copyright (C) 2019 Rizqi Nur Assyaufi <bandithijo@gmail.com>
 #
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions
-# are met:
-# 1. Redistributions of source code must retain the above copyright
-#    notice, this list of conditions and the following disclaimer.
-# 2. Redistributions in binary form must reproduce the above copyright
-#    notice, this list of conditions and the following disclaimer in the
-#    documentation and/or other materials provided with the distribution.
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
 #
-# THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
-# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-# ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
-# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
-# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
-# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
-# SUCH DAMAGE.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 Process.setproctitle("notify-hightemp")
 
-#require 'open3'
+require 'open3'
 
 CPU_TEMP_THRESHOLD = 90  # <- Normaly 90-100
-NOTIF_DURATION = 2.5     # <- Second
-NOTIF_VOLUME = 5         # <- Range 0-10
+NOTIF_DURATION = 2.5     # <- Duration in second
+NOTIF_VOLUME = 5         # <- Range between 0-10
 
 def notif_volume_converter(value)
   volume_rate = value * 6553.6
@@ -37,23 +29,19 @@ end
 
 begin
   while true
-    # For GNU/Linux
-    #capture_temp = "cat /sys/class/thermal/thermal_zone0/temp"
-    #temp = Open3.capture2(capture_temp)
-    #temp_cpu = (temp[0].to_i / 1000)
-    # For FreeBSD
-    capture_temp = `sysctl -n dev.cpu.0.temperature`
-    temp_cpu = capture_temp.delete_suffix(".0C\n").to_i
+    capture_temp = "cat /sys/class/thermal/thermal_zone0/temp"
+    temp = Open3.capture2(capture_temp)
+    temp_cpu = (temp[0].to_i / 1000)
     temp_threshold = CPU_TEMP_THRESHOLD
     notif_duration = (NOTIF_DURATION * 1000).to_i
     notif_volume = notif_volume_converter(NOTIF_VOLUME)
 
     if temp_cpu >= temp_threshold
-      # If using dunst
       system("notify-send 'High CPU Temperature''!' 'The CPU has been hard at work in the past minute.' --urgency=critical --expire-time=#{notif_duration}")
-      # If using xfce4-notify
-      #system("notify-send 'High CPU Temperature''!' 'The CPU has been hard at work in the past minute.'")
-      system("paplay /usr/home/bandithijo/snd/Ringtones/Alert/aircraftalarm.wav --volume=#{notif_volume}")
+      system("paplay /home/bandithijo/snd/Ringtones/Alert/aircraftalarm.wav --volume=#{notif_volume}")
+      if system("which thinkalert > /dev/null 2>&1") == true
+        system("thinkalert 5")
+      end
     end
 
     sleep(5)

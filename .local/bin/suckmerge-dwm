@@ -1,13 +1,15 @@
-#!/usr/local/bin/ruby
+#!/usr/bin/env ruby
 
 puts "=> Convert All Branch to Patch"
 system """
 suckdiff &&
+git checkout master
 git reset --hard origin/master
 """
 puts "=> Converting COMPLETE!"
 
 branches = [
+# Enable branch
 'config',
 'actualfullscreen',
 'autostart',
@@ -18,7 +20,7 @@ branches = [
 'statusallmons',
 'zoomswap',
 'center',
-'rules',              # merge /w: center
+'rules',              # merge /w: config, center
 'fullgaps',           # merge /w: config
 'cfacts',             # merge /w: config, movestack, fullgaps
 'keys',               # merge /w: config
