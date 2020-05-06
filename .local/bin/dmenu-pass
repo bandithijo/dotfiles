@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+
+# call sanitizer for sanitize the dust
+/usr/local/bin/sanitizer
+
+shopt -s nullglob globstar
+
+password_files=( ~/.password-store/**/*.gpg )
+password_files=( "${password_files[@]##*/.password-store/}" )
+password_files=( "${password_files[@]%.gpg}" )
+
+password=$(printf '%s\n' "${password_files[@]}" | dmenu -i -m 0 -fn 'FuraCode Nerd Font:style=Medium,Regular:size=8' -nb '#222222' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee' -p 'Account:' -l 8 "$@")
+
+pass -c "$password"

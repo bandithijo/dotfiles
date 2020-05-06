@@ -24,10 +24,12 @@
 # SUCH DAMAGE.
 
 # FreeBSD
-#temp_cpu0=$(sysctl -n dev.cpu.0.temperature | cut -d "." -f1)
-#echo " "$temp_cpu0"°C"
+#cap_percentage=$(df -h / | tail -1 | awk '{print $(NF-1)}' | cut -d "G" -f1)
+#cap_avail=$(df -h / | tail -1 | awk '{print $(NF-2)}' | cut -d "G" -f1)
+#cap_total=$(df -h / | tail -1 | awk '{print $(NF-4)}' | cut -d "G" -f1)
+#echo $cap_avail"/"$cap_total"G ("$cap_percentage")"
+#echo $cap_percentage
 
 # GNU/Linux
-get_temp_cpu0=$(cat /sys/class/thermal/thermal_zone0/temp)
-temp_cpu0=$(($get_temp_cpu0/1000))
-echo " "$temp_cpu0"°C"
+cap_percentage=$(df -h --output=pcent / | awk 'NR%2==0 {print $0}')
+echo ""$cap_percentage

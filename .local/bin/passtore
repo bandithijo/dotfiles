@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+
+#  ██████                           ██ ██   ██   ██      ██ ██    ██
+# ░█░░░░██                         ░██░░   ░██  ░██     ░██░░    ░░
+# ░█   ░██   ██████   ███████      ░██ ██ ██████░██     ░██ ██    ██  ██████
+# ░██████   ░░░░░░██ ░░██░░░██  ██████░██░░░██░ ░██████████░██   ░██ ██░░░░██
+# ░█░░░░ ██  ███████  ░██  ░██ ██░░░██░██  ░██  ░██░░░░░░██░██   ░██░██   ░██
+# ░█    ░██ ██░░░░██  ░██  ░██░██  ░██░██  ░██  ░██     ░██░██ ██░██░██   ░██
+# ░███████ ░░████████ ███  ░██░░██████░██  ░░██ ░██     ░██░██░░███ ░░██████
+# ░░░░░░░   ░░░░░░░░ ░░░   ░░  ░░░░░░ ░░    ░░  ░░      ░░ ░░  ░░░   ░░░░░░
+
+# Copyright (C) 2020 BanditHijo
+#
+# This program is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your option)
+# any later version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+# more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see http://www.gnu.org/licenses/.
+
+# author  : BanditHijo
+# website : https://bandithijo.com
+# email   : bandithijo@gmail.com
+# created : 2018
+
+# WHAT IS THIS?
+# passtore, is simple bash script for encrypt and decrypt .password-store
+# for password input interface, use pinentry-dmenu for happy life.
+
+# HOW TO USE?
+# $ passtore 0 (for encrypted/lock)
+# $ passtore 1 (for decrypted/unlock )
+
+status=${1}
+
+# Put your GPG ID here
+gpgid=AE706A616B252A6822635041560691E942A02F91
+
+encrypt () {
+    encrypted=$HOME/.password-store.gpg
+    if [ -e "$encrypted" ]; then
+        echo '=> Password Store Has Encrypted.'
+    else
+        tar -czf .password-store.tar.gz .password-store 2>/dev/null
+        gpg --sign --encrypt --batch --no -r $gpgid -o .password-store.gpg .password-store.tar.gz 2>/dev/null
+        compressed=$HOME/.password-store.gpg
+        if [ -e "$compressed" ]; then
+            rm -rf .password-store.tar.gz
+            rm -rf .password-store
+            echo '=> Password Store Has Successful Encrypted!'
+        else
+            rm -rf .password-store.tar.gz
+            echo '=> Not Yet Encrypted.'
+        fi
+    fi
+}
+
+decrypt () {
+    decrypted=$HOME/.password-store
+    if [ -e "$decrypted" ]; then
+        echo '=>Password Store Has Decrypted.'
+    else
+        gpg -o .password-store.tar.gz --decrypt .password-store.gpg 2>/dev/null
+        tar -xzf .password-store.tar.gz 2>/dev/null
+        compressed=$HOME/.password-store.tar.gz
+        if [ -e "$compressed" ]; then
+            rm -rf .password-store.gpg
+            rm -rf .password-store.tar.gz
+            echo '=> Password Store Has Successful Decrypted!'
+        else
+            echo '=> Not Yet Decrypted.'
+        fi
+    fi
+}
+
+if [ $status == 0 ]; then
+    encrypt
+elif [ $status == 1 ]; then
+    decrypt
+else
+    echo 'SYNTAX_ERROR: Wrong input format!!!'
+    echo ''
+    echo '$ passman [0/1]'
+    echo ''
+    echo '0: encryped, 1: decrypted'
+fi

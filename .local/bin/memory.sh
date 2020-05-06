@@ -24,10 +24,20 @@
 # SUCH DAMAGE.
 
 # FreeBSD
-#temp_cpu0=$(sysctl -n dev.cpu.0.temperature | cut -d "." -f1)
-#echo " "$temp_cpu0"°C"
+#mem_phys=$(sysctl -n hw.physmem)
+#mem_hw=$mem_phys
+#pagesize=$(sysctl -n hw.pagesize)
+#mem_inactive=$(( $(sysctl -n vm.stats.vm.v_inactive_count) * $pagesize))
+#mem_cache=$(( $(sysctl -n vm.stats.vm.v_cache_count) * $pagesize))
+#mem_free=$(( $(sysctl -n vm.stats.vm.v_free_count) * $pagesize))
+#mem_total=$mem_hw
+#mem_avail=$(( $mem_inactive + $mem_cache + $mem_free ))
+#mem_used=$(( $mem_total - $mem_avail ))
+#mem_usage=$(( $mem_used * 100 / $mem_total ))
+#echo $mem_usage
 
 # GNU/Linux
-get_temp_cpu0=$(cat /sys/class/thermal/thermal_zone0/temp)
-temp_cpu0=$(($get_temp_cpu0/1000))
-echo " "$temp_cpu0"°C"
+mem_total=$(free | awk 'NR%2==0 {print $2}')
+mem_used=$(free | awk 'NR%2==0 {print $3}')
+mem_usage=$(( $mem_used * 100 / $mem_total ))
+echo " "$mem_usage"%"

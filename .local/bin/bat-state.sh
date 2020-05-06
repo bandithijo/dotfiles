@@ -1,13 +1,25 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-state=$(sysctl -n hw.acpi.battery.state)
+# FreeBSD
+#state=$(sysctl -n hw.acpi.battery.state)
+#if [ $state = "2" ]; then
+#    echo " " # charging
+#elif [ $state = "1" ]; then
+#    echo ""  # discharging
+#elif [ $state = "0" ]; then
+#    echo " " # idle
+#else
+#    echo ""  # unknown
+#fi
 
-if [ $state = "2" ]; then
+# GNU/Linux
+state=$(cat /sys/devices/platform/smapi/BAT0/state)
+if [ $state = "charging" ]; then
     echo " " # charging
-elif [ $state = "1" ]; then
-    echo ""  # discharging
-elif [ $state = "0" ]; then
+elif [ $state = "discharging" ]; then
+    echo " " # discharging
+elif [ $state = "idle" ]; then
     echo " " # idle
 else
-    echo ""  # unknown
+    echo " " # unknown
 fi

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+dmenu -i -m 0 -fn 'FuraCode Nerd Font:style=Medium,Regular:size=8' -nb '#222222' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee' -p 'Clipboard:' -l 8

@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
 
 # Copyright (c) 2020 Rizqi Nur Assyaufi (bandithijo@gmail.com)
 #
@@ -23,7 +23,9 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 
-wlan_do=$(ifstat -i wlan0 1 1 | awk 'NR%3==0 {print $1}')
-wlan_up=$(ifstat -i wlan0 1 1 | awk 'NR%3==0 {print $2}')
+wlan_card='wls3'
+
+wlan_do=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $1}')
+wlan_up=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $2}')
 
 echo "" $wlan_do "" $wlan_up "KB/s"
