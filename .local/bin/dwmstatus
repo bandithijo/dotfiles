@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-# For dwmstatus
-while true; do
-    xsetroot -name " $($HOME/bin/network-wlan-tfc.sh) $($HOME/bin/cpu-temp.sh) $($HOME/bin/memory.sh) $($HOME/bin/filesystem.sh) $($HOME/bin/volume.sh) $(date +" 0%u%y%m%d%H%M") $($HOME/bin/bat-state.sh) $($HOME/bin/bat-capacity.sh)  BANDITHIJO "
-    sleep 1
-done

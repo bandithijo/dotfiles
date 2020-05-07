@@ -23,9 +23,24 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 
-wlan_card='wls3'
+## FreeBSD
+#mute=$(sysctl -n dev.acpi_ibm.0.mute)
+#if [ $mute = "1" ]; then
+#    echo "MUTE"
+#elif [ $mute = "0" ]; then
+#    volume=`mixer vol | awk '{print $(NF)}' | cut -d ":" -f1`
+#    echo $volume"%"
+#else
+#    echo "ERROR"
+#fi
 
-wlan_do=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $1}')
-wlan_up=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $2}')
-
-echo "" $wlan_do "" $wlan_up "KB/s"
+# GNU/Linux
+mute=$(pamixer --get-mute)
+if [ $mute = "true" ]; then
+    echo " MUTE"
+elif [ $mute = "false" ]; then
+    volume=$(pamixer --get-volume-human)
+    echo " "$volume
+else
+    echo " ERROR"
+fi

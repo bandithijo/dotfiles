@@ -1,4 +1,4 @@
-#!/bin/env sh
+#!/bin/sh
 
 status=${1}
 

@@ -125,4 +125,6 @@ alias xpdf="xpdf -cfg ~/.config/xpdf/xpdfrc"
 
 alias xfreerdp="xfreerdp /h:751 /w:1023 /sound:sys:oss /video"
 
+alias shoes="~/.shoes/walkabout/shoes"
+
 # -------------------------------------------------------------------END ALIAS

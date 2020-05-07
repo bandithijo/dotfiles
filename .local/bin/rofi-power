@@ -26,15 +26,19 @@ then
         ;;
       Reboot)
         systemctl reboot
+        #shutdown -r now
         ;;
       Power-off)
         systemctl poweroff
+        #shutdown -p now
         ;;
       Suspend)
         $($USE_LOCKER) && "$LOCKER"; systemctl suspend
+        #acpiconf -s 3
         ;;
       Hibernate)
-        $($USE_LOCKER) && "$LOCKER"; systemctl hibernate
+        #$($USE_LOCKER) && "$LOCKER"; systemctl hibernate
+        notify-send "CAUTION!" "Hibernate Feature not implemented yet." --urgency=critical
         ;;
       *)
         ;;

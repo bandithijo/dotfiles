@@ -1,4 +1,4 @@
-#!/bin/env sh
+#!/bin/sh
 
 pilihan="BSPWM\nMPV\nST\nTMUX\nVIM"
 

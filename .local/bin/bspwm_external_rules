@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 
 # External rules for BSPWM.  This script is part of my dotfiles:
 # https://gitlab.com/protesilaos/dotfiles.

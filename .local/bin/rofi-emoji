@@ -1,5 +1,5 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
-grep -v "#" ~/.emoji | rofi -dmenu -m 0 -lines 10 -width 400 -i -sort -p EMOJI | awk '{print $1}' | tr -d '\n' | xclip -selection clipboard
+grep -v "#" ~/.emoji | rofi -dmenu -m 0 -lines 10 -width 300 -i -sort -p EMOJI | awk '{print $1}' | tr -d '\n' | xclip -selection clipboard
 
 # pgrep -x dunst >/dev/null && notify-send "$(xclip -o -selection clipboard) copied to clipboard!"

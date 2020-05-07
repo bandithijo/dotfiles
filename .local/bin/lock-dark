@@ -1,8 +1,8 @@
-#!/bin/env bash
+#!/usr/local/bin/bash
 #: yuune i3lock-color wrapper
 #: after changing wallpaper, run "lock reload" to redraw the new wallpaper
 
-wallpaper="/home/bandithijo/pic/Wallpapers/archWallpaper/Arch-Wallpaper-11X-dark.png"
+wallpaper="/home/bandithijo/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11X-dark.png"
 
 tmpwall="/tmp/$USER-lock.png"
 eval $(xdotool getdisplaygeometry --shell)
@@ -11,9 +11,17 @@ genwp () {
         rm $tmpwall 2&>/dev/null
     fi
 
+    # if [[ ! -f $tmpwall ]]; then
+    #     convert "$wallpaper" -resize ${WIDTH}x -gravity center -crop ${WIDTH}x${HEIGHT}+0+0 +repage \( \
+    #         -size 120x140 xc:none \
+    #         -draw "roundrectangle 0,0,120,140,20,20" \
+    #         -draw "rectangle 0,140 120,120" -normalize +level 0,0% \
+    #         \) -gravity south -compose over -composite $tmpwall
+    # fi
+
     if [[ ! -f $tmpwall ]]; then
         convert "$wallpaper" -resize ${WIDTH}x -gravity center -crop ${WIDTH}x${HEIGHT}+0+0 +repage \( \
-            -size 120x140 xc:none \
+            -size 0x0 xc:none \
             -draw "roundrectangle 0,0,120,140,20,20" \
             -draw "rectangle 0,140 120,120" -normalize +level 0,0% \
             \) -gravity south -compose over -composite $tmpwall
@@ -22,20 +30,20 @@ genwp () {
 
         # --indpos="$WIDTH-88:$HEIGHT-75" --timepos="$WIDTH/2:$HEIGHT/2+30" \
 runlock () {
-    i3lock -n --beep --color 002B36 --force-clock -i $tmpwall \
-        --indpos="$WIDTH-975:$HEIGHT-50" --timepos="$WIDTH/2:$HEIGHT/2+30" \
+    i3lock -n --beep --color CCCCCC --force-clock -i $tmpwall \
+        --indpos="$WIDTH/2:$HEIGHT/2+300" --timepos="$WIDTH/2:$HEIGHT/2+30" \
         --insidevercolor=00000000 --insidewrongcolor=00000000 --insidecolor=00000000 \
         --ringvercolor=FFCC00aa --ringwrongcolor=ff0000aa --ringcolor=ededed77 \
         --keyhlcolor=ededed99 --bshlcolor=ededed99 --separatorcolor=00000000 \
-        --layoutcolor=00000000 \
+        --layoutcolor=CCCCCCFF \
         --line-uses-ring \
         --timestr="%H%M" \
-        --timecolor=BCC3C3ff \
-        --time-font="Fira Code Retina" \
-        --timesize=110 \
+        --timecolor=CCCCCCFF \
+        --time-font="sans-serif" \
+        --timesize=90 \
         --datestr="0%w%Y%m%d" \
-        --datecolor=BCC3C3aa \
-        --date-font="Fira Code Retina" \
+        --datecolor=CCCCCCAA \
+        --date-font="sans-serif" \
         --datesize=12 \
         --radius 20 --ring-width 15 \
         --indicator \
@@ -46,24 +54,24 @@ runlock () {
         --lockfailedtext=""
 }
 
-slowfade () {
-    dis=$(echo -n "$DISPLAY" | tr -c '[:alnum:]' _)
-    ifc='com.github.chjj.compton'
-    obj='/com/github/chjj/compton'
-    if [[ "$1" == "start" ]]; then
-        dbus-send --print-reply --dest=$ifc.$dis \
-            $obj $ifc.opts_set string:fade_in_step double:0.05
-        dbus-send --print-reply --dest=$ifc.$dis \
-            $obj $ifc.opts_set string:fade_out_step double:0.05
-    else
-        dbus-send --print-reply --dest=$ifc.$dis \
-            $obj $ifc.opts_set string:fade_in_step double:0.05
-        dbus-send --print-reply --dest=$ifc.$dis \
-            $obj $ifc.opts_set string:fade_out_step double:0.05
-    fi
-}
+# slowfade () {
+#     dis=$(echo -n "$DISPLAY" | tr -c '[:alnum:]' _)
+#     ifc='com.github.chjj.compton'
+#     obj='/com/github/chjj/compton'
+#     if [[ "$1" == "start" ]]; then
+#         dbus-send --print-reply --dest=$ifc.$dis \
+#             $obj $ifc.opts_set string:fade_in_step double:0.05
+#         dbus-send --print-reply --dest=$ifc.$dis \
+#             $obj $ifc.opts_set string:fade_out_step double:0.05
+#     else
+#         dbus-send --print-reply --dest=$ifc.$dis \
+#             $obj $ifc.opts_set string:fade_in_step double:0.05
+#         dbus-send --print-reply --dest=$ifc.$dis \
+#             $obj $ifc.opts_set string:fade_out_step double:0.05
+#     fi
+# }
 
-slowfade start
+# slowfade start
 genwp $1
 runlock
-slowfade end
+# slowfade end

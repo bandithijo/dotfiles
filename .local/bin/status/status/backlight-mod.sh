@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/local/bin/bash
 
 # Copyright (c) 2020 Rizqi Nur Assyaufi (bandithijo@gmail.com)
 #
@@ -23,11 +23,5 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 
-# FreeBSD
-#temp_cpu0=$(sysctl -n dev.cpu.0.temperature | cut -d "." -f1)
-#echo " "$temp_cpu0"°C"
-
-# GNU/Linux
-get_temp_cpu0=$(cat /sys/class/thermal/thermal_zone0/temp)
-temp_cpu0=$(($get_temp_cpu0/1000))
-echo " "$temp_cpu0"°C"
+backlight=$(sysctl -n hw.acpi.video.lcd0.brightness | awk '{print $(NF)}')
+echo $backlight

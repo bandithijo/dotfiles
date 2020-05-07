@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
 
 # Copyright (c) 2020 Rizqi Nur Assyaufi (bandithijo@gmail.com)
 #
@@ -23,17 +23,13 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 
-mem_phys=$(sysctl -n hw.physmem)
-mem_hw=$mem_phys
-pagesize=$(sysctl -n hw.pagesize)
+# FreeBSD
+#cap_percentage=$(df -h / | tail -1 | awk '{print $(NF-1)}' | cut -d "G" -f1)
+#cap_avail=$(df -h / | tail -1 | awk '{print $(NF-2)}' | cut -d "G" -f1)
+#cap_total=$(df -h / | tail -1 | awk '{print $(NF-4)}' | cut -d "G" -f1)
+#echo $cap_avail"/"$cap_total"G ("$cap_percentage")"
+#echo $cap_percentage
 
-mem_inactive=$(( $(sysctl -n vm.stats.vm.v_inactive_count) * $pagesize))
-mem_cache=$(( $(sysctl -n vm.stats.vm.v_cache_count) * $pagesize))
-mem_free=$(( $(sysctl -n vm.stats.vm.v_free_count) * $pagesize))
-
-mem_total=$mem_hw
-mem_avail=$(( $mem_inactive + $mem_cache + $mem_free ))
-mem_used=$(( $mem_total - $mem_avail ))
-mem_usage=$(( $mem_used * 100 / $mem_total ))
-
-echo $mem_usage
+# GNU/Linux
+cap_percentage=$(df -h --output=pcent / | awk 'NR%2==0 {print $0}')
+echo ""$cap_percentage

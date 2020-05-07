@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 sanitizer
-pkill -f "bash /home/bandithijo/bin/dwmstatus"; dwmstatus &
+pkill -f "bash /home/bandithijo/bin/dwmbar"; dwmbar &
 killall dunst; dunst -config ~/.config/dunst/dunstrc &
 xsetroot -solid "#222222"
 xsetroot -cursor_name left_ptr
@@ -15,7 +15,7 @@ feh --bg-fill -Z $WALLPAPER2
 xcompmgr &
 
 
-# Not used anymore
+# I'm not use this anymore
 #killall xautolock; xautolock -time 60 -locker "~/bin/lock-dark" &
 #$HOME/.config/polybar/launch.sh
 #killall picom; picom --config ~/.config/picom/picom.conf --no-use-damage &
