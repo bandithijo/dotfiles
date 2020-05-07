@@ -8,9 +8,4 @@
  | | | | | | (_| \__ \ | |_) | | | (_) |
  |_| |_| |_|\__,_|___/ |____/|_|  \___/
 
-Apabila terdapat script yang tidak jalan. Bisa periksa pada bagian path yang
-digunakan. Karena terhitung mulai per Maret 2020, saya sudah bermigrasi ke
-FreeBSD.
-
-
 -- Rizqi Nur Assyaufi (bandithijo@gmail.com)
