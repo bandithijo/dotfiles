@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-j4-dmenu-desktop --dmenu="dmenu -i -m 0 -fn 'FuraCode Nerd Font:style=Medium,Regular:size=8' -nb '#222222' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee' -p 'Run:'"
+j4-dmenu-desktop --dmenu="dmenu -i -m 0 -p 'Run:'"

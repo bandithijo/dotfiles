@@ -64,7 +64,7 @@ encrypt () {
 decrypt () {
     decrypted=$HOME/.password-store
     if [ -e "$decrypted" ]; then
-        echo '=>Password Store Has Decrypted.'
+        echo '=> Password Store Has Decrypted.'
     else
         gpg -o .password-store.tar.gz --decrypt .password-store.gpg 2>/dev/null
         tar -xzf .password-store.tar.gz 2>/dev/null

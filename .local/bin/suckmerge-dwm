@@ -10,7 +10,7 @@ puts "=> Converting COMPLETE!"
 
 branches = [
 # Enable branch
-'config',
+'config',               # merge w/: actualfullscreen, scratchpad-gaspar
 'actualfullscreen',
 'autostart',
 'movestack',
@@ -18,18 +18,18 @@ branches = [
 'resizecorners',
 'focusonnetactive',
 'statusallmons',
+'scratchpad-gaspar',
 'zoomswap',
-'center',
-'rules',              # merge /w: config, center
-'fullgaps',           # merge /w: config
-'cfacts',             # merge /w: config, movestack, fullgaps
-'keys',               # merge /w: config
+'savefloats',
+'fullgaps',             # merge /w: config
+'cfacts',               # merge /w: config, movestack, fullgaps
 
 # Disable branch
+#'center',
+#'rules-with-center',   # merge /w: config, center
 #'singularborders',
 #'noborder',
 #'gaps',
-#'attachbottom',
 ]
 
 puts "\n=> Patching All Branch to Master"

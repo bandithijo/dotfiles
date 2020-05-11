@@ -41,14 +41,15 @@ http://vederis.id/feed/ "~Vederis Leunardus" "dotFriends"
 https://protesilaos.com/master.xml "~Protesilaos Stavrou" "dotFriends"
 https://irrellia.github.io/rss.xml "~Manusia Bernapas" "dotfriends"
 https://yeripratama.com/ "~Yeri Pratama | Tic Tech Toe" "dotfriends"
+https://davidxiang.com/feed/ "~David Xiang" "dotfriends"
 
 # Programming Language & Framework
 --------------------------------------------PROGRAMMING_LANGUAGE
-https://www.python.org/dev/peps/peps.rss/ "Programming Language"
 https://www.ruby-lang.org/en/feeds/news.rss "Programming Language"
-https://www.djangoproject.com/rss/weblog/ "Web Framework"
 https://jekyllrb.com/feed.xml "SSG"
 https://www.rubypigeon.com/feed.xml "~Ruby Pigeon"
+https://www.python.org/dev/peps/peps.rss/ "Programming Language"
+https://www.djangoproject.com/rss/weblog/ "Web Framework"
 
 # Podcast
 ---------------------------------------------------------PODCAST

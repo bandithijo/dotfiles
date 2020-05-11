@@ -72,7 +72,7 @@ alias presentationmode-off="xfconf-query -c xfce4-power-manager -p /xfce4-power-
 #alias scrot="scrot 'Screenshot\ from\ %Y-%m-%d %H-%M-%S.png' -e 'mv *.png ~/pic/ScreenShot/' -d 3 -c"
 
 # ncpamixer
-alias ncpamixer="ncpamixer -c .ncpamixer.conf"
+alias ncpamixer="ncpamixer -c ~/.ncpamixer.conf"
 
 # macchanger
 alias macchanger-on="sudo mv /etc/systemd/network/00-default.link.bak /etc/systemd/network/00-default.link && echo 'Reboot to take effect !'"

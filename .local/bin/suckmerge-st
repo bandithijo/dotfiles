@@ -16,10 +16,10 @@ branches = [
 'scrollback',
 'scrollback-mouse',
 'bold-is-not-bright',
-'ligatures-boxdraw',
+'alpha',                    # merge /w: boxdraw
+'ligatures-boxdraw-alpha',  # merge /w: alpha
 
 # Disable branch
-#'alpha',                # merge /w: boxdraw
 ]
 
 puts "\n=> Patching All Branch to Master"

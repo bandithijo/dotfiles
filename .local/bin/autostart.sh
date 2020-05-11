@@ -3,13 +3,13 @@
 sanitizer
 pkill -f "bash /home/bandithijo/bin/dwmbar"; dwmbar &
 killall dunst; dunst -config ~/.config/dunst/dunstrc &
-xsetroot -solid "#222222"
+xsetroot -solid "#1E1E1E"
 xsetroot -cursor_name left_ptr
 xinput set-button-map "TPPS/2 IBM TrackPoint" 1 0 3
 killall unclutter; unclutter --timeout 3
 pkill -f "notify-hightemp"; notify-hightemp &
-pkill -f "bash /usr/bin/clipmenud";killall clipnotify; clipmenud &
-killall flameshot; flameshot &
+pkill -f "bash /usr/bin/clipmenud"; killall clipnotify; /usr/bin/clipmenud &
+killall flameshot; /usr/bin/flameshot &
 killall lxpolkit; lxpolkit &
 feh --bg-fill -Z $WALLPAPER2
 xcompmgr &
