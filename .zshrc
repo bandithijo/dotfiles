@@ -49,9 +49,11 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/pip
     zgen oh-my-zsh plugins/postgres
     zgen oh-my-zsh plugins/pass
+    zgen oh-my-zsh plugins/rails
     zgen oh-my-zsh plugins/ruby
     zgen oh-my-zsh plugins/rake
     zgen oh-my-zsh plugins/rbenv
+    zgen oh-my-zsh plugins/rsync
     zgen oh-my-zsh plugins/sudo
     zgen oh-my-zsh plugins/systemd
     zgen oh-my-zsh plugins/tmux
@@ -140,7 +142,20 @@ DISABLE_AUTO_TITLE="true"
 
 
 
-
+ # Untuk merubah titlebar dari st terminal
+ # Sumber: http://www.faqs.org/docs/Linux-mini/Xterm-Title.html#s5
+ case $TERM in
+     st*)
+     precmd () {
+         # menampilkan direktori aktif (kondisi default)
+         print -Pn "\e]0;st:%~\a"
+     }
+     preexec () {
+         # menampilkan program yang sedang berjalan
+         print -Pn "\e]0;st:$1\a"
+     }
+     ;;
+ esac
 
 # Import alias from .aliases
 [ -f ~/.aliases ] && source ~/.aliases

@@ -21,12 +21,11 @@ branches = [
 'scratchpad-gaspar',
 'zoomswap',
 'savefloats',
+'center',
 'fullgaps',             # merge /w: config
 'cfacts',               # merge /w: config, movestack, fullgaps
 
 # Disable branch
-#'center',
-#'rules-with-center',   # merge /w: config, center
 #'singularborders',
 #'noborder',
 #'gaps',

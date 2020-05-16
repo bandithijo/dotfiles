@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# For dwmstatus
+# For dwm status
 while true; do
-    xsetroot -name " $($HOME/bin/status/network-wlan-tfc.sh) $($HOME/bin/status/cpu-temp.sh) $($HOME/bin/status/memory.sh) $($HOME/bin/status/filesystem.sh) $($HOME/bin/status/volume.sh) $(date +" 0%u%y%m%d%H%M") $($HOME/bin/status/bat-state.sh) $($HOME/bin/status/bat-capacity.sh)  BANDITHIJO "
-    sleep 1
+    xsetroot -name "$(cat $HOME/.recordingicon) $($HOME/bin/status/network-wlan-tfc.sh) $($HOME/bin/status/cpu-temp.sh) $($HOME/bin/status/memory.sh) $($HOME/bin/status/filesystem.sh) $($HOME/bin/status/volume.sh) $(date +" 0%u%y%m%d%H%M") $($HOME/bin/status/bat-state.sh) $($HOME/bin/status/bat-capacity.sh)  BANDITHIJO "
+    sleep 0.5
 done

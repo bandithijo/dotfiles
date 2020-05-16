@@ -11,13 +11,18 @@ puts "=> Converting COMPLETE!"
 branches = [
 # Enable branch
 'config',
+'clipboard',
+'font2',
+'force-redraw',
 'xresources',
 'boxdraw',
+'newterm',                  # merge \w: scrollback, openclipboard
 'scrollback',
 'scrollback-mouse',
+'openclipboard',
 'bold-is-not-bright',
-'alpha',                    # merge /w: boxdraw
-'ligatures-boxdraw-alpha',  # merge /w: alpha
+'alpha',                    # merge \w: boxdraw
+'ligatures-boxdraw-alpha',  # merge \w: alpha
 
 # Disable branch
 ]

@@ -27,7 +27,7 @@ x-scheme-handler/remmina=org.remmina.Remmina.desktop
 application/x-remmina=org.remmina.Remmina.desktop
 application/x-compressed-tar=org.gnome.FileRoller.desktop
 application/x-tar=org.gnome.FileRoller.desktop
-application/zip=org.gnome.FileRoller.desktop
+application/zip=xarchiver.desktop
 text/css=nvim.desktop
 image/svg+xml=org.inkscape.Inkscape.desktop
 
@@ -50,7 +50,6 @@ image/x-xpixmap=gpicview.desktop;ristretto.desktop;gimp.desktop;userapp-"gimp"-5
 x-scheme-handler/mailto=userapp-Thunderbird-DSFLG0.desktop;
 message/rfc822=userapp-Thunderbird-DSFLG0.desktop;
 image/jpeg=org.gnome.gThumb.desktop;gimp.desktop;gpicview.desktop;ristretto.desktop;
-video/mp4=mpv.desktop;deadbeef.desktop;
 image/svg+xml=inkscape.desktop;gpicview.desktop;org.inkscape.Inkscape.desktop;
 text/x-c++src=mousepad.desktop;nvim.desktop;
 application/x-ruby=nvim.desktop;
@@ -89,3 +88,4 @@ application/x-cd-image=gnome-disk-image-mounter.desktop;
 application/x-raw-disk-image=gnome-disk-image-writer.desktop;
 
 [Removed Associations]
+video/mp4=mpv.desktop;
