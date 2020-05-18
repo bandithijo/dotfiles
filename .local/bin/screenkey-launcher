@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-if pgrep -x screenkey > /dev/null; then
-    notify-send "ScreenKey" "The screenkey still running."
-else
+if ! pgrep -x screenkey > /dev/null; then
     /usr/bin/screenkey
 fi
