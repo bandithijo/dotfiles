@@ -9,7 +9,9 @@ alias doas="sudo"
 alias doasedit="sudoedit"
 
 # list ls
+alias l="ls"
 alias ll="ls -l"
+alias lll="ls -alh"
 
 # Firefox with Tor
 alias fireprox="torsocks env firefox --private-window"
@@ -126,5 +128,7 @@ alias xpdf="xpdf -cfg ~/.config/xpdf/xpdfrc"
 alias xfreerdp="xfreerdp /h:751 /w:1023 /sound:sys:oss /video"
 
 alias shoes="~/.shoes/walkabout/shoes"
+
+alias cpuinfo="watch -n1 \"cat /proc/cpuinfo | grep 'MHz'\""
 
 # -------------------------------------------------------------------END ALIAS

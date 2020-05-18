@@ -37,8 +37,8 @@ then
         #acpiconf -s 3
         ;;
       Hibernate)
-        #$($USE_LOCKER) && "$LOCKER"; systemctl hibernate
-        notify-send "CAUTION!" "Hibernate Feature not implemented yet." --urgency=critical
+        $($USE_LOCKER) && "$LOCKER"; systemctl hibernate
+        # notify-send "CAUTION!" "Hibernate Feature not implemented yet." --urgency=critical
         ;;
       *)
         ;;

@@ -11,6 +11,8 @@ puts "=> Converting COMPLETE!"
 branches = [
 # Enable branch
 'config',               # merge w/: actualfullscreen, scratchpad-gaspar
+'sticky',               # merge w/: actualfullscreen
+'combo',
 'actualfullscreen',
 'autostart',
 'movestack',
@@ -18,12 +20,13 @@ branches = [
 'resizecorners',
 'focusonnetactive',
 'statusallmons',
+'systray',              # merge w/: scratchpad-gaspar, zoomswap
 'scratchpad-gaspar',
 'zoomswap',
 'savefloats',
 'center',
-'fullgaps',             # merge /w: config
-'cfacts',               # merge /w: config, movestack, fullgaps
+'fullgaps',             # merge w/: config
+'cfacts',               # merge w/: config, movestack, fullgaps
 
 # Disable branch
 #'singularborders',

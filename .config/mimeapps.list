@@ -86,6 +86,7 @@ text/csv=nvim.desktop;libreoffice-calc.desktop;
 text/css=geany.desktop;vim.desktop;nvim.desktop;
 application/x-cd-image=gnome-disk-image-mounter.desktop;
 application/x-raw-disk-image=gnome-disk-image-writer.desktop;
+application/rtf=nvim.desktop;
 
 [Removed Associations]
 video/mp4=mpv.desktop;

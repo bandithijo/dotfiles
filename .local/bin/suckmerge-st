@@ -16,7 +16,8 @@ branches = [
 'force-redraw',
 'xresources',
 'boxdraw',
-'newterm',                  # merge \w: scrollback, openclipboard
+'invert',
+'newterm',                  # merge \w: scrollback, openclipboard, invert
 'scrollback',
 'scrollback-mouse',
 'openclipboard',
