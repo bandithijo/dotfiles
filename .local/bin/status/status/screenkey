@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-if pgrep -x screenkey > /dev/null; then
-    echo " "
-fi

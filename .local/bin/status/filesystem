@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env bash
 
 # MIT License
 
@@ -22,24 +22,13 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-remote_repo = "bandithijo"
+# FreeBSD
+#cap_percentage=$(df -h / | tail -1 | awk '{print $(NF-1)}' | cut -d "G" -f1)
+#cap_avail=$(df -h / | tail -1 | awk '{print $(NF-2)}' | cut -d "G" -f1)
+#cap_total=$(df -h / | tail -1 | awk '{print $(NF-4)}' | cut -d "G" -f1)
+#echo $cap_avail"/"$cap_total"G ("$cap_percentage")"
+#echo $cap_percentage
 
-puts "=> Reset the master branch"
-system """
-git checkout master
-git reset --hard origin/master
-"""
-puts "=> Reseting COMPLETE!"
-
-branch_list = `git branch`
-branches = branch_list.split(" ").reject{ |n| n == "*" || n == "master" }.unshift("master")
-
-puts "\n=> Push each branch to GitHub"
-for branch in branches do
-  print "Pushing #{branch}... "
-  `git checkout #{branch}  > /dev/null 2>&1`
-  `git push -u #{remote_repo} #{branch} > /dev/null 2>&1`
-  print "DONE\n"
-end
-`git checkout master > /dev/null 2>&1`
-puts "=> All Pushing COMPLETE!"
+# GNU/Linux
+cap_percentage=$(df -h --output=pcent / | awk 'NR%2==0 {print $0}')
+echo ""$cap_percentage

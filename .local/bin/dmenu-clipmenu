@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-dmenu -i -m 0 -p 'Clipboard:' -l 8
+dmenu -i -m 0 -l 8

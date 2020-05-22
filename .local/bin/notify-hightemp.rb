@@ -38,8 +38,8 @@ begin
 
     if temp_cpu >= temp_threshold
       system("notify-send 'High CPU Temperature''!' 'The CPU has been hard at work in the past minute.' --urgency=critical --expire-time=#{notif_duration}")
-      system("paplay /home/bandithijo/snd/Ringtones/Alert/aircraftalarm.wav --volume=#{notif_volume}")
-      if system("which thinkalert > /dev/null 2>&1") == true
+      system("paplay $HOME/snd/Ringtones/Alert/aircraftalarm.wav --volume=#{notif_volume}")
+      if system("which thinkalert > /dev/null 2>&1") == true  # <- Need to install thinkalert
         system("thinkalert 5")
       end
     end

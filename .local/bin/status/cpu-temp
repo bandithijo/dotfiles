@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env bash
 
 # MIT License
 
@@ -22,24 +22,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-remote_repo = "bandithijo"
+# FreeBSD
+#temp_cpu0=$(sysctl -n dev.cpu.0.temperature | cut -d "." -f1)
+#echo " "$temp_cpu0"°C"
 
-puts "=> Reset the master branch"
-system """
-git checkout master
-git reset --hard origin/master
-"""
-puts "=> Reseting COMPLETE!"
-
-branch_list = `git branch`
-branches = branch_list.split(" ").reject{ |n| n == "*" || n == "master" }.unshift("master")
-
-puts "\n=> Push each branch to GitHub"
-for branch in branches do
-  print "Pushing #{branch}... "
-  `git checkout #{branch}  > /dev/null 2>&1`
-  `git push -u #{remote_repo} #{branch} > /dev/null 2>&1`
-  print "DONE\n"
-end
-`git checkout master > /dev/null 2>&1`
-puts "=> All Pushing COMPLETE!"
+# GNU/Linux
+get_temp_cpu0=$(cat /sys/class/thermal/thermal_zone0/temp)
+temp_cpu0=$(($get_temp_cpu0/1000))
+echo " "$temp_cpu0"°C"

@@ -23,7 +23,6 @@ killrecording() {
   exit
 }
 
-  # "$HOME/vid/ScreenRecorder/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
 screencast() { \
   ffmpeg -y \
   -f x11grab \
@@ -31,16 +30,17 @@ screencast() { \
   -framerate 30 \
   -s $(xdpyinfo | grep dimensions | awk '{print $2;}') \
   -i :0.0+0,0 \
-  -f pulse -i default \
+  -f pulse -i alsa_output.pci-0000_00_1b.0.analog-stereo.monitor \
+  -f pulse -i alsa_input.pci-0000_00_1b.0.analog-stereo \
+  -filter_complex amix=inputs=2 \
   -c:a aac \
   -c:v libx264rgb -pix_fmt rgb24 -preset veryfast \
-  -threads 0 \
-  "$HOME/vid/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
+  -threads 4 \
+  "$HOME/vid/ScreenRecorder/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
   echo $! > ~/.recordingpid
   updateicon " REC "
 }
 
-  # "$HOME/vid/ScreenRecorder/video-$(date '+%y%m%d-%H%M-%S').mp4" &
 video() { \
   ffmpeg \
   -f x11grab \
@@ -49,8 +49,8 @@ video() { \
   -s $(xdpyinfo | grep dimensions | awk '{print $2;}') \
   -i :0.0+0,0 \
   -c:v libx264 -pix_fmt yuv420p -preset veryfast -q:v 1 \
-  -threads 0 \
-  "$HOME/vid/video-$(date '+%y%m%d-%H%M-%S').mp4" &
+  -threads 4 \
+  "$HOME/vid/ScreenRecorder/video-$(date '+%y%m%d-%H%M-%S').mp4" &
   echo $! > ~/.recordingpid
   updateicon " REC "
 }
@@ -65,6 +65,7 @@ audio() { \
 }
 
 askrecording() { \
+  [ -f ~/.recordingpid ] && asktoend && exit
   choice=$(printf "screencast\\nvideo\\naudio" | $DMENU -p "Record:")
   case "$choice" in
     screencast) screencast;;
@@ -82,5 +83,5 @@ case "$1" in
   screencast) screencast;;
   audio) audio;;
   video) video;;
-  *) ([ -f ~/.recordingpid ] && asktoend && exit) || askrecording;;
+  *) askrecording;;
 esac

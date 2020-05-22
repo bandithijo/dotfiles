@@ -30,6 +30,8 @@ application/x-tar=org.gnome.FileRoller.desktop
 application/zip=xarchiver.desktop
 text/css=nvim.desktop
 image/svg+xml=org.inkscape.Inkscape.desktop
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=wine-extension-docx.desktop
+application/msword=wine-extension-doc.desktop
 
 [Added Associations]
 x-scheme-handler/http=userapp-Firefox-MYNXG0.desktop;firefox.desktop;
@@ -57,7 +59,6 @@ text/markdown=nvim.desktop;
 image/gif=ristretto.desktop;gpicview.desktop;
 video/webm=mpv.desktop;
 audio/mpeg=audacious.desktop;easytag.desktop;deadbeef.desktop;
-audio/ogg=audacious.desktop;mpv.desktop;deadbeef.desktop;
 audio/x-vorbis+ogg=audacious.desktop;deadbeef.desktop;
 audio/mp4=audacious.desktop;mpv.desktop;deadbeef.desktop;
 video/quicktime=mpv.desktop;
@@ -68,10 +69,10 @@ application/vnd.kde.kxmlguirc=nvim.desktop;
 audio/x-wav=audacious.desktop;
 application/x-desktop=nvim.desktop;
 image/heif=gimp.desktop;mpv.desktop;ristretto.desktop;
-application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=wine-extension-docx.desktop;wine-Programs-Microsoft Office-Microsoft Word 2010.desktop;libreoffice-writer.desktop;calibre-gui.desktop;
 image/x-xcf=gimp.desktop;
 application/pdf=gimp.desktop;evince.desktop;inkscape.desktop;libreoffice-draw.desktop;mupdf.desktop;org.gnome.Evince.desktop;
-text/plain=nvim.desktop;
+text/plain=audacious.desktop;nvim.desktop;
 image/vnd.microsoft.icon=ristretto.desktop;
 application/vnd.oasis.opendocument.text=libreoffice-writer.desktop;
 application/zip=xarchiver.desktop;
@@ -87,6 +88,9 @@ text/css=geany.desktop;vim.desktop;nvim.desktop;
 application/x-cd-image=gnome-disk-image-mounter.desktop;
 application/x-raw-disk-image=gnome-disk-image-writer.desktop;
 application/rtf=nvim.desktop;
+text/calendar=thunderbird.desktop;
+application/msword=wine-Programs-Microsoft Office-Microsoft Word 2010.desktop;wine-extension-doc.desktop;
+video/mp4=mpv.desktop;
 
 [Removed Associations]
-video/mp4=mpv.desktop;
+audio/ogg=mpv.desktop;

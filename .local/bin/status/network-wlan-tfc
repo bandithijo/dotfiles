@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env bash
 
 # MIT License
 
@@ -22,24 +22,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-remote_repo = "bandithijo"
+wlan_card='wls3'
 
-puts "=> Reset the master branch"
-system """
-git checkout master
-git reset --hard origin/master
-"""
-puts "=> Reseting COMPLETE!"
+wlan_do=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $1}')
+wlan_up=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $2}')
 
-branch_list = `git branch`
-branches = branch_list.split(" ").reject{ |n| n == "*" || n == "master" }.unshift("master")
-
-puts "\n=> Push each branch to GitHub"
-for branch in branches do
-  print "Pushing #{branch}... "
-  `git checkout #{branch}  > /dev/null 2>&1`
-  `git push -u #{remote_repo} #{branch} > /dev/null 2>&1`
-  print "DONE\n"
-end
-`git checkout master > /dev/null 2>&1`
-puts "=> All Pushing COMPLETE!"
+echo "" $wlan_do "" $wlan_up "KB/s"

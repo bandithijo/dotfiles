@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env bash
 
 # MIT License
 
@@ -22,24 +22,22 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-remote_repo = "bandithijo"
+# FreeBSD
+#mem_phys=$(sysctl -n hw.physmem)
+#mem_hw=$mem_phys
+#pagesize=$(sysctl -n hw.pagesize)
+#mem_inactive=$(( $(sysctl -n vm.stats.vm.v_inactive_count) * $pagesize))
+#mem_cache=$(( $(sysctl -n vm.stats.vm.v_cache_count) * $pagesize))
+#mem_free=$(( $(sysctl -n vm.stats.vm.v_free_count) * $pagesize))
+#mem_total=$mem_hw
+#mem_avail=$(( $mem_inactive + $mem_cache + $mem_free ))
+#mem_used=$(( $mem_total - $mem_avail ))
+#mem_usage=$(( $mem_used * 100 / $mem_total ))
+#echo $mem_usage
 
-puts "=> Reset the master branch"
-system """
-git checkout master
-git reset --hard origin/master
-"""
-puts "=> Reseting COMPLETE!"
-
-branch_list = `git branch`
-branches = branch_list.split(" ").reject{ |n| n == "*" || n == "master" }.unshift("master")
-
-puts "\n=> Push each branch to GitHub"
-for branch in branches do
-  print "Pushing #{branch}... "
-  `git checkout #{branch}  > /dev/null 2>&1`
-  `git push -u #{remote_repo} #{branch} > /dev/null 2>&1`
-  print "DONE\n"
-end
-`git checkout master > /dev/null 2>&1`
-puts "=> All Pushing COMPLETE!"
+# GNU/Linux
+mem_total=$(free | awk 'NR%2==0 {print $2}')
+mem_avail=$(free | awk 'NR%2==0 {print $7}')
+mem_used=$(( $mem_total - $mem_avail))
+mem_usage=$(( $mem_used * 100 / $mem_total ))
+echo " "$mem_usage"%"
