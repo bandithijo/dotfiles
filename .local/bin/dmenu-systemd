@@ -1,0 +1,100 @@
+#!/bin/bash
+# Licensed under the MIT/X Consortium License
+# © 2013 William Giokas <1007380@gmail.com>
+# See LICENSE for more information
+
+# systemctl-user-dmenu
+# Use systemctl from dmenu. Useful in tiling wms.
+
+unset opts
+unset service
+unset unit
+unset cmd
+
+# make sure systemd is running
+initsys=$(cat /proc/1/comm)
+[[ "$initsys" == "systemd" ]] || exit 100
+
+##
+# Consistent dmenu commands, specific colors for dmenu.
+# params: message, print, ...
+# message: To be displayed as the prompt for dmenu
+# print:   The words to populate the list for dmenu
+##
+dmenucmd() {
+  local mesg=$1
+  shift
+  local printing=("$@")
+  printf "%s\n" "${printing[@]}" | dmenu -p "$mesg"
+}
+
+# pick a font for your dmenu. I use proggyoptis. It's tiny.
+font="Consolas-10"
+
+# Specify the options you want to see. `status` is treated specially and should
+# not be removed from the array.
+opts=("start"
+      "stop"
+      "restart" "try-restart" "reload-or-restart"
+      "status"
+      "list-unit-files")
+
+# This gets the list of units, limited to services and sockets (What is
+# mostly manipulated with systemctl --user)
+# Use a param to limit this, something like "loaded" or "loaded active"
+# (see below)
+get_systemctl_list() {
+  printf -- "%s" "$(systemctl --no-legend --full --type=service,socket --all list-units | sed -n "s/${1}.*//p")"
+}
+get_systemctl_files() {
+  printf -- "%s" "$(systemctl --no-legend --full --type=service,socket --all list-unit-files | sed -n "s/ .*//p")"
+}
+get_systemctl_list_stop_restart() {
+  printf -- "%s" "$(systemctl --no-legend --full --type=service,socket --all list-units | sed -n "s/${1}.*//p")"
+}
+
+# Depending on the case, we want to filter by a specific state of unit.
+# start, status: Get all units that are loaded
+# stop, the *restarts: Get all units that are already active
+# something else: Get all the files that are loaded
+find_services () {
+  local action="$1"
+  local orig_list=()
+  case $action in
+    start)
+      orig_list=($(get_systemctl_files ) )
+      ;;
+    status)
+      orig_list=($(get_systemctl_list "loaded") )
+      ;;
+    stop|*restart)
+      orig_list=($(get_systemctl_list_stop_restart "running") )
+      ;;
+    *)
+      orig_list=($(get_systemctl_files ) )
+      ;;
+  esac
+  printf -- "%s " ${orig_list[@]/.service/}
+}
+
+# Get the command to be run from the `opts` list
+cmd="$(dmenucmd "Action:" "${opts[@]}")"
+
+[[ -z $cmd ]] && exit 1
+
+# Get the unit that is going to be run by systemctl. Can be a list of units,
+# just as running it from the command line, though dmenu will only display the
+# first one.
+service=($(find_services "$cmd"))
+unit="$(dmenucmd "sudo -A systemctl $cmd" "${service[@]}")"
+
+[[ -z $unit ]] && exit 2
+
+# The actual running of commands. `status`, as stated above, is treated
+# specially, and will open a mlterm window displaying the status output,
+# otherwise we just run systemctl with the specified command and unit.
+if [[ $cmd == "status" ]]; then
+  st -t "st+" -e /usr/bin/bash -c "sudo -A systemctl $cmd $unit; read "
+else
+  sudo -A systemctl "$cmd" "$unit"
+fi

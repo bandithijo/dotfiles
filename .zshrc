@@ -37,7 +37,6 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/django
     zgen oh-my-zsh plugins/docker
     zgen oh-my-zsh plugins/kubectl
-    zgen oh-my-zsh plugins/go
     zgen oh-my-zsh plugins/golang
     zgen oh-my-zsh plugins/gem
     zgen oh-my-zsh plugins/git

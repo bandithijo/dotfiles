@@ -22,6 +22,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+#RED="\033[1;31m"
+RED="\x03"
+NORM="\x01"
+
 # FreeBSD
 #temp_cpu0=$(sysctl -n dev.cpu.0.temperature | cut -d "." -f1)
 #echo " "$temp_cpu0"°C"
@@ -29,4 +33,8 @@
 # GNU/Linux
 get_temp_cpu0=$(cat /sys/class/thermal/thermal_zone0/temp)
 temp_cpu0=$(($get_temp_cpu0/1000))
-echo " "$temp_cpu0"°C"
+# if [ $temp_cpu0 -ge 40 ]; then
+#     echo -e " ${RED}$temp_cpu0${NORM}°C"
+# else
+    echo " "$temp_cpu0"°C"
+# fi

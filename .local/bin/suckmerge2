@@ -4,6 +4,7 @@
 dwm_branches = [
 'config',               # merge w/: actualfullscreen, scratchpad-gaspar
 'sticky',               # merge w/: actualfullscreen
+'rmaster',              # merge w/: sticky, cfacts
 'actualfullscreen',
 'autostart',
 'movestack',
@@ -15,10 +16,11 @@ dwm_branches = [
 'zoomswap',
 'savefloats',
 'center',
-'fullgaps',             # merge w/: config
-'cfacts',               # merge w/: config, movestack, fullgaps
+'cfacts',
+#'combo',
 ]
 
+# For st
 st_branches = [
 'config',
 'clipboard',
@@ -27,17 +29,30 @@ st_branches = [
 'xresources',
 'boxdraw',
 'invert',
-'newterm',                  # merge \w: scrollback, openclipboard, invert
+'newterm',              # merge \w: scrollback, openclipboard, invert
 'scrollback',
 'scrollback-mouse',
 'open-copied-url',
 'bold-is-not-bright',
-'alpha',                    # merge \w: boxdraw
+'alpha',                # merge \w: boxdraw
 'ligatures-boxdraw-alpha-scrollback',  # merge \w: alpha
 ]
 
-# For dmenu, pinentry-dmenu, tabbed
-dir_config_branches = ['dmenu', 'pinentry-dmenu', 'tabbed']
+# For slock
+slock_branches = [
+'config',
+'capscolor',
+'message',
+]
+
+# For dmenu
+dmenu_branches = [
+'config',
+'password'
+]
+
+# For pinentry-dmenu, tabbed
+dir_config_branches = ['pinentry-dmenu', 'tabbed']
 config_branches = [
 'config',
 ]
@@ -47,6 +62,10 @@ if dir_name == "dwm"
   branches = dwm_branches
 elsif dir_name == "st"
   branches = st_branches
+elsif dir_name == "slock"
+  branches = slock_branches
+elsif dir_name == "dmenu"
+  branches = dmenu_branches
 elsif dir_config_branches.include? dir_name
   branches = config_branches
 else

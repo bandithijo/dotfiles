@@ -23,7 +23,7 @@ killrecording() {
   exit
 }
 
-screencastrgb() { \
+screencasthd() { \
   ffmpeg -y \
   -f x11grab \
   -draw_mouse 1 \
@@ -34,9 +34,9 @@ screencastrgb() { \
   -f pulse -i alsa_input.pci-0000_00_1b.0.analog-stereo \
   -filter_complex amix=inputs=2 \
   -c:a aac \
-  -c:v libx264rgb -pix_fmt rgb24 -preset veryfast \
+  -c:v libx264 -pix_fmt yuv420p -qp 18 \
   -threads 4 \
-  "$HOME/vid/ScreenRecorder/screencastrgb-$(date '+%y%m%d-%H%M-%S').mp4" &
+  "$HOME/vid/ScreenRecorder/screencasthd-$(date '+%y%m%d-%H%M-%S').mp4" &
   echo $! > ~/.recordingpid
   updateicon " REC "
 }
@@ -84,9 +84,9 @@ audio() { \
 
 askrecording() { \
   [ -f ~/.recordingpid ] && asktoend && exit
-  choice=$(printf "screencastrgb\\nscreencast\\nvideo\\naudio" | $DMENU -p "Record:")
+  choice=$(printf "screencasthd\\nscreencast\\nvideo\\naudio" | $DMENU -p "Record:")
   case "$choice" in
-    screencastrgb) screencastrgb;;
+    screencasthd) screencasthd;;
     screencast) screencast;;
     video) video;;
     audio) audio;;
@@ -99,7 +99,7 @@ asktoend() { \
 }
 
 case "$1" in
-  screencastrgb) screencastrgb;;
+  screencasthd) screencasthd;;
   screencast) screencast;;
   audio) audio;;
   video) video;;
