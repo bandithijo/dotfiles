@@ -75,3 +75,6 @@ export WALLPAPER2="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11H-dark.png
 
 # For disable Spring load when running Rails Console
 export DISABLE_SPRING=true
+
+# For pistol colorscheme
+export PISTOL_CHROMA_STYLE=api

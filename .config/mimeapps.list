@@ -45,7 +45,7 @@ application/x-extension-shtml=userapp-Firefox-MYNXG0.desktop;firefox.desktop;
 application/xhtml+xml=userapp-Firefox-MYNXG0.desktop;firefox.desktop;
 application/x-extension-xhtml=userapp-Firefox-MYNXG0.desktop;firefox.desktop;
 application/x-extension-xht=userapp-Firefox-MYNXG0.desktop;firefox.desktop;
-image/png=org.gnome.gThumb.desktop;gpicview.desktop;gimp.desktop;ristretto.desktop;
+image/png=gimp.desktop;org.gnome.gThumb.desktop;gpicview.desktop;ristretto.desktop;
 video/x-matroska=org.xfce.Parole.desktop;mpv.desktop;
 application/x-theme=nvim.desktop;mousepad.desktop;
 image/x-xpixmap=gpicview.desktop;ristretto.desktop;gimp.desktop;userapp-"gimp"-5CRLG0.desktop;
@@ -91,6 +91,8 @@ application/rtf=nvim.desktop;
 text/calendar=thunderbird.desktop;
 application/msword=wine-Programs-Microsoft Office-Microsoft Word 2010.desktop;wine-extension-doc.desktop;
 video/mp4=mpv.desktop;
+inode/directory=thunar.desktop;
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=wine-extension-xlsx.desktop;
 
 [Removed Associations]
 audio/ogg=mpv.desktop;

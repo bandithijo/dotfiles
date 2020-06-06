@@ -17,7 +17,7 @@ dwm_branches = [
 'savefloats',
 'center',
 'cfacts',
-#'combo',
+'deck',
 ]
 
 # For st
@@ -51,11 +51,13 @@ dmenu_branches = [
 'password'
 ]
 
-# For pinentry-dmenu, tabbed
-dir_config_branches = ['pinentry-dmenu', 'tabbed']
-config_branches = [
-'config',
+# For etc.
+dir_config_branches = [
+'pinentry-dmenu',
+'tabbed',
+'slstatus',
 ]
+config_branches = [ 'config' ]
 
 dir_name = `basename $PWD`.strip
 if dir_name == "dwm"

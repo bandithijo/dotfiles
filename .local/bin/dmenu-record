@@ -34,7 +34,7 @@ screencasthd() { \
   -f pulse -i alsa_input.pci-0000_00_1b.0.analog-stereo \
   -filter_complex amix=inputs=2 \
   -c:a aac \
-  -c:v libx264 -pix_fmt yuv420p -qp 18 \
+  -c:v libx264rgb -crf 0 -preset ultrafast \
   -threads 4 \
   "$HOME/vid/ScreenRecorder/screencasthd-$(date '+%y%m%d-%H%M-%S').mp4" &
   echo $! > ~/.recordingpid
@@ -52,7 +52,7 @@ screencast() { \
   -f pulse -i alsa_input.pci-0000_00_1b.0.analog-stereo \
   -filter_complex amix=inputs=2 \
   -c:a aac \
-  -c:v libx264 -pix_fmt yuv420p -preset veryfast -q:v 1 \
+  -c:v libx264 -pix_fmt yuv420p -qp 18 -q:v 1 \
   -threads 4 \
   "$HOME/vid/ScreenRecorder/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
   echo $! > ~/.recordingpid

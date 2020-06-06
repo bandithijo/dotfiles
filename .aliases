@@ -131,4 +131,6 @@ alias shoes="~/.shoes/walkabout/shoes"
 
 alias cpuinfo="watch -n1 \"cat /proc/cpuinfo | grep 'MHz'\""
 
+alias reshell="exec $SHELL"
+
 # -------------------------------------------------------------------END ALIAS

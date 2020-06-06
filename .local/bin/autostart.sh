@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 sanitizer
-pkill -f "bash /home/bandithijo/bin/dwmbar"; dwmbar &
+pkill -f "slstatus"; slstatus &
 pkill -f "dunst"; dunst -config ~/.config/dunst/dunstrc &
 xsetroot -solid "#1E1E1E"
 feh --bg-fill -Z $WALLPAPER2
