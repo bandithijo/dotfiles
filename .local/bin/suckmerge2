@@ -5,13 +5,14 @@ dwm_branches = [
 'config',               # merge w/: actualfullscreen, scratchpad-gaspar
 'sticky',               # merge w/: actualfullscreen
 'rmaster',              # merge w/: sticky, cfacts
+'canfocusrule',         # merge w/: systray
 'actualfullscreen',
 'autostart',
 'movestack',
 'pertag',
 'resizecorners',
 'focusonnetactive',
-'systray',              # merge w/: scratchpad-gaspar, zoomswap
+'systray',              # merge w/: scratchpad-gaspar, zoomswap, sticky
 'scratchpad-gaspar',
 'zoomswap',
 'savefloats',
@@ -51,10 +52,16 @@ dmenu_branches = [
 'password'
 ]
 
+tabbed_branches = [
+'config',
+'autohide',
+'clientnumber',
+'alpha',
+]
+
 # For etc.
 dir_config_branches = [
 'pinentry-dmenu',
-'tabbed',
 'slstatus',
 ]
 config_branches = [ 'config' ]
@@ -68,6 +75,8 @@ elsif dir_name == "slock"
   branches = slock_branches
 elsif dir_name == "dmenu"
   branches = dmenu_branches
+elsif dir_name == "tabbed"
+  branches = tabbed_branches
 elsif dir_config_branches.include? dir_name
   branches = config_branches
 else

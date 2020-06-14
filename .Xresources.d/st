@@ -1,0 +1,37 @@
+! COLOR
+!TomorrowNightEighties
+#define t_background        #2d2d2d
+#define t_current_line      #393939
+#define t_selection      	#515151
+#define t_foreground      	#cccccc
+#define t_comment	     	#999999
+#define t_red		     	#f2777a
+#define t_orange	     	#f99157
+#define t_yellow        	#ffcc66
+#define t_green	        	#99cc99
+#define t_aqua	        	#66cccc
+#define t_blue	        	#6699cc
+#define t_purple        	#cc99cc
+
+
+*.foreground:   t_foreground
+*.background:   t_background
+*.cursorColor:  #aeafad
+
+! Black / Grey
+*.color0:       #000000
+*.color1:       t_red
+*.color2:       t_green
+*.color3:       t_orange
+*.color4:       t_blue
+*.color5:       t_purple
+*.color6:       t_aqua
+*.color7:       t_selection
+*.color8:       #666666
+*.color9:       #FF3334
+*.color10:      #9ec400
+*.color11:      t_yellow
+*.color12:      t_blue
+*.color13:      #b777e0
+*.color14:      #54ced6
+*.color15:      t_current_line

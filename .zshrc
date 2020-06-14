@@ -141,30 +141,20 @@ DISABLE_AUTO_TITLE="true"
 
 
 
- # Untuk merubah titlebar dari st terminal
- # Sumber: http://www.faqs.org/docs/Linux-mini/Xterm-Title.html#s5
- case $TERM in
-     st*)
-     precmd () {
-         # menampilkan direktori aktif (kondisi default)
-         print -Pn "\e]0;st:%~\a"
-     }
-     preexec () {
-         # menampilkan program yang sedang berjalan
-         print -Pn "\e]0;st:$1\a"
-     }
-     ;;
- esac
-
-
-# SSH Agent Automaticaly
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
-fi
-if [[ ! "$SSH_AUTH_SOCK" ]]; then
-    { eval "$(<"$XDG_RUNTIME_DIR/ssh-agent.env")" } &>/dev/null
-fi
-
+# Untuk merubah titlebar dari st terminal
+# Sumber: http://www.faqs.org/docs/Linux-mini/Xterm-Title.html#s5
+case $TERM in
+    st*)
+    precmd () {
+        # menampilkan direktori aktif (kondisi default)
+        print -Pn "\e]0;st:%~\a"
+    }
+    preexec () {
+        # menampilkan program yang sedang berjalan
+        print -Pn "\e]0;st:$1\a"
+    }
+    ;;
+esac
 
 # Import alias from .aliases
 [ -f ~/.aliases ] && source ~/.aliases

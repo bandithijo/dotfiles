@@ -1,0 +1,41 @@
+! Base16 Tomorrow Night
+! Scheme: Chris Kempson (http://chriskempson.com)
+
+#define base00 #262626
+#define base01 #CC6666
+#define base02 #B5BD68
+#define base03 #F0C674
+#define base04 #81A2BE
+#define base05 #A3685A
+#define base06 #8ABEB7
+#define base07 #E0E0E0
+#define base08 #1D1F21
+#define base09 #DE935F
+#define base0A #373B41
+#define base0B #969896
+#define base0C #B4B7B4
+#define base0D #B294BB
+#define base0E #C5C8C6
+#define base0F #FFFFFF
+
+*foreground:   base01
+*background:   base00
+*cursorColor:  base01
+
+*color0:       base00
+*color1:       base01
+*color2:       base02
+*color3:       base03
+*color4:       base04
+*color5:       base05
+*color6:       base06
+*color7:       base07
+
+*color8:       base08
+*color9:       base09
+*color10:      base0A
+*color11:      base0B
+*color12:      base0C
+*color13:      base0D
+*color14:      base0E
+*color15:      base0F
