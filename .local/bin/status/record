@@ -24,6 +24,6 @@
 
 if pgrep -f ffmpeg > /dev/null; then
     echo " REC "
-elif pgrep -f kazam > /dev/null; then
+elif pgrep -l kazam > /dev/null; then
     echo " REC "
 fi

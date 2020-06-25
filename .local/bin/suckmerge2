@@ -26,7 +26,6 @@ st_branches = [
 'config',
 'clipboard',
 'font2',
-'force-redraw',
 'xresources',
 'boxdraw',
 'invert',

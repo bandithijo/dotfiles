@@ -25,7 +25,7 @@ dmenucmd() {
   local mesg=$1
   shift
   local printing=("$@")
-  printf "%s\n" "${printing[@]}" | dmenu -p "$mesg"
+  printf "%s\n" "${printing[@]}" | /usr/local/bin/dmenu -p "$mesg"
 }
 
 # pick a font for your dmenu. I use proggyoptis. It's tiny.

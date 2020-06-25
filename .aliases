@@ -20,7 +20,7 @@ alias fireprox="torsocks env firefox --private-window"
 alias chromeprox="chromium --proxy-server='socks5://127.0.0.1:9050'"
 
 # BACKUP ENTIRE SYSTEM
-alias devika!="sudo rsync -avhAXP --progress --delete --exclude=/dev --exclude=/proc --exclude=/sys --exclude=/tmp --exclude=/run --exclude=/mnt --exclude=/media --exclude=/swapfile --exclude=/snap --exclude=home/.ecryptfs / /run/media/bandithijo/BACKUP_X61/ARCH"
+alias devika!="sudo rsync -avhAXP --progress --delete --exclude=/dev --exclude=/proc --exclude=/sys --exclude=/tmp --exclude=/run --exclude=/mnt --exclude=/media --exclude=/swapfile --exclude=/snap --exclude=home/.ecryptfs / /run/media/bandithijo/BACKUP-X61/ARCH"
 
 # tty-clock
 alias clock="tty-clock -nscDC 7"

@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/bash
 #: yuune i3lock-color wrapper
 #: after changing wallpaper, run "lock reload" to redraw the new wallpaper
 
