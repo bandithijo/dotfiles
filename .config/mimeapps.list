@@ -27,12 +27,13 @@ x-scheme-handler/remmina=org.remmina.Remmina.desktop
 application/x-remmina=org.remmina.Remmina.desktop
 application/x-compressed-tar=org.gnome.FileRoller.desktop
 application/x-tar=org.gnome.FileRoller.desktop
-application/zip=xarchiver.desktop
+application/zip=org.gnome.FileRoller.desktop
 text/css=nvim.desktop
 image/svg+xml=org.inkscape.Inkscape.desktop
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=wine-extension-docx.desktop
 application/msword=wine-extension-doc.desktop
 x-scheme-handler/postman=Postman.desktop
+image/bmp=gpicview.desktop
 
 [Added Associations]
 x-scheme-handler/http=userapp-Firefox-MYNXG0.desktop;firefox.desktop;
@@ -76,7 +77,7 @@ application/pdf=gimp.desktop;evince.desktop;inkscape.desktop;libreoffice-draw.de
 text/plain=nvim.desktop;audacious.desktop;
 image/vnd.microsoft.icon=ristretto.desktop;
 application/vnd.oasis.opendocument.text=libreoffice-writer.desktop;
-application/zip=xarchiver.desktop;
+application/zip=org.gnome.FileRoller.desktop;xarchiver.desktop;
 x-scheme-handler/rdp=org.remmina.Remmina.desktop;
 x-scheme-handler/spice=org.remmina.Remmina.desktop;
 x-scheme-handler/vnc=org.remmina.Remmina.desktop;
@@ -95,6 +96,7 @@ video/mp4=mpv.desktop;
 inode/directory=thunar.desktop;
 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=wine-extension-xlsx.desktop;
 application/vnd.ms-powerpoint=wine-extension-pwz.desktop;
+image/bmp=gpicview.desktop;
 
 [Removed Associations]
 audio/ogg=mpv.desktop;

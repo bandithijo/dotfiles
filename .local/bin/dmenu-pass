@@ -6,6 +6,9 @@ sanitizer > /dev/null 2>&1
 # GnuPG clear cache time out
 gpg-connect-agent reloadagent /bye
 
+# Disable clipmenu
+clipctl disable
+
 shopt -s nullglob globstar
 
 password_files=( ~/.password-store/**/*.gpg )
@@ -15,3 +18,6 @@ password_files=( "${password_files[@]%.gpg}" )
 password=$(printf '%s\n' "${password_files[@]}" | /usr/local/bin/dmenu -i -m 0 -l 8 "$@")
 
 pass -c "$password"
+
+# Enale clipmenu
+clipctl enable
