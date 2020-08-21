@@ -37,11 +37,11 @@
 # GNU/Linux
 state=$(cat /sys/devices/platform/smapi/BAT0/state)
 if [ $state = "charging" ]; then
-    echo " " # charging
+    echo "  " # charging
 elif [ $state = "discharging" ]; then
-    echo " " # discharging
+    echo "  " # discharging
 elif [ $state = "idle" ]; then
-    echo " " # idle
+    echo "  " # idle
 else
-    echo " " # unknown
+    echo "  " # unknown
 fi

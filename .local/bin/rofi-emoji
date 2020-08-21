@@ -1,5 +1,16 @@
 #!/bin/sh
 
-grep -v "#" ~/.emoji | rofi -dmenu -m 0 -lines 10 -width 300 -i -sort -p EMOJI | awk '{print $1}' | tr -d '\n' | xclip -selection clipboard
+#grep -v "#" ~/.emoji | rofi -dmenu -m 0 -lines 10 -width 300 -i -sort -p EMOJI | awk '{print $1}' | tr -d '\n' | xclip -selection clipboard
 
 # pgrep -x dunst >/dev/null && notify-send "$(xclip -o -selection clipboard) copied to clipboard!"
+
+FILE="$HOME/.emoji"
+
+if [ "$@" ]
+then
+  smiley=$(echo $@ | cut -d' ' -f1)
+  echo -n "$smiley" | xsel -bi
+  exit 0
+fi
+
+cat $FILE

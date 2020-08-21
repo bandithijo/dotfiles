@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/bash
 
 # Facilitates BSPWM operations over multiple selection paths.  The
 # actions defined herein are assigned to key chords (sxhkd).  Everything

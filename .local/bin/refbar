@@ -1,5 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-# Refresh the dwmbar.
-# Send SIGTRAP signal to dwmbar script, which will handle it with a trap.
-pkill -SIGTRAP dwmstatus
+#Refresh DWM status bar
+#Kill Sleep in bar script
+
+#kill "$(pstree -lp | grep -- -dwmbar\([0-9] | sed "s/.*sleep(\([0-9]\+\)).*/\1/")"
+
+pkill -SIGTRAP dwmbar

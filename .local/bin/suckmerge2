@@ -7,8 +7,11 @@ dwm_branches = [
 'rmaster',              # merge w/: sticky, cfacts
 'canfocusrule',         # merge w/: systray
 'actualfullscreen',
+'xrdb',
+'noborder',
 'autostart',
 'movestack',
+'moveresize',
 'pertag',
 'resizecorners',
 'focusonnetactive',
@@ -16,10 +19,12 @@ dwm_branches = [
 'scratchpad-gaspar',
 'zoomswap',
 'savefloats',
+'centerkeybinding',
 'center',
 'cfacts',
 'deck',
 'dwmc',                 # merge w/: systray
+'statusallmons',        # merge w/: systray
 
 # Disable
 # 'config-swallow',
@@ -32,6 +37,7 @@ st_branches = [
 'clipboard',
 'font2',
 'xresources',
+'workingdir',
 'boxdraw',
 'invert',
 'newterm',              # merge \w: scrollback, openclipboard, invert
@@ -67,6 +73,7 @@ tabbed_branches = [
 dir_config_branches = [
 'pinentry-dmenu',
 'slstatus',
+'sxiv',
 ]
 config_branches = [ 'config' ]
 

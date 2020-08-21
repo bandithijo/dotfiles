@@ -34,6 +34,7 @@ application/vnd.openxmlformats-officedocument.wordprocessingml.document=wine-ext
 application/msword=wine-extension-doc.desktop
 x-scheme-handler/postman=Postman.desktop
 image/bmp=gpicview.desktop
+video/mp4=mpv.desktop
 
 [Added Associations]
 x-scheme-handler/http=userapp-Firefox-MYNXG0.desktop;firefox.desktop;
@@ -47,7 +48,7 @@ application/x-extension-shtml=userapp-Firefox-MYNXG0.desktop;firefox.desktop;
 application/xhtml+xml=userapp-Firefox-MYNXG0.desktop;firefox.desktop;
 application/x-extension-xhtml=userapp-Firefox-MYNXG0.desktop;firefox.desktop;
 application/x-extension-xht=userapp-Firefox-MYNXG0.desktop;firefox.desktop;
-image/png=gimp.desktop;org.gnome.gThumb.desktop;gpicview.desktop;ristretto.desktop;
+image/png=org.gnome.gThumb.desktop;gimp.desktop;gpicview.desktop;ristretto.desktop;
 video/x-matroska=org.xfce.Parole.desktop;mpv.desktop;
 application/x-theme=nvim.desktop;mousepad.desktop;
 image/x-xpixmap=gpicview.desktop;ristretto.desktop;gimp.desktop;userapp-"gimp"-5CRLG0.desktop;
@@ -60,7 +61,7 @@ application/x-ruby=nvim.desktop;
 text/markdown=nvim.desktop;
 image/gif=ristretto.desktop;gpicview.desktop;
 video/webm=mpv.desktop;
-audio/mpeg=soundconverter.desktop;audacious.desktop;easytag.desktop;deadbeef.desktop;
+audio/mpeg=audacious.desktop;soundconverter.desktop;easytag.desktop;deadbeef.desktop;
 audio/x-vorbis+ogg=audacious.desktop;deadbeef.desktop;
 audio/mp4=audacious.desktop;mpv.desktop;deadbeef.desktop;
 video/quicktime=mpv.desktop;
@@ -92,11 +93,13 @@ application/x-raw-disk-image=gnome-disk-image-writer.desktop;
 application/rtf=nvim.desktop;
 text/calendar=thunderbird.desktop;
 application/msword=wine-Programs-Microsoft Office-Microsoft Word 2010.desktop;wine-extension-doc.desktop;
-video/mp4=mpv.desktop;
+video/mp4=vlc.desktop;mpv.desktop;
 inode/directory=thunar.desktop;
 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=wine-extension-xlsx.desktop;
 application/vnd.ms-powerpoint=wine-extension-pwz.desktop;
-image/bmp=gpicview.desktop;
+image/bmp=gimp.desktop;gpicview.desktop;
+image/webp=org.gnome.gThumb.desktop;gpicview.desktop;
+application/wps-office.docx=wine-extension-docx.desktop;libreoffice-writer.desktop;
 
 [Removed Associations]
 audio/ogg=mpv.desktop;

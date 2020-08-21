@@ -33,16 +33,19 @@ main(){
 	# cd ~
 	# hg clone https://code.google.com/p/vim/
 	# cd vim
-	./configure --with-features=huge \
-		--enable-multibyte \
-		--enable-rubyinterp \
-		--enable-pythoninterp \
-		--with-python-config-dir=/usr/lib/python2.7/config \
-		--enable-perlinterp \
-		--enable-luainterp \
-		--enable-gui=gtk2 \
-		--enable-cscope \
-		--prefix=/usr
+    ./configure \
+    --with-features=huge \
+    --enable-multibyte \
+    --enable-rubyinterp=yes \
+    --enable-pythoninterp=yes \
+    --with-python-config-dir=/usr/lib/python2.7/config \
+    --enable-python3interp=yes \
+    --with-python3-config-dir=/usr/lib/python3.8/config-3.8m-x86_64-linux-gnu \
+    --enable-perlinterp=yes \
+    --enable-luainterp=yes \
+    --enable-gui=gtk2 \
+    --enable-cscope \
+    --prefix=/usr/local
 	# make VIMRUNTIMEDIR=/usr/share/vim/vim74
     make
 	sudo make install

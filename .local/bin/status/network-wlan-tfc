@@ -22,9 +22,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-wlan_card='wls3'
-
-wlan_do=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $1}')
-wlan_up=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $2}')
-
-echo "" $wlan_do "" $wlan_up "KB/s"
+wlan_card='wlan0'
+wlan_online=$(ip a s dev $wlan_card | grep -i inet)
+if [[ $wlan_online ]]; then
+    wlan_do=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $1}')
+    wlan_up=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $2}')
+    echo "" $wlan_do "" $wlan_up "KB/s"
+else
+    echo " OFFLINE"
+fi

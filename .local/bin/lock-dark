@@ -24,13 +24,14 @@ genwp () {
             -size 0x0 xc:none \
             -draw "roundrectangle 0,0,120,140,20,20" \
             -draw "rectangle 0,140 120,120" -normalize +level 0,0% \
-            \) -gravity south -compose over -composite $tmpwall
+            \) -gravity south -compose over -composite $tmpwall \
+            -profile /usr/share/color/icc/colord/sRGB.icc
     fi
 }
 
         # --indpos="$WIDTH-88:$HEIGHT-75" --timepos="$WIDTH/2:$HEIGHT/2+30" \
 runlock () {
-    i3lock -n --beep --color CCCCCC --force-clock -i $tmpwall \
+    i3lock -n --beep --color 1E1E1E --force-clock -i $tmpwall \
         --indpos="$WIDTH/2:$HEIGHT/2+300" --timepos="$WIDTH/2:$HEIGHT/2+30" \
         --insidevercolor=00000000 --insidewrongcolor=00000000 --insidecolor=00000000 \
         --ringvercolor=FFCC00aa --ringwrongcolor=ff0000aa --ringcolor=ededed77 \

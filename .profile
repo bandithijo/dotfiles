@@ -72,9 +72,15 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp -Dswing.defaultlaf=com.
 
 export WALLPAPER1="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11-dark.png"
 export WALLPAPER2="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11H-dark.png"
+export WALLPAPER3="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11G-dark.png"
+export WALLPAPER4="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11GW-dark.png"
 
 # For disable Spring load when running Rails Console
 export DISABLE_SPRING=true
 
 # For pistol colorscheme
 export PISTOL_CHROMA_STYLE=api
+
+# A hack to disable gtk+ 3 client side decoration
+#export GTK_CSD=1
+#export LD_PRELOAD=/usr/lib/libgtk3-nocsd.so.0

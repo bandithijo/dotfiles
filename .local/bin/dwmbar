@@ -1,7 +1,71 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # For dwm status
+#while true; do
+#    xsetroot -name "$($HOME/bin/status/vpn)$($HOME/bin/status/screenkey)$($HOME/bin/status/record)$($HOME/bin/status/network-wlan-tfc) $($HOME/bin/status/cpu-temp) $($HOME/bin/status/memory) $($HOME/bin/status/filesystem) $($HOME/bin/status/volume) $(date +" 0%u%y%m%d%H%M") $($HOME/bin/status/bat-state) $($HOME/bin/status/bat-capacity) $($HOME/bin/status/user)"
+#    # sleep 0.5
+#done
+
+dte(){
+    dte="$(date +" 0%u%y%m%d%H%M")"
+    echo "$dte"
+}
+
+hdd(){
+    hdd="$($HOME/bin/status/filesystem)"
+    echo "$hdd"
+}
+
+mem(){
+    mem="$($HOME/bin/status/memory)"
+    echo "$mem"
+}
+
+cputemp(){
+    cputemp="$($HOME/bin/status/cpu-temp)"
+    echo "$cputemp"
+}
+
+vpn(){
+    vpn="$($HOME/bin/status/vpn)"
+    echo "$vpn"
+}
+
+vol(){
+	vol="$($HOME/bin/status/volume)"
+	echo "$vol"
+}
+
+batcap(){
+	battery="$($HOME/bin/status/bat-capacity)"
+	echo "$battery"
+}
+
+batstat(){
+	batstat="$($HOME/bin/status/bat-state)"
+	echo "$batstat"
+}
+
+wlan(){
+    wlan="$($HOME/bin/status/network-wlan-tfc)"
+    echo "$wlan"
+}
+
+user(){
+    user="$($HOME/bin/status/user)"
+    echo "$user"
+}
+
+vpn(){
+    vpn="$($HOME/bin/status/vpn)"
+    echo "$vpn"
+}
+
+status(){
+    echo "$(vpn)$(wlan) $(cputemp) $(mem) $(hdd) $(vol) $(dte)$(batstat) $(batcap) $(user)"
+}
+
 while true; do
-    xsetroot -name "$($HOME/bin/status/vpn)$($HOME/bin/status/screenkey)$($HOME/bin/status/record)$($HOME/bin/status/network-wlan-tfc) $($HOME/bin/status/cpu-temp) $($HOME/bin/status/memory) $($HOME/bin/status/filesystem) $($HOME/bin/status/volume) $(date +" 0%u%y%m%d%H%M") $($HOME/bin/status/bat-state) $($HOME/bin/status/bat-capacity)  BANDITHIJO"
-    # sleep 0.5
+	xsetroot -name "$(status)"
+	sleep 30
 done

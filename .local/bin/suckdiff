@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 git checkout master &&
-dotfiles="$HOME/.config/suckless"
+dotfiles="$HOME/.config/sucklessthing/diffs"
 project=$(basename $(pwd))
 diffdir="${dotfiles}/${project}_diffs/"
 olddiffdir="${dotfiles}/${project}_diffs/old/"

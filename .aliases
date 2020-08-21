@@ -133,4 +133,6 @@ alias cpuinfo="watch -n1 \"cat /proc/cpuinfo | grep 'MHz'\""
 
 alias reshell="exec $SHELL"
 
+alias colortest="colortest -w -r -s"
+
 # -------------------------------------------------------------------END ALIAS

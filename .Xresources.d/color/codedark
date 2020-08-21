@@ -40,3 +40,9 @@
 *.color14:      base0C
 *.color15:      base07
 
+dwm.normbordercolor:   #2A2A2A
+dwm.normbgcolor:       #1E1E1E
+dwm.normfgcolor:       #bbbbbb
+dwm.selfgcolor:        #eeeeee
+dwm.selbordercolor:    #005f87
+dwm.selbgcolor:        #005f87

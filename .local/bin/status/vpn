@@ -24,4 +24,6 @@
 
 if pgrep -f pppd > /dev/null; then
     echo " VPN "
+else
+    echo ""
 fi

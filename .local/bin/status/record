@@ -26,4 +26,8 @@ if pgrep -f ffmpeg > /dev/null; then
     echo " REC "
 elif pgrep -l kazam > /dev/null; then
     echo " REC "
+elif pgrep -f simplescreenrecorder > /dev/null; then
+    echo " REC "
+else
+    echo ""
 fi
