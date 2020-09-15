@@ -23,5 +23,5 @@
 # SOFTWARE.
 
 if pgrep -f 'python /usr/bin/screenkey' > /dev/null; then
-    echo " "
+    echo "  "
 fi

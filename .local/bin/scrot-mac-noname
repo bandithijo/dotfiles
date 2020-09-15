@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+
+# How this script work?
+# By put the last file on directory screenshot, and process it with imagemagick
+
+# Please write your screenshot dir with full path
+screenshot_dir    = "/home/bandithijo/pic/ScreenShots"
+Dir.chdir(screenshot_dir)
+ss_dir            = Dir.pwd
+list_file         = %x(ls -p | grep -v /)
+files             = list_file.split(" ")
+original_file     = files.last
+target_file       = files.last.split("").insert(-5, 'X').join
+color_profile     = "/usr/share/color/icc/colord/sRGB.icc"
+color_fg          = "#ffffff"
+color_bg          = "#666666"
+border_size       = "0"
+background_color  = "white"
+background_size   = "10"
+shadow_size       = "50x10+0+10"
+
+%x(
+convert #{original_file} -bordercolor '#{color_bg}' -border #{border_size} \
+#{target_file}
+
+convert #{target_file} \\( +clone -background black \
+-shadow #{shadow_size} \\) +swap -background none \
+-layers merge +repage #{target_file}; \
+
+convert #{target_file} -bordercolor #{background_color} \
+-border #{background_size} #{target_file}
+
+convert #{target_file} -gravity South -chop 0x#{background_size.to_i/2} \
+#{target_file}
+
+convert #{target_file} -gravity North -background #{background_color} \
+-splice 0x#{background_size.to_i/2} #{target_file}
+
+convert #{target_file} -profile #{color_profile} #{target_file}
+)
+
+if %x(which optipng > /dev/null 2>&1)
+  %x(optipng #{target_file})
+  puts "OPTIPNG DONE!"
+end
+
+puts "SS_DIR: #{ss_dir}
+SOURCE: #{original_file}
+TARGET: #{target_file}
+FRAMING SUCCESS!"

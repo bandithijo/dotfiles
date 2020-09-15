@@ -1,0 +1,2 @@
+#!/bin/sh
+rofi -modi 'EMOJI:/bin/rofi-emoji,EMOJI-GIT:/bin/rofi-emoji-git' -show EMOJI -sidebar-mode

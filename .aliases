@@ -13,6 +13,9 @@ alias l="ls"
 alias ll="ls -l"
 alias lll="ls -alh"
 
+# exit
+alias :q="exit"
+
 # Firefox with Tor
 alias fireprox="firefox --private-window"
 

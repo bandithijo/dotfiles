@@ -38,12 +38,12 @@ yearnow=$(date '+%Y')
 monthnow=$(date '+%m')
 
 agey=$(($yearnow-$year))
-agem=$(($monthnow-$month))
+agem=$((10#$monthnow-$month))
 
-if [ $agem -lt 0 ] ; then
+if [[ $((10#$agem)) -lt 0 ]] ; then
    agem=$(($monthnow-$month+12))
 else
-   agem=$(($monthnow-$month))
+   agem=$((10#$monthnow-$month))
 fi
 
 echo "$agey""Y" "$agem""M"

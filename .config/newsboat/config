@@ -67,10 +67,10 @@ highlight article "\\[image\\ [0-9]+\\]" default default
 #browser linkhandler
 browser "/usr/local/bin/firefox %u"
 macro . open-in-browser
-macro v set browser "i3 exec mpv"; open-in-browser ; set browser linkhandler
-macro y set browser "spawndl"; open-in-browser ; set browser linkhandler
-macro w set browser "w3m"; open-in-browser ; set browser linkhandler
-macro p set browser "dmnuhandler"; open-in-browser ; set browser linkhandler
+#macro v set browser "i3 exec mpv"; open-in-browser ; set browser linkhandler
+#macro y set browser "spawndl"; open-in-browser ; set browser linkhandler
+#macro w set browser "w3m"; open-in-browser ; set browser linkhandler
+#macro p set browser "dmnuhandler"; open-in-browser ; set browser linkhandler
 
 # c copies the link to the clipboard
 # The line below is probably the skiddiest lien i've ever writer.
@@ -82,8 +82,8 @@ macro c set browser "copy(){ echo $1 | xclip ;}; copy "; open-in-browser ; set b
 
 color listnormal        default default
 color listnormal_unread default default bold
-color listfocus         default default reverse bold
-color listfocus_unread  default default reverse bold
-color info              default default reverse
+color listfocus         white   color24 bold
+color listfocus_unread  white   color24 bold
+color info              white   color24 bold
 color background        default default
 color article           default default

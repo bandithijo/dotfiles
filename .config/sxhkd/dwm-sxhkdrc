@@ -1,0 +1,97 @@
+# -----------------------------------------------------------------------------
+# wm independent hotkeys
+# vim:ft=sxhkdrc
+# -----------------------------------------------------------------------------
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# floating terminal emulator
+super + ctrl + Return
+	/usr/local/bin/st -T 'st+'
+
+# program launcher
+super + d
+    /usr/bin/dmenu-apps
+
+XF86Launch1
+	/usr/bin/dmenu-apps
+
+# quit dwm
+super + shift + End
+    /usr/bin/rofi-power 'killall dwm'
+
+# lock screen
+super + shift + x
+	/usr/bin/slimlock
+
+# screenshot
+super + Print
+    /usr/bin/scrot-full
+
+super + ctrl + Print
+    /usr/bin/scrot-time
+
+super + alt + Print
+    /usr/bin/scrot-window-imgck
+
+super + shift + alt + Print
+    /usr/bin/scrot-window
+
+super + shift + Print
+    /usr/bin/flameshot-imgck
+
+super + shift + ctrl + Print
+    /usr/bin/flameshot gui
+
+# dmenu-record
+super + shift + Pause
+    /usr/bin/dmenu-record
+
+# pulse audio controls
+{XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute}
+    pamixer {--increase 2, --decrease 2, --toggle-mute}
+
+# screen brightness controls
+{XF86MonBrightnessUp, XF86MonBrightnessDown}
+    xbacklight {-inc 5, -dec 5}
+
+# wallpaper & conky for taking screenshot
+super + {_,shift} + F5
+    {feh --bg-fill -Z $WALLPAPER1, feh --bg-fill -Z $WALLPAPER2}
+
+super + F4
+    feh --bg-fill -Z $WALLPAPER3
+
+# application tools on Fn Button
+super + {F7, F8, F10}
+    {arandr, networkmanager_dmenu, keybind-helper}
+
+# guvcview
+super + ~F10
+	{/usr/bin/guvcview-launcher,pkill -f 'guvcview'}
+
+# key-mon
+super + ~F11
+    {/usr/bin/key-mon, killall key-mon}
+
+# polybar-tray
+super + F12
+	/usr/bin/dmenu-systemd
+
+# clipmenu
+super + {_,shift} + p
+    {/usr/bin/clipmenu, /usr/bin/clipdel -d "."}
+
+# rofi-emoji
+super + e
+    /usr/bin/rofi-emoji-run
+
+# application tab
+super + grave
+    /usr/bin/rofi-application-tab
+
+# dmenu-pass
+super + {_,shift} + backslash
+    {/usr/bin/passtore 0,/usr/bin/dmenu-pass}

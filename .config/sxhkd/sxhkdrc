@@ -7,15 +7,19 @@ super + Escape
 	pkill -USR1 -x sxhkd
 
 # terminal emulator
-super + Return
-	$TERMCMD
+super + shift + Return
+	bspc rule -a St state=tiled; /usr/local/bin/st
+
+# floating terminal emulator
+super + ctrl + Return
+	bspc rule -a St state=floating; /usr/local/bin/st
 
 # program launcher
 super + d
-    j4-dmenu-desktop --dmenu='rofi -dmenu -m 0 -lines 6 -width 300 -i -sort -p RUN'
+    j4-dmenu-desktop --dmenu='rofi -dmenu -m 0 -lines 6 -width 300 -i -sort -p RUN' --no-generic
 
 XF86Launch1
-	j4-dmenu-desktop --dmenu='rofi -dmenu -m 0 -lines 6 -width 300 -i -sort -p RUN'
+	j4-dmenu-desktop --dmenu='rofi -dmenu -m 0 -lines 6 -width 300 -i -sort -p RUN' --no-generic
 
 #
 # bspwm hotkeys --------------------------------------------------------------
@@ -46,7 +50,7 @@ super + y
 #
 
 # set the window state
-super + {t,shift + t,s,f}
+super + {t,shift + t,f,shift + f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
@@ -66,15 +70,16 @@ super + {a,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
+	# bspc node -f {next,prev}.local
 super + {_,shift} + c
-	bspc node -f {next,prev}.local
+    bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop *desktop deleted*
-super + {Tab}
+alt + {Tab}
 	bspc {node} -f last
 
 # focus the older or newer node in the focus history
@@ -124,7 +129,7 @@ super + shift + r : {Left,Down,Up,Right}
 # ditambahkan oleh bandithijo ------------------------------------------------
 #
 
-# hide windowa
+# hide window
 super + shift + minus
     bspc node -g hidden
 
@@ -138,24 +143,30 @@ super + shift + x
 
 # screenshot
 super + Print
-    scrot "Screenshot\ from\ %Y-%m-%d %H-%M-%S.png" \
-    -e "mv *.png ~/pic/ScreenShot/" \
-    ; notify-send "Scrot" "Screen has been captured!"
+    /usr/bin/scrot-full
 
 super + ctrl + Print
-    scrot -d 5 "Screenshot\ from\ %Y-%m-%d %H-%M-%S.png" \
-    -e "mv *.png ~/pic/ScreenShot/" \
-    ; notify-send "Scrot" "Screen has been captured!"
+    /usr/bin/scrot-time
+
+super + alt + Print
+    /usr/bin/scrot-window-imgck
+
+super + shift + alt + Print
+    /usr/bin/scrot-window
 
 super + shift + Print
-    flameshot gui; sleep 60; killall flames
+    /usr/bin/flameshot-imgck
+
+super + shift + Print
+    /usr/bin/flameshot gui
+
+# dmenu-record
+super + shift + Pause
+    /usr/bin/dmenu-record
 
 # pulse audio controls
 {XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute}
     pamixer {--increase 2, --decrease 2, --toggle-mute}
-
-XF86AudioMicMute
-    pactl set-source-mute 1 toggle
 
 # screen brightness controls
 {XF86MonBrightnessUp, XF86MonBrightnessDown}
@@ -167,32 +178,32 @@ super + {F1, F2}
 
 # wallpaper & conky for taking screenshot
 super + {_,shift} + F5
-    {feh --bg-fill -Z $WALLPAPER1 && killall conky, \
-    feh --bg-fill -Z $WALLPAPER2 && killall conky}
+    {feh --bg-fill -Z $WALLPAPER1, feh --bg-fill -Z $WALLPAPER2}
 
-super + {_,shift} + F6
-    {feh --bg-fill -Z $WALLPAPER1 && $HOME/.config/conky/conky-launch.sh, \
-    feh --bg-fill -Z $WALLPAPER2 && $HOME/.config/conky/conky-launch-bg.sh}
+super + F4
+    feh --bg-fill -Z $WALLPAPER3
+
+#super + {_,shift} + F6
+#    {feh --bg-fill -Z $WALLPAPER1 && $HOME/.config/conky/conky-launch.sh, \
+#    feh --bg-fill -Z $WALLPAPER2 && $HOME/.config/conky/conky-launch-bg.sh}
 
 # application tools on Fn Button
 super + {F7, F8, F10}
     {arandr, networkmanager_dmenu, keybind-helper}
 
 # key-mon
+#super + ~F11
+#    {~/app/screenkey/screenkey, pkill -f screenkey}
 super + ~F11
     {/usr/bin/key-mon, killall key-mon}
 
 # polybar-tray
 super + ~F12
-    {~/bin/polybar-tray off; ~/bin/polybar-tray on, ~/bin/polybar-tray off}
-
-# rofi-pass
-super + {_,shift} + backslash
-    {passman 0, /usr/bin/rofi-pass}
+    {polybar-tray off; polybar-tray on, polybar-tray off}
 
 # clipmenu
 super + {_,shift} + p
-    {/usr/bin/clipmenu, rm -rf /tmp/clipmenu/*}
+    {/usr/bin/clipmenu, /usr/bin/clipdel -d "."}
 
 # rotate the tree rooted at the selected node.
 super + {_,shift} + u
@@ -205,7 +216,7 @@ super + {_,shift} + space
 
 # rofi-emoji
 super + e
-    /usr/bin/rofi-emoji
+    /usr/bin/rofi-emoji-run
 
 # application tab
 super + grave
@@ -286,3 +297,5 @@ super + n ; super + {_,shift } + q
 super + n ; {_, shift} + l
 	bspwm_multifaceted_operation {--lock-all-local,--unlock-all-local}
 
+super + shift + backslash
+    $HOME/bin/rofi-pass

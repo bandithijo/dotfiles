@@ -2,116 +2,121 @@
 
 # For dwm
 dwm_branches = [
-'config',               # merge w/: actualfullscreen, scratchpad-gaspar
-'sticky',               # merge w/: actualfullscreen
-'rmaster',              # merge w/: sticky, cfacts
-'canfocusrule',         # merge w/: systray
-'actualfullscreen',
-'xrdb',
-'noborder',
-'autostart',
-'movestack',
-'moveresize',
-'pertag',
-'resizecorners',
-'focusonnetactive',
-'systray',              # merge w/: scratchpad-gaspar, zoomswap, sticky
-'scratchpad-gaspar',
-'zoomswap',
-'savefloats',
-'centerkeybinding',
-'center',
-'cfacts',
-'deck',
-'dwmc',                 # merge w/: systray
-'statusallmons',        # merge w/: systray
-
-# Disable
-# 'config-swallow',
-# 'swallow',              # merge w/: center, sticky, canfocusrule
+  'config',           # merge w/: actualfullscreen, scratchpad-gaspar
+  'sticky',           # merge w/: actualfullscreen
+  'systray',          # merge w/: scratchpad, zoomswap, statusallmons, dwmc
+  'ru-gaps',          # merge w/: noborder, cfacts
+  'cfacts',
+  'systray-toggle',
+  'actualfullscreen',
+  'xrdb',
+  'noborder',
+  'autostart',
+  'movestack',
+  'moveresize',
+  'pertag',
+  'resizecorners',
+  'focusonnetactive',
+  'scratchpad-gaspar',
+  'zoomswap',
+  'savefloats',
+  'centerkeybinding',
+  'horizgrid',
+  'bottomstack',
+  'statusallmons',
+  'dwmc',
+  'warp'
 ]
 
 # For st
 st_branches = [
-'config',
-'clipboard',
-'font2',
-'xresources',
-'workingdir',
-'boxdraw',
-'invert',
-'newterm',              # merge \w: scrollback, openclipboard, invert
-'scrollback',
-'scrollback-mouse',
-'open-copied-url',
-'bold-is-not-bright',
-'alpha',                # merge \w: boxdraw
-'ligatures-boxdraw-alpha-scrollback',  # merge \w: alpha
+  'config',
+  'clipboard',
+  'font2',
+  'xresources',
+  'workingdir',
+  'boxdraw',
+  'invert',
+  'newterm',              # merge \w: scrollback, openclipboard, invert
+  'scrollback',
+  'scrollback-mouse',
+  'open-copied-url',
+  'bold-is-not-bright',
+  'alpha',                # merge \w: boxdraw
+  'ligatures-boxdraw-alpha-scrollback' # merge \w: alpha
 ]
 
 # For slock
 slock_branches = [
-'config',
-'capscolor',
-'message',
+  'config',
+  'capscolor',
+  'message'
 ]
 
 # For dmenu
 dmenu_branches = [
-'config',
-'password'
+  'config',
+  'password'
 ]
 
+# For tabbed
 tabbed_branches = [
-'config',
-'autohide',
-'clientnumber',
-'alpha',
+  'config',
+  'autohide',
+  'clientnumber',
+  'alpha'
 ]
 
-# For etc.
+# For etc. with config branch
 dir_config_branches = [
-'pinentry-dmenu',
-'slstatus',
-'sxiv',
+  'pinentry-dmenu',
+  'slstatus',
+  'sxiv'
 ]
-config_branches = [ 'config' ]
+config_branches = ['config']
 
+# For etc. only master branch
+dir_only_master_branches = [
+  'wmname'
+]
+only_master_branch = ['master']
+
+# Define dir_name based on cwd
 dir_name = `basename $PWD`.strip
-if dir_name == "dwm"
+if dir_name == 'dwm'
   branches = dwm_branches
-elsif dir_name == "st"
+elsif dir_name == 'st'
   branches = st_branches
-elsif dir_name == "slock"
+elsif dir_name == 'slock'
   branches = slock_branches
-elsif dir_name == "dmenu"
+elsif dir_name == 'dmenu'
   branches = dmenu_branches
-elsif dir_name == "tabbed"
+elsif dir_name == 'tabbed'
   branches = tabbed_branches
 elsif dir_config_branches.include? dir_name
   branches = config_branches
+elsif dir_only_master_branches.include? dir_name
+  branches = only_master_branch
 else
-  puts "You are not in suckless directory!"
+  puts 'You are not in Suckless directory!'
   exit
 end
 
-puts "=> Convert All Branch to Patch"
-system """
+puts '=> Convert All Branch to Patch'
+system '''
 suckdiff &&
 git reset --hard origin/master
-"""
-puts "=> Converting COMPLETE!"
+'''
+puts '=> Converting COMPLETE!'
 
 puts "\n=> Patching All Branch to Master"
-for branch in branches do
+branches.each do |branch|
   print "Patching #{branch}... "
   `git merge #{branch} -m #{branch}`
   print "DONE\n"
 end
-puts "=> Patching COMPLETE!"
+puts '=> Patching COMPLETE!'
 
 puts "\n=> Installing"
-system """
-make && sudo make clean install
-"""
-puts "=> Installation COMPLETE!"
+system 'make && sudo make clean install'
+puts '=> Installation COMPLETE!'

@@ -48,6 +48,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/pip
     zgen oh-my-zsh plugins/postgres
     zgen oh-my-zsh plugins/pass
+    zgen oh-my-zsh plugins/pyenv
     zgen oh-my-zsh plugins/rails
     zgen oh-my-zsh plugins/ruby
     zgen oh-my-zsh plugins/rake
@@ -133,14 +134,28 @@ DISABLE_AUTO_TITLE="true"
 
 
 
-
-
+# Codi
+# Usage: codi [filetype] [filename]
+codi() {
+   local syntax="${1:-python}"
+   shift
+   nvim -c \
+   "let g:startify_disable_at_vimenter = 1 |\
+   set bt=nofile ls=0 noru nonu nornu |\
+   hi CodiVirtualText guifg=red
+   hi ColorColumn ctermbg=NONE |\
+   hi VertSplit ctermbg=NONE |\
+   hi NonText ctermfg=0 |\
+   Codi $syntax" "$@"
+}
 
 # Enable Vim mode in ZSH
 bindkey -v
+# Reverse menu with Shift+tab
+bindkey '^[[Z' reverse-menu-complete
 
 # Keychain
-eval $(keychain --agents ssh,gpg --eval --quiet ~/.ssh/bandithijodotcom)
+#eval $(keychain --agents ssh,gpg --eval --quiet ~/.ssh/bandithijodotcom)
 
 # Untuk merubah titlebar dari st terminal
 # Sumber: http://www.faqs.org/docs/Linux-mini/Xterm-Title.html#s5
@@ -168,9 +183,9 @@ bindkey    "3;5~"         delete-char
 export FZF_DEFAULT_OPTS='
 --color=dark,fg:7,fg+:0,bg+:7,hl:7,hl+:9,info:7,prompt:7,spinner:7,pointer:7,marker:7'
 
+# Ignore node_modulses directory on fzf
+export FZF_DEFAULT_COMMAND='ag --nocolor --ignore node_modules -g ""'
+
 # Should to put at very bottom of this file config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export GPG_TTY=$(tty)
-
-# Ignore node_modulses directory on fzf
-export FZF_DEFAULT_COMMAND='ag --nocolor --ignore node_modules -g ""'

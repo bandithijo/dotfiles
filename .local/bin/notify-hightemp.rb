@@ -24,7 +24,7 @@ NOTIF_DURATION = 2.5     # <- Duration in second
 NOTIF_VOLUME = 5         # <- Range between 0-10
 
 def notif_volume_converter(value)
-  volume_rate = value * 6553.6
+  value * 6553.6
 end
 
 begin
@@ -37,7 +37,7 @@ begin
     notif_volume = notif_volume_converter(NOTIF_VOLUME)
 
     if temp_cpu >= temp_threshold
-      system("notify-send 'High CPU Temperature''!' 'The CPU has been hard at work in the past minute.' --urgency=critical --expire-time=#{notif_duration}")
+      system("notify-send 'CPU Temperature Overload!' --urgency=critical --expire-time=#{notif_duration}")
       system("paplay $HOME/snd/Ringtones/Alert/aircraftalarm.wav --volume=#{notif_volume}")
       if system("which thinkalert > /dev/null 2>&1") == true  # <- Need to install thinkalert
         system("thinkalert 5")

@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+branch_list = `git branch -a`
+rejected_items = %w[* master remotes/origin/HEAD remotes/origin/master origin/master ->]
+branches = branch_list.split(' ').reject { |n| rejected_items.include? n }.map { |n| n.gsub('remotes/origin/', '') }
+
+puts "\n=> Checkout each branch to Local"
+branches.each do |branch|
+  print "Checkout #{branch}..."
+  %x(`git checkout #{branch} > /dev/null 2>&1`)
+  print "DONE\n"
+end
+%x(`git checkout master > /dev/null 2>&1`)
+puts '=> All Checkout COMPLETE!'

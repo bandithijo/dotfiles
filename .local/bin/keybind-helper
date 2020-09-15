@@ -2,7 +2,7 @@
 
 pilihan="BSPWM\nMPV\nST\nTMUX\nVIM"
 
-terpilih=$(echo -e "$pilihan" | rofi -dmenu -i -p KEYBINDS: -lines 6 -width 200)
+terpilih=$(echo -e "$pilihan" | rofi -dmenu -i -p KEYBINDS -lines 6 -width 200)
 
 case "$terpilih" in
     BSPWM) dunstify "$terpilih KEYBINDS" "`tail -n 55 $HOME/.config/rofi-help/keybinds-bspwm`" ;;

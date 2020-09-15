@@ -52,6 +52,11 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
+# PATH: PYENV
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # PATH: NPM
 PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix="$HOME/.node_modules"
@@ -70,6 +75,9 @@ export PATH
 # For smooth the font for some Java apps
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
+# For cover some java application only show blank white
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 export WALLPAPER1="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11-dark.png"
 export WALLPAPER2="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11H-dark.png"
 export WALLPAPER3="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11G-dark.png"
@@ -82,5 +90,5 @@ export DISABLE_SPRING=true
 export PISTOL_CHROMA_STYLE=api
 
 # A hack to disable gtk+ 3 client side decoration
-#export GTK_CSD=1
-#export LD_PRELOAD=/usr/lib/libgtk3-nocsd.so.0
+export GTK_CSD=0
+export LD_PRELOAD=/usr/lib/libgtk3-nocsd.so.0
