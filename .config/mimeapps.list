@@ -100,6 +100,7 @@ application/vnd.ms-powerpoint=wine-extension-pwz.desktop;
 image/bmp=gimp.desktop;gpicview.desktop;
 image/webp=org.gnome.gThumb.desktop;gpicview.desktop;
 application/wps-office.docx=wine-Programs-Microsoft Office-Microsoft Word 2010.desktop;wps-office-wps.desktop;wine-extension-docx.desktop;libreoffice-writer.desktop;
+application/rss+xml=firefox.desktop;
 
 [Removed Associations]
 audio/ogg=mpv.desktop;

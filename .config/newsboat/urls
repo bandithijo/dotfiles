@@ -1,58 +1,62 @@
 # Teman Blogging
 ------------------------------------------------------DOTFRIENDS
-https://ethanschoonover.com/index.xml "dotfriends"
-http://romisatriawahono.net/feed/atom/ "dotfriends"
-https://bandithijo.github.io/feed/blog.xml "~BanditHijo Blog" "dotfriends"
-https://bandithijo.github.io/feed/vlog.xml "~BanditHijo Vlog" "dotfriends"
-https://budrich.github.io/index.xml "dotfriends"
-https://theriyanto.wordpress.com/feed/ "~Tedi Heriyanto" "dotfriends"
+https://ethanschoonover.com/index.xml
+http://romisatriawahono.net/feed/atom/
+https://bandithijo.github.io/feed/blog.xml "~BanditHijo Blog"
+https://bandithijo.github.io/feed/vlog.xml "~BanditHijo Vlog"
+https://budrich.github.io/index.xml
+https://theriyanto.wordpress.com/feed/ "~Tedi Heriyanto"
 https://agung-setiawan.com/feed/ "Tech News"
 https://situsali.com/feed/ "Tech News"
-http://feeds.feedburner.com/Petruknisme "dotfriends"
-https://alunux.github.io/index.xml "~Alunux" "dotfriends"
-https://wonderneko.wordpress.com/feed/ "~Wonderneko.h" "dotfriends"
-http://www.himawan.nu/feeds/posts/default "~Himawan" "dotfriends"
-https://sucipto.net/atom.xml "dotfriends"
-https://se7entime.wordpress.com/feed/ "dotfriends"
-https://epsi-rns.github.io/feed.xml "~Epsi-RNS | GitHub" "dotfriends"
-https://epsi-rns.gitlab.io/index.xml "~Epsi-RNS | GitLab" "dotfriends"
-http://feeds.feedburner.com/fathurhoho "dotfriends"
-https://ngonfig.net/feed "~Ngonfig.net" "dotfriends"
-https://okitavera.me/article/feed.xml "~Nanda Okitavera" "dotfriends"
-https://addy-dclxvi.github.io/index.xml "~Addy" "dotfriends"
-https://yupraw.me/rss.xml "dotfriends"
-https://aflasio.art/rss.xml "~Aflasio Blog" "dotfriends"
-https://raniaamina.github.io/atom.xml "~Rania Amina" "dotfriends"
-https://raniaamina.id/rss2 "~Rania Amina | Mozleup!" "dotfriends"
-https://chamelemon.site/stories/rss.xml "~Muktazam Hasbi" "dotfriends"
-https://lukesmith.xyz/rss.xml "dotfriends"
-https://www.meutiarahmah.com/index.xml "dotfriends"
-https://themsaid.com/feed "~Mohamed Said's Journal" "dotfriends"
-https://rizafahmi.com/rss.xml "dotfriends"
-http://lifepluslinux.blogspot.com/feeds/posts/default "dotfriends"
-https://www.i-bsd.com/feed.xml "~Donovan Nagel | iBSD" "dotfriends"
-https://maidgirl21.github.io/feed.xml "~maidgirl21" "dotfriends"
-https://nullprogram.com/feed/ "dotfriends"
-https://anchor.fm/s/30348d4/podcast/rss "~Ceritanya Developer" "dotfriends"
-http://feeds.feedburner.com/esviai "dotfriends"
-http://feeds.feedburner.com/blog/devnull "dotfriends"
-https://tsarafatma.com/feed.xml "~Teh TsaraFatma" "dotfriends"
-http://vederis.id/feed/ "~Vederis Leunardus" "dotFriends"
-https://protesilaos.com/master.xml "~Protesilaos Stavrou" "dotFriends"
-https://elianiva.github.io/rss.xml "~Manusia Bernapas" "dotfriends"
-https://yeripratama.com/ "~Yeri Pratama | Tic Tech Toe" "dotfriends"
-https://davidxiang.com/feed/ "~David Xiang" "dotfriends"
+http://feeds.feedburner.com/Petruknisme
+https://alunux.github.io/index.xml "~Alunux"
+https://wonderneko.wordpress.com/feed/ "~Wonderneko.h"
+http://www.himawan.nu/feeds/posts/default "~Himawan"
+https://sucipto.net/atom.xml
+https://se7entime.wordpress.com/feed/
+https://epsi-rns.github.io/feed.xml "~Epsi-RNS | GitHub"
+https://epsi-rns.gitlab.io/index.xml "~Epsi-RNS | GitLab"
+http://feeds.feedburner.com/fathurhoho
+https://ngonfig.net/feed "~Ngonfig.net"
+https://okitavera.me/article/feed.xml "~Nanda Okitavera"
+https://addy-dclxvi.github.io/index.xml "~Addy"
+https://yupraw.me/rss.xml
+https://aflasio.art/rss.xml "~Aflasio Art"
+https://raniaamina.github.io/atom.xml "~Rania Amina"
+https://raniaamina.id/rss2 "~Rania Amina | Mozleup!"
+https://chamelemon.site/stories/rss.xml "~Muktazam Hasbi"
+https://lukesmith.xyz/rss.xml
+https://www.meutiarahmah.com/index.xml
+https://themsaid.com/feed "~Mohamed Said's Journal"
+https://rizafahmi.com/rss.xml
+http://lifepluslinux.blogspot.com/feeds/posts/default
+https://www.i-bsd.com/feed.xml "~Donovan Nagel | iBSD"
+https://maidgirl21.github.io/feed.xml "~maidgirl21"
+https://nullprogram.com/feed/
+http://feeds.feedburner.com/esviai
+http://feeds.feedburner.com/blog/devnull
+https://tsarafatma.com/feed.xml "~Teh Tsara Fatma"
+http://vederis.id/feed/ "~Vederis Leunardus"
+https://protesilaos.com/master.xml "~Protesilaos Stavrou"
+https://elianiva.github.io/rss.xml "~Manusia Bernapas"
+https://yeripratama.com/blog/rss.xml "~Yeri's Blog"
+https://davidxiang.com/feed/ "~David Xiang"
 
 # Programming Language & Framework
 --------------------------------------------PROGRAMMING_LANGUAGE
-https://www.ruby-lang.org/en/feeds/news.rss "Programming Language"
-https://jekyllrb.com/feed.xml "SSG"
+https://www.ruby-lang.org/en/feeds/news.rss
+https://jekyllrb.com/feed.xml
 https://www.rubypigeon.com/feed.xml "~Ruby Pigeon"
-https://www.python.org/dev/peps/peps.rss/ "Programming Language"
-https://www.djangoproject.com/rss/weblog/ "Web Framework"
+https://www.python.org/dev/peps/peps.rss/
+https://www.djangoproject.com/rss/weblog/
 
 # Podcast
 ---------------------------------------------------------PODCAST
-https://rss.simplecast.com/podcasts/4543/rss "Podcast"
-https://offtopical.net/pg/feed.xml "Podcast"
+https://rss.simplecast.com/podcasts/4543/rss
+https://offtopical.net/pg/feed.xml
+https://anchor.fm/s/30348d4/podcast/rss "~Ceritanya Developer"
 
+# Security
+--------------------------------------------------------SECURITY
+https://linuxsecurityblog.com/feed/ "~Linux Security Blog (ls /blog)"
+https://www.exploit-db.com/rss.xml "~Exploit-DB.com"

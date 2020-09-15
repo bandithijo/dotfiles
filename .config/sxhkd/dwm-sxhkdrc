@@ -9,7 +9,7 @@ super + Escape
 
 # floating terminal emulator
 super + ctrl + Return
-	/usr/local/bin/st -T 'st+'
+	cd; st -t 'st+'
 
 # program launcher
 super + d
