@@ -9,6 +9,7 @@ dwm_branches = [
   'cfacts',
   'systray-toggle',
   'actualfullscreen',
+  'roundedcorners',
   'xrdb',
   'noborder',
   'autostart',
@@ -21,11 +22,9 @@ dwm_branches = [
   'zoomswap',
   'savefloats',
   'centerkeybinding',
-  'horizgrid',
-  'bottomstack',
+  'ru-bottomstack',
   'statusallmons',
-  'dwmc',
-  'warp'
+  'dwmc'
 ]
 
 # For st

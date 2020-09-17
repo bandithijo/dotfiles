@@ -24,7 +24,7 @@ super + shift + End
 
 # lock screen
 super + shift + x
-	/usr/bin/slimlock
+	/usr/local/bin/slock
 
 # screenshot
 super + Print

@@ -2,7 +2,7 @@
 
 sanitizer
 pkill -f "slstatus"; slstatus &
-pkill -f "sxhkd"; sxhkd -c ~/.config/sxhkd/dwm-sxhkdrc &
+pkill -f "sxhkd"; sxhkd -c ~/.config/sxhkd/sxhkdrc-dwm &
 pkill -f "dunst"; dunst -config ~/.config/dunst/dunstrc &
 xsetroot -solid "#1E1E1E"
 feh --bg-fill -Z $WALLPAPER1
