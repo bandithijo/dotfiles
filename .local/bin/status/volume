@@ -39,7 +39,7 @@ if [ $mute = "true" ]; then
     echo " MUTED"
 elif [ $mute = "false" ]; then
     volume=$(pamixer --get-volume-human)
-    echo " "$volume
+    echo " ""${volume//%}"
 else
     echo " ERROR"
 fi

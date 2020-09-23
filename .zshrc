@@ -154,8 +154,9 @@ bindkey -v
 # Reverse menu with Shift+tab
 bindkey '^[[Z' reverse-menu-complete
 
-# Keychain
-#eval $(keychain --agents ssh,gpg --eval --quiet ~/.ssh/bandithijodotcom)
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
 
 # Untuk merubah titlebar dari st terminal
 # Sumber: http://www.faqs.org/docs/Linux-mini/Xterm-Title.html#s5
@@ -172,12 +173,12 @@ case $TERM in
     ;;
 esac
 
-# Import alias from .aliases
-[ -f ~/.aliases ] && source ~/.aliases
-
 # For handle Delete key
 bindkey    "[3~"          delete-char
 bindkey    "3;5~"         delete-char
+
+# Import alias from .aliases
+[ -f ~/.aliases ] && source ~/.aliases
 
 # FZF FreeBSD color
 export FZF_DEFAULT_OPTS='

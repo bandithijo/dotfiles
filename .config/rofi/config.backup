@@ -1,0 +1,10 @@
+!------------------------------------------------------------------------------
+! ROFI PREFERENCES
+!------------------------------------------------------------------------------
+rofi.combi-modi:       window,drun,ssh
+rofi.font:             JetBrainsMono Nerd Font Medium 8
+rofi.modi:             drun
+rofi.hide-scrollbar:   true
+rofi.theme:            base16-tomorrow-night-eighties
+rofi.sidebar-mode:     true
+!------------------------------------------------------------------------------

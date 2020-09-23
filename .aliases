@@ -16,6 +16,8 @@ alias lll="ls -alh"
 # exit
 alias :q="exit"
 
+alias :puts="funban.rb"
+
 # Firefox with Tor
 alias fireprox="firefox --private-window"
 

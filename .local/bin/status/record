@@ -22,12 +22,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-if pgrep -f ffmpeg > /dev/null; then
+if pgrep -f ffmpeg > /dev/null || \
+   pgrep -l kazam > /dev/null || \
+   pgrep -f simplescreenrecorder > /dev/null
+then
     echo " REC "
-elif pgrep -l kazam > /dev/null; then
-    echo " REC "
-elif pgrep -f simplescreenrecorder > /dev/null; then
-    echo " REC "
-else
-    echo ""
 fi

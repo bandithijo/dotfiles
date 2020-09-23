@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+# change this remote repo with your own
 remote_repo = 'bandithijo'
 
 puts '=> Reset the master branch'

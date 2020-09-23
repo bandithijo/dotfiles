@@ -42,6 +42,10 @@ https://elianiva.github.io/rss.xml "~Manusia Bernapas"
 https://yeripratama.com/blog/rss.xml "~Yeri's Blog"
 https://davidxiang.com/feed/ "~David Xiang"
 
+# Linux Magazine
+--------------------------------------------------------MAGAZINE
+https://hackaday.com/feed/ "~HackDay"
+
 # Programming Language & Framework
 --------------------------------------------PROGRAMMING_LANGUAGE
 https://www.ruby-lang.org/en/feeds/news.rss
@@ -58,5 +62,6 @@ https://anchor.fm/s/30348d4/podcast/rss "~Ceritanya Developer"
 
 # Security
 --------------------------------------------------------SECURITY
+https://teguh.co/rss.xml "~Teguh Aprianto"
 https://linuxsecurityblog.com/feed/ "~Linux Security Blog (ls /blog)"
 https://www.exploit-db.com/rss.xml "~Exploit-DB.com"

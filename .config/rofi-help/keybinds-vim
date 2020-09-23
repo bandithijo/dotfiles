@@ -47,6 +47,3 @@ zo                 Open Selected Folding
 zc                 Close Selected Folding
 :mkview            Save Folding
 :loadview          Load Saved Folding
-<b>COMMAND----------------------------------------</b>
-:set ft=(...)
-:set conceallevel=0

@@ -1,0 +1,671 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;==========================================================
+
+[colors]
+foreground = #5E5E5E
+background = #BBFFFFFF
+midground = #3E3E3E
+background-trans = #1E1E1E
+foreground-alt = #56696F
+background-alt = #073642
+alert = #AF0000
+orange = #CB4B16
+blue = #005F87
+
+[bar/bartop]
+monitor = LVDS1
+width = 100%
+height = 14
+fixed-center = true
+bottom = false
+
+foreground = ${colors.foreground}
+background = ${colors.background-trans}
+
+line-size = 1
+line-color = #dfdfdf
+
+border-top-size = 0
+border-bottom-size = 0
+border-left-size = 0
+border-right-size = 0
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = JetBrainsMono Nerd Font:style=Medium:pixelsize=8;2
+font-1 = FontAwesome:pixelsize=8;2
+font-2 = Font Awesome 5 Brands:size=8;2
+font-3 = JetBrainsMono Nerd Font:style=Bold:pixelsize=8;2
+font-4 = JetBrainsMono Nerd Font:style=Bold:pixelsize=6;-1
+font-5 = FontAwesome:width=Normal:pixelsize=5;-2
+
+modules-left = arrowstartbluebspwm bspwm arrowbspwm xwindow arrowxwindow
+modules-center =
+modules-right = arrowdate popup-calendar arrowbat bat-state bat-capacity arrowendblue
+
+wm-name = bspwm
+
+wm-restack = bspwm
+
+override-redirect = false
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/barbottom]
+monitor = LVDS1
+width = 100%
+height = 14
+fixed-center = true
+bottom = true
+
+foreground = ${colors.foreground}
+background = ${colors.background-trans}
+
+line-size = 1
+line-color = #dfdfdf
+
+border-top-size = 0
+border-bottom-size = 0
+border-left-size = 0
+border-right-size = 0
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = JetBrainsMono Nerd Font:style=Medium:pixelsize=8;2
+font-1 = FontAwesome:pixelsize=10;2
+font-2 = Font Awesome 5 Brands:size=10;2
+font-3 = JetBrainsMono Nerd Font:style=Bold:pixelsize=8;2
+font-4 = JetBrainsMono Nerd Font:style=Bold:pixelsize=6;-1
+font-5 = FontAwesome:weight=Bold:pixelsize=4;-2
+
+modules-left = arrowstartblue profile arrowprofile xkeyboard
+modules-center =
+modules-right = arrowtemp network-wlan-tfc arrowcpu cpu-temp arrowcpu memory-mod arrowfilesystem filesystem-mod arrowpulse volume-mod arrowbacklight backlight-mod arrowendblue
+
+wm-name = bspwm
+
+wm-restack = bspwm
+
+override-redirect = false
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/traybspwm]
+monitor = LVDS1
+width = 5.3%
+height = 14
+offset-x = 0
+offset-y = 0
+fixed-center = false
+bottom = yes
+
+foreground = ${colors.foreground}
+background = ${colors.background-trans}
+
+line-size = 1
+line-color = #dfdfdf
+
+border-size = 0
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = Fira Code Retina:pixelsize=9;2
+
+modules-left = sp1
+modules-center =
+modules-right =
+
+;tray-position = right
+tray-position = left
+tray-padding = 0
+tray-maxsize = 16
+tray-scale = 1.0
+tray-foreground = ${colors.foreground}
+tray-background = ${colors.background-trans}
+tray-detached = true
+tray-offset-x = 0
+tray-offset-y = 0
+
+override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+;-----------------------------------------------------------------------------
+
+[module/sp1]
+type = custom/text
+content = " "
+content-foreground = ${colors.foreground}
+content-background = ${colors.background-trans}
+
+[module/sp2]
+type = custom/text
+content = "  "
+content-foreground = ${colors.foreground-alt}
+content-background = ${colors.background}
+
+;-----------------------------------------------------------------------------
+
+[module/profile]
+type = custom/text
+content = " %{T3} %{T-} %{T0}BANDITHIJO%{T-} %{F#5E5E5E}%{B#3E3E3E}%{B-}%{F-}%{F#BBFFFFFF}%{B#3E3E3E} %{T3} %{T-}ARCHLINUX | THINKPAD X61 %{F-}%{B-}"
+content-foreground = ${colors.background}
+content-background = ${colors.foreground}
+
+;-----------------------------------------------------------------------------
+;  'left': '', 'right': ''
+;  'left': '', 'right': ''
+;-----------------------------------------------------------------------------
+
+[module/arrowend]
+type = custom/text
+content = ""
+content-foreground = ${colors.foreground}
+content-background = ${colors.foreground}
+
+[module/arrowendblue]
+type = custom/text
+content = " "
+content-foreground = ${colors.blue}
+content-background = ${colors.foreground}
+
+[module/arrowstart]
+type = custom/text
+content = ""
+content-foreground = ${colors.foreground}
+content-background = ${colors.foreground}
+
+[module/arrowstartblue]
+type = custom/text
+content = ""
+content-foreground = ${colors.blue}
+content-background = ${colors.foreground}
+
+[module/arrowstartbluebspwm]
+type = custom/text
+content = ""
+content-foreground = ${colors.blue}
+content-background = ${colors.blue}
+
+[module/arrowbspwm]
+type = custom/text
+content = ""
+content-foreground = ${colors.foreground}
+content-background = ${colors.midground}
+
+[module/arrowxwindow]
+type = custom/text
+content = ""
+content-foreground = ${colors.midground}
+content-background = ${colors.background-trans}
+
+[module/arrowdate]
+type = custom/text
+content = ""
+content-foreground = ${colors.midground}
+content-background = ${colors.background-trans}
+
+[module/arrowbat]
+type = custom/text
+content = ""
+content-foreground = ${colors.foreground}
+content-background = ${colors.midground}
+
+[module/arrowprofile]
+type = custom/text
+content = ""
+content-foreground = ${colors.midground}
+content-background = ${colors.background-trans}
+
+[module/arrowpulse]
+type = custom/text
+content = " "
+content-foreground = ${colors.foreground}
+content-background = ${colors.midground}
+
+[module/arrowbacklight]
+type = custom/text
+content = ""
+content-foreground = ${colors.background}
+content-background = ${colors.foreground}
+
+[module/arrowtemp]
+type = custom/text
+content = " "
+content-foreground = ${colors.midground}
+content-background = ${colors.background-trans}
+
+[module/arrowcpu]
+type = custom/text
+content = " "
+content-foreground = ${colors.background}
+content-background = ${colors.midground}
+
+[module/arrowmemory]
+type = custom/text
+content = "  "
+content-foreground = ${colors.background}
+content-background = ${colors.midground}
+
+[module/arrowfilesystem]
+type = custom/text
+content = "  "
+content-foreground = ${colors.background}
+content-background = ${colors.midground}
+
+[module/arrownet]
+type = custom/text
+content = ""
+content-foreground = ${colors.midground}
+content-background = ${colors.background}
+
+;-----------------------------------------------------------------------------
+
+[module/bat-capacity]
+type = custom/script
+exec = ~/bin/status/bat-capacity
+interval = 5
+format = "<label>"
+format-foreground = ${colors.background}
+format-background = ${colors.foreground}
+
+[module/bat-state]
+type = custom/script
+exec = ~/bin/status/bat-state
+interval = 5
+format = " <label> "
+format-foreground = ${colors.background}
+format-background = ${colors.foreground}
+
+[module/cpu-temp]
+type = custom/script
+exec = ~/bin/status/cpu-temp
+interval = 5
+format = "<label> "
+format-foreground = ${colors.background}
+format-background = ${colors.midground}
+
+[module/window-name]
+type = custom/script
+exec = ~/.config/polybar/scripts/window-name.sh
+interval = 1
+
+[module/cpu-mod]
+type = custom/script
+exec = ~/.config/polybar/scripts/cpu-mod.sh
+interval = 1
+format = "<label>%"
+format-prefix = " "
+format-foreground = ${colors.background}
+format-background = ${colors.midground}
+
+[module/memory-mod]
+type = custom/script
+exec = ~/bin/status/memory
+interval = 5
+format = "<label>"
+format-foreground = ${colors.background}
+format-background = ${colors.midground}
+
+[module/filesystem-mod]
+type = custom/script
+exec = ~/bin/status/filesystem
+interval = 60
+format = "<label>"
+format-foreground = ${colors.background}
+format-background = ${colors.midground}
+
+[module/volume-mod]
+type = custom/script
+exec = ~/bin/status/volume
+interval = 1
+format = "<label> "
+format-prefix = " "
+format-foreground = ${colors.background}
+format-background = ${colors.foreground}
+
+[module/backlight-mod]
+type = custom/script
+exec = ~/bin/status/backlight
+interval = 5
+format = "<label>"
+format-prefix = " "
+format-foreground = ${colors.background}
+format-background = ${colors.foreground}
+
+[module/network-wlan-tfc]
+type = custom/script
+exec = ~/bin/status/network-wlan-tfc
+interval = 1
+format = "<label>  "
+format-prefix = " "
+format-foreground = ${colors.background}
+format-background = ${colors.midground}
+
+
+;-----------------------------------------------------------------------------
+
+[module/popup-calendar]
+type = custom/script
+exec = ~/.config/polybar/scripts/popup-calendar.sh
+interval = 1
+click-left = ~/.config/polybar/scripts/popup-calendar.sh --popup
+format = "<label>"
+format-foreground = ${colors.background}
+format-background = ${colors.midground}
+
+;-----------------------------------------------------------------------------
+
+[module/bspwm]
+type = internal/bspwm
+
+; Only show workspaces defined on the same output as the bar
+; NOTE: The bspwm and XRandR monitor names must match, which they do by default.
+; Default: true
+pin-workspaces = true
+
+; Output mode flags after focused state label
+; Default: false
+inline-mode = false
+
+; Create click handler used to focus workspace
+; Default: true
+enable-click = false
+
+; Create scroll handlers used to cycle workspaces
+; Default: true
+enable-scroll = false
+
+; Set the scroll cycle direction
+; Default: true
+reverse-scroll = false
+
+; Use fuzzy (partial) matching on labels when assigning
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces
+; containing 'code' in the label
+; Default: false
+fuzzy-match = true
+
+; ws-icon-[0-9]+ = label;icon
+; Note that the label needs to correspond with the bspwm workspace name
+;ws-icon-0 = code;♚
+;ws-icon-1 = office;♛
+;ws-icon-2 = graphics;♜
+;ws-icon-3 = mail;♝
+;ws-icon-4 = web;♞
+;ws-icon-default = ♟
+
+; Available tags:
+;   <label-monitor>
+;   <label-state> - gets replaced with <label-(focused|urgent|occupied|empty)>
+;   <label-mode> - gets replaced with <label-(monocle|tiled|fullscreen|floating|locked|sticky|private)>
+; Default: <label-state>
+format = "<label-state><label-mode>"
+
+; Available tokens:
+;   %name%
+; Default: %name%
+;label-monitor = "%name%%{F#56696F} |%{F-}"
+label-monitor = "%{T4}%name%%{T-}%{F#002B36} %{F-}"
+label-monitor-foreground = ${colors.background}
+label-monitor-background = ${colors.foreground}
+
+; If any values for label-dimmed-N are defined, the workspace/mode
+; colors will get overridden with those values if the monitor is out of focus
+; To only override workspaces in a specific state, use:
+;   label-dimmed-focused
+;   label-dimmed-occupied
+;   label-dimmed-urgent
+;   label-dimmed-empty
+label-dimmed-foreground = ${colors.background}
+label-dimmed-focused-background = ${colors.foreground}
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-focused = "%{F#FFFFFF}%{B#005F87}%{T6}  %{T-}%{T4}%{F#FFFFFF}%name%%{F-}%{T-}%{B-}%{F-}%{F#005F87}%{B#005F87}%{B-}%{F-}"
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.foreground}
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-occupied = "%{T6}%{F#BBFFFFFF}  %{F-}%{T-}%{T1}%{F#BBFFFFFF}%name% %{F-}%{T-}"
+label-occupied-foreground = ${colors.background}
+label-occupied-background = ${colors.foreground}
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-empty = "%{T6}%{F#003E3E3E}  %{F-}%{T-}%{T1}%{F#BBFFFFFF}%name% %{F-}%{T-}"
+label-empty-foreground = ${colors.background}
+label-empty-background = ${colors.foreground}
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-urgent = "%{T6}  %{T-}%{F#BBFFFFFF}%{T1}%name%%{T-}%{F-}%{F#5E5E5E} %{F-}"
+label-urgent-foreground = ${colors.alert}
+label-urgent-background = ${colors.foreground}
+
+; The following labels will be used to indicate the layout/mode
+; for the focused workspace. Requires <label-mode>
+;
+; Available tokens:
+;   None
+label-tiled = "[]="
+label-tiled-foreground = ${colors.background}
+label-tiled-background = ${colors.foreground}
+
+label-monocle = "[M]="
+label-monocle-foreground = ${colors.background}
+label-monocle-background = ${colors.foreground}
+
+label-floating = "<><"
+label-floating-foreground = ${colors.background}
+label-floating-background = ${colors.foreground}
+
+label-fullscreen = "[F]"
+label-fullscreen-foreground = ${colors.background}
+label-fullscreen-background = ${colors.foreground}
+
+label-pseudotiled = "[T]"
+label-pseudotiled-foreground = ${colors.background}
+label-pseudotiled-background = ${colors.foreground}
+
+label-locked = "[X]"
+label-locked-foreground = ${colors.background}
+label-locked-background = ${colors.foreground}
+
+label-sticky = "[Y]"
+label-sticky-foreground = ${colors.background}
+label-sticky-background = ${colors.foreground}
+
+label-private = "[Z]"
+label-private-foreground = ${colors.background}
+label-private-background = ${colors.foreground}
+
+;-----------------------------------------------------------------------------
+
+[module/xwindow]
+type = internal/xwindow
+format = <label>
+format-padding = 0
+
+;label = " %title:0:45:...% "
+label = " %title% "
+label-maxlen = 45
+label-foreground = ${colors.background}
+label-background = ${colors.midground}
+
+label-empty =
+label-empty-foreground = ${colors.background}
+
+;-----------------------------------------------------------------------------
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+
+format = <label-indicator>
+format-spacing = 0
+
+format-prefix = "%{F#005F87}%{B#1E1E1E}%{B-}%{F-}%{F#BCC3C3}%{B#005F87}  %{B-}%{F-}"
+format-prefix-foreground = ${colors.foreground}
+format-prefix-background = ${colors.blue}
+
+label-layout = "%layout%"
+label-layout-foreground = ${colors.foreground}
+label-layout-background = ${colors.background-trans}
+
+label-indicator-on-padding = 0
+label-indicator-on-margin = 0
+label-indicator-on = "%{T4}CAPS %{T-}%{F#005F87}%{B#0002B36}%{B-}%{F-}"
+label-indicator-on-foreground = ${colors.background}
+label-indicator-on-background = ${colors.blue}
+
+;-----------------------------------------------------------------------------
+
+[module/netspdwlan1]
+type = internal/network
+interface = wlan0
+interval = 1.0
+format-connected = "<label-connected>"
+label-connected = "  %downspeed:3%  %upspeed:3%"
+label-connected-foreground = ${colors.midground}
+label-connected-background = ${colors.background-trans}
+
+[module/wlan1]
+type = internal/network
+interface = wlan0
+interval = 1.0
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %local_ip6% [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+; Default: %ifname% %local_ip%
+;format-connected = "<ramp-signal><label-connected>"
+format-connected = "<ramp-signal>"
+label-connected = " %essid:0:10:% "
+label-connected-foreground = ${colors.midground}
+label-connected-background = ${colors.background-trans}
+
+format-disconnected = <label-disconnected>
+label-disconnected = "  OFFLINE"
+label-disconnected-foreground = ${colors.alert}
+
+ramp-signal-0 = " %{T5}0%{T-}"
+ramp-signal-1 = " %{T5}1%{T-}"
+ramp-signal-2 = " %{T5}2%{T-}"
+ramp-signal-3 = " %{T5}3%{T-}"
+ramp-signal-4 = " %{T5}4%{T-}"
+ramp-signal-5 = " %{T5}5%{T-}"
+ramp-signal-foreground = ${colors.midground}
+ramp-signal-background = ${colors.background-trans}
+
+[module/netspdeth]
+type = internal/network
+interface = eth0
+interval = 1.0
+format-connected = "<label-connected>"
+label-connected = "  %downspeed:3%  %upspeed:3%"
+label-connected-foreground = ${colors.foreground}
+label-connected-background = ${colors.background}
+
+[module/eth]
+type = internal/network
+interface = eth0
+interval = 1.0
+
+format-connected-prefix = "  "
+format-connected-prefix-foreground = ${colors.foreground}
+format-connected-prefix-background = ${colors.background}
+label-connected = "%local_ip%"
+
+;format-disconnected = <label-disconnected>
+;label-disconnected =  %ifname%
+;label-disconnected-foreground = ${colors.foreground}
+
+;-----------------------------------------------------------------------------
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = "%a %Y/%m/%d"
+
+time = " %I:%M %p "
+
+format-prefix = "  "
+format-prefix-foreground = ${colors.background}
+format-prefix-background = ${colors.midground}
+
+label = %date%%time%
+label-foreground = ${colors.background}
+label-background = ${colors.midground}
+
+;-----------------------------------------------------------------------------
+
+[settings]
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
+screenchange-reload = true
+compositing-background = source
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+pseudo-transparent = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+; vim:ft=dosini

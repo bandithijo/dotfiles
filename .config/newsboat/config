@@ -65,7 +65,7 @@ highlight article "https?://[^ ]+"       default default
 highlight article "\\[image\\ [0-9]+\\]" default default
 
 #browser linkhandler
-browser "/usr/local/bin/firefox %u"
+browser "firefox %u"
 macro . open-in-browser
 #macro v set browser "i3 exec mpv"; open-in-browser ; set browser linkhandler
 #macro y set browser "spawndl"; open-in-browser ; set browser linkhandler
@@ -74,7 +74,7 @@ macro . open-in-browser
 
 # c copies the link to the clipboard
 # The line below is probably the skiddiest lien i've ever writer.
-macro c set browser "copy(){ echo $1 | xclip ;}; copy "; open-in-browser ; set browser linkhandler
+#macro c set browser "copy(){ echo $1 | xclip ;}; copy "; open-in-browser ; set browser linkhandler
 
 
 # plain color scheme for newsbeuter <http://www.newsbeuter.org/>

@@ -23,4 +23,5 @@
 # SOFTWARE.
 
 username=$USER
-echo  ${username^^} | sed 's/[aiueoAIUEO]//g'
+#echo  ${username^^} | sed 's/[aiueoAIUEO]//g'
+echo  ${username^^}

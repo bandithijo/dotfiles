@@ -27,7 +27,7 @@ wlan_online=$(ip a s dev $wlan_card | grep -i inet)
 if [[ $wlan_online ]]; then
     wlan_do=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $1}')
     wlan_up=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $2}')
-    echo "" $wlan_do "" $wlan_up "KB/s"
+    echo "" $wlan_do "" $wlan_up
 else
     echo " OFFLINE"
 fi

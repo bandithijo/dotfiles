@@ -51,7 +51,8 @@ super + shift + Pause
 
 # pulse audio controls
 {XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute}
-    pamixer {--increase 2, --decrease 2, --toggle-mute}
+    pamixer {--increase 2, --decrease 2, --toggle-mute}; \
+    pkill -RTMIN+1 dwmblocks
 
 # screen brightness controls
 {XF86MonBrightnessUp, XF86MonBrightnessDown}
@@ -69,12 +70,13 @@ super + {F7, F8, F10}
     {arandr, networkmanager_dmenu, keybind-helper}
 
 # guvcview
-super + ~F10
+super + ~F9
 	{/usr/bin/guvcview-launcher,pkill -f 'guvcview'}
 
 # key-mon
 super + ~F11
-    {/usr/bin/key-mon, killall key-mon}
+    {/usr/bin/key-mon, killall key-mon} & \
+    pkill -RTMIN+2 dwmblocks
 
 # polybar-tray
 super + F12

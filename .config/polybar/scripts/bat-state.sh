@@ -1,13 +1,13 @@
 #!/bin/sh
 
-state=$(cat /sys/devices/platform/smapi/BAT0/state)
+state=$(sysctl -n hw.acpi.battery.state)
 
-if [ $state = "charging" ]; then
-    echo " CHARGING "
-elif [ $state = "discharging" ]; then
-    echo " DISCHARGE "
-elif [ $state = "idle" ]; then
-    echo " IDLE "
+if [ $state = "2" ]; then
+    echo " CHARGING"
+elif [ $state = "1" ]; then
+    echo " DISCHARGE"
+elif [ $state = "0" ]; then
+    echo " IDLE"
 else
-    echo " UNKNOWN "
+    echo " UNKNOWN"
 fi

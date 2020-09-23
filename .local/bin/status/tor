@@ -24,6 +24,4 @@
 
 if pgrep -f torrc > /dev/null; then
     echo " TOR "
-else
-    echo ""
 fi

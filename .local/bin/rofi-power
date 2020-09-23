@@ -23,6 +23,7 @@ then
     case $option in
       Exit)
         eval $1
+        #pkill -15 Xorg
         ;;
       Reboot)
         systemctl reboot

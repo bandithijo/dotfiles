@@ -1,0 +1,29 @@
+<b>DWM--------------------------------------------</b>
+mod+Shift+Enter      Terminal
+mod+Ctrl+Enter       Terminal Floating
+mod+Shift+End        Sessions Dialog
+mod+Shift+c          Kill Focused Window
+mod+Shift+x          Lock Screen
+mod+Shift+q          Kill/Reload DWM
+mod+d                Dmenu App Launcher
+mod+b                Bar Toggle
+mod+Shift+b          Systraybar Toggle
+<b>WINDOW-----------------------------------------</b>
+mod+Enter            Slave to Master
+mod+[/]              Increase/Decrease Gaps
+mod+Shift+=          No Gaps
+<b>LAUNCH-----------------------------------------</b>
+mod+e                Rofi Emoji
+mod+Shift+Pause      Dmenu Record
+mod+{p,Shift+p}      Clipboard Show/Clear
+mod+Print            Screenshot Silently
+mod+Shift+Print      Screenshot Flameshot ImgMgck
+mod+Shift+Ctrl+Print Screenshot Flameshot
+mod+Ctrl+Print       Screenshot Timer
+mod+Alt+Print        Screenshot Window ImgMgck
+mod+Shift+alt+Print  Screenshot Window
+mod+F8               Rofi NetworkManager
+mod+F9               Arandr
+mod+F10              Rofi Keybind Helper
+mod+F11              Key-Mon Toggle
+mod+F12              Dmenu Systemd

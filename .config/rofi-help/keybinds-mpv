@@ -1,0 +1,41 @@
+<b>COMMON-----------------------------------------</b>
+q                      Quit
+Shift+q                Quit with Save Position
+Ctrl+f                 Fetching YouTube Quality
+<b>NAVIGATION-------------------------------------</b>
+Space                  Play/Pause
+Right                  Seek +5
+Left                   Seek -5
+Up                     Seek +60
+Down                   Seek -60
+,                      Frame Step
+.                      Frame Back Step
+<b>VOLUME-----------------------------------------</b>
+9                      Volume Down
+0                      Volume Up
+<b>WINDOW-----------------------------------------</b>
+Shift+t                Window on Top
+-                      Rotate 90 180 270 0
+=                      Horizontal Flip
+<b>WINDOW SCALE-----------------------------------</b>
+Alt+0                  Window Scale 0.5
+Alt+1                  Window Scale 1.0
+Alt+2                  Window Scale 2.0
+<b>SPEED------------------------------------------</b>
+[                      Multiply Speed 0.9091
+]                      Multiply Speed 1.1
+{                      Multiply Speed 0.5
+}                      Multiply Speed 2.0
+<b>COLOR CORRECTION-------------------------------</b>
+1                      Add Contrast -1
+2                      Add Contrast +1
+3                      Add Brightness -1
+4                      Add Brightness +1
+5                      Add Gamma -1
+6                      Add Gamma +1
+7                      Add Saturation -1
+8                      Add Saturation +1
+<b>SUBTITLE---------------------------------------</b>
+v                      Subtitle Visibility
+j                      Subtitle Next
+Shift+j                Subtitle Previous

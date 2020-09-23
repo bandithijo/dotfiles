@@ -37,7 +37,7 @@ begin
     notif_volume = notif_volume_converter(NOTIF_VOLUME)
 
     if temp_cpu >= temp_threshold
-      system("notify-send 'CPU Temperature Overload!' --urgency=critical --expire-time=#{notif_duration}")
+      system("notify-send 'CPU Temperature Overload!' --urgency=critical --expire-time=#{notif_duration} -a 'System'")
       system("paplay $HOME/snd/Ringtones/Alert/aircraftalarm.wav --volume=#{notif_volume}")
       if system("which thinkalert > /dev/null 2>&1") == true  # <- Need to install thinkalert
         system("thinkalert 5")

@@ -1,0 +1,8 @@
+configuration {
+	modi: "drun,window";
+	combi-modi: "window,drun,ssh";
+	font: "JetBrainsMono Nerd Font Medium 8";
+	hide-scrollbar: true;
+	theme: "base16-tomorrow-night-eighties";
+	/* sidebar-mode: true; */
+}

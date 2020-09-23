@@ -1,30 +1,50 @@
 #!/usr/bin/env ruby
 
+# Suckmerge2 was inspired by suckmerge by HexDSL. This script has functionality
+# to merge selected branches, make, & make install.
+
+# Options:
+# -d for debugging. Merge all selected branches and make only.
+# -i for installing. Merge all selected branches, make, & make install
+
+# Usage:
+# $ suckmerge2 -[i/d]
+
+# Legend:
+# n    => branch without config
+# n*   => branch with config on config branch
+# n :  => branch has merge with other branch
+# n <- => latest branch on the fleet
+
 # For dwm
 dwm_branches = [
-  'config',           # merge w/: actualfullscreen, scratchpad-gaspar
-  'sticky',           # merge w/: actualfullscreen
-  'systray',          # merge w/: scratchpad, zoomswap, statusallmons, dwmc
-  'ru-gaps',          # merge w/: noborder, cfacts
-  'cfacts',
-  'systray-toggle',
-  'actualfullscreen',
-  'roundedcorners',
-  'xrdb',
-  'noborder',
-  'autostart',
-  'movestack',
-  'moveresize',
-  'pertag',
-  'resizecorners',
-  'focusonnetactive',
-  'scratchpad-gaspar',
-  'zoomswap',
-  'savefloats',
-  'centerkeybinding',
-  'ru-bottomstack',
-  'statusallmons',
-  'dwmc'
+  'config',           # 1*
+  'sticky',           # 19*
+  'wasfocus',         # 20  : sticky
+  'ru-gaps',          # 17* : cfacts, noborder
+  'cfacts',           # 15*
+  'cfacts-dragcfact', # 16* : cfacts
+  'actualfullscreen', # 13* : sticky
+  'xrdb',             # 3*
+  'pertag',           # 2
+  'noborder',         # 11
+  'movestack',        # 8*
+  'moveresize',       # 9*
+  'resizecorners',    # 6
+  'focusonnetactive', # 7
+  'focusonclick',     # 24* : moveresize
+  'fixborders',       # 25
+  'scratchpad',       # 13*
+  'zoomswap',         # 4
+  'autostart',        # 26  : zoomswap
+  'savefloats',       # 5   : alwayscenter
+  'alwayscenter',     # 10
+  'centerkeybinding', # 21*
+  'ru-bottomstack',   # 18*
+  'statusallmons',    # 12
+  'systray',          # 22  : zoomswap, scratchpad, wasfocus, statusallmons
+  'systray-toggle',   # 23*
+  'ru-fibonacci'      # 27* <-
 ]
 
 # For st
@@ -70,7 +90,8 @@ tabbed_branches = [
 dir_config_branches = [
   'pinentry-dmenu',
   'slstatus',
-  'sxiv'
+  'sxiv',
+  'dwmblocks'
 ]
 config_branches = ['config']
 
@@ -101,21 +122,105 @@ else
   exit
 end
 
-puts '=> Convert All Branch to Patch'
-system '''
-suckdiff &&
-git reset --hard origin/master
-'''
-puts '=> Converting COMPLETE!'
-
-puts "\n=> Patching All Branch to Master"
-branches.each do |branch|
-  print "Patching #{branch}... "
-  `git merge #{branch} -m #{branch}`
-  print "DONE\n"
+def clean_reset
+  puts '=> Convert All Branch to Diff'
+  system 'suckclean && git reset --hard origin/master'
+  puts '=> Converting COMPLETE!'
 end
-puts '=> Patching COMPLETE!'
 
-puts "\n=> Installing"
-system 'make && sudo make clean install'
-puts '=> Installation COMPLETE!'
+def clean_diff_reset
+  puts '=> Convert All Branch to Diff'
+  system 'suckclean && suckdiff && git reset --hard origin/master'
+  puts '=> Converting COMPLETE!'
+end
+
+def merge_selected(branches)
+  puts "\n=> Patching All Branch to Master"
+  branches.each do |branch|
+    print "Patching #{branch}... "
+    system "git merge #{branch} -m #{branch}"
+    print "DONE\n"
+  end
+  puts '=> Patching COMPLETE!'
+end
+
+def make_only
+  puts "\n=> Making"
+  system 'make'
+  puts '=> Making COMPLETE!'
+end
+
+def make_install
+  puts "\n=> Installing"
+  system 'make && sudo make clean install'
+  puts '=> Installation COMPLETE!'
+end
+
+option = ARGV[0]
+if option == '-d'
+  puts'''
++-----------------------+
+| SUCKMERGE2: DEBUGGING |
++-----------------------+
+  '''
+  sleep 1
+  clean_reset
+  merge_selected(branches)
+  make_only
+elsif option == '-i'
+  puts'''
++------------------------+
+| SUCKMERGE2: INSTALLING |
++------------------------+
+  '''
+  sleep 1
+  clean_diff_reset
+  merge_selected(branches)
+  make_install
+else
+  puts "\nERROR: You enter the wrong option!"
+  puts '''
+Options:
+  -d for debugging  - Merge all selected branches and make only.
+  -i for installing - Merge all selected branches, make, & make install
+
+Usage:
+  $ suckmerge2 -[i/d]
+  '''
+end
+
+if dir_name == 'dwm' && option == '-i'
+  puts """
+  +----------------------------------------------------------------------+
+  | STATUSBAR:                                                           |
+  +----------------------------------------------------------------------+
+  | Bandithijo's DWM doesn't bring the status bar.                       |
+  | You should bring your own. My personal preferences are use slstatus. |
+  |                                                                      |
+  | Sample: https://s.id/bandithijo-dwmblocks                            |
+  +----------------------------------------------------------------------+
+  +----------------------------------------------------------------------+
+  | KEYBOARD:                                                            |
+  +----------------------------------------------------------------------+
+  | Bandithijo's DWM doesn't bring the keyboard shortcut for apps.       |
+  | You should bring your own. My personal preferences are use SXHKD.    |
+  |                                                                      |
+  | Sample: https://s.id/bandithijo-sxhkdrc-dwm                          |
+  +----------------------------------------------------------------------+
+  +----------------------------------------------------------------------+
+  | AUTOSTART:                                                           |
+  +----------------------------------------------------------------------+
+  | BanditHijo's DWM use autostart patch. But I modified the path.       |
+  | Please, provide the autostart file on:                               |
+  | ~/.local/bin/autostart.sh                                            |
+  |                                                                      |
+  | And the other one:                                                   |
+  | ~/.local/bin/autostart_blocking.sh (just empty file)                 |
+  |                                                                      |
+  | Don't forget to make all of them as executeable file, with:          |
+  | $ chmod +x ~/.local/bin/autostart*.sh                                |
+  |                                                                      |
+  | Sample: https://s.id/bandithijo-autostart                            |
+  +----------------------------------------------------------------------+
+  """
+end
