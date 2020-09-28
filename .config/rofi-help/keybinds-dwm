@@ -16,12 +16,12 @@ mod+Shift+=          No Gaps
 mod+e                Rofi Emoji
 mod+Shift+Pause      Dmenu Record
 mod+{p,Shift+p}      Clipboard Show/Clear
-mod+Print            Screenshot Silently
-mod+Shift+Print      Screenshot Flameshot ImgMgck
-mod+Shift+Ctrl+Print Screenshot Flameshot
-mod+Ctrl+Print       Screenshot Timer
-mod+Alt+Print        Screenshot Window ImgMgck
-mod+Shift+alt+Print  Screenshot Window
+mod+Print            ScrShot Silently
+mod+Shift+Print      ScrShot Flameshot ImgMgck
+mod+Shift+Ctrl+Print ScrShot Flameshot
+mod+Ctrl+Print       ScrShot Timer
+mod+Alt+Print        ScrShot Window ImgMgck
+mod+Shift+alt+Print  ScrShot Window
 mod+F8               Rofi NetworkManager
 mod+F9               Arandr
 mod+F10              Rofi Keybind Helper

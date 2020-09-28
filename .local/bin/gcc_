@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+#
+input_file = ARGV[0]
+if input_file.include? '.c'
+  output_file = input_file[0..-3]
+else
+  puts 'ERROR: Not a C file'
+  exit
+end
+
+# Sample command:
+# $ gcc main.c -o main; ./main
+system "gcc #{input_file} -o #{output_file}; ./#{output_file}"

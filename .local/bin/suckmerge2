@@ -75,7 +75,8 @@ slock_branches = [
 # For dmenu
 dmenu_branches = [
   'config',
-  'password'
+  'password',
+  'xresources'
 ]
 
 # For tabbed
@@ -156,8 +157,7 @@ def make_install
   puts '=> Installation COMPLETE!'
 end
 
-option = ARGV[0]
-if option == '-d'
+def option_for_debugging(branches)
   puts'''
 +-----------------------+
 | SUCKMERGE2: DEBUGGING |
@@ -167,7 +167,9 @@ if option == '-d'
   clean_reset
   merge_selected(branches)
   make_only
-elsif option == '-i'
+end
+
+def option_for_installing(branches)
   puts'''
 +------------------------+
 | SUCKMERGE2: INSTALLING |
@@ -177,6 +179,14 @@ elsif option == '-i'
   clean_diff_reset
   merge_selected(branches)
   make_install
+end
+
+option = ARGV[0]
+
+if option == '-d'
+  option_for_debugging(branches)
+elsif option == '-i'
+  option_for_installing(branches)
 else
   puts "\nERROR: You enter the wrong option!"
   puts '''
@@ -185,8 +195,22 @@ Options:
   -i for installing - Merge all selected branches, make, & make install
 
 Usage:
-  $ suckmerge2 -[i/d]
+  $ suckmerge2 -[d/i]
   '''
+  puts '  Or,'
+  puts
+  puts '  Press (d) for debugging'
+  puts '  Press (i) for installing'
+  print "\n=> "
+  second_option = gets.chomp
+  if second_option == 'd'
+    option_for_debugging(branches)
+  elsif second_option == 'i'
+    option_for_installing(branches)
+  else
+    puts "\nERROR: You enter the wrong option!"
+    exit
+  end
 end
 
 if dir_name == 'dwm' && option == '-i'

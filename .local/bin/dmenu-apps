@@ -1,3 +1,2 @@
-#!/usr/bin/bash
-
+#!/bin/sh
 j4-dmenu-desktop --dmenu="/usr/local/bin/dmenu -i -m 0 -p 'Run:'" --no-generic

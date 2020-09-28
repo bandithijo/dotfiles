@@ -1,17 +1,19 @@
 #!/bin/sh
 
+# if pgrep -f ffmpeg > /dev/null; then
+#     echo " REC"
+# elif pgrep -l kazam > /dev/null; then
+#     echo " REC"
+# elif pgrep -f simplescreenrecorder > /dev/null; then
+#     echo " REC"
+# elif pgrep -f torrc > /dev/null; then
+#     echo " TOR"
+# elif pgrep -f pppd > /dev/null; then
+#     echo " VPN"
+# elif pgrep -f 'python2 /usr/bin/key-mon' > /dev/null; then
+#     echo " "
+# fi
 
-if pgrep -f ffmpeg > /dev/null; then
-    echo " REC"
-elif pgrep -l kazam > /dev/null; then
-    echo " REC"
-elif pgrep -f simplescreenrecorder > /dev/null; then
-    echo " REC"
-elif pgrep -f torrc > /dev/null; then
-    echo " TOR"
-elif pgrep -f pppd > /dev/null; then
-    echo " VPN"
-elif pgrep -f 'python2 /usr/bin/key-mon' > /dev/null; then
-    echo " "
+if pgrep -f puma > /dev/null; then
+    echo " PUMA"
 fi
-

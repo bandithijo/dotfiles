@@ -15,9 +15,6 @@ super + ctrl + Return
 super + d
     /usr/bin/dmenu-apps
 
-XF86Launch1
-	/usr/bin/dmenu-apps
-
 # quit dwm
 super + shift + End
     /usr/bin/rofi-power 'killall dwm'
@@ -50,9 +47,8 @@ super + shift + Pause
     /usr/bin/dmenu-record
 
 # pulse audio controls
-{XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute}
-    pamixer {--increase 2, --decrease 2, --toggle-mute}; \
-    pkill -RTMIN+1 dwmblocks
+{XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute, XF86Launch1}
+    pamixer {-i 2, -d 2, --toggle-mute, --source 1 --toggle-mute}
 
 # screen brightness controls
 {XF86MonBrightnessUp, XF86MonBrightnessDown}
@@ -75,8 +71,7 @@ super + ~F9
 
 # key-mon
 super + ~F11
-    {/usr/bin/key-mon, killall key-mon} & \
-    pkill -RTMIN+2 dwmblocks
+    {/usr/bin/key-mon, killall key-mon}
 
 # polybar-tray
 super + F12

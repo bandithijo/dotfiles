@@ -180,9 +180,9 @@ bindkey    "3;5~"         delete-char
 # Import alias from .aliases
 [ -f ~/.aliases ] && source ~/.aliases
 
-# FZF FreeBSD color
+# FZF DWM color
 export FZF_DEFAULT_OPTS='
---color=dark,fg:7,fg+:0,bg+:7,hl:7,hl+:9,info:7,prompt:7,spinner:7,pointer:7,marker:7'
+--color=dark,fg:7,fg+:7,bg+:24,hl:7,hl+:202,info:7,prompt:7,spinner:7,pointer:7,marker:7'
 
 # Ignore node_modulses directory on fzf
 export FZF_DEFAULT_COMMAND='ag --nocolor --ignore node_modules -g ""'
