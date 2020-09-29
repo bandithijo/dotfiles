@@ -45,11 +45,11 @@ ou_vol=$(pamixer --get-volume)
 in_vol=$(pamixer --source 1 --get-volume)
 
 if [ $ou_mute = "true" ] && [ $in_mute = "true" ]; then
-    echo " MUTE  "
+    echo " 0  0"
 elif [ $ou_mute = "true" ] && [ $in_mute = "false" ]; then
-    echo " MUTE  "$in_vol
+    echo " 0  "$in_vol
 elif [ $ou_mute = "false" ] && [ $in_mute = "true" ]; then
-    echo " "$ou_vol"  "
+    echo " "$ou_vol"  0"
 elif [ $ou_mute = "false" ] && [ $in_mute = "false" ]; then
     echo " "$ou_vol " "$in_vol
 else

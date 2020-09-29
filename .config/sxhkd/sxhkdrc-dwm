@@ -46,13 +46,30 @@ super + shift + ctrl + Print
 super + shift + Pause
     /usr/bin/dmenu-record
 
-# pulse audio controls
-{XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute, XF86Launch1}
-    pamixer {-i 2, -d 2, --toggle-mute, --source 1 --toggle-mute}
+# pulseaudio controls volume up & down
+{XF86AudioRaiseVolume, XF86AudioLowerVolume}
+    pamixer {-i 2, -d 2}; \
+    ou_vol=$(pamixer --get-volume); \
+    dunstify "  Volume: "$ou_vol -r 1
+
+# pulseaudio controls mute speaker & mic
+{XF86AudioMute, XF86Launch1}
+    pamixer { \
+    --toggle-mute; \
+    ou_mute=$(pamixer --get-mute); \
+    [ $ou_mute = "true" ] && dunstify "  MUTED" -r 1; \
+    [ $ou_mute = "false" ] && dunstify "  UNMUTED" -r 1, \
+    --source 1 --toggle-mute; \
+    in_mute=$(pamixer --source 1 --get-mute); \
+    [ $in_mute = "true" ] && dunstify "  MUTED" -r 1; \
+    [ $in_mute = "false" ] && dunstify "  UNMUTED" -r 1; \
+    }
 
 # screen brightness controls
 {XF86MonBrightnessUp, XF86MonBrightnessDown}
-    xbacklight {-inc 5, -dec 5}
+    xbacklight {-inc 5, -dec 5}; \
+    get_brightness=$(xbacklight -get | cut -f 1 -d '.'); \
+    dunstify "  Brightness: "$get_brightness -r 1
 
 # wallpaper & conky for taking screenshot
 super + {_,shift} + F5
