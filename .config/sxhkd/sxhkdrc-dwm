@@ -41,7 +41,10 @@ super + Pause
 {XF86AudioRaiseVolume, XF86AudioLowerVolume}
     pamixer {-i 2, -d 2}; \
     ou_vol=$(pamixer --get-volume); \
-    dunstify "  Volume: "$ou_vol -t 1000 -r 1
+    jack_stat=$($HOME/bin/has_headphone); \
+    [ $jack_stat = "yes" ] && icon=" "; \
+    [ $jack_stat = "no" ]  && icon=" "; \
+    dunstify "$icon Volume: "$ou_vol -t 1000 -r 1
 
 # pulseaudio controls mic volume up & down
 shift + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
@@ -60,8 +63,11 @@ alt + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
     pamixer { \
     --toggle-mute; \
     ou_mute=$(pamixer --get-mute); \
-    [ $ou_mute = "true" ]  && dunstify "  MUTED" -t 1000 -r 1; \
-    [ $ou_mute = "false" ] && dunstify "  UNMUTED" -t 1000 -r 1, \
+    jack_stat=$($HOME/bin/has_headphone); \
+    [ $jack_stat = "yes" ] && icon=" "; \
+    [ $jack_stat = "no" ]  && icon=" "; \
+    [ $ou_mute = "true" ]  && dunstify "$icon MUTED" -t 1000 -r 1; \
+    [ $ou_mute = "false" ] && dunstify "$icon UNMUTED" -t 1000 -r 1, \
     --source 1 --toggle-mute; \
     in_mute=$(pamixer --source 1 --get-mute); \
     [ $in_mute = "true" ]  && dunstify "  MUTED" -t 1000 -r 1; \

@@ -36,22 +36,33 @@
 # ou = speaker out
 # in = microphone in
 
-#    
+#      
 
 # GNU/Linux
 ou_mute=$(pamixer --get-mute)
 in_mute=$(pamixer --source 1 --get-mute)
 ou_vol=$(pamixer --get-volume)
 in_vol=$(pamixer --source 1 --get-volume)
+jack_stat=$($HOME/bin/has_headphone)
+
+if [ $jack_stat = "yes" ]; then
+    icon_ou_on=""
+    icon_ou_off=""
+elif [ $jack_stat = "no" ]; then
+    icon_ou_on=""
+    icon_ou_off=""
+fi
+icon_in_on=""
+icon_in_off=""
 
 if [ $ou_mute = "true" ] && [ $in_mute = "true" ]; then
-    echo " 0  0"
+    echo $icon_ou_off "0" $icon_in_off "0"
 elif [ $ou_mute = "true" ] && [ $in_mute = "false" ]; then
-    echo " 0  "$in_vol
+    echo $icon_ou_off "0" $icon_in_on $in_vol
 elif [ $ou_mute = "false" ] && [ $in_mute = "true" ]; then
-    echo " "$ou_vol"  0"
+    echo $icon_ou_on $ou_vol $icon_in_off "0"
 elif [ $ou_mute = "false" ] && [ $in_mute = "false" ]; then
-    echo " "$ou_vol " "$in_vol
+    echo $icon_ou_on $ou_vol $icon_in_on $in_vol
 else
     echo " ERROR"
 fi
