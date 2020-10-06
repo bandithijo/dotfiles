@@ -10,7 +10,7 @@
 
 DMENU="/usr/local/bin/dmenu"
 
-updateicon() { \
+updateicon() {
   echo "$1" > ~/.recordingicon
 }
 
@@ -23,7 +23,7 @@ killrecording() {
   exit
 }
 
-screencast() { \
+screencast() {
   ffmpeg -y \
   -f x11grab \
   -draw_mouse 1 \
@@ -41,7 +41,7 @@ screencast() { \
   updateicon " REC "
 }
 
-video() { \
+videoOnly() {
   ffmpeg \
   -f x11grab \
   -draw_mouse 1 \
@@ -55,7 +55,7 @@ video() { \
   updateicon " REC "
 }
 
-audio() { \
+audioOnly() {
   ffmpeg \
   -f pulse -i default \
   -c:a flac \
@@ -64,24 +64,24 @@ audio() { \
   updateicon " REC "
 }
 
-askrecording() { \
+askrecording() {
   [ -f ~/.recordingpid ] && asktoend && exit
-  choice=$(printf "screencast\\nvideo\\naudio" | $DMENU -p "Record:")
+  choice=$(printf "Screencast\nVideo\nAudio" | $DMENU -p " Record:")
   case "$choice" in
-    screencast) screencast;;
-    video) video;;
-    audio) audio;;
+    "Screencast") screencast;;
+    "Video") videoOnly;;
+    "Audio") audioOnly;;
   esac
 }
 
 asktoend() { \
-  response=$(printf "no\\nyes" | $DMENU -p "End Recording:") &&
-  [ "$response" = "yes" ] &&  killrecording
+  response=$(printf "No\nYes" | $DMENU -p " End Recording:") &&
+  [ "$response" = "Yes" ] &&  killrecording
 }
 
 case "$1" in
-  screencast) screencast;;
-  audio) audio;;
-  video) video;;
+  "Screencast") screencast;;
+  "Video") videoOnly;;
+  "Audio") audioOnly;;
   *) askrecording;;
 esac

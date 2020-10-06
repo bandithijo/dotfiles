@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-scrot 'Screenshot_%Y-%m-%d_%H-%M-%S.png' -e 'mv *.png ~/pic/ScreenShots/'; notify-send 'Scrot' 'Screen has been captured!'
+scrot 'Screenshot_%Y-%m-%d_%H-%M-%S.png' \
+-e 'mv *.png ~/pic/ScreenShots/'
+notify-send 'Scrot' 'Screen has been captured!'

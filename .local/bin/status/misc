@@ -14,6 +14,19 @@
 #     echo " "
 # fi
 
+# if pgrep -f puma > /dev/null; then
+#     echo " PUMA "
+# elif pgrep -f sudo > /dev/null; then
+#     echo " SUDO "; \
+#     dunstify " SUDO Activated!" --urgency=critical -t 1000 -r 1
+# fi
+
 if pgrep -f puma > /dev/null; then
-    echo " PUMA"
+    echo " PUMA "
+elif pgrep -f "sudo rsync" > /dev/null; then
+    echo " RSYNC ";
+elif pgrep -f "sudo pacman" > /dev/null; then
+    echo " PCMN ";
+elif pgrep -f "sudo" > /dev/null; then
+    echo " SUDO ";
 fi

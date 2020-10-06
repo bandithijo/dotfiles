@@ -15,7 +15,7 @@ password_files=( ~/.password-store/**/*.gpg )
 password_files=( "${password_files[@]##*/.password-store/}" )
 password_files=( "${password_files[@]%.gpg}" )
 
-password=$(printf '%s\n' "${password_files[@]}" | /usr/local/bin/dmenu -i -m 0 -l 8 "$@")
+password=$(printf '%s\n' "${password_files[@]}" | /usr/local/bin/dmenu -i -m 0 -l 8 -g 2 "$@")
 
 pass -c "$password"
 

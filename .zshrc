@@ -32,32 +32,50 @@ if ! zgen saved; then
     zgen oh-my-zsh
 
     # plugins
-    zgen oh-my-zsh plugins/aws
+    zgen oh-my-zsh plugins/adb
     zgen oh-my-zsh plugins/archlinux
+    zgen oh-my-zsh plugins/aws
+    zgen oh-my-zsh plugins/bundler
+    zgen oh-my-zsh plugins/cargo
+    zgen oh-my-zsh plugins/capistrano
+    zgen oh-my-zsh plugins/command-not-found
     zgen oh-my-zsh plugins/django
     zgen oh-my-zsh plugins/docker
-    zgen oh-my-zsh plugins/kubectl
-    zgen oh-my-zsh plugins/golang
+    zgen oh-my-zsh plugins/docker-compose
+    zgen oh-my-zsh plugins/docker-machine
+    zgen oh-my-zsh plugins/firewalld
+    zgen oh-my-zsh plugins/fzf
     zgen oh-my-zsh plugins/gem
     zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/github
+    zgen oh-my-zsh plugins/golang
+    zgen oh-my-zsh plugins/gpg-agent
     zgen oh-my-zsh plugins/heroku
+    zgen oh-my-zsh plugins/kubectl
+    zgen oh-my-zsh plugins/man
     zgen oh-my-zsh plugins/npm
+    zgen oh-my-zsh plugins/nmap
+    zgen oh-my-zsh plugins/node
+    zgen oh-my-zsh plugins/jruby
+    zgen oh-my-zsh plugins/pass
     zgen oh-my-zsh plugins/pep8
-    zgen oh-my-zsh plugins/python
     zgen oh-my-zsh plugins/pip
     zgen oh-my-zsh plugins/postgres
-    zgen oh-my-zsh plugins/pass
     zgen oh-my-zsh plugins/pyenv
+    zgen oh-my-zsh plugins/python
+    zgen oh-my-zsh plugins/pipenv
     zgen oh-my-zsh plugins/rails
-    zgen oh-my-zsh plugins/ruby
     zgen oh-my-zsh plugins/rake
     zgen oh-my-zsh plugins/rbenv
     zgen oh-my-zsh plugins/rsync
+    zgen oh-my-zsh plugins/ruby
+    zgen oh-my-zsh plugins/rust
+    zgen oh-my-zsh plugins/ssh-agent
     zgen oh-my-zsh plugins/sudo
     zgen oh-my-zsh plugins/systemd
     zgen oh-my-zsh plugins/tmux
-    zgen oh-my-zsh plugins/command-not-found
+    zgen oh-my-zsh plugins/ufw
+    zgen oh-my-zsh plugins/virtualenv
 
     # completions
     zgen load zsh-users/zsh-completions src

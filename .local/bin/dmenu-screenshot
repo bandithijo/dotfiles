@@ -1,0 +1,50 @@
+#!/bin/sh
+
+DMENU="/usr/local/bin/dmenu"
+
+captureFullScreen() {
+    $HOME/bin/scrot-full
+}
+
+captureFullScreenPlus() {
+    $HOME/bin/scrot-full
+    $HOME/bin/scrot-mac
+}
+
+captureFullScreenTime() {
+    $HOME/bin/scrot-time
+}
+
+captureWindow() {
+    $HOME/bin/scrot-window
+}
+
+captureWindowPlus() {
+    $HOME/bin/scrot-window-imgck
+}
+
+captureFlameshot() {
+    /usr/bin/flameshot gui
+}
+
+captureFlameshotPlus() {
+    $HOME/bin/flameshot-imgck
+}
+
+captureFlameshotTime() {
+    sleep 3
+    /usr/bin/flameshot gui
+}
+
+OPTIONS=$(echo -e "Fullscreen\nFullscreen+\nFullscreen Time\nWindow\nWindow+\nFlameshot\nFlameshot+\nFlameshot Time" | $DMENU -i -p " ScreenShot:")
+
+case "$OPTIONS" in
+    "Fullscreen") captureFullScreen;;
+    "Fullscreen+") captureFullScreenPlus;;
+    "Fullscreen Time") captureFullScreenTime;;
+    "Window") captureWindow;;
+    "Window+") captureWindowPlus;;
+    "Flameshot") captureFlameshot;;
+    "Flameshot+") captureFlameshotPlus;;
+    "Flameshot Time") captureFlameshotTime;;
+esac

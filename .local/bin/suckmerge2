@@ -76,7 +76,9 @@ slock_branches = [
 dmenu_branches = [
   'config',
   'password',
-  'xresources'
+  'xresources',
+  'numbers',
+  'grid'
 ]
 
 # For tabbed

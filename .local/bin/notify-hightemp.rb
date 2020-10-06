@@ -20,7 +20,7 @@ Process.setproctitle("notify-hightemp")
 require 'open3'
 
 CPU_TEMP_THRESHOLD = 90  # <- Normaly 90-100
-NOTIF_DURATION = 2.5     # <- Duration in second
+NOTIF_DURATION = 1000    # <- Duration in milisecond
 NOTIF_VOLUME = 5         # <- Range between 0-10
 
 def notif_volume_converter(value)
@@ -37,7 +37,7 @@ begin
     notif_volume = notif_volume_converter(NOTIF_VOLUME)
 
     if temp_cpu >= temp_threshold
-      system("notify-send 'CPU Temperature Overload!' --urgency=critical --expire-time=#{notif_duration} -a 'System'")
+      system("dunstify '  CPU TEMPERATURE OVERLOAD!' --urgency=critical --timeout=#{notif_duration} -r 1")
       system("paplay $HOME/snd/Ringtones/Alert/aircraftalarm.wav --volume=#{notif_volume}")
       if system("which thinkalert > /dev/null 2>&1") == true  # <- Need to install thinkalert
         system("thinkalert 5")

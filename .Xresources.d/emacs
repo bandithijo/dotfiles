@@ -1,2 +1,3 @@
 Emacs.font: FuraCode Nerd Font-8
-Emacs.background: #FFFFFF
+Emacs.background: #1e1e1e
+Emacs.foreground: #eeeeee

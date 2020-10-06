@@ -40,16 +40,26 @@
 
 # GNU/Linux
 cap=$(cat /sys/devices/platform/smapi/BAT0/remaining_percent)
-if [ $cap -ge 0 ] && [ $cap -le 20 ]; then
-    echo " " $cap
-elif [ $cap -ge 21 ] && [ $cap -le 40 ]; then
-    echo " " $cap
-elif [ $cap -ge 41 ] && [ $cap -le 60 ]; then
-    echo " " $cap
-elif [ $cap -ge 61 ] && [ $cap -le 90 ]; then
-    echo " " $cap
+if [ $cap -ge 0 ] && [ $cap -le 10 ]; then
+    echo "" $cap
+elif [ $cap -ge 11 ] && [ $cap -le 20 ]; then
+    echo "" $cap
+elif [ $cap -ge 21 ] && [ $cap -le 30 ]; then
+    echo "" $cap
+elif [ $cap -ge 31 ] && [ $cap -le 40 ]; then
+    echo "" $cap
+elif [ $cap -ge 41 ] && [ $cap -le 50 ]; then
+    echo "" $cap
+elif [ $cap -ge 51 ] && [ $cap -le 60 ]; then
+    echo "" $cap
+elif [ $cap -ge 61 ] && [ $cap -le 70 ]; then
+    echo "" $cap
+elif [ $cap -ge 71 ] && [ $cap -le 80 ]; then
+    echo "" $cap
+elif [ $cap -ge 81 ] && [ $cap -le 90 ]; then
+    echo "" $cap
 elif [ $cap -ge 91 ] && [ $cap -le 100 ]; then
-    echo " " $cap
+    echo "" $cap
 else
-    echo " UNKNWN"
+    echo " UNKNWN"
 fi

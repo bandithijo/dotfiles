@@ -24,52 +24,54 @@ super + shift + x
 	/usr/local/bin/slock
 
 # screenshot
-super + Print
+Print
     /usr/bin/scrot-full
 
-super + ctrl + Print
-    /usr/bin/scrot-time
-
-super + alt + Print
-    /usr/bin/scrot-window-imgck
-
-super + shift + alt + Print
-    /usr/bin/scrot-window
+super + Print
+    $HOME/bin/dmenu-screenshot
 
 super + shift + Print
     /usr/bin/flameshot-imgck
 
-super + shift + ctrl + Print
-    /usr/bin/flameshot gui
-
 # dmenu-record
-super + shift + Pause
+super + Pause
     /usr/bin/dmenu-record
 
-# pulseaudio controls volume up & down
+# pulseaudio controls speaker volume up & down
 {XF86AudioRaiseVolume, XF86AudioLowerVolume}
     pamixer {-i 2, -d 2}; \
     ou_vol=$(pamixer --get-volume); \
-    dunstify "  Volume: "$ou_vol -r 1
+    dunstify "  Volume: "$ou_vol -t 1000 -r 1
+
+# pulseaudio controls mic volume up & down
+shift + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
+    pamixer --source 1 {-i 2, -d 2}; \
+    ou_mic=$(pamixer --source 1 --get-volume); \
+    dunstify "  Microphone: "$ou_mic -t 1000 -r 1
+
+# pulseaudio controls monitor volume up & down
+alt + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
+    pamixer --source 0 {-i 2, -d 2}; \
+    ou_mon=$(pamixer --source 0 --get-volume); \
+    dunstify "  Monitor: "$ou_mon -t 1000 -r 1
 
 # pulseaudio controls mute speaker & mic
-{XF86AudioMute, XF86Launch1}
+{_,shift} + XF86AudioMute
     pamixer { \
     --toggle-mute; \
     ou_mute=$(pamixer --get-mute); \
-    [ $ou_mute = "true" ] && dunstify "  MUTED" -r 1; \
-    [ $ou_mute = "false" ] && dunstify "  UNMUTED" -r 1, \
+    [ $ou_mute = "true" ]  && dunstify "  MUTED" -t 1000 -r 1; \
+    [ $ou_mute = "false" ] && dunstify "  UNMUTED" -t 1000 -r 1, \
     --source 1 --toggle-mute; \
     in_mute=$(pamixer --source 1 --get-mute); \
-    [ $in_mute = "true" ] && dunstify "  MUTED" -r 1; \
-    [ $in_mute = "false" ] && dunstify "  UNMUTED" -r 1; \
-    }
+    [ $in_mute = "true" ]  && dunstify "  MUTED" -t 1000 -r 1; \
+    [ $in_mute = "false" ] && dunstify "  UNMUTED" -t 1000 -r 1 }
 
 # screen brightness controls
 {XF86MonBrightnessUp, XF86MonBrightnessDown}
     xbacklight {-inc 5, -dec 5}; \
     get_brightness=$(xbacklight -get | cut -f 1 -d '.'); \
-    dunstify "  Brightness: "$get_brightness -r 1
+    dunstify "  Brightness: "$get_brightness -t 1000 -r 1
 
 # wallpaper & conky for taking screenshot
 super + {_,shift} + F5
