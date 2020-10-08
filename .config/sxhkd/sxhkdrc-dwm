@@ -56,22 +56,34 @@ shift + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
 alt + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
     pamixer --source 0 {-i 2, -d 2}; \
     ou_mon=$(pamixer --source 0 --get-volume); \
-    dunstify "  Monitor: "$ou_mon -t 1000 -r 1
+    dunstify "  Monitor: "$ou_mon -t 1000 -r 1
 
-# pulseaudio controls mute speaker & mic
-{_,shift} + XF86AudioMute
-    pamixer { \
+# pulseaudio controls mute speaker
+XF86AudioMute
+    pamixer \
     --toggle-mute; \
     ou_mute=$(pamixer --get-mute); \
     jack_stat=$($HOME/bin/has_headphone); \
-    [ $jack_stat = "yes" ] && icon=" "; \
-    [ $jack_stat = "no" ]  && icon=" "; \
-    [ $ou_mute = "true" ]  && dunstify "$icon MUTED" -t 1000 -r 1; \
-    [ $ou_mute = "false" ] && dunstify "$icon UNMUTED" -t 1000 -r 1, \
+    [ $jack_stat = "yes" ] && icon_on=" " icon_off=" "; \
+    [ $jack_stat = "no" ]  && icon_on=" " icon_off=" "; \
+    [ $ou_mute = "true" ]  && dunstify "$icon_off MUTED" -t 1000 -r 1; \
+    [ $ou_mute = "false" ] && dunstify "$icon_on UNMUTED" -t 1000 -r 1
+
+# pulseaudio controls mute mic
+shift + XF86AudioMute
+    pamixer \
     --source 1 --toggle-mute; \
     in_mute=$(pamixer --source 1 --get-mute); \
     [ $in_mute = "true" ]  && dunstify "  MUTED" -t 1000 -r 1; \
-    [ $in_mute = "false" ] && dunstify "  UNMUTED" -t 1000 -r 1 }
+    [ $in_mute = "false" ] && dunstify "  UNMUTED" -t 1000 -r 1
+
+# pulseaudio controls mute mic
+alt + XF86AudioMute
+    pamixer \
+    --source 0 --toggle-mute; \
+    in_mute=$(pamixer --source 0 --get-mute); \
+    [ $in_mute = "true" ]  && dunstify "  MUTED" -t 1000 -r 1; \
+    [ $in_mute = "false" ] && dunstify "  UNMUTED" -t 1000 -r 1
 
 # screen brightness controls
 {XF86MonBrightnessUp, XF86MonBrightnessDown}

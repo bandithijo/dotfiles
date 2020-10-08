@@ -37,14 +37,15 @@ dwm_branches = [
   'scratchpad',       # 13*
   'zoomswap',         # 4
   'autostart',        # 26  : zoomswap
-  'savefloats',       # 5   : alwayscenter
-  'alwayscenter',     # 10
+  'savefloats',       # 28
+  'center',           # 29  : savefloats, sticky, wasfocus <-
   'centerkeybinding', # 21*
   'ru-bottomstack',   # 18*
   'statusallmons',    # 12
   'systray',          # 22  : zoomswap, scratchpad, wasfocus, statusallmons
   'systray-toggle',   # 23*
-  'ru-fibonacci'      # 27* <-
+  'ru-fibonacci',     # 27*
+  'nmaster-sym'       # 30  : pertag, cfacts, noborder ru-gaps
 ]
 
 # For st

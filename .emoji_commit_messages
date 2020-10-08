@@ -1,0 +1,62 @@
+EMOJIS 	                            EXAMPLE COMMIT MESSAGE(S)
+🎉 :tada:                           First commit
+🔨 :hammer: 	                    Update code, Improve code
+📜 :scroll:                         Update README.md, Add docs
+✏️ :pencil:                         Update README.md, Add docs
+📚 :books:                          Update README.md, Add docs
+📝 :memo:                           Update README.md, Add docs
+📖 :book:                           Update README.md, Add docs
+👕 :tshirt:                         Apply linter, Format code
+👔 :necktie: 	                    Apply linter, Format code
+⚗️ :alembic:                        Add tests, Update unit tests
+🧪 :test_tube: 	                    Add tests, Update unit tests
+👶 :baby:                           Add basic implementation, Add partial impl.
+🏅 :medal_sports:                   Finish implementation
+⤴️ :arrow_heading_up:               Upgrade dependency, Upgrade version
+⤵️ :arrow_heading_down:             Downgrade dependency, Downgrade version
+🎨 :art:                            Improve visuals, Enhance UI/UX
+💅 :nail_care:                      Improve visuals, Enhance UI/UX
+💄 :lipstick:                       Improve visuals, Enhance UI/UX
+♿️ :wheelchair:                     Improve accessibility features
+✨ :sparkles:                       Clean code
+🚿 :shower:                         Clean code
+🔥 :fire:                           Delete directory, Remove unnecessary files
+🔫 :gun:                            Delete directory, Remove unnecessary files
+✂️ :scissors:                       Delete directory, Remove unnecessary files
+💩 :poop:                           Mess up legacy code, Apply dirty patch
+🍝 :spaghetti:                      Mess up legacy code, Apply dirty patch
+🐛 :bug:                            Fix bug
+🚧 :construction:                   Apply temporary patch, Improve work in progress
+🚑 :ambulance:                      Apply urgent fix, Fix critical bug
+🌙 :crescent_moon:                  Update nightly builds config, Create background jobs
+🐰 :rabbit:                         Add RabbitMQ requirements
+🐋 :whale:                          Add Dockerfile, Update docker-compose
+   :octocat:                        Add .github dir (only on github.com)
+🦊 :fox_face:                       Add .gitlab dir, Update .gitlab-ci.yml
+🎁 :gift:                           Add new dependencies, Add new feature
+📦 :package:                        Add new dependencies, Add new feature
+🔔 :bell:                           Add alarm/warning
+🔕 :no_bell:                        Silence alarms/warnings
+🔇 :mute:                           Silence alarms/warnings
+🔐 :closed_lock_with_key:           Improve securit, Set more permissions
+🔒 :lock:                           Improve securit, Set more permissions
+🛡 :shield                          Improve securit, Set more permissions
+🔓 :unlock:                         Lift permissions, Remove restrictions
+🔑 :key:                            Lift permissions, Remove restrictions
+📁 :file_folder:                    Change dir structure
+⌚️ :watch:                          Add profiler, Add performance measurements
+⏱ :stopwatch:                      Add profiler, Add performance measurements
+📊 :bar_chart:                      Improve performance
+🔖 :bookmark:                       Update version
+🎒 :school_satchel:                 Build and pack, Make ready for deployment/launch
+🚀 :rocket:                         Build and pack, Make ready for deployment/launch
+📈 :chart_with_upwards_trend:       Improve performance
+📉 :chart_with_downwards_trend:     Minimize resource usage
+📎 :paperclip:                      Attach doc/file
+✈️ :airplane:                       Migrate to new interface, Create data migration
+🏁 :checkered_flag:                 Finish impl, Meet roadmap checkpoint
+🎭 :performing_arts:                Merge branches, Merge two modules
+⚓️ :anchor:                         Put TODO anchors
+🚩 :triangular_flag_on_post:        Meet roadmap checkpoint
+©️ :copyright:                      Add LICENSE file, Update LICENSE
+®️ :registered:                     Add LICENSE file, Update LICENSE
