@@ -22,8 +22,8 @@ if [ ${#option} -gt 0 ]
 then
     case $option in
       Exit)
-        eval $1
-        #pkill -15 Xorg
+        # eval $1
+        pkill -15 $1
         ;;
       Reboot)
         systemctl reboot

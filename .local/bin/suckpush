@@ -3,12 +3,18 @@
 # change this remote repo with your own
 remote_repo = 'bandithijo'
 
-puts '=> Reset the master branch'
+puts '''
+┌-------------------┐
+| SUCKPUSH: PUSHING |
+└-------------------┘
+'''
+
+puts "\n=> Reset the master branch"
 system '''
 git checkout master
 git reset --hard origin/master
 '''
-puts '=> Reseting COMPLETE!'
+puts "=> Reseting COMPLETE!"
 
 branch_list = `git branch`
 rejected_items = %w[* master]
@@ -16,12 +22,18 @@ branches = branch_list.split(' ').reject { |n| rejected_items.include? n }.unshi
 
 puts "\n=> Push each branch to GitHub"
 branches.each do |branch|
-  print "Pushing #{branch}... "
-  %x(`
+  puts "Pushing #{branch}..."
+  system """
   git checkout #{branch}  > /dev/null 2>&1
-  git push -u #{remote_repo} #{branch} > /dev/null 2>&1
-  `)
-  print "DONE\n"
+  git push -u #{remote_repo} #{branch}
+  """
+  puts "DONE!\n"
 end
+
 %x(`git checkout master > /dev/null 2>&1`)
-puts '=> All Pushing COMPLETE!'
+
+puts '''
+┌---------------------------------┐
+| SUCKPUSH: ALL PUSHING COMPLETE! |
+└---------------------------------┘
+'''

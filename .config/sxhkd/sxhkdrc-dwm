@@ -9,7 +9,7 @@ super + Escape
 
 # floating terminal emulator
 super + ctrl + Return
-	cd; st -t 'st+'
+	st -t 'st+'
 
 # program launcher
 super + d
@@ -17,7 +17,7 @@ super + d
 
 # quit dwm
 super + shift + End
-    /usr/bin/rofi-power 'killall dwm'
+    /usr/bin/rofi-power 'Xorg'
 
 # lock screen
 super + shift + x
@@ -34,7 +34,7 @@ super + shift + Print
     /usr/bin/flameshot-imgck
 
 # dmenu-record
-super + Pause
+super + shift + Pause
     /usr/bin/dmenu-record
 
 # pulseaudio controls speaker volume up & down
@@ -56,7 +56,7 @@ shift + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
 alt + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
     pamixer --source 0 {-i 2, -d 2}; \
     ou_mon=$(pamixer --source 0 --get-volume); \
-    dunstify "  Monitor: "$ou_mon -t 1000 -r 1
+    dunstify "  Monitor: "$ou_mon -t 1000 -r 1
 
 # pulseaudio controls mute speaker
 XF86AudioMute
@@ -77,13 +77,13 @@ shift + XF86AudioMute
     [ $in_mute = "true" ]  && dunstify "  MUTED" -t 1000 -r 1; \
     [ $in_mute = "false" ] && dunstify "  UNMUTED" -t 1000 -r 1
 
-# pulseaudio controls mute mic
+# pulseaudio controls mute monitor
 alt + XF86AudioMute
     pamixer \
     --source 0 --toggle-mute; \
-    in_mute=$(pamixer --source 0 --get-mute); \
-    [ $in_mute = "true" ]  && dunstify "  MUTED" -t 1000 -r 1; \
-    [ $in_mute = "false" ] && dunstify "  UNMUTED" -t 1000 -r 1
+    mo_mute=$(pamixer --source 0 --get-mute); \
+    [ $mo_mute = "true" ]  && dunstify "  MUTED" -t 1000 -r 1; \
+    [ $mo_mute = "false" ] && dunstify "  UNMUTED" -t 1000 -r 1
 
 # screen brightness controls
 {XF86MonBrightnessUp, XF86MonBrightnessDown}
@@ -110,7 +110,7 @@ super + ~F9
 super + ~F11
     {/usr/bin/key-mon, killall key-mon}
 
-# polybar-tray
+# dmenu-systemd
 super + F12
 	/usr/bin/dmenu-systemd
 

@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
 
+puts '''
+┌--------------------------┐
+| SUCKCHKOUT: CHECKING OUT |
+└--------------------------┘
+'''
+
 branch_list = `git branch -a`
 rejected_items = %w[* master remotes/origin/HEAD remotes/origin/master origin/master ->]
 branches = branch_list.split(' ').reject { |n| rejected_items.include? n }.map { |n| n.gsub('remotes/origin/', '') }
@@ -11,4 +17,4 @@ branches.each do |branch|
   print "DONE\n"
 end
 %x(`git checkout master > /dev/null 2>&1`)
-puts '=> All Checkout COMPLETE!'
+puts '=> All Checkout COMPLETE'

@@ -4,5 +4,5 @@ QToolTip{
   border: 1px solid palette(highlight);
   padding: 1px;
   /* color: palette(text); */
-  color: #000000;
+  color: #FFFFFF;
 }

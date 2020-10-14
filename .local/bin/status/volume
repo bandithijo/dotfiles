@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # MIT License
 
@@ -56,11 +56,11 @@ icon_in_on=""
 icon_in_off=""
 
 if [ $ou_mute = "true" ] && [ $in_mute = "true" ]; then
-    echo $icon_ou_off "0" $icon_in_off "0"
+    echo $icon_ou_off "Ø" $icon_in_off "Ø"
 elif [ $ou_mute = "true" ] && [ $in_mute = "false" ]; then
-    echo $icon_ou_off "0" $icon_in_on $in_vol
+    echo $icon_ou_off "Ø" $icon_in_on $in_vol
 elif [ $ou_mute = "false" ] && [ $in_mute = "true" ]; then
-    echo $icon_ou_on $ou_vol $icon_in_off "0"
+    echo $icon_ou_on $ou_vol $icon_in_off "Ø"
 elif [ $ou_mute = "false" ] && [ $in_mute = "false" ]; then
     echo $icon_ou_on $ou_vol $icon_in_on $in_vol
 else

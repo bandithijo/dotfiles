@@ -1,8 +1,22 @@
 #!/bin/sh
 
+icon=$(cat ~/.recordingicon)
+
 if pgrep -f ffmpeg > /dev/null || \
-   pgrep -f kazam > /dev/null || \
-   pgrep -f simplescreenrecorder > /dev/null
+   pgrep -f kazam > /dev/null
+   # pgrep -f simplescreenrecorder > /dev/null
 then
-    echo " REC "
+    if pgrep -f ffmpeg > /dev/null
+    then
+        echo $icon""
+    else
+        echo " REC "
+    fi
 fi
+
+# blink=$(date +%s)
+# if [ $((blink % 2)) -eq 0 ]; then
+#     echo " REC "
+# else
+#     echo "  REC "
+# fi

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-rofi -show window -lines 10 -width 380 -display-window 'APPLICATIONS'
+rofi -show window -lines 10 -width 500 -display-window 'APPLICATIONS'

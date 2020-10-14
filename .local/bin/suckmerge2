@@ -38,14 +38,14 @@ dwm_branches = [
   'zoomswap',         # 4
   'autostart',        # 26  : zoomswap
   'savefloats',       # 28
-  'center',           # 29  : savefloats, sticky, wasfocus <-
+  'alwayscenter',     # 29  : savefloats
   'centerkeybinding', # 21*
   'ru-bottomstack',   # 18*
   'statusallmons',    # 12
   'systray',          # 22  : zoomswap, scratchpad, wasfocus, statusallmons
   'systray-toggle',   # 23*
   'ru-fibonacci',     # 27*
-  'nmaster-sym'       # 30  : pertag, cfacts, noborder ru-gaps
+  'nmaster-sym',      # 30  : pertag, cfacts, ru-bottomstack <-
 ]
 
 # For st
@@ -144,6 +144,7 @@ def merge_selected(branches)
     print "Patching #{branch}... "
     system "git merge #{branch} -m #{branch}"
     print "DONE\n"
+    puts
   end
   puts '=> Patching COMPLETE!'
 end
