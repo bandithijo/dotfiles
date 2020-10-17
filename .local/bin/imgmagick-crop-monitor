@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+# How this script work?
+# By put the last file on directory screenshot, and process it with imagemagick
+
+# Please write your screenshot dir with full path
+screenshot_dir    = '/home/bandithijo/pic/ScreenShots'
+Dir.chdir(screenshot_dir)
+ss_dir            = Dir.pwd
+list_file         = %x(ls -p | grep -v /)
+files             = list_file.split(" ")
+original_file     = files.last
+color_profile     = '/usr/share/color/icc/colord/sRGB.icc'
+geometry          = ARGV[0]
+
+%x(
+mogrify -crop #{geometry} #{original_file}
+
+convert #{original_file} -profile #{color_profile} #{original_file}
+)
+
+if %x(which optipng > /dev/null 2>&1)
+  %x(optipng #{target_file})
+  puts 'OPTIPNG DONE!'
+end
+
+puts "SS_DIR: #{ss_dir}
+TARGET: #{original_file}
+CROPING SUCCESS!"

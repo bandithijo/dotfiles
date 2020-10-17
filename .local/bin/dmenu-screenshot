@@ -36,15 +36,39 @@ captureFlameshotTime() {
     /usr/bin/flameshot gui
 }
 
-OPTIONS=$(echo -e "Fullscreen\nFullscreen+\nFullscreen Time\nWindow\nWindow+\nFlameshot\nFlameshot+\nFlameshot Time" | $DMENU -i -p " ScreenShot:")
+cropLaptop() {
+    $HOME/bin/imgmagick-crop-laptop $1
+}
 
-case "$OPTIONS" in
-    "Fullscreen") captureFullScreen;;
-    "Fullscreen+") captureFullScreenPlus;;
-    "Fullscreen Time") captureFullScreenTime;;
-    "Window") captureWindow;;
-    "Window+") captureWindowPlus;;
-    "Flameshot") captureFlameshot;;
-    "Flameshot+") captureFlameshotPlus;;
-    "Flameshot Time") captureFlameshotTime;;
-esac
+cropMonitor() {
+    $HOME/bin/imgmagick-crop-monitor $1
+}
+
+monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: ")
+if [ "$monitors" = "2" ]; then
+    OPTIONS=$(echo -e "Fullscreen\nFullscreen+\nFullscreen Time\nWindow\nWindow+\nFlameshot\nFlameshot+\nFlameshot Time\nCrop Laptop\nCrop Monitor" | $DMENU -i -p " ScreenShot:")
+    case "$OPTIONS" in
+        "Fullscreen") captureFullScreen;;
+        "Fullscreen+") captureFullScreenPlus;;
+        "Fullscreen Time") captureFullScreenTime;;
+        "Window") captureWindow;;
+        "Window+") captureWindowPlus;;
+        "Flameshot") captureFlameshot;;
+        "Flameshot+") captureFlameshotPlus;;
+        "Flameshot Time") captureFlameshotTime;;
+        "Crop Laptop") cropLaptop "1024x768+576+900";;
+        "Crop Monitor") cropMonitor "1600x900+0+0";;
+    esac
+else
+    OPTIONS=$(echo -e "Fullscreen\nFullscreen+\nFullscreen Time\nWindow\nWindow+\nFlameshot\nFlameshot+\nFlameshot Time" | $DMENU -i -p " ScreenShot:")
+    case "$OPTIONS" in
+        "Fullscreen") captureFullScreen;;
+        "Fullscreen+") captureFullScreenPlus;;
+        "Fullscreen Time") captureFullScreenTime;;
+        "Window") captureWindow;;
+        "Window+") captureWindowPlus;;
+        "Flameshot") captureFlameshot;;
+        "Flameshot+") captureFlameshotPlus;;
+        "Flameshot Time") captureFlameshotTime;;
+    esac
+fi

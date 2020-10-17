@@ -13,11 +13,11 @@ super + ctrl + Return
 
 # program launcher
 super + d
-    /usr/bin/dmenu-apps
+    $HOME/bin/dmenu-apps
 
 # quit dwm
 super + shift + End
-    /usr/bin/rofi-power 'Xorg'
+    $HOME/bin/rofi-power 'Xorg'
 
 # lock screen
 super + shift + x
@@ -25,17 +25,17 @@ super + shift + x
 
 # screenshot
 Print
-    /usr/bin/scrot-full
+    $HOME/bin/scrot-full
 
 super + Print
     $HOME/bin/dmenu-screenshot
 
 super + shift + Print
-    /usr/bin/flameshot-imgck
+    $HOME/bin/flameshot-imgck
 
 # dmenu-record
 super + shift + Pause
-    /usr/bin/dmenu-record
+    $HOME/bin/dmenu-record
 
 # pulseaudio controls speaker volume up & down
 {XF86AudioRaiseVolume, XF86AudioLowerVolume}
@@ -91,28 +91,43 @@ alt + XF86AudioMute
     get_brightness=$(xbacklight -get | cut -f 1 -d '.'); \
     dunstify "  Brightness: "$get_brightness -t 1000 -r 1
 
-# wallpaper & conky for taking screenshot
-super + {_,shift} + F5
-    {feh --bg-fill -Z $WALLPAPER1, feh --bg-fill -Z $WALLPAPER2}
-
-super + F4
+# wallpaper
+super + F6
     feh --bg-fill -Z $WALLPAPER3
 
+super + F5
+    monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: "); \
+    if [ $monitors = "2" ]; \
+    then feh --bg-fill -Z $WALLPAPER1 --bg-fill -Z $WALLPAPER2; \
+    else feh --bg-fill -Z $WALLPAPER1; \
+    fi
+
+super + shift + F5
+    monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: "); \
+    if [ $monitors = "2" ]; \
+    then feh --bg-fill -Z $WALLPAPER2 --bg-fill -Z $WALLPAPER2; \
+    else feh --bg-fill -Z $WALLPAPER2; \
+    fi
+
 # application tools on Fn Button
-super + {F7, F8, F10}
-    {arandr, networkmanager_dmenu, keybind-helper}
+super + {F8, F10}
+    {networkmanager_dmenu, keybind-helper}
+
+# arandr
+super + ~F7
+    {arandr, killall arandr}
 
 # guvcview
 super + ~F9
-	{/usr/bin/guvcview-launcher,pkill -f 'guvcview'}
+	{$HOME/bin/guvcview-launcher,pkill -f 'guvcview'}
 
 # key-mon
 super + ~F11
-    {/usr/bin/key-mon, killall key-mon}
+    {$HOME/bin/key-mon-launcher, killall key-mon}
 
 # dmenu-systemd
 super + F12
-	/usr/bin/dmenu-systemd
+	$HOME/bin/dmenu-systemd
 
 # clipmenu
 super + {_,shift} + p
@@ -120,12 +135,16 @@ super + {_,shift} + p
 
 # rofi-emoji
 super + e
-    /usr/bin/rofi-emoji-run
+    $HOME/bin/rofi-emoji-run
 
 # application tab
 super + grave
-    /usr/bin/rofi-application-tab
+    $HOME/bin/rofi-application-tab
+
+# translate-shell
+super + Pause
+    $HOME/bin/dmenu-trans
 
 # dmenu-pass
 super + {_,shift} + backslash
-    {/usr/bin/passtore 0,/usr/bin/dmenu-pass}
+    {$HOME/bin/passtore 0, $HOME/bin/dmenu-pass}

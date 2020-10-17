@@ -198,6 +198,9 @@ bindkey    "3;5~"         delete-char
 # Import alias from .aliases
 [ -f ~/.aliases ] && source ~/.aliases
 
+# Count how many opened terminal
+pgrep -x st | awk 'BEGIN{count=0}{ if(NR!=1){count++} }END{print " st:"count}'
+
 # FZF DWM color
 export FZF_DEFAULT_OPTS='
 --color=dark,fg:7,fg+:7,bg+:24,hl:7,hl+:202,info:7,prompt:7,spinner:7,pointer:7,marker:7'

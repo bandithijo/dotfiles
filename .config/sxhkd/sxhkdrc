@@ -16,10 +16,10 @@ super + ctrl + Return
 
 # program launcher
 super + d
-    j4-dmenu-desktop --dmenu='rofi -dmenu -m 0 -lines 6 -width 300 -i -sort -p RUN' --no-generic
+    j4-dmenu-desktop --dmenu='rofi -dmenu -lines 6 -width 300 -i -sort -p RUN' --no-generic
 
 XF86Launch1
-	j4-dmenu-desktop --dmenu='rofi -dmenu -m 0 -lines 6 -width 300 -i -sort -p RUN' --no-generic
+	j4-dmenu-desktop --dmenu='rofi -dmenu -lines 6 -width 300 -i -sort -p RUN' --no-generic
 
 #
 # bspwm hotkeys --------------------------------------------------------------

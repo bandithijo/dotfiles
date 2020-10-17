@@ -45,6 +45,7 @@ export VISUAL="vim"
 export LESS="-SRXF"
 
 # PATH: GO
+export GOPATH=$HOME/go
 export PATH=$PATH:/usr/bin
 
 # PATH: RBENV

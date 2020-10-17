@@ -3,10 +3,14 @@
 icon=$(cat ~/.recordingicon)
 
 if pgrep -f ffmpeg > /dev/null || \
-   pgrep -f kazam > /dev/null
-   # pgrep -f simplescreenrecorder > /dev/null
+   pgrep -f kazam > /dev/null || \
+   pgrep -f simplescreenrecorder > /dev/null
 then
-    if pgrep -f ffmpeg > /dev/null
+    if pgrep -f vokoscreen > /dev/null && \
+       pgrep -f ffmpeg > /dev/null
+    then
+        echo " REC "
+    elif pgrep -f ffmpeg > /dev/null
     then
         echo $icon""
     else

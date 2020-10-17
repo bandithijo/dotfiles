@@ -28,33 +28,33 @@ killRecording() {
     exit
 }
 
-screenCast() {
-    ffmpeg -y \
-    -f x11grab \
-    -draw_mouse 1 \
-    -framerate 30 \
-    -s $(xdpyinfo | grep dimensions | awk '{print $2;}') \
-    -i :0.0+0,0 \
-    -f pulse -i alsa_output.pci-0000_00_1b.0.analog-stereo.monitor \
-    -f pulse -i alsa_input.pci-0000_00_1b.0.analog-stereo \
-    -filter_complex amix=inputs=2 \
-    -vf setpts=N/FR/TB \
-    -c:a aac \
-    -c:v libx264 -pix_fmt yuv420p -qp 18 -q:v 1 \
-    -threads 4 \
-    "$HOME/vid/ScreenRecorder/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
-    echo $! > ~/.recordingpid
-    updateicon " REC "
-    updatestatus "record"
-}
+# screenCast() {
+#     ffmpeg \
+#     -f x11grab \
+#     -draw_mouse 1 \
+#     -framerate 30 \
+#     -s $(xdpyinfo | grep dimensions | awk '{print $2;}') \
+#     -i :0.0+0,0 \
+#     -f pulse -i alsa_output.pci-0000_00_1b.0.analog-stereo.monitor \
+#     -f pulse -i alsa_input.pci-0000_00_1b.0.analog-stereo \
+#     -filter_complex amix=inputs=2 \
+#     -c:a aac \
+#     -c:v libx264 -pix_fmt yuv420p -qp 18 -q:v 1 \
+#     -threads 4 \
+#     "$HOME/vid/ScreenRecorder/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
+#     echo $! > ~/.recordingpid
+#     updateicon " REC "
+#     updatestatus "record"
+# }
 
+    # -s $(xdpyinfo | grep dimensions | awk '{print $2;}') \
 videoOnly() {
     ffmpeg \
     -f x11grab \
     -draw_mouse 1 \
     -framerate 30 \
-    -s $(xdpyinfo | grep dimensions | awk '{print $2;}') \
-    -i :0.0+0,0 \
+    -s $1 \
+    -i :0.0+$2,$3 \
     -vf setpts=N/FR/TB \
     -c:v libx264 -pix_fmt yuv420p -preset veryfast -q:v 1 \
     -threads 4 \
@@ -109,9 +109,27 @@ if [ -f ~/.recordingpid ]; then
     fi
 fi
 
-choice=$(printf "Screencast\nVideo\nAudio" | $DMENU -p " Record:")
+choice=$(printf "Video\nAudio" | $DMENU -p " Record:")
 case "$choice" in
-    "Screencast") screenCast;;
-    "Video") videoOnly;;
+    "Video")
+        monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: ")
+        if [ "$monitors" = "2" ]; then
+            area=$(printf "All Screen\nLaptop\nMonitor" | $DMENU -p " Area:")
+            case "$area" in
+                "All Screen") videoOnly $(xdpyinfo | grep dimensions | awk '{print $2;}') "0" "0";;
+                "Laptop") videoOnly "1024x768" "576" "900";;
+                "Monitor") videoOnly "1600x900" "0" "0";;
+            esac
+        else
+            videoOnly $(xdpyinfo | grep dimensions | awk '{print $2;}') "0" "0"
+        fi
+        ;;
     "Audio") audioOnly;;
 esac
+
+# choice=$(printf "Screencast\nVideo\nAudio" | $DMENU -p " Record:")
+# case "$choice" in
+#     "Screencast") screenCast;;
+#     "Video") videoOnly;;
+#     "Audio") audioOnly;;
+# esac

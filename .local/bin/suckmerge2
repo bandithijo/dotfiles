@@ -13,7 +13,7 @@
 # Legend:
 # n    => branch without config
 # n*   => branch with config on config branch
-# n :  => branch has merge with other branch
+# n :  => branch has merge with other branch (patch^ : stack patches)
 # n <- => latest branch on the fleet
 
 # For dwm
@@ -38,14 +38,16 @@ dwm_branches = [
   'zoomswap',         # 4
   'autostart',        # 26  : zoomswap
   'savefloats',       # 28
-  'alwayscenter',     # 29  : savefloats
+  'center',           # 29  : savefloats, wasfocus^
   'centerkeybinding', # 21*
   'ru-bottomstack',   # 18*
   'statusallmons',    # 12
-  'systray',          # 22  : zoomswap, scratchpad, wasfocus, statusallmons
+  'systray',          # 22  : zoomswap, scratchpad, wasfocus^, statusallmons
   'systray-toggle',   # 23*
   'ru-fibonacci',     # 27*
-  'nmaster-sym',      # 30  : pertag, cfacts, ru-bottomstack <-
+  'nmaster-sym',      # 30  : pertag, cfacts-dragcfact^
+  'decorhints',       # 31* : systray^, center^
+  'warp',             # 32 <-
 ]
 
 # For st
@@ -162,11 +164,11 @@ def make_install
 end
 
 def option_for_debugging(branches)
-  puts'''
+  puts "
 +-----------------------+
 | SUCKMERGE2: DEBUGGING |
 +-----------------------+
-  '''
+  "
   sleep 1
   clean_reset
   merge_selected(branches)
@@ -174,11 +176,11 @@ def option_for_debugging(branches)
 end
 
 def option_for_installing(branches)
-  puts'''
+  puts "
 +------------------------+
 | SUCKMERGE2: INSTALLING |
 +------------------------+
-  '''
+  "
   sleep 1
   clean_diff_reset
   merge_selected(branches)
@@ -193,14 +195,14 @@ elsif option == '-i'
   option_for_installing(branches)
 else
   puts "\nERROR: You enter the wrong option!"
-  puts '''
+  puts "
 Options:
   -d for debugging  - Merge all selected branches and make only.
   -i for installing - Merge all selected branches, make, & make install
 
 Usage:
   $ suckmerge2 -[d/i]
-  '''
+  "
   puts '  Or,'
   puts
   puts '  Press (d) for debugging'
@@ -217,15 +219,15 @@ Usage:
   end
 end
 
-if dir_name == 'dwm' && option == '-i'
-  puts """
+if dir_name == 'dwm' && (option == '-i' || second_option == 'i')
+  puts "
   +----------------------------------------------------------------------+
   | STATUSBAR:                                                           |
   +----------------------------------------------------------------------+
   | Bandithijo's DWM doesn't bring the status bar.                       |
   | You should bring your own. My personal preferences are use slstatus. |
   |                                                                      |
-  | Sample: https://s.id/bandithijo-dwmblocks                            |
+  | Sample: https://s.id/bandithijo-slstatus                             |
   +----------------------------------------------------------------------+
   +----------------------------------------------------------------------+
   | KEYBOARD:                                                            |
@@ -250,5 +252,5 @@ if dir_name == 'dwm' && option == '-i'
   |                                                                      |
   | Sample: https://s.id/bandithijo-autostart                            |
   +----------------------------------------------------------------------+
-  """
+  "
 end
