@@ -112,7 +112,8 @@ super + {F8, F10}
 # dmenu-udiskie
 super + F6
     UDISKIE_DMENU_LAUNCHER="rofi" dmenu-udiskie -matching regex \
-    -dmenu -i -no-custom -multi-select -p 'UDISKIE' -lines 5 -width 300
+    -dmenu -i -no-custom -multi-select -p "UDISKIE" -lines 5 -width 300 \
+    -kb-accept-alt "" -kb-custom-1 "Shift+Return"
 
 # arandr
 super + ~F7

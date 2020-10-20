@@ -1,0 +1,55 @@
+#!/usr/bin/env ruby
+
+username = `echo $USER`&.strip
+target_path = "/run/media/#{username}"
+target_image = ARGV[0].strip
+target_label = `file '#{target_image}' | cut -d \\\' -f2`&.strip
+
+ARGV.clear
+
+if target_image
+  puts "
+Options:
+
+  press m for mount
+  press u for unmount
+  "
+  print "\n=> "
+  request = gets.chomp
+
+  if request == 'm'
+    system "
+    if [[ ! -d #{target_path}/#{target_label} ]];
+    then
+      sudo mkdir -p #{target_path}/#{target_label}
+      sudo mount -l -o loop '#{target_image}' #{target_path}/#{target_label} > /dev/null
+      echo '=> MOUNTED'
+    else
+      echo '=> WAS MOUNTED'
+    fi
+    "
+  elsif request == 'u'
+    system "
+    if [[ -d #{target_path}/#{target_label} ]];
+    then
+      sudo umount '#{target_image}'
+      sudo rm -rf #{target_path}/#{target_label}
+      echo '=> UNMOUNTED'
+    else
+      echo '=> NOT MOUNTED'
+    fi
+    "
+  else
+    puts '=> WRONG REQUEST'
+    exit
+  end
+else
+  puts "
+=> YOU SHOULD ADD IMAGE AS ATTRIBUTE
+
+Example:
+
+  $ image_mounter.rb <image_name.iso>
+  "
+  exit
+end

@@ -68,7 +68,7 @@ function main() {
                     }
                     //
                     return runCommand(`udiskie-umount ${udiskieOpt} "${device.mountPath}"`,
-                    notifyIfErr(`DISK MOUNTED!\n${device.devPath} : ${device.label}`));
+                    notifyIfErr(`DISK UNMOUNTED!\n${device.devPath} : ${device.label}`));
                 } else if (device.label) {
                     if (device.isLuks) {
                         udiskieOpt += '--recursive';
@@ -246,3 +246,5 @@ function getSelection(data, callback) {
         return callback(undefined, stdout, code);
     });
 }
+
+// vim:ft=javascript tabstop=4 shiftwidth=4

@@ -101,7 +101,7 @@ alias touchpad-disable="xinput --disable 'SynPS/2 Synaptics TouchPad'"
 #alias vis="vis -c ~/.config/vis/config"
 
 # lsblk
-#alias lsblk="lsblk --output=NAME,FSTYPE,SIZE,TYPE,LABEL,MOUNTPOINT"
+alias lsblk="lsblk --output=NAME,FSTYPE,SIZE,TYPE,LABEL,MOUNTPOINT"
 
 # Check total user
 alias usercheck="~/.local/bin/usercheck"
