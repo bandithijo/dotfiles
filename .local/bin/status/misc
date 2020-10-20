@@ -34,4 +34,6 @@ elif pgrep -f "sudo pacman" > /dev/null; then
     echo " PCMN ";
 elif pgrep -f "sudo" > /dev/null; then # add this to last
     echo " SUDO "; \
+elif pgrep -f "transmission-daemon" > /dev/null; then
+    echo " ";
 fi

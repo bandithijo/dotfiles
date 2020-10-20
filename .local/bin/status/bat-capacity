@@ -61,5 +61,5 @@ elif [ $cap -ge 81 ] && [ $cap -le 90 ]; then
 elif [ $cap -ge 91 ] && [ $cap -le 100 ]; then
     echo "" $cap
 else
-    echo " UNKNWN"
+    echo ""
 fi

@@ -43,5 +43,5 @@ elif [ $state = "discharging" ]; then
 elif [ $state = "idle" ]; then
     echo " " # idle
 else
-    echo " " # unknown
+    echo "" # unknown
 fi

@@ -28,4 +28,4 @@
 
 # GNU/Linux
 backlight=$(xbacklight -get | cut -d "." -f1)
-echo "" $backlight"%"
+echo "" $backlight

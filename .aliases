@@ -141,4 +141,6 @@ alias reshell="exec $SHELL"
 
 alias colortest="colortest -w -r -s"
 
+alias gtk_csd_default="GTK_CSD=1 LD_PRELOAD=''"
+
 # -------------------------------------------------------------------END ALIAS

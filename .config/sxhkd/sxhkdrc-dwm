@@ -91,10 +91,6 @@ alt + XF86AudioMute
     get_brightness=$(xbacklight -get | cut -f 1 -d '.'); \
     dunstify "  Brightness: "$get_brightness -t 1000 -r 1
 
-# wallpaper
-super + F6
-    feh --bg-fill -Z $WALLPAPER3
-
 super + F5
     monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: "); \
     if [ $monitors = "2" ]; \
@@ -113,13 +109,17 @@ super + shift + F5
 super + {F8, F10}
     {networkmanager_dmenu, keybind-helper}
 
+# dmenu-udiskie
+super + F6
+    UDISKIE_DMENU_LAUNCHER="rofi" dmenu-udiskie -matching regex \
+    -dmenu -i -no-custom -multi-select -p 'UDISKIE' -lines 5 -width 300
+
 # arandr
 super + ~F7
     {arandr, killall arandr}
 
-# guvcview
 super + ~F9
-	{$HOME/bin/guvcview-launcher,pkill -f 'guvcview'}
+	{$HOME/bin/ffplay-launcher,pkill -f 'ffplay'}
 
 # key-mon
 super + ~F11

@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# reso_monitor_lg=$(xrandr | grep -i 'VGA1 connected' | awk 'NR%1==0 {print $3}')
+# if ! [ "$reso_monitor_lg" = "1600x900+0+0" ]; then
+#     cvt 1600 900 60
+#     xrandr --newmode "1600x900" \
+#     118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync
+#     xrandr --addmode VGA1 1600x900
+#     echo "=> Add newmode 1600x900, DONE!"
+# fi
+
+DMENU="/usr/local/bin/dmenu"
+
+monitor_lg() {
+    sleep 1
+    xrandr --output LVDS1 --primary --mode 1024x768 --pos 576x900 --rotate normal --output VGA1 --mode 1600x900 --pos 0x0 --rotate normal --output VIRTUAL1 --off
+    sleep 1
+    feh --bg-fill -Z $WALLPAPER2 --bg-fill $WALLPAPER1
+}
+
+monitor_laptop() {
+    sleep 1
+    xrandr --output LVDS1 --primary --mode 1024x768 --pos 0x0 --rotate normal --output VGA1 --off --output VIRTUAL1 --off
+    sleep 1
+    feh --bg-fill -Z $WALLPAPER2
+}
+
+choice=$(printf "Dual\nSingle" | $DMENU -p " Monitor:")
+case "$choice" in
+    "Dual"      ) monitor_lg;;
+    "Single"    ) monitor_laptop;;
+esac
