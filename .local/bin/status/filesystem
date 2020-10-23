@@ -30,9 +30,11 @@
 #echo $cap_percentage
 
 # GNU/Linux
-cap_percentage=$(df -h --output=pcent / | awk 'NR%2==0 {print $0}')
-if [ $cap_percentage -ge 60 ]; then
-    echo -e "^c#FF0000^${cap_percentage//%}^d^"
+cap_percentage=$(df -h --output=pcent / | awk 'NR%2==0 {print $0}'  | cut -f 1 -d '%'  | xargs)
+if [ $cap_percentage -ge 90 ]; then
+    echo -e "^c#FF0000^ $cap_percentage^d^"
+elif [ $cap_percentage -ge 80 ] && [ $cap_percentage -ge 89 ]; then
+    echo -e "^c#FFAA00^ $cap_percentage^d^"
 else
-    echo -e "${cap_percentage//%}"
+    echo " $cap_percentage"
 fi
