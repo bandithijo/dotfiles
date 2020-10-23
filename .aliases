@@ -143,4 +143,6 @@ alias colortest="colortest -w -r -s"
 
 alias gtk_csd_default="GTK_CSD=1 LD_PRELOAD=''"
 
+alias __="sudoedit"
+
 # -------------------------------------------------------------------END ALIAS

@@ -31,4 +31,8 @@
 
 # GNU/Linux
 cap_percentage=$(df -h --output=pcent / | awk 'NR%2==0 {print $0}')
-echo """${cap_percentage//%}"
+if [ $cap_percentage -ge 60 ]; then
+    echo -e "^c#FF0000^${cap_percentage//%}^d^"
+else
+    echo -e "${cap_percentage//%}"
+fi

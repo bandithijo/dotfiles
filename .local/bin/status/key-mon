@@ -22,6 +22,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-if pgrep -f 'python3 /usr/bin/key-mon' > /dev/null; then
+if pgrep -f 'python /usr/bin/key-mon' > /dev/null; then
     echo "  "
 fi

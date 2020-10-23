@@ -1,6 +1,4 @@
-#!/bin/sh
-
-icon=$(cat ~/.recordingicon)
+#!/bin/bash
 
 if pgrep -f ffmpeg > /dev/null || \
    pgrep -f kazam > /dev/null || \
@@ -12,7 +10,20 @@ then
         echo " REC "
     elif pgrep -f ffmpeg > /dev/null
     then
+        icon=$(cat ~/.recordingicon)
         echo $icon""
+    elif pgrep -f simplescreenrecorder > /dev/null
+    then
+        file="/dev/shm/simplescreenrecorder-stats-*"
+        capture=$(head -n 1 $file)
+        if ls $file 1> /dev/null 2>&1; then
+            stat=$(echo $capture)
+            if [[ "$stat" == "capturing 0" ]]; then
+                echo " REC "
+            elif [[ "$stat" == "capturing 1" ]]; then
+                echo " REC "
+            fi
+        fi
     else
         echo " REC "
     fi

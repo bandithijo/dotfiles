@@ -22,6 +22,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+# curl checkip.amazonaws.com
+# curl ifconfig.me
+# curl icanhazip.com
+# curl ipecho.net/plain
+# curl ifconfig.co
+ip_addr=$(curl --socks5 127.0.0.1:9050 https://check.torproject.org |& grep -Po "(?<=strong>)[\d\.]+(?=</strong)")
 if pgrep -f torrc > /dev/null; then
-    echo " TOR "
+    echo " TOR $ip_addr "
 fi

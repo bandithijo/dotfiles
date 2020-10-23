@@ -1,71 +1,85 @@
 #!/bin/sh
 
-# For dwm status
-#while true; do
-#    xsetroot -name "$($HOME/bin/status/vpn)$($HOME/bin/status/screenkey)$($HOME/bin/status/record)$($HOME/bin/status/network-wlan-tfc) $($HOME/bin/status/cpu-temp) $($HOME/bin/status/memory) $($HOME/bin/status/filesystem) $($HOME/bin/status/volume) $(date +" 0%u%y%m%d%H%M") $($HOME/bin/status/bat-state) $($HOME/bin/status/bat-capacity) $($HOME/bin/status/user)"
-#    # sleep 0.5
-#done
-
-dte(){
-    dte="$(date +" 0%u%y%m%d%H%M")"
-    echo "$dte"
+dte() {
+    dte="$($HOME/bin/status/datetime)"
+    echo -e "$dte"
 }
 
-hdd(){
+hdd() {
     hdd="$($HOME/bin/status/filesystem)"
-    echo "$hdd"
+    echo -e "$hdd"
 }
 
-mem(){
+mem() {
     mem="$($HOME/bin/status/memory)"
-    echo "$mem"
+    echo -e "$mem"
 }
 
-cputemp(){
+cputemp() {
     cputemp="$($HOME/bin/status/cpu-temp)"
-    echo "$cputemp"
+    echo -e "\x03$cputemp"
 }
 
-vpn(){
-    vpn="$($HOME/bin/status/vpn)"
-    echo "$vpn"
-}
-
-vol(){
+vol() {
 	vol="$($HOME/bin/status/volume)"
-	echo "$vol"
+	echo -e "$vol"
 }
 
-batcap(){
+batcap() {
 	battery="$($HOME/bin/status/bat-capacity)"
-	echo "$battery"
+	echo -e "$battery"
 }
 
-batstat(){
+batstat() {
 	batstat="$($HOME/bin/status/bat-state)"
-	echo "$batstat"
+	echo -e "$batstat"
 }
 
-wlan(){
+wlan() {
     wlan="$($HOME/bin/status/network-wlan-tfc)"
-    echo "$wlan"
+    echo -e "$wlan"
 }
 
-user(){
+user() {
     user="$($HOME/bin/status/user)"
-    echo "$user"
+    echo -e "$user"
 }
 
-vpn(){
+vpn() {
     vpn="$($HOME/bin/status/vpn)"
-    echo "$vpn"
+    echo -e "$vpn"
 }
 
-status(){
-    echo "$(vpn)$(wlan) $(cputemp) $(mem) $(hdd) $(vol) $(dte)$(batstat) $(batcap) $(user)"
+tor() {
+    tor="$($HOME/bin/status/tor)"
+    echo -e "$tor"
+}
+
+record() {
+    record="$($HOME/bin/status/record)"
+    echo -e "$record"
+}
+
+mailbox() {
+    mailbox="$($HOME/bin/status/mailbox)"
+    echo -e "$mailbox"
+}
+
+keymon() {
+    keymon="$($HOME/bin/status/key-mon)"
+    echo -e "$keymon"
+}
+
+misc() {
+    misc="$($HOME/bin/status/misc)"
+    echo -e "$misc"
+}
+
+status() {
+    echo -e "$(record)$(tor)$(vpn)$(misc)$(keymon)$(wlan) $(cputemp) $(mem) $(hdd) $(vol) $(mailbox) $(dte) $(batstat) $(batcap) $(user)"
 }
 
 while true; do
 	xsetroot -name "$(status)"
-	sleep 30
+	sleep 0.1
 done

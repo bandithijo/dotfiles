@@ -1,13 +1,13 @@
 #!/bin/sh
 
-# reso_monitor_lg=$(xrandr | grep -i 'VGA1 connected' | awk 'NR%1==0 {print $3}')
-# if ! [ "$reso_monitor_lg" = "1600x900+0+0" ]; then
-#     cvt 1600 900 60
-#     xrandr --newmode "1600x900" \
-#     118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync
-#     xrandr --addmode VGA1 1600x900
-#     echo "=> Add newmode 1600x900, DONE!"
-# fi
+reso_monitor_lg=$(xrandr | grep -i 'VGA1 connected' | awk 'NR%1==0 {print $3}')
+if [ ! "$reso_monitor_lg" = "1600x900+0+0" ]; then
+    cvt 1600 900 60
+    xrandr --newmode "1600x900" \
+    118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync
+    xrandr --addmode VGA1 1600x900
+    echo "=> Add newmode 1600x900, DONE!"
+fi
 
 DMENU="/usr/local/bin/dmenu"
 

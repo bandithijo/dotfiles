@@ -47,6 +47,8 @@ convert {target_file} -gravity North -background {background_color} \
 -splice 0x{int(background_size)/2} {target_file}
 
 convert {target_file} -profile {color_profile} {target_file}
+
+xclip -selection clipboard -i {target_file} -t image/png
 """)
 
 if os.system("which optipng > /dev/null 2>&1"):

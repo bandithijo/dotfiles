@@ -48,8 +48,12 @@ convert {target_file} -gravity North -background {background_color} \
 -splice 0x{int(background_size)/2} {target_file}
 
 convert {target_file} -profile {color_profile} {target_file}
+
+xclip -selection clipboard -i {target_file} -t image/png
+
+notify-send "ImageMagick" "Improving success!"
 """)
 
-list_file = os.popen("ls -p | grep -v /").read().split("\n")[:-1]
-last_file = list_file[-1]
-os.system(f"rm -rf {last_file}")
+# list_file = os.popen("ls -p | grep -v /").read().split("\n")[:-1]
+# last_file = list_file[-1]
+# os.system(f"rm -rf {last_file}")

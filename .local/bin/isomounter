@@ -1,29 +1,24 @@
 #!/usr/bin/env ruby
 
-username = `echo $USER`&.strip
-target_path = "/run/media/#{username}"
 target_image = ARGV[0].strip
-target_label = `file '#{target_image}' | cut -d \\\' -f2`&.strip
+request      = ARGV[1]&.strip
 
 ARGV.clear
 
-if target_image
-  puts "
-Options:
-
-  press m for mount
-  press u for unmount
-  "
-  print "\n=> "
-  request = gets.chomp
-
+# mount & unmount method
+def mount_process(request, target_image)
+  username     = `echo $USER`&.strip
+  target_path  = "/run/media/#{username}"
+  target_label = `file '#{target_image}' | cut -d \\\' -f2`&.strip
   if request == 'm'
     system "
-    if [[ ! -d #{target_path}/#{target_label} ]];
-    then
+    if [[ ! -d #{target_path}/#{target_label} ]]; then
       sudo mkdir -p #{target_path}/#{target_label}
-      sudo mount -l -o loop '#{target_image}' #{target_path}/#{target_label} > /dev/null
-      echo '=> MOUNTED'
+      sudo mount -l -o loop '#{target_image}' #{target_path}/#{target_label} 1> /dev/null 2>&1
+      echo '=> MOUNTED on #{target_path}/#{target_label}'
+    elif [[ -d #{target_path}/#{target_label} ]]; then
+      sudo mount -l -o loop '#{target_image}' #{target_path}/#{target_label} 1> /dev/null 2>&1
+      echo '=> MOUNTED on #{target_path}/#{target_label}'
     else
       echo '=> WAS MOUNTED'
     fi
@@ -43,13 +38,39 @@ Options:
     puts '=> WRONG REQUEST'
     exit
   end
-else
-  puts "
-=> YOU SHOULD ADD IMAGE AS ATTRIBUTE
+end
 
-Example:
+# interface
+begin
+  if request
+    mount_process(request, target_image)
+  elsif target_image
+    puts "
+  Options:
 
-  $ image_mounter.rb <image_name.iso>
-  "
+    press m for mount
+    press u for unmount
+    "
+    print '=> '
+    request = gets.chomp
+
+    mount_process(request, target_image)
+  else
+    puts "
+  => YOU SHOULD ADD IMAGE AS ATTRIBUTE
+
+  Example:
+
+    $ imagemounter <image_name.iso>    (interactive)
+
+    OR
+
+    $ imagemounter <image_name.iso> m  (mounting)
+    $ imagemounter <image_name.iso> u  (unmount)
+    "
+    exit
+  end
+rescue Interrupt
+  puts "\b" * 2 + 'Exit...'
   exit
 end

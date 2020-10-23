@@ -24,6 +24,7 @@ then
       Exit)
         # eval $1
         pkill -15 $1
+        # killall $1
         ;;
       Reboot)
         systemctl reboot

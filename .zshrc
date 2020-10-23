@@ -199,7 +199,7 @@ bindkey    "3;5~"         delete-char
 [ -f ~/.aliases ] && source ~/.aliases
 
 # Count how many opened terminal
-pgrep -x st | awk 'BEGIN{count=0}{ if(NR!=1){count++} }END{print " st:"count}'
+pgrep -x st | awk 'BEGIN{count=1}{ if(NR!=1){count++} }END{print " st:"count}'
 
 # FZF DWM color
 export FZF_DEFAULT_OPTS='

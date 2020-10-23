@@ -18,7 +18,7 @@
 
 # For dwm
 dwm_branches = [
-  'config',           # 1*
+  'config',           # 1*  : nodmenu
   'sticky',           # 19*
   'wasfocus',         # 20  : sticky
   'ru-gaps',          # 17* : cfacts, noborder
@@ -41,13 +41,11 @@ dwm_branches = [
   'center',           # 29  : savefloats, wasfocus^1
   'ru-bottomstack',   # 18*
   'statusallmons',    # 12
-  'systray',          # 22  : zoomswap, scratchpad, wasfocus^1, statusallmons
-  'systray-toggle',   # 23*
   'ru-fibonacci',     # 27*
   'nmaster-sym',      # 30  : pertag, cfacts-dragcfact^1
-  'decorhints',       # 31* : systray^5, center^3
   'warp',             # 32
-  'movethrow',        # 33* : moveresize <-
+  'movethrow',        # 33* : moveresize
+  'status2d',         # 34  : autostart, statusallmons, focusonclick <-
 ]
 
 # For st

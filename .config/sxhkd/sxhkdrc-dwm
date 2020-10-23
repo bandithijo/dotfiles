@@ -17,7 +17,7 @@ super + d
 
 # quit dwm
 super + shift + End
-    $HOME/bin/rofi-power 'Xorg'
+    $HOME/bin/rofi-power 'xinit'
 
 # lock screen
 super + shift + x
@@ -116,8 +116,8 @@ super + F6
     -kb-accept-alt "" -kb-custom-1 "Shift+Return"
 
 # arandr
-super + ~F7
-    {arandr, killall arandr}
+super + F7
+    $HOME/bin/dmenu-monitor
 
 super + ~F9
 	{$HOME/bin/ffplay-launcher,pkill -f 'ffplay'}
@@ -127,8 +127,11 @@ super + ~F11
     {$HOME/bin/key-mon-launcher, killall key-mon}
 
 # dmenu-systemd
-super + F12
+super + shift + F12
 	$HOME/bin/dmenu-systemd
+
+super + ~F12
+    {$HOME/bin/polybar-toggle show, $HOME/bin/polybar-toggle hide}
 
 # clipmenu
 super + {_,shift} + p

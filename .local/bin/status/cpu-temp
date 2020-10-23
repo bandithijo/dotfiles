@@ -35,6 +35,10 @@ get_temp_cpu0=$(cat /sys/class/thermal/thermal_zone0/temp)
 temp_cpu0=$(($get_temp_cpu0/1000))
 # if [ $temp_cpu0 -ge 40 ]; then
 #     echo -e " ${RED}$temp_cpu0${NORM}°C"
-# else
-    echo " "$temp_cpu0"°"
-# fi
+# els\x01e
+if [ $temp_cpu0 -ge 70 ]; then
+    echo -e "^c#FF0000^ $temp_cpu0°^d^"
+else
+    echo -e " $temp_cpu0°"
+fi
+
