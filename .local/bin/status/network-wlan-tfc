@@ -29,5 +29,5 @@ if [[ $wlan_online ]]; then
     wlan_up=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $2}')
     echo "" $wlan_do "" $wlan_up
 else
-    echo " OFFLINE"
+    echo -e "^c#FF0000^ OFFLINE^d^"
 fi
