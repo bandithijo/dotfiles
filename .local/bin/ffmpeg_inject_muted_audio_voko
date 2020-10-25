@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+# Please write your screerecorder dir with full path. Later, I'll improve this.
+screenrecorder_dir = '/home/bandithijo/vid/ScreenRecorder/vokoscreen'
+Dir.chdir(screenrecorder_dir)
+list_file          = %x(ls -p | grep -v /)
+files              = list_file.split(" ")
+if ARGV[0].nil?
+  original_file    = files.last
+  target_file      = files.last.split("").insert(-5, 'X').join
+else
+  original_file    = ARGV[0]
+  target_file      = original_file.split("").insert(-5, 'X').join
+end
+
+%x(
+ffmpeg -f lavfi \
+-i anullsrc=channel_layout=stereo:sample_rate=44100 \
+-i #{original_file} \
+-c:v copy -c:a aac \
+-shortest \
+#{target_file}
+)
+
+`notify-send "FFMPEG" "Inject null audio success!" -t 3000`
+`mv #{target_file} ../telegram`
+exit

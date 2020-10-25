@@ -146,26 +146,15 @@ DISABLE_AUTO_TITLE="true"
 # VCS as dirty. This makes repository status check for large repositories much,
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+DISABLE_MAGIC_FUNCTIONS=true
 # ---------------------------------------------------------------END OH-MY-ZSH
 
 
 
-
-
-# Codi
-# Usage: codi [filetype] [filename]
-codi() {
-   local syntax="${1:-python}"
-   shift
-   nvim -c \
-   "let g:startify_disable_at_vimenter = 1 |\
-   set bt=nofile ls=0 noru nonu nornu |\
-   hi CodiVirtualText guifg=red
-   hi ColorColumn ctermbg=NONE |\
-   hi VertSplit ctermbg=NONE |\
-   hi NonText ctermfg=0 |\
-   Codi $syntax" "$@"
-}
+# Disale url escape
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
 
 # Enable Vim mode in ZSH
 bindkey -v

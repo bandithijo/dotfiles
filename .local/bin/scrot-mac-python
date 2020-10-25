@@ -55,6 +55,12 @@ if os.system("which optipng > /dev/null 2>&1"):
     os.system(f"optipng {target_file}")
     print("OPTIPNG DONE!")
 
+list_file = os.popen("ls -p | grep -v /").read().split("\n")[:-1]
+last_file = list_file[-1]
+if 'X' in last_file:
+    os.system("notify-send 'ImageMagick' 'Improving success!' -t 3000")
+    os.system(f"xclip -selection clipboard -i {target_file} -t image/png")
+
 print(f"""SS_DIR: {ss_dir}
 SOURCE: {original_file}
 TARGET: {target_file}

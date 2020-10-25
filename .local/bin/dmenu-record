@@ -47,23 +47,7 @@ killRecording() {
 #     updatestatus "record"
 # }
 
-videoAudioMute() {
-    ffmpeg \
-    -f x11grab \
-    -draw_mouse 1 \
-    -framerate 30 \
-    -s $1 \
-    -i :0.0+$2,$3 \
-    -f pulse -i default \
-    -c:a aac \
-    -vf setpts=N/FR/TB \
-    -c:v libx264 -pix_fmt yuv420p -preset veryfast -q:v 1 \
-    -threads 4 \
-    "$HOME/vid/ScreenRecorder/video-$(date '+%y%m%d-%H%M-%S').mp4" &
-    echo $! > ~/.recordingpid
-    updateicon " REC "
-    updatestatus "record"
-}
+# ffmpeg -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -i video.mp4 -c:v copy -c:a aac -shortest video-out.mp4
 
     # -s $(xdpyinfo | grep dimensions | awk '{print $2;}') \
 videoOnly() {
@@ -80,6 +64,14 @@ videoOnly() {
     echo $! > ~/.recordingpid
     updateicon " REC "
     updatestatus "record"
+}
+
+injectMutedAudioToVideo() {
+    ffmpeg_inject_muted_audio
+}
+
+injectMutedAudioToVideoVoko() {
+    ffmpeg_inject_muted_audio_voko
 }
 
 audioOnly() {
@@ -127,7 +119,7 @@ if [ -f ~/.recordingpid ]; then
     fi
 fi
 
-choice=$(printf "Video\nVideoMute\nAudio" | $DMENU -p " Record:")
+choice=$(printf "Video\nAudio\nEffects ∇" | $DMENU -p " Record:")
 case "$choice" in
     "Video")
         monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: ")
@@ -142,20 +134,14 @@ case "$choice" in
             videoOnly $(xdpyinfo | grep dimensions | awk '{print $2;}') "0" "0"
         fi
         ;;
-    "VideoMute")
-        monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: ")
-        if [ "$monitors" = "2" ]; then
-            area=$(printf "All Screen\nLaptop\nMonitor" | $DMENU -p " Area:")
-            case "$area" in
-                "All Screen") videoOnly $(xdpyinfo | grep dimensions | awk '{print $2;}') "0" "0";;
-                "Laptop") videoAudioMute "1024x768" "576" "900";;
-                "Monitor") videoAudioMute "1600x900" "0" "0";;
-            esac
-        else
-            videoAudioMute $(xdpyinfo | grep dimensions | awk '{print $2;}') "0" "0"
-        fi
-        ;;
     "Audio") audioOnly;;
+    "Effects ∇")
+        effects=$(printf "Inject Muted Audio\nInject Muted Audio Voko" | $DMENU -p " Effects:")
+        case "$effects" in
+        "Inject Muted Audio") injectMutedAudioToVideo;;
+        "Inject Muted Audio Voko") injectMutedAudioToVideoVoko;;
+        esac
+        ;;
 esac
 
 # choice=$(printf "Screencast\nVideo\nAudio" | $DMENU -p " Record:")

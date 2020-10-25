@@ -7,11 +7,11 @@ then
     if pgrep -f vokoscreen > /dev/null && \
        pgrep -f ffmpeg > /dev/null
     then
-        echo -e "^c#FF0000^ REC^d^ "
+        echo -e "^c#BBBBBB^ REC^d^ "
     elif pgrep -f ffmpeg > /dev/null
     then
         icon=$(cat ~/.recordingicon)
-        echo -e "^c#FF0000^$icon^d^"
+        echo -e "^c#BBBBBB^$icon^d^"
     elif pgrep -f simplescreenrecorder > /dev/null
     then
         file="/dev/shm/simplescreenrecorder-stats-*"
@@ -21,11 +21,11 @@ then
             if [[ "$stat" == "capturing 0" ]]; then
                 echo -e "^c#BBBBBB^ REC^d^ "
             elif [[ "$stat" == "capturing 1" ]]; then
-                echo -e "^c#FF0000^ REC^d^ "
+                echo -e "^c#BBBBBB^ REC^d^ "
             fi
         fi
     else
-        echo -e "^c#FF0000^ REC^d^ "
+        echo -e "^c#BBBBBB^ REC^d^ "
     fi
 fi
 

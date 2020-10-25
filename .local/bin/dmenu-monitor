@@ -25,8 +25,15 @@ monitor_laptop() {
     feh --bg-fill -Z $WALLPAPER2
 }
 
-choice=$(printf "Dual\nSingle" | $DMENU -p " Monitor:")
-case "$choice" in
-    "Dual"      ) monitor_lg;;
-    "Single"    ) monitor_laptop;;
-esac
+monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: ")
+if [ "$monitors" = "2" ]; then
+    choice=$(printf "Single" | $DMENU -p " Monitor:")
+    case "$choice" in
+        "Single"    ) monitor_laptop;;
+    esac
+elif [ "$monitors" = "1" ]; then
+    choice=$(printf "Dual" | $DMENU -p " Monitor:")
+    case "$choice" in
+        "Dual"      ) monitor_lg;;
+    esac
+fi

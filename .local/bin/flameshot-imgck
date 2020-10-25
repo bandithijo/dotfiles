@@ -43,13 +43,17 @@ convert #{target_file} -gravity North -background #{background_color} \
 -splice 0x#{background_size.to_i / 2} #{target_file}
 
 convert #{target_file} -profile #{color_profile} #{target_file}
-
-xclip -selection clipboard -i #{target_file} -t image/png
-
-notify-send "ImageMagick" "Improving success!"
 )
 
-# list_file = `ls -p | grep -v /`
-# last_file = (list_file.split(" ")).last
-# `rm -rf #{last_file}`
-exit
+list_file = `ls -p | grep -v /`
+last_file = list_file.split(' ').last
+if last_file.include? 'X'
+  `notify-send "ImageMagick" "Improving success!" -t 3000`
+  `xclip -selection clipboard -i #{target_file} -t image/png`
+end
+
+size = `find #{last_file} -printf %s`
+if size == '0' || size <= '20'
+  `rm -rf #{last_file}`
+  `notify-send "Flameshot" "Process Aborted!" -t 1000`
+end

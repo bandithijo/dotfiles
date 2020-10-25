@@ -39,7 +39,7 @@ super + shift + Pause
 
 # pulseaudio controls speaker volume up & down
 {XF86AudioRaiseVolume, XF86AudioLowerVolume}
-    pamixer {-i 2, -d 2}; \
+    pamixer {-i 1, -d 1}; \
     ou_vol=$(pamixer --get-volume); \
     jack_stat=$($HOME/bin/has_headphone); \
     [ $jack_stat = "yes" ] && icon=" "; \
@@ -48,13 +48,13 @@ super + shift + Pause
 
 # pulseaudio controls mic volume up & down
 shift + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
-    pamixer --source 1 {-i 2, -d 2}; \
+    pamixer --source 1 {-i 1, -d 1}; \
     ou_mic=$(pamixer --source 1 --get-volume); \
     dunstify "  Microphone: "$ou_mic -t 1000 -r 1
 
 # pulseaudio controls monitor volume up & down
 alt + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
-    pamixer --source 0 {-i 2, -d 2}; \
+    pamixer --source 0 {-i 1, -d 1}; \
     ou_mon=$(pamixer --source 0 --get-volume); \
     dunstify "  Monitor: "$ou_mon -t 1000 -r 1
 
@@ -87,7 +87,7 @@ alt + XF86AudioMute
 
 # screen brightness controls
 {XF86MonBrightnessUp, XF86MonBrightnessDown}
-    xbacklight {-inc 5, -dec 5}; \
+    xbacklight {-inc 1, -dec 1}; \
     get_brightness=$(xbacklight -get | cut -f 1 -d '.'); \
     dunstify "  Brightness: "$get_brightness -t 1000 -r 1
 

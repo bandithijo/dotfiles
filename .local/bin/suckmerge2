@@ -223,9 +223,10 @@ if dir_name == 'dwm' && (option == '-i' || second_option == 'i')
   | STATUSBAR:                                                           |
   +----------------------------------------------------------------------+
   | Bandithijo's DWM doesn't bring the status bar.                       |
-  | You should bring your own. My personal preferences are use slstatus. |
+  | You should bring your own. My recommendation is dwmblocks.           |
+  | But, I prefer built my own status.                                   |
   |                                                                      |
-  | Sample: https://s.id/bandithijo-slstatus                             |
+  | Sample: https://s.id/bandithijo-dwmbar                               |
   +----------------------------------------------------------------------+
   +----------------------------------------------------------------------+
   | KEYBOARD:                                                            |

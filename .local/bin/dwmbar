@@ -1,85 +1,70 @@
 #!/bin/sh
 
 dte() {
-    dte="$($HOME/bin/status/datetime)"
-    echo -e "$dte"
+    echo "$($HOME/bin/status/datetime)"
 }
 
 hdd() {
-    hdd="$($HOME/bin/status/filesystem)"
-    echo -e "$hdd"
+    echo "$($HOME/bin/status/filesystem)"
 }
 
 mem() {
-    mem="$($HOME/bin/status/memory)"
-    echo -e "$mem"
+    echo "$($HOME/bin/status/memory)"
 }
 
 cputemp() {
-    cputemp="$($HOME/bin/status/cpu-temp)"
-    echo -e "\x03$cputemp"
+    echo "$($HOME/bin/status/cpu-temp)"
 }
 
 vol() {
-	vol="$($HOME/bin/status/volume)"
-	echo -e "$vol"
+	echo "$($HOME/bin/status/volume)"
 }
 
 batcap() {
-	battery="$($HOME/bin/status/bat-capacity)"
-	echo -e "$battery"
+	echo "$($HOME/bin/status/bat-capacity)"
 }
 
 batstat() {
-	batstat="$($HOME/bin/status/bat-state)"
-	echo -e "$batstat"
+	echo "$($HOME/bin/status/bat-state)"
 }
 
 wlan() {
-    wlan="$($HOME/bin/status/network-wlan-tfc)"
-    echo -e "$wlan"
+    echo "$($HOME/bin/status/network-wlan-tfc)"
 }
 
 user() {
-    user="$($HOME/bin/status/user)"
-    echo -e "$user"
+    echo "$($HOME/bin/status/user)"
 }
 
 vpn() {
-    vpn="$($HOME/bin/status/vpn)"
-    echo -e "$vpn"
+    echo "$($HOME/bin/status/vpn)"
 }
 
 tor() {
-    tor="$($HOME/bin/status/tor)"
-    echo -e "$tor"
+    echo "$($HOME/bin/status/tor)"
 }
 
 record() {
-    record="$($HOME/bin/status/record)"
-    echo -e "$record"
+    echo "$($HOME/bin/status/record)"
 }
 
 mailbox() {
-    mailbox="$($HOME/bin/status/mailbox)"
-    echo -e "$mailbox"
+    echo "$($HOME/bin/status/mailbox)"
 }
 
 keymon() {
-    keymon="$($HOME/bin/status/key-mon)"
-    echo -e "$keymon"
+    echo "$($HOME/bin/status/key-mon)"
 }
 
 misc() {
-    misc="$($HOME/bin/status/misc)"
-    echo -e "$misc"
+    echo "$($HOME/bin/status/misc)"
 }
 
 status() {
-    echo -e "$(record)$(tor)$(vpn)$(misc)$(keymon)$(wlan) $(cputemp) $(mem) $(hdd) $(vol) $(mailbox) $(dte) $(batstat) $(batcap) $(user)"
+    echo " $(record)$(tor)$(vpn)$(misc)$(keymon)$(wlan) $(cputemp) $(mem) $(hdd) $(vol) $(mailbox) $(dte) $(batstat) $(batcap) $(user)"
 }
 
 while true; do
 	xsetroot -name "$(status)"
-	sleep 0.1
+	sleep 1
 done

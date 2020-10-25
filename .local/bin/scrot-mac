@@ -43,11 +43,16 @@ convert #{target_file} -gravity North -background #{background_color} \
 -splice 0x#{background_size.to_i / 2} #{target_file}
 
 convert #{target_file} -profile #{color_profile} #{target_file}
-
-xclip -selection clipboard -i #{target_file} -t image/png
 )
 
 %x(optipng #{target_file}) if %x(which optipng > /dev/null 2>&1)
+
+list_file = `ls -p | grep -v /`
+last_file = list_file.split(' ').last
+if last_file.include? 'X'
+  `notify-send "ImageMagick" "Improving success!" -t 3000`
+  `xclip -selection clipboard -i #{target_file} -t image/png`
+end
 
 puts "SS_DIR: #{ss_dir}
 SOURCE: #{original_file}
