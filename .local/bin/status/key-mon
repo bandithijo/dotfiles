@@ -22,6 +22,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+icon=""
 if pgrep -f 'python /usr/bin/key-mon' > /dev/null; then
-    echo "  "
+    printf "$icon  "
 fi

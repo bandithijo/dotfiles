@@ -1,5 +1,7 @@
 #!/bin/sh
 
+DMENU="/usr/local/bin/dmenu"
+
 reso_monitor_lg=$(xrandr | grep -i 'VGA1 connected' | awk 'NR%1==0 {print $3}')
 if [ ! "$reso_monitor_lg" = "1600x900+0+0" ]; then
     cvt 1600 900 60
@@ -8,8 +10,6 @@ if [ ! "$reso_monitor_lg" = "1600x900+0+0" ]; then
     xrandr --addmode VGA1 1600x900
     echo "=> Add newmode 1600x900, DONE!"
 fi
-
-DMENU="/usr/local/bin/dmenu"
 
 monitor_lg() {
     sleep 1
@@ -21,6 +21,9 @@ monitor_lg() {
 monitor_laptop() {
     sleep 1
     xrandr --output LVDS1 --primary --mode 1024x768 --pos 0x0 --rotate normal --output VGA1 --off --output VIRTUAL1 --off
+    sleep 1
+    xrandr --delmode VGA1 1600x900
+    xrandr --rmmode 1600x900
     sleep 1
     feh --bg-fill -Z $WALLPAPER2
 }

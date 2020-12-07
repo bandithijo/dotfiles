@@ -57,6 +57,7 @@ videoOnly() {
     -framerate 30 \
     -s $1 \
     -i :0.0+$2,$3 \
+    -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 \
     -vf setpts=N/FR/TB \
     -c:v libx264 -pix_fmt yuv420p -preset veryfast -q:v 1 \
     -threads 4 \
@@ -72,6 +73,11 @@ injectMutedAudioToVideo() {
 
 injectMutedAudioToVideoVoko() {
     ffmpeg_inject_muted_audio_voko
+}
+
+injectFrame() {
+    ffmpeg_inject_frame
+    updateicon " FRM "
 }
 
 audioOnly() {
@@ -136,10 +142,10 @@ case "$choice" in
         ;;
     "Audio") audioOnly;;
     "Effects ∇")
-        effects=$(printf "Inject Muted Audio\nInject Muted Audio Voko" | $DMENU -p " Effects:")
+        effects=$(printf "Inject: Frame\nInject: MutedAudioVoko" | $DMENU -p " Effects:")
         case "$effects" in
-        "Inject Muted Audio") injectMutedAudioToVideo;;
-        "Inject Muted Audio Voko") injectMutedAudioToVideoVoko;;
+        "Inject: Frame") injectFrame;;
+        "Inject: MutedAudioVoko") injectMutedAudioToVideoVoko;;
         esac
         ;;
 esac

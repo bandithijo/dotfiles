@@ -2,8 +2,9 @@
 
 require 'date'
 
-screenshot_dir    = '/home/bandithijo/pic/ScreenShots'
-Dir.chdir(screenshot_dir)
+# Please wite your dir with ~/ first
+screenshot_dir    = '~/pic/ScreenShots'
+Dir.chdir(File.expand_path(screenshot_dir))
 original_file     = Time.now.strftime('Screenshot_%Y-%m-%d_%H-%M-%S.png')
 target_file       = original_file.split('').insert(-5, 'X').join
 color_profile     = '/usr/share/color/icc/colord/sRGB.icc'
@@ -49,7 +50,7 @@ list_file = `ls -p | grep -v /`
 last_file = list_file.split(' ').last
 if last_file.include? 'X'
   `notify-send "ImageMagick" "Improving success!" -t 3000`
-  `xclip -selection clipboard -i #{target_file} -t image/png`
+  system "xclip -selection clipboard -i #{target_file} -t image/png"
 end
 
 size = `find #{last_file} -printf %s`

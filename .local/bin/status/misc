@@ -23,17 +23,17 @@
 
 notifysudo() {
     dunstify " SUDO Activated! $notif" --urgency=critical -t 1000 -r 1
-    echo '2' > ~/.sudopid
+    print '2' > ~/.sudopid
 }
 
 if pgrep -f puma > /dev/null; then
-    echo " PUMA "
+    print " "
 elif pgrep -f "sudo rsync" > /dev/null; then
-    echo " RSYNC ";
+    print " ";
 elif pgrep -f "sudo pacman" > /dev/null; then
-    echo " PCMN ";
-elif pgrep -f "sudo" > /dev/null; then # add this to last
-    echo " SUDO "; \
+    print " ";
 elif pgrep -f "transmission-daemon" > /dev/null; then
-    echo " ";
+    print " ";
+elif pgrep -f "sudo" > /dev/null; then # add this to last
+    print " ";
 fi

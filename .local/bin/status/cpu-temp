@@ -27,12 +27,13 @@
 #echo " "$temp_cpu0"°C"
 
 # GNU/Linux
+icon=""
 get_temp_cpu0=$(cat /sys/class/thermal/thermal_zone0/temp)
 temp_cpu0=$(($get_temp_cpu0/1000))
-if [ $temp_cpu0 -ge 90 ]; then
-    echo -e "^c#D70118^ $temp_cpu0°^d^"
+if   [ $temp_cpu0 -ge 90 ]; then
+    printf "^c#D70118^$icon $temp_cpu0°^d^"
 elif [ $temp_cpu0 -ge 80 ] && [ $temp_cpu0 -le 89 ]; then
-    echo -e "^c#FFAA00^ $temp_cpu0°^d^"
+    printf "^c#FFAA00^$icon $temp_cpu0°^d^"
 else
-    echo " $temp_cpu0°"
+    printf "$icon $temp_cpu0°"
 fi

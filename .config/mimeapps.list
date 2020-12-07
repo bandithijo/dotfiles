@@ -32,6 +32,9 @@ x-scheme-handler/rdp=org.remmina.Remmina.desktop;
 x-scheme-handler/remmina=org.remmina.Remmina.desktop;
 x-scheme-handler/spice=org.remmina.Remmina.desktop;
 x-scheme-handler/vnc=org.remmina.Remmina.desktop;
+image/png=gpicview.desktop
+image/jpeg=gpicview.desktop
+image/gif=userapp-sxiv-0KPET0.desktop
 
 [Added Associations]
 application/msword=wine-Programs-Microsoft Office-Microsoft Word 2010.desktop;wine-extension-doc.desktop;
@@ -75,7 +78,6 @@ image/webp=org.gnome.gThumb.desktop;gpicview.desktop;
 image/x-portable-anymap=gimp.desktop;ristretto.desktop;
 image/x-xcf=gimp.desktop;
 image/x-xpixmap=gpicview.desktop;ristretto.desktop;gimp.desktop;userapp-"gimp"-5CRLG0.desktop;
-inode/directory=thunar.desktop;
 message/rfc822=userapp-Thunderbird-DSFLG0.desktop;
 text/calendar=thunderbird.desktop;
 text/css=geany.desktop;vim.desktop;nvim.desktop;
@@ -98,9 +100,13 @@ x-scheme-handler/remmina=org.remmina.Remmina.desktop;
 x-scheme-handler/spice=org.remmina.Remmina.desktop;
 x-scheme-handler/vnc=org.remmina.Remmina.desktop;
 application/json=nvim.desktop;
+image/png=org.gnome.gThumb.desktop;userapp-"sxiv"-BQDFT0.desktop;gpicview.desktop;
+image/jpeg=gpicview.desktop;
+image/gif=userapp-sxiv-0KPET0.desktop;gpicview.desktop;
 
 [Removed Associations]
 audio/ogg=mpv.desktop;
 image/png=sxiv.desktop;
 image/gif=sxiv.desktop;
 image/jpeg=sxiv.desktop;
+inode/directory=pcmanfm.desktop;

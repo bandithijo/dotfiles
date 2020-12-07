@@ -11,6 +11,10 @@ super + Escape
 super + ctrl + Return
 	st -t 'st+'
 
+# tabbed st
+super + alt + Return
+    tabbed -r 2 st -w ''
+
 # program launcher
 super + d
     $HOME/bin/dmenu-apps
@@ -42,21 +46,21 @@ super + shift + Pause
     pamixer {-i 1, -d 1}; \
     ou_vol=$(pamixer --get-volume); \
     jack_stat=$($HOME/bin/has_headphone); \
-    [ $jack_stat = "yes" ] && icon=" "; \
-    [ $jack_stat = "no" ]  && icon=" "; \
-    dunstify "$icon Volume: "$ou_vol -t 1000 -r 1
+    [ $jack_stat = "yes" ] && icon="  Headset"; \
+    [ $jack_stat = "no" ]  && icon="  Speaker"; \
+    dunstify "$icon Output Volume: "$ou_vol -t 1000 -r 1
 
 # pulseaudio controls mic volume up & down
 shift + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
     pamixer --source 1 {-i 1, -d 1}; \
     ou_mic=$(pamixer --source 1 --get-volume); \
-    dunstify "  Microphone: "$ou_mic -t 1000 -r 1
+    dunstify "  Microphone Input Volume: "$ou_mic -t 1000 -r 1
 
 # pulseaudio controls monitor volume up & down
 alt + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
     pamixer --source 0 {-i 1, -d 1}; \
     ou_mon=$(pamixer --source 0 --get-volume); \
-    dunstify "  Monitor: "$ou_mon -t 1000 -r 1
+    dunstify "  Monitor Input Volume: "$ou_mon -t 1000 -r 1
 
 # pulseaudio controls mute speaker
 XF86AudioMute
@@ -64,10 +68,10 @@ XF86AudioMute
     --toggle-mute; \
     ou_mute=$(pamixer --get-mute); \
     jack_stat=$($HOME/bin/has_headphone); \
-    [ $jack_stat = "yes" ] && icon_on=" " icon_off=" "; \
-    [ $jack_stat = "no" ]  && icon_on=" " icon_off=" "; \
-    [ $ou_mute = "true" ]  && dunstify "$icon_off MUTED" -t 1000 -r 1; \
-    [ $ou_mute = "false" ] && dunstify "$icon_on UNMUTED" -t 1000 -r 1
+    [ $jack_stat = "yes" ]   && icon_on=" " icon_off=" "; \
+    [ $jack_stat = "no" ]    && icon_on=" " icon_off=" "; \
+    [ $ou_mute   = "true" ]  && dunstify "$icon_off MUTED" -t 1000 -r 1; \
+    [ $ou_mute   = "false" ] && dunstify "$icon_on UNMUTED" -t 1000 -r 1
 
 # pulseaudio controls mute mic
 shift + XF86AudioMute
@@ -87,26 +91,26 @@ alt + XF86AudioMute
 
 # screen brightness controls
 {XF86MonBrightnessUp, XF86MonBrightnessDown}
-    xbacklight {-inc 1, -dec 1}; \
+    xbacklight {-inc 5, -dec 5}; \
     get_brightness=$(xbacklight -get | cut -f 1 -d '.'); \
     dunstify "  Brightness: "$get_brightness -t 1000 -r 1
 
 super + F5
     monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: "); \
     if [ $monitors = "2" ]; \
-    then feh --bg-fill -Z $WALLPAPER1 --bg-fill -Z $WALLPAPER2; \
+    then feh --bg-fill -Z $WALLPAPER1 --bg-fill -Z $WALLPAPER1; \
     else feh --bg-fill -Z $WALLPAPER1; \
     fi
 
 super + shift + F5
     monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: "); \
     if [ $monitors = "2" ]; \
-    then feh --bg-fill -Z $WALLPAPER2 --bg-fill -Z $WALLPAPER2; \
+    then feh --bg-fill -Z $WALLPAPER2 --bg-fill -Z $WALLPAPER1; \
     else feh --bg-fill -Z $WALLPAPER2; \
     fi
 
 # application tools on Fn Button
-super + {F8, F10}
+super + {F8, F1}
     {networkmanager_dmenu, keybind-helper}
 
 # dmenu-udiskie
@@ -119,7 +123,12 @@ super + F6
 super + F7
     $HOME/bin/dmenu-monitor
 
-super + ~F9
+# gromit-mpx
+super + F9
+    gromit-mpx
+
+# webcam with ffplay
+super + ~F10
 	{$HOME/bin/ffplay-launcher,pkill -f 'ffplay'}
 
 # key-mon

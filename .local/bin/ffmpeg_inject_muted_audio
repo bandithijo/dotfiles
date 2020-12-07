@@ -3,7 +3,7 @@
 # Please write your screerecorder dir with full path. Later, I'll improve this.
 screenrecorder_dir = '/home/bandithijo/vid/ScreenRecorder'
 Dir.chdir(screenrecorder_dir)
-list_file          = %x(ls -p | grep -v /)
+list_file          = %x(ls -p | grep -v / | grep video)
 files              = list_file.split(" ")
 if ARGV[0].nil?
   original_file    = files.last
@@ -23,5 +23,4 @@ ffmpeg -f lavfi \
 )
 
 `notify-send "FFMPEG" "Inject null audio success!" -t 3000`
-`mv #{target_file} #{screenrecorder_dir}/telegram`
 exit

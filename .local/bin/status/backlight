@@ -27,5 +27,6 @@
 #echo $backlight
 
 # GNU/Linux
+icon=""
 backlight=$(xbacklight -get | cut -d "." -f1)
-echo "" $backlight
+printf "$icon  $backlight"

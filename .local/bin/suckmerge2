@@ -18,34 +18,38 @@
 
 # For dwm
 dwm_branches = [
-  'config',           # 1*  : nodmenu
-  'sticky',           # 19*
-  'wasfocus',         # 20  : sticky
-  'ru-gaps',          # 17* : cfacts, noborder
-  'cfacts',           # 15*
-  'cfacts-dragcfact', # 16* : cfacts
-  'actualfullscreen', # 13* : sticky
-  'xrdb',             # 3*
-  'pertag',           # 2
-  'noborder',         # 11
-  'movestack',        # 8*
-  'moveresize',       # 9*
-  'resizecorners',    # 6
-  'focusonnetactive', # 7
-  'focusonclick',     # 24* : moveresize
-  'fixborders',       # 25
-  'scratchpad',       # 13*
-  'zoomswap',         # 4
-  'autostart',        # 26  : zoomswap
-  'savefloats',       # 28
-  'center',           # 29  : savefloats, wasfocus^1
-  'ru-bottomstack',   # 18*
-  'statusallmons',    # 12
-  'ru-fibonacci',     # 27*
-  'nmaster-sym',      # 30  : pertag, cfacts-dragcfact^1
-  'warp',             # 32
-  'movethrow',        # 33* : moveresize
-  'status2d',         # 34  : autostart, statusallmons, focusonclick <-
+  'config',            # 1*  : nodmenu
+  'sticky',            # 19*
+  'wasfocus',          # 20  : sticky
+  'ru-gaps',           # 17* : cfacts, noborder
+  'cfacts',            # 15*
+  'cfacts-dragcfact',  # 16* : cfacts
+  'actualfullscreen',  # 13* : sticky
+  'xrdb',              # 3*
+  'pertag',            # 2
+  'noborder',          # 11
+  'movestack',         # 8*
+  'moveresize',        # 9*
+  'resizecorners',     # 6
+  'focusonnetactive',  # 7
+  'focusonclick',      # 24* : moveresize
+  'fixborders',        # 25
+  'scratchpad',        # 13*
+  'zoomswap',          # 4
+  'autostart',         # 26  : zoomswap
+  'savefloats',        # 28
+  'center',            # 29  : savefloats, wasfocus^1
+  'ru-bottomstack',    # 18*
+  'statusallmons',     # 12
+  'ru-fibonacci',      # 27*
+  'warp',              # 32
+  'nmaster-sym',       # 30  : pertag, cfacts-dragcfact^1, warp
+  'movethrow',         # 33* : moveresize
+  'status2d',          # 34  : autostart, statusallmons, focusonclick
+  'focusmaster',       # 35*
+  'resetlayout',       # 36* : noborder
+  'ru-centeredmaster', # 37*
+  'aspectresize',      # 38* <-
 ]
 
 # For st
@@ -75,11 +79,12 @@ slock_branches = [
 
 # For dmenu
 dmenu_branches = [
-  'config',
-  'password',
-  'xresources',
-  'numbers',
-  'grid'
+  'config',          # 1
+  'password',        # 2
+  'xresources',      # 3
+  'numbers',         # 4
+  'grid',            # 5*
+  'symbols'          # 6*
 ]
 
 # For tabbed

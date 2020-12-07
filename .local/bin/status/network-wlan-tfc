@@ -22,17 +22,29 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+wlanmon_card=$(ip a s | grep wlan0mon | awk 'NR%1==0 {print $2}' | sed 's/://g')
+if [ $wlanmon_card = "wlan0mon" ]; then
+    printf " MONITOR"
+fi
+
 wlan_card='wlan0'
 # wlan_online=$(ip a s dev $wlan_card | grep -i inet)
-wlan_online=$(iw wlan0 link | grep 'Connected' | awk 'NR%1==0 {print $1}')
-wlan_offline=$(iw wlan0 link | grep 'Not' | awk 'NR%1==0 {print $1}')
+wlan_online=$(iw $wlan_card link | grep 'Connected' | awk 'NR%1==0 {print $1}')
+wlan_offline=$(iw $wlan_card link | grep 'Not' | awk 'NR%1==0 {print $1}')
+internet=$(wget -qO- ifconfig.co)
+internet_logo=""
+if [ $internet ]; then
+    internet_logo=" "
+else
+    internet_logo=" "
+fi
+
 if [ $wlan_online ]; then
     wlan_do=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $1}')
     wlan_up=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $2}')
-    # echo " $wlan_do  $wlan_up"
-    printf " %5s  %5s\\n" \
+    printf "$internet_logo %5s  %5s\\n" \
     $(numfmt --to=none $wlan_do) \
     $(numfmt --to=none $wlan_up)
 elif [ $wlan_offline ];then
-    echo -e "^c#D70118^ OFFLINE^d^"
+    printf "^c#D70118^ OFFLINE^d^"
 fi

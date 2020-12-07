@@ -22,6 +22,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-username=$USER
-echo " "${username^^} | sed 's/[aiueoAIUEO]//g'
-# echo  ${username^^}
+username=${USER^^}
+icon=" "
+printf "%s%s\\n" "$icon" "$username" | sed 's/[aiueoAIUEO]//g'

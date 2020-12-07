@@ -33,7 +33,7 @@ captureFlameshotPlus() {
 
 captureFlameshotTime() {
     sleep 3
-    /usr/bin/flameshot gui
+    $HOME/bin/flameshot-imgck
 }
 
 cropLaptop() {

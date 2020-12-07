@@ -44,7 +44,7 @@ case "$ext" in
 	py) python "$file" ;;
 	[rR]md) Rscript -e "rmarkdown::render('$file', quiet=TRUE)" ;;
 	rs) cargo build ;;
-   sass) sassc -a "$file" "$base.css" ;;
+    sass) sassc -a "$file" "$base.css" ;;
 	scad) openscad -o "$base".stl "$file" ;;
 	sent) setsid -f sent "$file" 2>/dev/null ;;
 	tex) textype "$file" ;;

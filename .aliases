@@ -145,4 +145,7 @@ alias gtk_csd_default="GTK_CSD=1 LD_PRELOAD=''"
 
 alias __="sudoedit"
 
+alias cp="advcp -g"
+alias mv="advmv -g"
+
 # -------------------------------------------------------------------END ALIAS

@@ -12,6 +12,10 @@ then
     then
         icon=$(cat ~/.recordingicon)
         echo -e "^c#BBBBBB^$icon^d^"
+    elif pgrep -f ffmpeg_inject_frame > /dev/null
+    then
+        icon=$(cat ~/.recordingicon)
+        echo -e "^c#BBBBBB^$icon^d^"
     elif pgrep -f simplescreenrecorder > /dev/null
     then
         file="/dev/shm/simplescreenrecorder-stats-*"

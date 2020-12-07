@@ -3,6 +3,6 @@
 #Refresh DWM status bar
 #Kill Sleep in bar script
 
-#kill "$(pstree -lp | grep -- -dwmbar\([0-9] | sed "s/.*sleep(\([0-9]\+\)).*/\1/")"
+kill "$(pstree -lp | grep -- -dwmbar\([0-9] | sed "s/.*sleep(\([0-9]\+\)).*/\1/")"
 
-pkill -SIGTRAP slstatus
+# pkill -SIGTRAP slstatus

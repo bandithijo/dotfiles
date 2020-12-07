@@ -21,82 +21,13 @@ zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# ---------------------------------------------------------------ZINIT COINFIG
+# [ -f ~/.zshrc-zinit ] && source ~/.zshrc-zinit
+# ------------------------------------------------------------END ZINIT CONFIG
+
 # -----------------------------------------------------------------ZGEN CONFIG
-# load zgen
-source "${HOME}/.zgen/zgen.zsh"
-
-# if the init scipt doesn't exist
-if ! zgen saved; then
-    echo "Creating a zgen save"
-
-    zgen oh-my-zsh
-
-    # plugins
-    zgen oh-my-zsh plugins/adb
-    zgen oh-my-zsh plugins/archlinux
-    zgen oh-my-zsh plugins/aws
-    zgen oh-my-zsh plugins/bundler
-    zgen oh-my-zsh plugins/cargo
-    zgen oh-my-zsh plugins/capistrano
-    zgen oh-my-zsh plugins/command-not-found
-    zgen oh-my-zsh plugins/django
-    zgen oh-my-zsh plugins/docker
-    zgen oh-my-zsh plugins/docker-compose
-    zgen oh-my-zsh plugins/docker-machine
-    zgen oh-my-zsh plugins/firewalld
-    zgen oh-my-zsh plugins/fzf
-    zgen oh-my-zsh plugins/gem
-    zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/github
-    zgen oh-my-zsh plugins/golang
-    zgen oh-my-zsh plugins/gpg-agent
-    zgen oh-my-zsh plugins/heroku
-    zgen oh-my-zsh plugins/kubectl
-    zgen oh-my-zsh plugins/man
-    zgen oh-my-zsh plugins/npm
-    zgen oh-my-zsh plugins/nmap
-    zgen oh-my-zsh plugins/node
-    zgen oh-my-zsh plugins/jruby
-    zgen oh-my-zsh plugins/pass
-    zgen oh-my-zsh plugins/pep8
-    zgen oh-my-zsh plugins/pip
-    zgen oh-my-zsh plugins/postgres
-    zgen oh-my-zsh plugins/pyenv
-    zgen oh-my-zsh plugins/python
-    zgen oh-my-zsh plugins/pipenv
-    zgen oh-my-zsh plugins/rails
-    zgen oh-my-zsh plugins/rake
-    zgen oh-my-zsh plugins/rbenv
-    zgen oh-my-zsh plugins/rsync
-    zgen oh-my-zsh plugins/ruby
-    zgen oh-my-zsh plugins/rust
-    zgen oh-my-zsh plugins/ssh-agent
-    zgen oh-my-zsh plugins/sudo
-    zgen oh-my-zsh plugins/systemd
-    zgen oh-my-zsh plugins/tmux
-    zgen oh-my-zsh plugins/ufw
-    zgen oh-my-zsh plugins/virtualenv
-
-    # completions
-    zgen load zsh-users/zsh-completions src
-
-    # autoupdate-zgen
-    zgen load unixorn/autoupdate-zgen
-
-    # forgit - interactive git commands
-    zgen load wfxr/forgit
-
-    # wakatime
-    #zgen load sobolevn/wakatime-zsh-plugin
-
-    # minimal themes
-    zgen load subnixr/minimal
-
-    # save all to init script
-    zgen save
-fi
+[ -f ~/.zshrc-zgen ] && source ~/.zshrc-zgen
 # -------------------------------------------------------------END ZGEN CONFIG
-
 
 # ---------------------------------------------------------------------MINIMAL
 MNML_OK_COLOR=7                      # default: 7
@@ -161,6 +92,33 @@ bindkey -v
 # Reverse menu with Shift+tab
 bindkey '^[[Z' reverse-menu-complete
 
+export KEYTIMEOUT=1
+
+# # Change cursor with support for inside/outside tmux
+# function _set_cursor() {
+#     if [[ $TMUX = '' ]]; then
+#       echo -ne $1
+#     else
+#       echo -ne "\ePtmux;\e\e$1\e\\"
+#     fi
+# }
+
+# function _set_block_cursor() { _set_cursor '\e[2 q' }
+# function _set_beam_cursor() { _set_cursor '\e[6 q' }
+
+# function zle-keymap-select {
+#   if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+#       _set_block_cursor
+#   else
+#       _set_beam_cursor
+#   fi
+# }
+# zle -N zle-keymap-select
+# # ensure beam cursor when starting new terminal
+# precmd_functions+=(_set_beam_cursor) #
+# # ensure insert mode and beam cursor when exiting vim
+# zle-line-init() { zle -K viins; _set_beam_cursor }
+
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
@@ -180,22 +138,40 @@ case $TERM in
     ;;
 esac
 
+# For Changing directories, remember the directory you've navigated to with ranger
+function ranger {
+    local IFS=$'\t\n'
+    local tempfile="$(mktemp -t tmp.XXXXXX)"
+    local ranger_cmd=(
+        command
+        ranger
+        --cmd="map q chain shell echo %d > "$tempfile"; quitall"
+    )
+
+    ${ranger_cmd[@]} "$@"
+    if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
+        cd -- "$(cat "$tempfile")" || return
+    fi
+    command rm -f -- "$tempfile" 2>/dev/null
+}
+
 # For handle Delete key
-bindkey    "[3~"          delete-char
-bindkey    "3;5~"         delete-char
+# bindkey    "[3~"          delete-char
+# bindkey    "3;5~"         delete-char
 
 # Import alias from .aliases
 [ -f ~/.aliases ] && source ~/.aliases
 
 # Count how many opened terminal
-pgrep -x st | awk 'BEGIN{count=1}{ if(NR!=1){count++} }END{print " st:"count}'
+#pgrep -x st | awk 'BEGIN{count=1}{ if(NR!=1){count++} }END{print " st:"count}'
 
 # FZF DWM color
 export FZF_DEFAULT_OPTS='
 --color=dark,fg:7,fg+:7,bg+:24,hl:7,hl+:202,info:7,prompt:7,spinner:7,pointer:7,marker:7'
 
 # Ignore node_modulses directory on fzf
-export FZF_DEFAULT_COMMAND='ag --nocolor --ignore node_modules -g ""'
+# export FZF_DEFAULT_COMMAND = 'ag --nocolor --ignore node_modules -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --ignore-file ".gitignore"'
 
 # Should to put at very bottom of this file config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

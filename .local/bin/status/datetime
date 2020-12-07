@@ -22,5 +22,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-dte="$(date +" 0%u%y%m%d%H%M")"
-echo "$dte"
+icon=""
+datetime="$(date +"0%u%y%m%d%H%M")"
+printf "$icon $datetime"
