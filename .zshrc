@@ -145,7 +145,7 @@ function ranger {
     local ranger_cmd=(
         command
         ranger
-        --cmd="map q chain shell echo %d > "$tempfile"; quitall"
+        --cmd="map Q chain shell echo %d > "$tempfile"; quitall"
     )
 
     ${ranger_cmd[@]} "$@"
@@ -167,7 +167,7 @@ function ranger {
 
 # FZF DWM color
 export FZF_DEFAULT_OPTS='
---color=dark,fg:7,fg+:7,bg+:24,hl:7,hl+:202,info:7,prompt:7,spinner:7,pointer:7,marker:7'
+--color=dark,fg:14,fg+:0,bg+:9,hl:9,hl+:7,info:9,prompt:7,spinner:1,pointer:0,marker:7'
 
 # Ignore node_modulses directory on fzf
 # export FZF_DEFAULT_COMMAND = 'ag --nocolor --ignore node_modules -g ""'

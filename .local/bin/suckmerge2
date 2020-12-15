@@ -57,17 +57,16 @@ st_branches = [
   'config',
   'clipboard',
   'font2',
-  'xresources',
   'workingdir',
   'boxdraw',
-  'invert',
-  'newterm',              # merge \w: scrollback, openclipboard, invert
+  'newterm',              # : scrollback, open-copied-url
   'scrollback',
   'scrollback-mouse',
   'open-copied-url',
   'bold-is-not-bright',
-  'alpha',                # merge \w: boxdraw
-  'ligatures-boxdraw-alpha-scrollback' # merge \w: alpha
+  'alpha',                # : boxdraw
+  'ligatures-boxdraw-alpha-scrollback', # : alpha
+  'solarized-both',       # : ligatures-boxdraw-alpha-scrollback^, newterm^ <-
 ]
 
 # For slock

@@ -15,7 +15,7 @@ from ranger.gui.color import (
 
 
 class Solarized(ColorScheme):
-    progress_bar_color = yellow
+    progress_bar_color = 9
 
     def use(self, context):
         fg, bg, attr = default_colors
@@ -24,7 +24,6 @@ class Solarized(ColorScheme):
             return default_colors
 
         elif context.in_browser:
-            # fg = 244
             fg = default
             if context.selected:
                 attr = reverse
@@ -35,35 +34,33 @@ class Solarized(ColorScheme):
                 bg = red
                 attr = normal
             if context.border:  # jadi satu dengan r
-                # fg = 0
-                fg = yellow
+                fg = 9
             if context.media:
                 if context.image:
-                    # fg = 136
                     fg = blue
                 else:
-                    fg = 9
+                    fg = 4
             if context.container:
-                fg = green
+                fg = 3
             if context.directory:
-                fg = yellow
+                fg = 9
+                attr |= bold
             elif context.executable and not \
                     any((context.media, context.container,
                         context.fifo, context.socket)):
-                fg = red
+                fg = 2
                 attr |= bold
             if context.socket:
-                fg = red
+                fg = 2
                 attr |= bold
             if context.fifo:
-                fg = red
+                fg = 2
                 attr |= bold
             if context.device:
                 fg = yellow
                 attr |= bold
             if context.link:
-                fg = context.good and blue or blue
-                # bg = context.bad and 235
+                fg = context.good and 9 or 9
                 bg = context.bad and default
                 attr |= normal
             if context.tag_marker and not context.selected:
@@ -73,18 +70,16 @@ class Solarized(ColorScheme):
                 else:
                     fg = red
             if not context.selected and (context.cut or context.copied):
-                # fg = 234
                 fg = red
                 attr |= bold
             if context.main_column:
                 if context.selected:
-                    fg = red
+                    fg = 9
                     bg = 0
                     attr |= bold
                 if context.marked:
                     attr |= bold
-                    # bg = 237
-                    bg = yellow
+                    bg = 13
                     fg = 0
             if context.badinfo:
                 if attr & reverse:
@@ -93,34 +88,32 @@ class Solarized(ColorScheme):
                     fg = yellow
 
         elif context.in_titlebar:
-            # attr |= bold
+            fg = 9
+            attr |= bold
             if context.hostname:
-                # fg = context.bad and 160 or 93
-                fg = yellow
-                # bg = context.bad and 235
+                fg = 14
                 bg = 0
             elif context.directory:
-                fg = red
+                fg = 14
             elif context.tab:
-                # fg = 33 if context.good else default
-                fg = yellow if context.good else default
+                fg = 9 if context.good else default
                 bg = default
             elif context.link:
-                fg = 33
+                fg = 4
 
         elif context.in_statusbar:
             if context.permissions:
                 if context.good:
-                    fg = yellow
+                    fg = 9
+                    attr |= bold
                 elif context.bad:
-                    fg = red
+                    fg = 13
             if context.marked:
                 attr |= bold | reverse
-                # fg = 237
-                fg = yellow
+                fg = 9
             if context.frozen:
                 attr |= bold | reverse
-                fg = blue
+                fg = 4
             if context.message:
                 if context.bad:
                     attr |= bold

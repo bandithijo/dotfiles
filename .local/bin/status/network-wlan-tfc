@@ -22,13 +22,13 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-wlanmon_card=$(ip a s | grep wlan0mon | awk 'NR%1==0 {print $2}' | sed 's/://g')
-if [ $wlanmon_card = "wlan0mon" ]; then
+wlan_card='wlan0'
+
+wlanmon_card=$(ip a s | grep $wlan_card'mon' | awk 'NR%1==0 {print $2}' | sed 's/://g')
+if [ $wlanmon_card ]; then
     printf " MONITOR"
 fi
 
-wlan_card='wlan0'
-# wlan_online=$(ip a s dev $wlan_card | grep -i inet)
 wlan_online=$(iw $wlan_card link | grep 'Connected' | awk 'NR%1==0 {print $1}')
 wlan_offline=$(iw $wlan_card link | grep 'Not' | awk 'NR%1==0 {print $1}')
 internet=$(wget -qO- ifconfig.co)
@@ -46,5 +46,5 @@ if [ $wlan_online ]; then
     $(numfmt --to=none $wlan_do) \
     $(numfmt --to=none $wlan_up)
 elif [ $wlan_offline ];then
-    printf "^c#D70118^ OFFLINE^d^"
+    printf "^c#CB4B16^ OFFLINE^d^"
 fi

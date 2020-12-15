@@ -42,7 +42,7 @@ mem_avail=$(free -m | awk 'NR%2==0 {print $7}')
 mem_used=$(( $mem_total - $mem_avail))
 mem_usage=$(( $mem_used * 100 / $mem_total ))
 if [ $mem_usage -ge 80 ]; then
-    printf "^c#D70118^$icon ${mem_usage//%}^d^"
+    printf "^c#CB4B16^$icon ${mem_usage//%}^d^"
 else
     printf "$icon ${mem_usage//%}"
 fi

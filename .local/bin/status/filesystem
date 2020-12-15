@@ -33,9 +33,9 @@
 icon=""
 cap_percentage=$(df -h --output=pcent / | awk 'NR%2==0 {print $0}'  | cut -f 1 -d '%'  | xargs)
 if [ $cap_percentage -ge 90 ]; then
-    printf "^c#D70118^$icon $cap_percentage^d^"
+    printf "^c#CB4B16^$icon $cap_percentage^d^"
 elif [ $cap_percentage -ge 80 ] && [ $cap_percentage -ge 89 ]; then
-    printf "^c#FFAA00^$icon $cap_percentage^d^"
+    printf "^c#CB4B16^$icon $cap_percentage^d^"
 else
     printf "$icon $cap_percentage"
 fi

@@ -1,5 +1,6 @@
 ! scheme: "codedark"
 ! author: "Tomas Iser (https://github.com/tomasiser)"
+! vim: ft=xdefaults
 
 #define base00 #1E1E1E
 #define base01 #262626

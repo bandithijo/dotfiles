@@ -83,7 +83,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 export WALLPAPER1="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11-dark.png"
 export WALLPAPER2="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11H-dark.png"
-export WALLPAPER3="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11G-dark.png"
+export WALLPAPER3="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11L-dark.png"
 export WALLPAPER4="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11GW-dark.png"
 
 # For disable Spring load when running Rails Console

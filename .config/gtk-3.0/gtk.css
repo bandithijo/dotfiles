@@ -19,9 +19,37 @@
   background-color: #ededed;
   box-shadow: none;
 }
+
 /* You may want to use this if you don't like the double title. */
 GtkLabel.title {
-    opacity: 0;
+  opacity: 0;
+}
+/* END To remove the shadow and gap around windows (for example in combination with a tiling window manager) */
+
+/* From Oomox Spotify */
+/* remove window title from Client-Side Decorations */
+.solid-csd headerbar .title {
+  font-size: 0;
 }
 
-/* END To remove the shadow and gap around windows (for example in combination with a tiling window manager) */
+/* hide extra window decorations/double border */
+window decoration {
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+
+* {
+  text-shadow: none;
+}
+/* END From Oomox Spotify */
+
+
+/* Override scrollbar */
+scrollbar, scrollbar button, scrollbar slider {
+  -GtkScrollbar-has-backward-stepper: false;
+  -GtkScrollbar-has-forward-stepper: false;
+  min-width: 5px;
+  border-radius: 0;
+}
+/* END Override scrollbar */

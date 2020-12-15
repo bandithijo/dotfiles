@@ -10,7 +10,7 @@
     background:                  rgba ( 0, 43, 55, 100 % );
     normal-foreground:           @foreground;
     normal-background:           @background;
-    active-foreground:           rgba ( 181, 137, 0, 100 % );
+    active-foreground:           rgba ( 203, 75, 22, 100 % );
     active-background:           @background;
     urgent-foreground:           rgba ( 218, 66, 129, 100 % );
     urgent-background:           @background;
@@ -31,11 +31,12 @@
     /* border-color:                @foreground; */
     border-color:                rgba ( 0, 24, 30, 100%);
     background-color:            rgba ( 0, 0, 0, 0 % );
-    separatorcolor:              @foreground;
+    separatorcolor:              @active-foreground;
     spacing:                     2;
 }
 #window {
     background-color: @background;
+    border-color:     @separatorcolor;
     border:           1;
     padding:          5;
     /* border-radius:    4; */
@@ -46,7 +47,7 @@
     padding:          0;
 }
 #message {
-    border:           1px dash 0px 0px ;
+    border:           1px dash 0px 0px;
     border-color:     @separatorcolor;
     padding:          1px ;
 }
@@ -55,11 +56,11 @@
 }
 #listview {
     fixed-height:     0;
-    border:           2px dash 0px 0px ;
+    border:           1px dash 0px 0px;
     border-color:     @separatorcolor;
     spacing:          2px ;
     scrollbar:        false;
-    padding:          2px 0px 0px ;
+    padding:          2px 0px 0px;
 }
 #element {
     border:           0;
@@ -78,8 +79,8 @@
     text-color:       @active-foreground;
 }
 #element.selected.normal {
-    background-color: @selected-normal-background;
-    text-color:       @selected-normal-foreground;
+    background-color: @active-foreground;
+    text-color:       @active-background;
 }
 #element.selected.urgent {
     background-color: @selected-urgent-background;
@@ -111,9 +112,13 @@
     border:           2px dash 0px 0px ;
     border-color:     @separatorcolor;
 }
+#button {
+    background-color: @normal-background;
+    text-color:       @normal-foreground;
+}
 #button.selected {
-    background-color: @selected-normal-background;
-    text-color:       @selected-normal-foreground;
+    background-color: @active-foreground;
+    text-color:       @active-background;
 }
 #inputbar {
     spacing:          0;

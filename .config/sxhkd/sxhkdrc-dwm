@@ -68,8 +68,8 @@ XF86AudioMute
     --toggle-mute; \
     ou_mute=$(pamixer --get-mute); \
     jack_stat=$($HOME/bin/has_headphone); \
-    [ $jack_stat = "yes" ]   && icon_on=" " icon_off=" "; \
-    [ $jack_stat = "no" ]    && icon_on=" " icon_off=" "; \
+    [ $jack_stat = "yes" ]   && icon_on="  Headset" icon_off="  Headset"; \
+    [ $jack_stat = "no" ]    && icon_on="  Speaker" icon_off="  Speaker"; \
     [ $ou_mute   = "true" ]  && dunstify "$icon_off MUTED" -t 1000 -r 1; \
     [ $ou_mute   = "false" ] && dunstify "$icon_on UNMUTED" -t 1000 -r 1
 
@@ -78,22 +78,25 @@ shift + XF86AudioMute
     pamixer \
     --source 1 --toggle-mute; \
     in_mute=$(pamixer --source 1 --get-mute); \
-    [ $in_mute = "true" ]  && dunstify "  MUTED" -t 1000 -r 1; \
-    [ $in_mute = "false" ] && dunstify "  UNMUTED" -t 1000 -r 1
+    [ $in_mute = "true" ]  && dunstify "  Microphone Input MUTED" -t 1000 -r 1; \
+    [ $in_mute = "false" ] && dunstify "  Microphone Input UNMUTED" -t 1000 -r 1
 
 # pulseaudio controls mute monitor
 alt + XF86AudioMute
     pamixer \
     --source 0 --toggle-mute; \
     mo_mute=$(pamixer --source 0 --get-mute); \
-    [ $mo_mute = "true" ]  && dunstify "  MUTED" -t 1000 -r 1; \
-    [ $mo_mute = "false" ] && dunstify "  UNMUTED" -t 1000 -r 1
+    [ $mo_mute = "true" ]  && dunstify "  Monitor Input MUTED" -t 1000 -r 1; \
+    [ $mo_mute = "false" ] && dunstify "  Monitor Input UNMUTED" -t 1000 -r 1
 
 # screen brightness controls
 {XF86MonBrightnessUp, XF86MonBrightnessDown}
     xbacklight {-inc 5, -dec 5}; \
     get_brightness=$(xbacklight -get | cut -f 1 -d '.'); \
     dunstify "  Brightness: "$get_brightness -t 1000 -r 1
+
+super + F4
+    feh --bg-fill -Z $WALLPAPER3
 
 super + F5
     monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: "); \
@@ -139,7 +142,8 @@ super + ~F11
 super + shift + F12
 	$HOME/bin/dmenu-systemd
 
-super + ~F12
+# dwmtray
+super + shift + ~b
     {$HOME/bin/polybar-toggle show, $HOME/bin/polybar-toggle hide}
 
 # clipmenu

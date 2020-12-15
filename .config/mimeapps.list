@@ -100,7 +100,7 @@ x-scheme-handler/remmina=org.remmina.Remmina.desktop;
 x-scheme-handler/spice=org.remmina.Remmina.desktop;
 x-scheme-handler/vnc=org.remmina.Remmina.desktop;
 application/json=nvim.desktop;
-image/png=org.gnome.gThumb.desktop;userapp-"sxiv"-BQDFT0.desktop;gpicview.desktop;
+image/png=userapp-"sxiv"-BQDFT0.desktop;org.gnome.gThumb.desktop;gpicview.desktop;
 image/jpeg=gpicview.desktop;
 image/gif=userapp-sxiv-0KPET0.desktop;gpicview.desktop;
 
