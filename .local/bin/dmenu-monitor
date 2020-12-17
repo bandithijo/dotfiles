@@ -15,7 +15,7 @@ monitor_lg() {
     sleep 1
     xrandr --output LVDS1 --primary --mode 1024x768 --pos 576x900 --rotate normal --output VGA1 --mode 1600x900 --pos 0x0 --rotate normal --output VIRTUAL1 --off
     sleep 1
-    feh --bg-fill -Z $WALLPAPER2 --bg-fill $WALLPAPER1
+    feh --bg-fill -Z $WALLPAPER3 --bg-fill $WALLPAPER1
 }
 
 monitor_laptop() {
@@ -25,7 +25,7 @@ monitor_laptop() {
     xrandr --delmode VGA1 1600x900
     xrandr --rmmode 1600x900
     sleep 1
-    feh --bg-fill -Z $WALLPAPER2
+    feh --bg-fill -Z $WALLPAPER3
 }
 
 monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: ")

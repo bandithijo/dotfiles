@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 DMENU="/usr/local/bin/dmenu"
 
@@ -45,30 +45,25 @@ cropMonitor() {
 }
 
 monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: ")
+
+# menu name         function name
+OPTIONS='''[
+["Fullscreen",      "captureFullScreen"],
+["Fullscreen+",     "captureFullScreenPlus"],
+["Fullscreen Time", "captureFullScreenTime"],
+["Window",          "captureWindow"],
+["Window+",         "captureWindowPlus"],
+["Flameshot",       "captureFlameshot"],
+["Flameshot+",      "captureFlameshotPlus"],
+["Flameshot Time",  "captureFlameshotTime"]
+]'''
+
 if [ "$monitors" = "2" ]; then
-    OPTIONS=$(echo -e "Fullscreen\nFullscreen+\nFullscreen Time\nWindow\nWindow+\nFlameshot\nFlameshot+\nFlameshot Time\nCrop Laptop\nCrop Monitor" | $DMENU -i -p " ScreenShot:")
-    case "$OPTIONS" in
-        "Fullscreen") captureFullScreen;;
-        "Fullscreen+") captureFullScreenPlus;;
-        "Fullscreen Time") captureFullScreenTime;;
-        "Window") captureWindow;;
-        "Window+") captureWindowPlus;;
-        "Flameshot") captureFlameshot;;
-        "Flameshot+") captureFlameshotPlus;;
-        "Flameshot Time") captureFlameshotTime;;
-        "Crop Laptop") cropLaptop "1024x768+576+900";;
-        "Crop Monitor") cropMonitor "1600x900+0+0";;
-    esac
-else
-    OPTIONS=$(echo -e "Fullscreen\nFullscreen+\nFullscreen Time\nWindow\nWindow+\nFlameshot\nFlameshot+\nFlameshot Time" | $DMENU -i -p " ScreenShot:")
-    case "$OPTIONS" in
-        "Fullscreen") captureFullScreen;;
-        "Fullscreen+") captureFullScreenPlus;;
-        "Fullscreen Time") captureFullScreenTime;;
-        "Window") captureWindow;;
-        "Window+") captureWindowPlus;;
-        "Flameshot") captureFlameshot;;
-        "Flameshot+") captureFlameshotPlus;;
-        "Flameshot Time") captureFlameshotTime;;
-    esac
+    OPTIONS+='''[
+    ["Crop Laptop",     "cropLaptop '1024x768+576+900'"],
+    ["Crop Monitor",    "cropMonitor '1600x900+0+0'"]
+    ]'''
 fi
+
+obj=$(echo $OPTIONS | jq -r ".[][0]" | $DMENU -i -p " ScreenShot:")
+$(echo $OPTIONS | jq -r ".[] | select(.[0] == '$obj') | .[1]")
