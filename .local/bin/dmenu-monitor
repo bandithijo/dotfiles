@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 DMENU="/usr/local/bin/dmenu"
 
@@ -28,15 +28,23 @@ monitor_laptop() {
     feh --bg-fill -Z $WALLPAPER3
 }
 
+# menu name         function name
+OPTIONS='''
+[
+["Dual", "monitor_lg"]
+]
+'''
+
 monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: ")
 if [ "$monitors" = "2" ]; then
-    choice=$(printf "Single" | $DMENU -p " Monitor:")
-    case "$choice" in
-        "Single"    ) monitor_laptop;;
-    esac
-elif [ "$monitors" = "1" ]; then
-    choice=$(printf "Dual" | $DMENU -p " Monitor:")
-    case "$choice" in
-        "Dual"      ) monitor_lg;;
-    esac
+OPTIONS='''
+[
+["Single", "monitor_laptop"]
+]
+'''
 fi
+
+obj_menu=$(echo $OPTIONS | jq -r ".[][0]" | $DMENU -i -p " Monitor:")
+obj_selected=$(echo $OPTIONS | jq -r ".[] | select(.[0] == \"$obj_menu\") | .[1]")
+
+$obj_selected

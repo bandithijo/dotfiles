@@ -44,10 +44,9 @@ cropMonitor() {
     $HOME/bin/imgmagick-crop-monitor $1
 }
 
-monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: ")
-
 # menu name         function name
-OPTIONS='''[
+OPTIONS='''
+[
 ["Fullscreen",      "captureFullScreen"],
 ["Fullscreen+",     "captureFullScreenPlus"],
 ["Fullscreen Time", "captureFullScreenTime"],
@@ -56,8 +55,11 @@ OPTIONS='''[
 ["Flameshot",       "captureFlameshot"],
 ["Flameshot+",      "captureFlameshotPlus"],
 ["Flameshot Time",  "captureFlameshotTime"]
-]'''
+]
+'''
+# Don't put comma on last array element!
 
+monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: ")
 if [ "$monitors" = "2" ]; then
     OPTIONS+='''[
     ["Crop Laptop",     "cropLaptop '1024x768+576+900'"],
@@ -65,5 +67,7 @@ if [ "$monitors" = "2" ]; then
     ]'''
 fi
 
-obj=$(echo $OPTIONS | jq -r ".[][0]" | $DMENU -i -p " ScreenShot:")
-$(echo $OPTIONS | jq -r ".[] | select(.[0] == '$obj') | .[1]")
+obj_menu=$(echo $OPTIONS | jq -r ".[][0]" | $DMENU -i -p " ScreenShot:")
+obj_selected=$(echo $OPTIONS | jq -r ".[] | select(.[0] == \"$obj_menu\") | .[1]")
+
+$obj_selected

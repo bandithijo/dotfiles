@@ -113,8 +113,12 @@ super + shift + F5
     fi
 
 # application tools on Fn Button
-super + {F8, F1}
-    {networkmanager_dmenu, keybind-helper}
+super + F1
+    $HOME/bin/keybind-helper
+
+# networkmanager-dmenu
+super + F8
+    /usr/bin/networkmanager_dmenu
 
 # dmenu-udiskie
 super + F6
@@ -137,10 +141,6 @@ super + ~F10
 # key-mon
 super + ~F11
     {$HOME/bin/key-mon-launcher, killall key-mon}
-
-# dmenu-systemd
-super + shift + F12
-	$HOME/bin/dmenu-systemd
 
 # dwmtray
 super + shift + ~b

@@ -9,9 +9,9 @@ alias doas="sudo"
 alias doasedit="sudoedit"
 
 # list ls
-alias l="exa"
-alias ll="exa -lg"
-alias lll="exa -algh"
+alias l="ls --group-directories-first"
+alias ll="ls -lh --group-directories-first"
+alias lll="ls -alh --group-directories-first"
 
 # exit
 alias :q="exit"

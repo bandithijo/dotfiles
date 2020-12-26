@@ -2,7 +2,7 @@
 
 # Please write your screenshot dir with full path. Later, I'll improve this.
 ss_dir          = "/home/bandithijo/pic/ScreenShots"
-ss_frame        = "/home/bandithijo/pic/ScreenShots/obs-frame.png"
+ss_frame        = "/home/bandithijo/pic/ScreenShots/OBS-frame.png"
 Dir.chdir(ss_dir)
 list_file       = %x(ls -p | grep -v /)
 files           = list_file.split(" ")

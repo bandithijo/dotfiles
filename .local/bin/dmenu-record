@@ -150,9 +150,44 @@ case "$choice" in
         ;;
 esac
 
-# choice=$(printf "Screencast\nVideo\nAudio" | $DMENU -p " Record:")
-# case "$choice" in
-#     "Screencast") screenCast;;
-#     "Video") videoOnly;;
-#     "Audio") audioOnly;;
-# esac
+# Don't put comma on last array element!
+# menu name         function name
+# OPTIONS='''
+# [
+# ["Video",     "videos"],
+# ["Audio",     "audioOnly"],
+# ["Effects ", "effects"]
+# ]
+# '''
+# obj_menu=$(echo $OPTIONS | jq -r ".[][0]" | $DMENU -i -p " ScreenShot:")
+# obj_selected=$(echo $OPTIONS | jq -r ".[] | select(.[0] == \"$obj_menu\") | .[1]")
+
+# if [ "$obj_selected" = "videos" ]; then
+#     screen_size=$(xdpyinfo | grep dimensions | awk '{print $2;}')
+#     monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: ")
+#     if [ "$monitors" = "2" ]; then
+#         OPTIONS='''
+#         [
+#         ["All Monitor",         "videoOnly $screen_size '0' '0'"],
+#         ["1st Monitor",         "videoOnly '1024x768' '576' '900'"],
+#         ["2nd Monitor",         "videoOnly '1600x900' '0' '0'"]
+#         ]
+#         '''
+#         obj_menu=$(echo $OPTIONS | jq -r ".[][0]" | $DMENU -i -p " Area:")
+#         obj_selected=$(echo $OPTIONS | jq -r ".[] | select(.[0] == \"$obj_menu\") | .[1]")
+#     else
+#         obj_selected="videoOnly $(xdpyinfo | grep dimensions | awk '{print $2;}') '0' '0'"
+#     fi
+
+# elif [ "$obj_selected" = "effects" ]; then
+#     OPTIONS='''
+#     [
+#     ["Inject: Frame",         "injectFrame"],
+#     ["Inject: MuteAudioVoko", "injectMuteAudioToVideoVoko"]
+#     ]
+#     '''
+#     obj_menu=$(echo $OPTIONS | jq -r ".[][0]" | $DMENU -i -p " Effects:")
+#     obj_selected=$(echo $OPTIONS | jq -r ".[] | select(.[0] == \"$obj_menu\") | .[1]")
+# fi
+
+# $obj_selected
