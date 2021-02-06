@@ -16,7 +16,7 @@ end
 color_profile     = '/usr/share/color/icc/colord/sRGB.icc'
 border_size       = '1'
 border_radius     = '5'
-background_color  = '"#264A53"' # 'none' for transparent; Hex color use '"0"'
+background_color  = '"#264A53"' # 'none' for transparent; Hex color use '"#0000000"'
 background_size   = '0'
 shadow_size       = '30x10+0+10'
 font              = 'JetBrains-Mono-Regular-Nerd-Font-Complete'
