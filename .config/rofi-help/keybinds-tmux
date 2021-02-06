@@ -28,3 +28,4 @@ Ctrl+b Ctrl+r            Reload Session
 <b>COMMANDS---------------------------------------</b>
 Ctrl+b :new-session  -s &lt;nama_session&gt;
 Ctrl+b :kill-session -t &lt;nama_session&gt;
+Ctrl+b :join-pane -t :0

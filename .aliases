@@ -110,7 +110,7 @@ alias usercheck="~/.local/bin/usercheck"
 #alias emacs="emacs -nw"
 
 # scrcpy
-#alias scrcpy="scrcpy -b2M -m800"
+alias scrcpy="scrcpy -b2M -m800 --turn-screen-off --stay-awake"
 
 # RedShift
 alias redshift="redshift -P -O"
@@ -147,5 +147,10 @@ alias __="sudoedit"
 
 alias cp="advcp -g"
 alias mv="advmv -g"
+
+alias print-on="sudo rc-service avahi-daemon start; sudo rc-service cupsd start"
+alias print-off="sudo rc-service cupsd stop; sudo rc-service avahi-daemon stop"
+
+alias mocp="mocp -C ~/.config/moc/config"
 
 # -------------------------------------------------------------------END ALIAS

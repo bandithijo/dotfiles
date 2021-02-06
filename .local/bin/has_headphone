@@ -1,22 +1,15 @@
 #!/bin/sh
 
-# snd_card_num=0
-# node_num="0x16"
-# snd_card_file="/proc/asound/card${snd_card_num}/codec#0"
+# PulseAudio (output: yes | no)
+#pacmd list-sinks | grep 'Headphones' | awk '{print $10}' | tr -d ')'
 
-# cat "${snd_card_file}" \
-#     | grep -A 4 -i 'Headphone Playback Switch' \
-#     | grep 'Amp-Out vals:  \[0x00 0x00\]' \
-#     > /dev/null
-
-# exit_state=$?
-
-# if [ $exit_state -eq 0 ]; then
-#     state="connected"
-# else
-#     state="disconnected"
-# fi
-
-# echo "$state"
-# exit $exit_state
-pacmd list-sinks | grep 'Headphones' | awk '{print $10}' | tr -d ')'
+# Alsa (output: on | off)
+amixer -c 1 contents | \
+awk -F"," '
+$1 == "numid=24" {
+    c=1
+} c && /: values/ {
+   split($0, a, "=")
+   print a[2];
+   exit
+}'

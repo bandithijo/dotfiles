@@ -56,7 +56,7 @@ videoOnly() {
     -draw_mouse 1 \
     -framerate 30 \
     -s $1 \
-    -i :0.0+$2,$3 \
+    -i $(echo $DISPLAY).0+$3,$4 \
     -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 \
     -vf setpts=N/FR/TB \
     -c:v libx264 -pix_fmt yuv420p -preset veryfast -q:v 1 \

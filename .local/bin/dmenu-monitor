@@ -28,18 +28,20 @@ monitor_laptop() {
     feh --bg-fill -Z $WALLPAPER3
 }
 
+
+monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: ")
+if [ "$monitors" = "2" ]; then
+# menu name         function name
+OPTIONS='''
+[
+["Single", "monitor_laptop"]
+]
+'''
+else
 # menu name         function name
 OPTIONS='''
 [
 ["Dual", "monitor_lg"]
-]
-'''
-
-monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: ")
-if [ "$monitors" = "2" ]; then
-OPTIONS='''
-[
-["Single", "monitor_laptop"]
 ]
 '''
 fi

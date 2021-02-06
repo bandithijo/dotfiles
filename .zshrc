@@ -167,7 +167,9 @@ function ranger {
 
 # FZF DWM color
 export FZF_DEFAULT_OPTS='
---color=dark,fg:14,fg+:0,bg+:9,hl:9,hl+:7,info:9,prompt:7,spinner:1,pointer:0,marker:7'
+--color=dark,fg:14,fg+:0,bg+:9,hl:9,hl+:7
+--color=info:9,prompt:7,spinner:1,pointer:0,marker:7
+'
 
 # Ignore node_modulses directory on fzf
 # export FZF_DEFAULT_COMMAND = 'ag --nocolor --ignore node_modules -g ""'

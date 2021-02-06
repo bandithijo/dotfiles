@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env ruby
 
 # MIT License
 
@@ -22,39 +22,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-interface='wlan0'
+require 'open-uri'
+require 'nokogiri'
+require 'time'
+require 'byebug'
 
-internet=$(wget -qO- ifconfig.co)
-internet_logo=""
-if [ $internet ]; then
-    internet_logo=" "
-else
-    internet_logo=" "
-fi
+$icon = ''
+current_time = Time.now.strftime('%H:%M')
 
-if [ $interface = "wlan0" ]; then
-    wlan_card=$interface
+def fetch_data
+  target      = 'https://timesprayer.com/en/prayer-times-in-balikpapan.html'
+  data        = Nokogiri::HTML(URI.open(target))
+  next_prayer = data.css('div.info:nth-child(2) > div:nth-child(4)').text.split(':  ')[1]
+  countdown   = data.css('#countdown').text.split(':').shift(2).join(':')
+  return "#{$icon} #{next_prayer} -#{countdown}"
+end
 
-    wlanmon_card=$(ip a s | grep $wlan_card'mon' | awk 'NR%1==0 {print $2}' | sed 's/://g')
-    if [ $wlanmon_card ]; then
-        printf " MONITOR"
-    fi
-
-    wlan_online=$(iw $wlan_card link | grep 'Connected' | awk 'NR%1==0 {print $1}')
-    wlan_offline=$(iw $wlan_card link | grep 'Not' | awk 'NR%1==0 {print $1}')
-
-    if [ $wlan_online ]; then
-        wlan_do=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $1}')
-        wlan_up=$(ifstat2 -i $wlan_card 1 1 | awk 'NR%3==0 {print $2}')
-        printf "$internet_logo %5s  %5s\\n" \
-        $(numfmt --to=none $wlan_do) \
-        $(numfmt --to=none $wlan_up)
-    elif [ $wlan_offline ];then
-        printf "^c#CB4B16^ OFFLINE^d^"
-    else
-        printf "^c#CB4B16^ NO_ADPTR^d^"
-    fi
-
-elif [ $interface = "eth0" ]; then
-    printf "NOT IMPLEMENTED YET"
-fi
+puts fetch_data

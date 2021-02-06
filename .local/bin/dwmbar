@@ -4,6 +4,10 @@ dte() {
     printf "$($HOME/bin/status/datetime)"
 }
 
+solat() {
+    printf "$($HOME/bin/status/solattime)"
+}
+
 hdd() {
     printf "$($HOME/bin/status/filesystem)"
 }
@@ -61,7 +65,7 @@ misc() {
 }
 
 status() {
-    printf " $(record)$(tor)$(vpn)$(misc)$(keymon)$(wlan) $(cputemp) $(mem) $(hdd) $(vol) $(mailbox) $(dte) $(batstat) $(batcap) $(user)"
+    printf " $(record)$(tor)$(vpn)$(misc)$(keymon)$(wlan) $(cputemp) $(mem) $(hdd) $(vol) $(mailbox) $(batstat) $(batcap) $(dte) $(user)"
 }
 
 while true; do

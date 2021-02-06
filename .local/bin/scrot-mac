@@ -15,23 +15,60 @@ else
 end
 color_profile     = '/usr/share/color/icc/colord/sRGB.icc'
 border_size       = '1'
-background_color  = '"#264A53"' # 'none' for transparent; Hex color use '"#ffffff"'
-background_size   = '10'
-shadow_size       = '50x10+0+10'
+border_radius     = '5'
+background_color  = '"#264A53"' # 'none' for transparent; Hex color use '"0"'
+background_size   = '0'
+shadow_size       = '30x10+0+10'
 font              = 'JetBrains-Mono-Regular-Nerd-Font-Complete'
 font_size         = '11'
 color_fg          = '#002B36'
 color_bg          = '#CB4B16'
-author_position   = ['SouthWest', '+30+26']
-author            = 'Shooter: @' + `echo $USER`.strip
+author_position   = ['SouthWest', '+55+46']
+author            = ' : @' + `echo $USER`.strip
+
+# TODO: Add border around corner radius, not perfect yet
+# convert #{original_file} \\( +clone  -alpha extract \
+# -draw 'fill black polygon 0,0 0,#{border_radius} #{border_radius},0 \
+# fill white circle #{border_radius},#{border_radius} #{border_radius},0' \
+# \\( +clone -flip \\) -compose Multiply -composite \
+# \\( +clone -flop \\) -compose Multiply -composite \
+# \\) -alpha off -compose CopyOpacity -composite -compose over \
+# \\( -clone 0 -fill '#{color_bg}' -colorize 100 \\) \
+# \\( -clone 0 -alpha extract -virtual-pixel black -morphology edgein octagon:#{border_size} \\) \
+# -compose over -composite \
+# \\( +clone -background black -shadow #{shadow_size} \\) \
+# +swap -background none -layers merge +repage #{target_file}
+
 
 %x(
-convert #{original_file} -bordercolor '#{color_bg}' -border #{border_size} \
-#{target_file}
+convert #{original_file} \\( +clone  -alpha extract \
+-draw 'fill black polygon 0,0 0,#{border_radius} #{border_radius},0 \
+fill white circle #{border_radius},#{border_radius} #{border_radius},0' \
+\\( +clone -flip \\) -compose Multiply -composite \
+\\( +clone -flop \\) -compose Multiply -composite \
+\\) -alpha off -compose CopyOpacity -composite -compose over \
+\\( +clone -background black -shadow #{shadow_size} \\) \
++swap -background none -layers merge +repage #{target_file}
 
 convert #{target_file} \\( +clone -background black \
 -shadow #{shadow_size} \\) +swap -background none \
 -layers merge +repage #{target_file}; \
+
+# convert #{target_file} \
+# \\( -size 100x -background none -fill white -gravity center \
+# label:"bandithijo" -trim -rotate -45 \
+# -bordercolor #{background_color} -border 10 \
+# -write mpr:wm +delete \
+# +clone -fill mpr:wm  -draw 'color 0,0 reset' \\) \
+# -compose over -composite #{target_file}
+
+# convert #{target_file} \
+# \\( -size 100x -background none -fill white -gravity center \
+# label:"bandithijo" -trim -rotate -30 \
+# -bordercolor none -border 10 \
+# -write mpr:wm +delete \
+# +clone -fill mpr:wm  -draw 'color 0,0 reset' \\) \
+# -compose over -composite #{target_file}
 
 convert #{target_file} -bordercolor #{background_color} \
 -border #{background_size} #{target_file}
@@ -41,26 +78,32 @@ echo -n " #{author} " | convert #{target_file} \
 -undercolor '#{color_bg}' -font #{font} \
 -annotate #{author_position[1]} @- #{target_file}
 
-convert #{target_file} -gravity South -chop 0x#{background_size.to_i / 2} \
+convert #{target_file} -gravity South -chop 0x#{(background_size.to_i / 2) + 14} \
 #{target_file}
 
 convert #{target_file} -gravity North -background #{background_color} \
--splice 0x#{background_size.to_i / 2} #{target_file}
+-splice 0x#{(background_size.to_i / 2) + 10} #{target_file}
 
 convert #{target_file} -profile #{color_profile} #{target_file}
 )
 
 %x(optipng #{target_file}) if %x(which optipng > /dev/null 2>&1)
 
-list_file = `ls -p | grep -v /`
-last_file = list_file.split(' ').last
-if last_file.include? 'X'
-  `notify-send "ImageMagick" "Improving success!" -t 3000`
-  system "xclip -selection clipboard -i #{target_file} -t image/png"
-  exit
-end
-
 puts "
 SOURCE: #{original_file}
 TARGET: #{target_file}
 FRAMING SUCCESS!"
+
+list_file = `ls -p | grep -v /`
+last_file = list_file.split(' ').last
+if last_file.include? 'X'
+  `notify-send "ImageMagick" "Improving success!" -t 1000`
+  system "xclip -selection clipboard -i #{target_file} -t image/png"
+  exit
+end
+
+size = `find #{last_file} -printf %s`
+if size == '0' || size <= '20'
+  `rm -rf #{last_file}`
+  `notify-send "Flameshot" "Process Aborted!" -t 1000`
+end

@@ -1,301 +1,183 @@
-#
-# wm independent hotkeys -----------------------------------------------------
-#
+# -----------------------------------------------------------------------------
+# wm independent hotkeys
+# vim:ft=sxhkdrc
+# -----------------------------------------------------------------------------
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
-# terminal emulator
-super + shift + Return
-	bspc rule -a St state=tiled; /usr/local/bin/st
-
 # floating terminal emulator
 super + ctrl + Return
-	bspc rule -a St state=floating; /usr/local/bin/st
+	st -t 'st+'
+
+# tabbed st
+super + alt + Return
+    tabbed -r 2 st -w ''
+    # tabbed -r 2 -g 520x380-5-5 st -w ''
 
 # program launcher
 super + d
-    j4-dmenu-desktop --dmenu='rofi -dmenu -lines 6 -width 300 -i -sort -p RUN' --no-generic
+    $HOME/bin/dmenu-apps
 
-XF86Launch1
-	j4-dmenu-desktop --dmenu='rofi -dmenu -lines 6 -width 300 -i -sort -p RUN' --no-generic
-
-#
-# bspwm hotkeys --------------------------------------------------------------
-#
-
-# quit/restart bspwm
-super + shift + Home
-	bspc wm -r
-
-# quit bspwm
+# quit dwm
 super + shift + End
-    /usr/bin/rofi-power "bspc quit"
-
-# close and kill
-super + {_,shift} + q
-	bspc node -{c,k}
-
-# alternate between the tiled and monocle layout
-super + m
-	bspc desktop -l next
-
-# send the newest marked node to the newest preselected node
-super + y
-	bspc node newest.marked.local -n newest.!automatic.local
-
-#
-# state/flags ----------------------------------------------------------------
-#
-
-# set the window state
-super + {t,shift + t,f,shift + f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-
-# set the node flags
-super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
-
-#
-# focus/swap -----------------------------------------------------------------
-#
-
-# focus the node in the given direction
-super + {_,shift} + {h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
-
-# focus the node for the given path jump
-super + {a,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
-
-# focus the next/previous node in the current desktop
-	# bspc node -f {next,prev}.local
-super + {_,shift} + c
-    bspc node -f {next,prev}.local.!hidden.window
-
-# focus the next/previous desktop in the current monitor
-super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
-
-# focus the last node/desktop *desktop deleted*
-alt + {Tab}
-	bspc {node} -f last
-
-# focus the older or newer node in the focus history
-super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
-
-# focus or send to the given desktop
-super + {_,shift} + {1-9,0}
-    bspc {desktop -f,node -d} '^{1-9,10}'
-
-#
-# preselect ------------------------------------------------------------------
-#
-
-# preselect the direction
-# cancel the preselection
-# by pointing at given direction twice
-super + ctrl + {h,j,k,l}
-    bspc node --presel-dir '~{west,south,north,east}'
-
-# preselect the ratio
-super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
-
-#
-# move/resize ----------------------------------------------------------------
-#
-
-# expand a window by moving one of its side outward
-super + r : {h,j,k,l}
-    bspc node @{west -r -10,south -r +10,north -r -10,east -r +10}
-
-# contract a window by moving one of its side inward
-super + shift + r : {h,j,k,l}
-    bspc node @{east -r -10,north -r +10,south -r -10,west -r +10}
-
-# move a floating window
-super + r : {Left,Down,Up,Right}
-	bspc node -v {-1 0,0 1,0 -1,1 0}
-
-super + shift + r : {Left,Down,Up,Right}
-	bspc node -v {-10 0,0 10,0 -10,10 0}
-
-#
-# ditambahkan oleh bandithijo ------------------------------------------------
-#
-
-# hide window
-super + shift + minus
-    bspc node -g hidden
-
-# unhide window
-super + minus
-    bspc node {,$(bspc query -N -n .hidden | tail -n1)} -g hidden=off --focus
+    $HOME/bin/rofi-power 'xinit'
 
 # lock screen
 super + shift + x
-    /usr/bin/lock-dark
+	$HOME/bin/lock-dark
 
 # screenshot
+Print
+    $HOME/bin/scrot-full
+
 super + Print
-    /usr/bin/scrot-full
-
-super + ctrl + Print
-    /usr/bin/scrot-time
-
-super + alt + Print
-    /usr/bin/scrot-window-imgck
-
-super + shift + alt + Print
-    /usr/bin/scrot-window
+    $HOME/bin/dmenu-screenshot
 
 super + shift + Print
-    /usr/bin/flameshot-imgck
-
-super + shift + Print
-    /usr/bin/flameshot gui
+    $HOME/bin/flameshot-imgck
 
 # dmenu-record
 super + shift + Pause
-    /usr/bin/dmenu-record
+    $HOME/bin/dmenu-record
 
-# pulse audio controls
-{XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute}
-    pamixer {--increase 2, --decrease 2, --toggle-mute}
+# pulseaudio controls speaker volume up & down
+{XF86AudioRaiseVolume, XF86AudioLowerVolume}
+    pamixer {-i 1, -d 1}; \
+    ou_vol=$(pamixer --get-volume); \
+    jack_stat=$($HOME/bin/has_headphone); \
+    [ $jack_stat = "on" ] && icon="  Headset"; \
+    [ $jack_stat = "off" ]  && icon="  Speaker"; \
+    dunstify "$icon Output Volume: "$ou_vol -t 1000 -r 1
+
+# alsa controls speaker volume up & down
+#{XF86AudioRaiseVolume, XF86AudioLowerVolume}
+#    amixer sset Master {1%+, 1%-}; \
+#    ou_vol=$(pamixer --get-volume); \
+#    jack_stat=$($HOME/bin/has_headphone); \
+#    [ $jack_stat = "yes" ] && icon="  Headset"; \
+#    [ $jack_stat = "no" ]  && icon="  Speaker"; \
+#    dunstify "$icon Output Volume: "$ou_vol -t 1000 -r 1
+
+# pulseaudio controls mic volume up & down
+shift + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
+    pamixer --source 1 {-i 1, -d 1}; \
+    ou_mic=$(pamixer --source 1 --get-volume); \
+    dunstify "  Microphone Input Volume: "$ou_mic -t 1000 -r 1
+
+# alsa controls mic volume up & down
+#shift + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
+#    amixer sset Capture {1%+, 1%-}; \
+#    ou_mic=$(pamixer --source 1 --get-volume); \
+#    dunstify "  Microphone Input Volume: "$ou_mic -t 1000 -r 1
+
+# pulseaudio controls monitor volume up & down
+alt + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
+    pamixer --source 0 {-i 1, -d 1}; \
+    ou_mon=$(pamixer --source 0 --get-volume); \
+    dunstify "  Monitor Input Volume: "$ou_mon -t 1000 -r 1
+
+# pulseaudio controls mute speaker
+XF86AudioMute
+    pamixer \
+    --toggle-mute; \
+    ou_mute=$(pamixer --get-mute); \
+    jack_stat=$($HOME/bin/has_headphone); \
+    [ $jack_stat = "on" ]   && icon_on="  Headset" icon_off="  Headset"; \
+    [ $jack_stat = "off" ]    && icon_on="  Speaker" icon_off="  Speaker"; \
+    [ $ou_mute   = "true" ]  && dunstify "$icon_off MUTED" -t 1000 -r 1; \
+    [ $ou_mute   = "false" ] && dunstify "$icon_on UNMUTED" -t 1000 -r 1
+
+# pulseaudio controls mute mic
+shift + XF86AudioMute
+    pamixer \
+    --source 1 --toggle-mute; \
+    in_mute=$(pamixer --source 1 --get-mute); \
+    [ $in_mute = "true" ]  && dunstify "  Microphone Input MUTED" -t 1000 -r 1; \
+    [ $in_mute = "false" ] && dunstify "  Microphone Input UNMUTED" -t 1000 -r 1
+
+# pulseaudio controls mute monitor
+alt + XF86AudioMute
+    pamixer \
+    --source 0 --toggle-mute; \
+    mo_mute=$(pamixer --source 0 --get-mute); \
+    [ $mo_mute = "true" ]  && dunstify "  Monitor Input MUTED" -t 1000 -r 1; \
+    [ $mo_mute = "false" ] && dunstify "  Monitor Input UNMUTED" -t 1000 -r 1
 
 # screen brightness controls
 {XF86MonBrightnessUp, XF86MonBrightnessDown}
-    xbacklight {-inc 5, -dec 5}
-
-# move selected node to another monitor
-super + {F1, F2}
-    bspc node --to-monitor {^1, ^2}
-
-# wallpaper & conky for taking screenshot
-super + {_,shift} + F5
-    {feh --bg-fill -Z $WALLPAPER1, feh --bg-fill -Z $WALLPAPER2}
+    xbacklight {-inc 5, -dec 5}; \
+    get_brightness=$(xbacklight -get | cut -f 1 -d '.'); \
+    dunstify "  Brightness: "$get_brightness -t 1000 -r 1
 
 super + F4
     feh --bg-fill -Z $WALLPAPER3
 
-#super + {_,shift} + F6
-#    {feh --bg-fill -Z $WALLPAPER1 && $HOME/.config/conky/conky-launch.sh, \
-#    feh --bg-fill -Z $WALLPAPER2 && $HOME/.config/conky/conky-launch-bg.sh}
+super + F5
+    monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: "); \
+    if [ $monitors = "2" ]; \
+    then feh --bg-fill -Z $WALLPAPER1 --bg-fill -Z $WALLPAPER1; \
+    else feh --bg-fill -Z $WALLPAPER1; \
+    fi
+
+super + shift + F5
+    monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: "); \
+    if [ $monitors = "2" ]; \
+    then feh --bg-fill -Z $WALLPAPER2 --bg-fill -Z $WALLPAPER1; \
+    else feh --bg-fill -Z $WALLPAPER2; \
+    fi
 
 # application tools on Fn Button
-super + {F7, F8, F10}
-    {arandr, networkmanager_dmenu, keybind-helper}
+super + F1
+    $HOME/bin/keybind-helper
+
+# networkmanager-dmenu
+super + F8
+    /usr/bin/networkmanager_dmenu
+
+# dmenu-udiskie
+super + F6
+    UDISKIE_DMENU_LAUNCHER="rofi" dmenu-udiskie -matching regex \
+    -dmenu -i -no-custom -multi-select -p "UDISKIE" -lines 5 -width 300 \
+    -kb-accept-alt "" -kb-custom-1 "Shift+Return"
+
+# arandr
+super + F7
+    $HOME/bin/dmenu-monitor
+
+# gromit-mpx
+super + F9
+    gromit-mpx
+
+# webcam with ffplay
+super + ~F10
+	{$HOME/bin/ffplay-launcher,pkill -f 'ffplay'}
 
 # key-mon
-#super + ~F11
-#    {~/app/screenkey/screenkey, pkill -f screenkey}
 super + ~F11
-    {/usr/bin/key-mon, killall key-mon}
+    {$HOME/bin/key-mon-launcher, killall key-mon}
 
-# polybar-tray
-super + ~F12
-    {polybar-tray off; polybar-tray on, polybar-tray off}
+# dwmtray
+super + shift + ~b
+    {$HOME/bin/polybar-toggle show, $HOME/bin/polybar-toggle hide}
 
 # clipmenu
 super + {_,shift} + p
     {/usr/bin/clipmenu, /usr/bin/clipdel -d "."}
 
-# rotate the tree rooted at the selected node.
-super + {_,shift} + u
-    bspc node @/ --rotate {90,-90}
-
-# balance the split ratio of the tree rooted at the selected node so
-# that all windows occupy the same area.
-super + {_,shift} + space
-    bspc node @/ {-B, -E}
-
 # rofi-emoji
 super + e
-    /usr/bin/rofi-emoji-run
+    $HOME/bin/rofi-emoji-run
 
 # application tab
 super + grave
-    j4-dmenu-desktop --dmenu="rofi -show window -lines 10 -width 380 -display-window 'APPLICATIONS'"
+    $HOME/bin/rofi-application-tab
 
-# dmenu_record
-super + shift + Pause
-    ~/bin/dmenu_record
+# translate-shell
+super + Pause
+    $HOME/bin/dmenu-trans
 
-# mode for dynamic gaps.
-super + g : bracket{left,right}
-	bspc config -d focused window_gap "$(($(bspc config -d focused window_gap) {-,+} 5 ))"
-
-# Swap focused window with the one in the given direction.  If there is
-# no window in that direction, a receptacle will be created.  Inputting
-# any direction again will move the focused window to the position of
-# the receptacle.  This will effectively remove it from the current
-# layout, creating a more fluid workflow that does not constrain you to
-# the tree of the tiling scheme.
-#
-# IF you only ever want to move a window into an existing one and avoid
-# the added features of the scripted behaviour, use the following
-# command instead:
-#
-# 	bspc node -s {west,south,north,east}
-#
-# TIP after breaking free from the layout, you can use --balance to
-# spread out the nodes (see the key chord further down).  You may also
-# --rotate the tree.
-#
-# bspwm_smart_move is part of my dotfiles (link in the description).
-super + alt + {h,j,k,l}
-	bspwm_smart_move {west,south,north,east}
-
-# Advanced operations (receptacles and scripted actions)
-# ------------------------------------------------------
-# NOTE The behaviour of preselections and receptacles is regulated by my
-# bspwm_external_rules command (which is called from within bspwmrc).
-
-# Insert receptacle following the tiling scheme or preselection.
-# Receptacles are empty frames that function as placeholders for
-# windows.
-#
-# Whereas bspwm_smart_move (defined above) will automatically insert
-# a receptacle in the given direction by splitting the entire viewport.
-super + n ; r
-	bspc node -i
-
-# Insert the marked window (or focused if no marks) in the first
-# matching receptacle (or preselection if no receptacles).
-super + n ; i
-	bspwm_smart_presel
-
-# Kill/remove the first matching receptacle from the current desktop.
-# With shift, kill them all at once.
-super + n ; super + {_, shift} + r
-	{ \
-	bspc node 'any.leaf.!window.local' -k, \
-	bspwm_multifaceted_operation --kill-all-receptacles \
-	}
-
-# Summon all marked windows across all desktops to the current desktop.
-super + n ; m
-	bspwm_multifaceted_operation --summon-all-marked
-
-# Bring the windows of the given desktop to the current one.  With
-# shift, send the current window to the given one.
-super + n ; super + {_, shift} + {0-9}
-	bspwm_multifaceted_operation {--bring-desktop-here,--send-desktop-there} {0-9}
-
-# Close {or kill} all windows in the present desktop except the focused
-# or any marked ones.
-super + n ; super + {_,shift } + q
-	bspwm_multifaceted_operation --{close,kill}-all-local-non-focused
-
-# Assign the locked flag to all windows in the current desktop.  With
-# shift, remove the locked flag from all.
-super + n ; {_, shift} + l
-	bspwm_multifaceted_operation {--lock-all-local,--unlock-all-local}
-
-super + shift + backslash
-    $HOME/bin/rofi-pass
+# dmenu-pass
+super + {_,shift} + backslash
+    {$HOME/bin/passtore 0, $HOME/bin/dmenu-pass}

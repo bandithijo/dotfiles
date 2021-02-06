@@ -23,5 +23,5 @@
 # SOFTWARE.
 
 icon=""
-datetime="$(date +"0%u%y%m%d%H%M")"
+datetime="$(date +"%u%y%m%d%H%M")"
 printf "$icon $datetime"

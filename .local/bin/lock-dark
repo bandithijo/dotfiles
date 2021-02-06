@@ -2,14 +2,16 @@
 #: yuune i3lock-color wrapper
 #: after changing wallpaper, run "lock reload" to redraw the new wallpaper
 
-wallpaper="/home/bandithijo/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11X-dark.png"
+# wallpaper="/home/bandithijo/thm/screenlock/base_01.png"
+# tmpwall="/tmp/$USER-lock.png"
 
+wallpaper="/home/bandithijo/thm/screenlock/base_01.png"
 tmpwall="/tmp/$USER-lock.png"
 eval $(xdotool getdisplaygeometry --shell)
-genwp () {
-    if [[ "$1" == "reload" ]]; then
-        rm $tmpwall 2&>/dev/null
-    fi
+# genwp () {
+#     if [[ "$1" == "reload" ]]; then
+#         rm $tmpwall 2&>/dev/null
+#     fi
 
     # if [[ ! -f $tmpwall ]]; then
     #     convert "$wallpaper" -resize ${WIDTH}x -gravity center -crop ${WIDTH}x${HEIGHT}+0+0 +repage \( \
@@ -19,20 +21,22 @@ genwp () {
     #         \) -gravity south -compose over -composite $tmpwall
     # fi
 
-    if [[ ! -f $tmpwall ]]; then
-        convert "$wallpaper" -resize ${WIDTH}x -gravity center -crop ${WIDTH}x${HEIGHT}+0+0 +repage \( \
-            -size 0x0 xc:none \
-            -draw "roundrectangle 0,0,120,140,20,20" \
-            -draw "rectangle 0,140 120,120" -normalize +level 0,0% \
-            \) -gravity south -compose over -composite $tmpwall \
-            -profile /usr/share/color/icc/colord/sRGB.icc
-    fi
-}
+    # if [[ ! -f $tmpwall ]]; then
+    #     convert "$wallpaper" -resize ${WIDTH}x -gravity center -crop ${WIDTH}x${HEIGHT}+0+0 +repage \( \
+    #         -size 0x0 xc:none \
+    #         -draw "roundrectangle 0,0,120,140,20,20" \
+    #         -draw "rectangle 0,140 120,120" -normalize +level 0,0% \
+    #         \) -gravity south -compose over -composite $tmpwall \
+    #         -profile /usr/share/color/icc/colord/sRGB.icc
+    # fi
+# }
 
+    # i3lock -n --beep --color 002B36 --force-clock -i $tmpwall \
         # --indpos="$WIDTH-88:$HEIGHT-75" --timepos="$WIDTH/2:$HEIGHT/2+30" \
 runlock () {
-    i3lock -n --beep --color 1E1E1E --force-clock -i $tmpwall \
-        --indpos="$WIDTH/2:$HEIGHT/2+300" --timepos="$WIDTH/2:$HEIGHT/2+30" \
+    i3lock -n --beep --color 002B36EE --force-clock -i $wallpaper\
+        --indpos="$WIDTH/2:$HEIGHT/2+320" --timepos="$WIDTH/2:$HEIGHT/2+60" \
+        --datepos="$WIDTH/2:$HEIGHT/2+130" \
         --insidevercolor=00000000 --insidewrongcolor=00000000 --insidecolor=00000000 \
         --ringvercolor=FFCC00aa --ringwrongcolor=ff0000aa --ringcolor=ededed77 \
         --keyhlcolor=ededed99 --bshlcolor=ededed99 --separatorcolor=00000000 \
@@ -40,11 +44,11 @@ runlock () {
         --line-uses-ring \
         --timestr="%H%M" \
         --timecolor=CCCCCCFF \
-        --time-font="sans-serif" \
-        --timesize=90 \
+        --time-font="JetBrainsMono Nerd Font Bandit" \
+        --timesize=150 \
         --datestr="0%w%Y%m%d" \
         --datecolor=CCCCCCAA \
-        --date-font="sans-serif" \
+        --date-font="JetBrainsMono Nerd Font Bandit" \
         --datesize=12 \
         --radius 20 --ring-width 15 \
         --indicator \
@@ -73,6 +77,6 @@ runlock () {
 # }
 
 # slowfade start
-genwp $1
+# genwp $1
 runlock
 # slowfade end
