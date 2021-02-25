@@ -17,15 +17,14 @@
 ;==========================================================
 
 [colors]
-foreground = #5E5E5E
-background = #BBFFFFFF
+foreground = #93A1A1
+background = #00002B36
 midground = #3E3E3E
 background-trans = ${xrdb:color0:#1E1E1E}
 foreground-alt = #56696F
 background-alt = #073642
-alert = #AF0000
+alert = #DC322F
 orange = #CB4B16
-blue = ${xrdb:dwm.selbordercolor:#005f87}
 
 [bar/bartop]
 monitor = ${env:MONITOR:}
@@ -35,13 +34,13 @@ fixed-center = true
 bottom = false
 
 foreground = ${colors.foreground}
-background = ${colors.background-trans}
+background = ${colors.background}
 
 line-size = 1
-line-color = #dfdfdf
+line-color = ${colors.background}
 
-border-top-size = 0
-border-bottom-size = 0
+border-top-size = 4
+border-bottom-size = 4
 border-left-size = 0
 border-right-size = 0
 
@@ -51,23 +50,24 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = JetBrainsMono Nerd Font:style=Medium:pixelsize=8;2
+font-0 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=8;2
 font-1 = FontAwesome:pixelsize=8;2
 font-2 = Font Awesome 5 Brands:size=8;2
-font-3 = JetBrainsMono Nerd Font:style=Bold:pixelsize=8;2
-font-4 = JetBrainsMono Nerd Font:style=Bold:pixelsize=6;-1
+font-3 = JetBrainsMono Nerd Font Bandit:weight=Bold:size=8;2
+font-4 = JetBrainsMono Nerd Font Bandit:weight=Bold:size=6;-1
 font-5 = FontAwesome:width=Normal:pixelsize=5;-2
-font-6 = JetBrainsMono Nerd Font:style=Medium:pixelsize=9;2
+font-6 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=9;2
 
-modules-left = arrowstartbluebspwm bspwm arrowbspwm xwindow arrowxwindow
+modules-left = sp1 dwm
 modules-center =
-modules-right = arrowdate ffmpeg-status vpn-status tor-status date arrowbat bat-state battery arrowendblue
+; modules-right = record-ffmpeg tor vpn transmission pacman docker puma keymon mailbox date bat-state battery
+modules-right = record-ffmpeg tor puma mailbox date bat-state battery
 
-wm-name = bspwm
+; wm-name = bspwm
 
-wm-restack = bspwm
+; wm-restack = bspwm
 
-override-redirect = false
+override-redirect = true
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -80,13 +80,13 @@ fixed-center = true
 bottom = true
 
 foreground = ${colors.foreground}
-background = ${colors.background-trans}
+background = ${colors.background}
 
 line-size = 1
-line-color = #dfdfdf
+line-color = #002B36
 
-border-top-size = 0
-border-bottom-size = 0
+border-top-size = 4
+border-bottom-size = 4
 border-left-size = 0
 border-right-size = 0
 
@@ -96,38 +96,38 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = JetBrainsMono Nerd Font:style=Medium:pixelsize=8;2
-font-1 = FontAwesome:pixelsize=10;2
-font-2 = Font Awesome 5 Brands:size=10;2
-font-3 = JetBrainsMono Nerd Font:style=Bold:pixelsize=8;2
-font-4 = JetBrainsMono Nerd Font:style=Bold:pixelsize=6;-1
-font-5 = FontAwesome:weight=Bold:pixelsize=4;-2
-font-6 = JetBrainsMono Nerd Font:style=Medium:pixelsize=9;2
+font-0 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=8;2
+font-1 = FontAwesome:pixelsize=8;2
+font-2 = Font Awesome 5 Brands:size=8;2
+font-3 = JetBrainsMono Nerd Font Bandit:weight=Bold:size=8;2
+font-4 = JetBrainsMono Nerd Font Bandit:weight=Bold:size=6;-1
+font-5 = FontAwesome:width=Normal:pixelsize=5;-2
+font-6 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=9;2
 
-modules-left = arrowstartblue profile arrowprofile xkeyboard
+modules-left = profile xkeyboard
 modules-center =
-modules-right = arrowtemp netspdwlan1 wlan1 arrowcpu temperature arrowcpu cpu arrowcpu memory arrowfilesystem filesystem arrowpulse pulseaudio arrowbacklight backlight arrowendblue
+modules-right = netspdwlan1 wlan1 temperature cpu memory filesystem volume backlight
 
-wm-name = bspwm
+; wm-name = bspwm
 
-wm-restack = bspwm
+; wm-restack = bspwm
 
-override-redirect = false
+override-redirect = true
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[bar/traybspwm]
+[bar/traydwm]
 monitor = LVDS1
 width = 5.3%
 height = 14
-offset-x = 275
-offset-y = 0
+offset-x = 290
+offset-y = 4
 fixed-center = false
 bottom = yes
 
 foreground = ${colors.foreground}
-background = ${colors.background-trans}
+background = ${colors.background}
 
 line-size = 1
 line-color = #dfdfdf
@@ -140,7 +140,7 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = Fira Code Retina:pixelsize=9;2
+font-0 = JetBrainsMono Nerd Font Bandit:size=9;2
 
 modules-left = sp1
 modules-center =
@@ -152,7 +152,7 @@ tray-padding = 0
 tray-maxsize = 16
 tray-scale = 1.0
 tray-foreground = ${colors.foreground}
-tray-background = ${colors.background-trans}
+tray-background = ${colors.background}
 tray-detached = true
 tray-offset-x = 0
 tray-offset-y = 0
@@ -168,7 +168,7 @@ cursor-scroll = ns-resize
 type = custom/text
 content = " "
 content-foreground = ${colors.foreground}
-content-background = ${colors.background-trans}
+content-background = ${colors.background}
 
 [module/sp2]
 type = custom/text
@@ -180,115 +180,8 @@ content-background = ${colors.background}
 
 [module/profile]
 type = custom/text
-content = " %{T2} %{T-}%{T0}BANDITHIJO%{T-} %{F#5E5E5E}%{B#3E3E3E}%{T7}%{T-}%{B-}%{F-}%{F#BBFFFFFF}%{B#3E3E3E} %{T2} %{T-}ARCHLINUX | THINKPAD X61 %{F-}%{B-}"
-content-foreground = ${colors.background}
-content-background = ${colors.foreground}
-
-;-----------------------------------------------------------------------------
-;  'left': '', 'right': ''
-;  'left': '', 'right': ''
-;-----------------------------------------------------------------------------
-
-[module/arrowend]
-type = custom/text
-content = ""
+content = " %{T7} %{T-}%{T0}BANDITHIJO%{T-} %{T7} %{T-}ARTIXLINUX | THINKPAD X61 "
 content-foreground = ${colors.foreground}
-content-background = ${colors.foreground}
-
-[module/arrowendblue]
-type = custom/text
-content = "%{T7} %{T-}"
-content-foreground = ${colors.blue}
-content-background = ${colors.foreground}
-
-[module/arrowstart]
-type = custom/text
-content = ""
-content-foreground = ${colors.foreground}
-content-background = ${colors.foreground}
-
-[module/arrowstartblue]
-type = custom/text
-content = "%{T7}%{T-}"
-content-foreground = ${colors.blue}
-content-background = ${colors.foreground}
-
-[module/arrowstartbluebspwm]
-type = custom/text
-content = "%{T7}%{T-}"
-content-foreground = ${colors.blue}
-content-background = ${colors.blue}
-
-[module/arrowbspwm]
-type = custom/text
-content = "%{T7}%{T-}"
-content-foreground = ${colors.foreground}
-content-background = ${colors.midground}
-
-[module/arrowxwindow]
-type = custom/text
-content = "%{T7}%{T-}"
-content-foreground = ${colors.midground}
-content-background = ${colors.background-trans}
-
-[module/arrowdate]
-type = custom/text
-content = "%{T7}%{T-}"
-content-foreground = ${colors.midground}
-content-background = ${colors.background-trans}
-
-[module/arrowbat]
-type = custom/text
-content = "%{T7}%{T-}"
-content-foreground = ${colors.foreground}
-content-background = ${colors.midground}
-
-[module/arrowprofile]
-type = custom/text
-content = "%{T7}%{T-}"
-content-foreground = ${colors.midground}
-content-background = ${colors.background-trans}
-
-[module/arrowpulse]
-type = custom/text
-content = "%{T7} %{T-}"
-content-foreground = ${colors.foreground}
-content-background = ${colors.midground}
-
-[module/arrowbacklight]
-type = custom/text
-content = "%{T7}%{T-}"
-content-foreground = ${colors.background}
-content-background = ${colors.foreground}
-
-[module/arrowtemp]
-type = custom/text
-content = "%{T7} %{T-}"
-content-foreground = ${colors.midground}
-content-background = ${colors.background-trans}
-
-[module/arrowcpu]
-type = custom/text
-content = "%{T7} %{T-}"
-content-foreground = ${colors.background}
-content-background = ${colors.midground}
-
-[module/arrowmemory]
-type = custom/text
-content = "%{T7}  %{T-}"
-content-foreground = ${colors.background}
-content-background = ${colors.midground}
-
-[module/arrowfilesystem]
-type = custom/text
-content = "%{T7}  %{T-}"
-content-foreground = ${colors.background}
-content-background = ${colors.midground}
-
-[module/arrownet]
-type = custom/text
-content = "%{T7}%{T-}"
-content-foreground = ${colors.midground}
 content-background = ${colors.background}
 
 ;-----------------------------------------------------------------------------
@@ -298,16 +191,16 @@ type = custom/script
 exec = ~/bin/status/bat-capacity
 interval = 5
 format = "<label>"
-format-foreground = ${colors.background}
-format-background = ${colors.foreground}
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
 
 [module/bat-state]
 type = custom/script
 exec = ~/bin/status/bat-state
 interval = 5
 format = " <label> "
-format-foreground = ${colors.background}
-format-background = ${colors.foreground}
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
 
 [module/cpu-temp]
 type = custom/script
@@ -347,15 +240,6 @@ format = "<label>"
 format-foreground = ${colors.background}
 format-background = ${colors.midground}
 
-[module/volume-mod]
-type = custom/script
-exec = ~/bin/status/volume
-interval = 1
-format = "<label> "
-format-prefix = " "
-format-foreground = ${colors.background}
-format-background = ${colors.foreground}
-
 [module/backlight-mod]
 type = custom/script
 exec = ~/bin/status/backlight
@@ -374,32 +258,102 @@ format-prefix = " "
 format-foreground = ${colors.background}
 format-background = ${colors.midground}
 
-[module/ffmpeg-status]
+[module/volume]
+type = custom/script
+exec = ~/bin/status/volume
+tail = true
+interval = 1
+format = "%{T1} <label> %{T-}"
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+[module/mailbox]
+type = custom/script
+exec = ~/bin/status/mailbox
+tail = true
+interval = 1
+format = "%{T1}<label> %{T-}"
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+[module/record-ffmpeg]
 type = custom/script
 exec = ~/bin/status/record
-interval = 5
-format = "<label>"
-format-prefix = " "
-format-foreground = ${colors.background}
-format-background = ${colors.midground}
+exec-if = "pgrep -x 'ffmpeg'"
+tail = true
+interval = 1
+format = "%{T1}<label> %{T-}"
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
 
-[module/tor-status]
+[module/tor]
 type = custom/script
 exec = ~/bin/status/tor
-interval = 1
-format = "<label>"
-format-prefix = " "
-format-foreground = ${colors.background}
-format-background = ${colors.midground}
+exec-if = pgrep -f torrc
+tail = true
+interval = 60
+format = "%{T7}<label> %{T-}"
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
 
-[module/vpn-status]
+[module/vpn]
 type = custom/script
 exec = ~/bin/status/vpn
-interval = 1
-format = "<label>"
-format-prefix = " "
-format-foreground = ${colors.background}
-format-background = ${colors.midground}
+exec-if = pgrep -f pppd
+tail = true
+interval = 60
+format = "%{T7}<label>%{T-}"
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+[module/puma]
+type = custom/script
+exec = "printf ' '"
+exec-if = pgrep -f puma
+interval = 60
+tail = true
+format = "%{T7}<label>%{T-}"
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+[module/docker]
+type = custom/script
+exec = "printf ' '"
+exec-if = pgrep -f docker
+interval = 60
+tail = true
+format = "%{T7}<label>%{T-}"
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+[module/pacman]
+type = custom/script
+exec = "printf ' '"
+exec-if = pgrep -f pacman
+interval = 60
+tail = true
+format = "%{T7}<label>%{T-}"
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+[module/transmission]
+type = custom/script
+exec = "printf ' '"
+exec-if = pgrep -f transmission-daemon
+interval = 60
+tail = true
+format = "%{T7}<label>%{T-}"
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+[module/keymon]
+type = custom/script
+exec = ~/bin/status/key-mon
+exec-if = "pgrep -f 'python /usr/bin/key-mon'"
+interval = 60
+format = "%{T7}<label> %{T-}"
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
 
 ;-----------------------------------------------------------------------------
 
@@ -561,12 +515,13 @@ format-padding = 0
 
 ;label = " %title:0:45:...% "
 label = " %title% "
-label-maxlen = 80
-label-foreground = ${colors.background}
-label-background = ${colors.midground}
+label-maxlen = 90
+label-foreground = ${colors.foreground}
+label-background = ${colors.background}
 
-label-empty =
-label-empty-foreground = ${colors.background}
+label-empty = " dwm "
+label-empty-foreground = ${colors.foreground}
+label-empty-background = ${colors.background}
 
 ;-----------------------------------------------------------------------------
 
@@ -578,19 +533,18 @@ blacklist-1 = scroll lock
 format = <label-indicator>
 format-spacing = 0
 
-format-prefix = "  "
-format-prefix-foreground = ${colors.blue}
-format-prefix-background = ${colors.background-trans}
+format-prefix = " "
+format-prefix-foreground = ${colors.alert}
+format-prefix-background = ${colors.background}
 
-label-layout = "%layout%"
-label-layout-foreground = ${colors.foreground}
-label-layout-background = ${colors.background-trans}
+; label-layout = "%layout%"
+; label-layout-background = ${colors.background}
 
 label-indicator-on-padding = 0
 label-indicator-on-margin = 0
-label-indicator-on = " CAPS"
-label-indicator-on-foreground = ${colors.blue}
-label-indicator-on-background = ${colors.background-trans}
+label-indicator-on = "CAPS"
+label-indicator-on-foreground = ${colors.alert}
+label-indicator-on-background = ${colors.background}
 
 ;-----------------------------------------------------------------------------
 
@@ -599,9 +553,9 @@ type = internal/network
 interface = wlan0
 interval = 1.0
 format-connected = "<label-connected>"
-label-connected = "  %downspeed:3%  %upspeed:3% "
-label-connected-foreground = ${colors.background}
-label-connected-background = ${colors.midground}
+label-connected = "  %downspeed:7%  %upspeed:7% "
+label-connected-foreground = ${colors.foreground}
+label-connected-background = ${colors.background}
 
 [module/wlan1]
 type = internal/network
@@ -621,13 +575,15 @@ interval = 1.0
 ;format-connected = "<ramp-signal><label-connected>"
 format-connected = "<ramp-signal>"
 label-connected = " %essid:0:10:% "
-label-connected-foreground = ${colors.background}
-label-connected-background = ${colors.midground}
+label-connected-foreground = ${colors.foreground}
+label-connected-background = ${colors.background}
 
 format-disconnected = <label-disconnected>
 label-disconnected = "  OFFLINE "
 label-disconnected-foreground = ${colors.alert}
-label-disconnected-background = ${colors.midground}
+label-disconnected-background = ${colors.background}
+
+format-packetloss = "<animation-packetloss> <label-connected>"
 
 ramp-signal-0 = "%{T5}0%{T-}  "
 ramp-signal-1 = "%{T5}1%{T-}  "
@@ -635,15 +591,22 @@ ramp-signal-2 = "%{T5}2%{T-}  "
 ramp-signal-3 = "%{T5}3%{T-}  "
 ramp-signal-4 = "%{T5}4%{T-}  "
 ramp-signal-5 = "%{T5}5%{T-}  "
-ramp-signal-foreground = ${colors.background}
-ramp-signal-background = ${colors.midground}
+ramp-signal-foreground = ${colors.foreground}
+ramp-signal-background = ${colors.background}
+
+; Only applies if <animation-packetloss> is used
+animation-packetloss-0 = "  "
+animation-packetloss-0-foreground = ${colors.alert}
+animation-packetloss-1 = "  "
+animation-packetloss-1-foreground = ${colors.alert}
+animation-packetloss-framerate = 500
 
 [module/netspdeth]
 type = internal/network
 interface = eth0
 interval = 1.0
 format-connected = "<label-connected>"
-label-connected = "  %downspeed:3%  %upspeed:3%"
+label-connected = "  %downspeed:7%  %upspeed:7%"
 label-connected-foreground = ${colors.foreground}
 label-connected-background = ${colors.background}
 
@@ -671,13 +634,13 @@ date = "%a %Y/%m/%d"
 
 time = " %I:%M %p "
 
-format-prefix = "  "
-format-prefix-foreground = ${colors.background}
-format-prefix-background = ${colors.midground}
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-prefix-background = ${colors.background}
 
 label = %date%%time%
-label-foreground = ${colors.background}
-label-background = ${colors.midground}
+label-foreground = ${colors.foreground}
+label-background = ${colors.background}
 
 [module/battery]
 type = internal/battery
@@ -688,38 +651,38 @@ battery = BAT0
 adapter = AC
 poll-interval = 5
 
-label-charging = " %percentage%%"
+label-charging = " %percentage%% "
 format-charging = <ramp-capacity> <label-charging>
-format-charging-foreground = ${colors.background}
-format-charging-background = ${colors.foreground}
+format-charging-foreground = ${colors.foreground}
+format-charging-background = ${colors.background}
 
 label-discharging = " %percentage%%"
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-foreground = ${colors.background}
-format-discharging-background = ${colors.foreground}
+format-discharging-foreground = ${colors.foreground}
+format-discharging-background = ${colors.background}
 
 label-full = "  100%"
-label-full-foreground = ${colors.background}
-label-full-background = ${colors.foreground}
+label-full-foreground = ${colors.foreground}
+label-full-background = ${colors.background}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+ramp-capacity-0 = ""
+ramp-capacity-1 = ""
+ramp-capacity-2 = ""
+ramp-capacity-3 = ""
+ramp-capacity-4 = ""
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
+animation-charging-0 = ""
+animation-charging-1 = ""
+animation-charging-2 = ""
+animation-charging-3 = ""
+animation-charging-4 = ""
 animation-charging-framerate = 750
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-3 = 
-animation-discharging-4 = 
+animation-discharging-0 = ""
+animation-discharging-1 = ""
+animation-discharging-2 = ""
+animation-discharging-3 = ""
+animation-discharging-4 = ""
 animation-discharging-framerate = 500
 
 [module/temperature]
@@ -738,6 +701,7 @@ thermal-zone = 0
 ; to find path to desired file
 ; Default reverts to thermal zone setting
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp2_input
+; hwmon-path = /sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input
 
 ; Base temperature for where to start the ramp (in degrees celsius)
 ; Default: 0
@@ -766,16 +730,16 @@ format-warn = <ramp><label-warn>
 ;   %temperature-c%   (default, temperature in °C)
 ;   %temperature-f%   (temperature in °F)
 label = " %temperature-c% "
-label-foreground = ${colors.background}
-label-background = ${colors.midground}
+label-foreground = ${colors.foreground}
+label-background = ${colors.background}
 
 ; Available tokens:
 ;   %temperature% (deprecated)
 ;   %temperature-c%   (default, temperature in °C)
 ;   %temperature-f%   (temperature in °F)
 label-warn = " %temperature-c% "
-label-warn-foreground = #f00
-label-warn-background = ${colors.midground}
+label-warn-foreground = ${colors.alert}
+label-warn-background = ${colors.background}
 
 ; Requires the <ramp> tag
 ; The icon selection will range from `base-temperature` to `warn-temperature`,
@@ -784,22 +748,22 @@ label-warn-background = ${colors.midground}
 ramp-0 = ""
 ramp-1 = ""
 ramp-2 = ""
-ramp-foreground = ${colors.background}
-ramp-background = ${colors.midground}
+ramp-foreground = ${colors.foreground}
+ramp-background = ${colors.background}
 
 [module/cpu]
 type = internal/cpu
 interval = 1
-label = "  %percentage%% "
-label-foreground = ${colors.background}
-label-background = ${colors.midground}
+label = "  %percentage:2%% "
+label-foreground = ${colors.foreground}
+label-background = ${colors.background}
 
 [module/memory]
 type = internal/memory
 interval = 3
-label = " %percentage_used%%"
-label-foreground = ${colors.background}
-label-background = ${colors.midground}
+label = " %percentage_used%% "
+label-foreground = ${colors.foreground}
+label-background = ${colors.background}
 
 [module/filesystem]
 type = internal/fs
@@ -807,8 +771,8 @@ mount-0 = /
 interval = 60
 fixed-values = true
 label-mounted = " %percentage_used%%"
-label-mounted-foreground = ${colors.background}
-label-mounted-background = ${colors.midground}
+label-mounted-foreground = ${colors.foreground}
+label-mounted-background = ${colors.background}
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -819,29 +783,114 @@ sink = alsa_output.pci-0000_12_00.3.analog-stereo
 use-ui-max = true
 interval = 5
 label-volume = "  %percentage%% "
-label-volume-foreground = ${colors.background}
-label-volume-background = ${colors.foreground}
+label-volume-foreground = ${colors.foreground}
+label-volume-background = ${colors.background}
 
-label-muted = "  MUTED "
-label-muted-foreground = ${colors.background}
-label-muted-background = ${colors.foreground}
+label-muted = "  MUTED "
+label-muted-foreground = ${colors.foreground}
+label-muted-background = ${colors.background}
 
 [module/backlight]
 type = internal/backlight
 
 ; Use the following command to list available cards:
 ; $ ls -1 /sys/class/backlight/
-card = intel_backlight
+; card = intel_backlight
+card = acpi_video0
 enable-scroll = true
-label = "  %percentage%%"
-label-foreground = ${colors.background}
-label-background = ${colors.foreground}
+label = " %percentage%% "
+label-foreground = ${colors.foreground}
+label-background = ${colors.background}
+
+[module/dwm]
+type = internal/dwm
+format = <label-tags><label-layout> <label-floating><label-title>
+; Path to dwm socket (default: /tmp/dwm.sock)
+; socket-path = /tmp/dwm.sock
+
+; Left-click to view tag, right-click to toggle tag view
+enable-tags-click = false
+; Scroll to cycle between available tags
+enable-tags-scroll = false
+; If true and enable-tags-scroll = true, scrolling will view all tags regardless if occupied
+tags-scroll-empty = false
+; If true and enable-tags-scroll = true, scrolling will cycle through tags backwards
+tags-scroll-reverse = false
+; If true and enable-tags-scroll = true, wrap active tag when scrolling
+tags-scroll-wrap = false
+; Left-click to set secondary layout, right-click to switch to previous layout
+enable-layout-click = false
+; Scroll to cycle between available layouts
+enable-layout-scroll = false
+; Wrap when scrolling and reaching beginning/end of layouts
+layout-scroll-wrap = false
+; Reverse scroll direction
+layout-scroll-reverse = false
+
+; If enable-layout-click = true, clicking the layout symbol will switch to this layout
+secondary-layout-symbol = [M]
+
+; Separator in between shown tags
+; label-separator = |
+
+; Title of currently focused window
+; Available tokens:
+;   %title%
+label-title = %title%
+label-title-padding = 0
+label-title-foreground = ${colors.foreground}
+label-title-maxlen = 60
+
+; Symbol of current layout
+; Available tokens:
+;   %symbol%
+label-layout = %symbol%
+label-layout-padding = 0
+label-layout-background = ${colors.background}
+
+; Text to show when currently focused window is floating
+label-floating = "%{T6}%{T-}"
+
+; States: focused, unfocused, visible, urgent, empty
+; Available tokens:
+;   %name%
+
+; focused = Selected tag on focused monitor
+label-focused = "%{T6} %{T-}%{F#93A1A1}%name% %{F-}"
+label-focused-foreground = ${colors.foreground}
+label-focused-background = ${colors.background}
+label-focused-padding = 0
+
+; unfocused = Unselected tag on unselected monitor
+label-unfocused = "%{T6} %{T-}%{T1}%{F#93A1A1}%name% %{F-}%{T-}"
+label-unfocused-foreground = #586E75
+label-unfocused-padding = 0
+
+; visible = Unselected tag, but occupied tag on any monitor
+label-visible = "%{T6} %{T-}%{T1}%{F#93A1A1}%name% %{F-}%{T-}"
+label-visible-foreground = ${colors.foreground}
+label-visible-background = ${colors.background}
+label-visible-padding = 0
+
+; urgent = Unselected tag with window that has urgency hint set
+; label-urgent = %name%
+label-urgent = "%{T6}  %{T-}%{F#DC322F}%name% %{F-}"
+label-urgent-foreground = ${colors.alert}
+label-urgent-padding = 0
+
+; empty = Unselected and unoccupied tag
+; This can be set to an empty string to hide empty tags
+label-empty = "%{T6}%{F#00002B36} %{F-}%{T-}%{T1}%{F#93A1A1}%name% %{F-}%{T-}"
+label-empty-foreground = #586E75
+label-empty-background = ${colors.background}
+label-empty-padding = 0
+
 ;----format-------------------------------------------------------------------------
 
 [settings]
 throttle-output = 5
 throttle-output-for = 10
-throttle-input-for = 30
+; throttle-input-for = 30
 screenchange-reload = true
 compositing-background = source
 compositing-foreground = over

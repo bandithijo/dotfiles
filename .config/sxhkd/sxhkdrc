@@ -22,7 +22,7 @@ super + d
 
 # quit dwm
 super + shift + End
-    $HOME/bin/rofi-power 'xinit'
+    $HOME/bin/rofi-power
 
 # lock screen
 super + shift + x
@@ -152,15 +152,30 @@ super + F9
 
 # webcam with ffplay
 super + ~F10
-	{$HOME/bin/ffplay-launcher,pkill -f 'ffplay'}
+	{$HOME/bin/ffplay-launcher,pkill -x 'ffplay'}
 
 # key-mon
 super + ~F11
     {$HOME/bin/key-mon-launcher, killall key-mon}
 
+# toggle hide & show polybar
+super + ctrl + ~b
+    {pkill -x "polybar", $HOME/.config/polybar/launch.sh &}
+
 # dwmtray
+# super + shift + ~b
+#     {$HOME/bin/polybar-toggle show, $HOME/bin/polybar-toggle hide}
+
+# polybar tray
 super + shift + ~b
-    {$HOME/bin/polybar-toggle show, $HOME/bin/polybar-toggle hide}
+    {$HOME/bin/polybar-tray on, $HOME/bin/polybar-tray off}
+
+# polybar gap
+super + shift + bracketright
+    $HOME/bin/polybar-gap on
+
+super + shift + bracketleft
+    $HOME/bin/polybar-gap off
 
 # clipmenu
 super + {_,shift} + p

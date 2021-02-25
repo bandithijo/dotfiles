@@ -20,10 +20,12 @@ pidof mbsync >/dev/null 2>&1 && icon=""
 # [ "$unread" = "0" ] && [ "$icon" = "" ] || echo "$icon $unread"
 if [ "$unread" = "0" ] || [ "$icon" = "" ]; then
     if [ $unread -ge 1 ]; then
-        echo -e "^c#CB4B16^ $unread^d^"
+        # echo -e "^c#CB4B16^ $unread^d^"
+        echo -e " $unread"
     else
         echo " $unread"
     fi
 else
-    echo -e "^c#CB4B16^$icon $unread^d^"
+    # echo -e "^c#CB4B16^$icon $unread^d^"
+    echo -e "$icon $unread"
 fi

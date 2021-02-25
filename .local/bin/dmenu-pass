@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
-DMENU="/usr/local/bin/dmenu"
+# DMENU="/usr/local/bin/dmenu"
+DMENU="/usr/bin/rofi"
 
 # call sanitizer for sanitize the dust
 sanitizer > /dev/null 2>&1
@@ -17,7 +18,11 @@ password_files=( ~/.password-store/**/*.gpg )
 password_files=( "${password_files[@]##*/.password-store/}" )
 password_files=( "${password_files[@]%.gpg}" )
 
-password=$(printf '%s\n' "${password_files[@]}" | $DMENU -i -m 0 -l 8 -g 2 "$@")
+# dmenu
+# password=$(printf '%s\n' "${password_files[@]}" | $DMENU -i -m 0 -l 8 -g 2 "$@")
+
+# rofi
+password=$(printf '%s\n' "${password_files[@]}" | $DMENU -dmenu -i -m 0 -lines 5 -width 350 -p ' Credentials' "$@")
 
 pass -c "$password"
 

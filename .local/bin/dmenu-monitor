@@ -1,6 +1,7 @@
 #!/bin/bash
 
-DMENU="/usr/local/bin/dmenu"
+# DMENU="/usr/local/bin/dmenu"
+DMENU="/usr/bin/rofi -dmenu -lines 1 -width 200"
 
 reso_monitor_lg=$(xrandr | grep -i 'VGA1 connected' | awk 'NR%1==0 {print $3}')
 if [ ! "$reso_monitor_lg" = "1600x900+0+0" ]; then
@@ -46,7 +47,7 @@ OPTIONS='''
 '''
 fi
 
-obj_menu=$(echo $OPTIONS | jq -r ".[][0]" | $DMENU -i -p " Monitor:")
+obj_menu=$(echo $OPTIONS | jq -r ".[][0]" | $DMENU -i -p " Monitor")
 obj_selected=$(echo $OPTIONS | jq -r ".[] | select(.[0] == \"$obj_menu\") | .[1]")
 
 $obj_selected

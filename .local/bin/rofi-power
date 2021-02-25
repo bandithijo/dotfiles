@@ -3,50 +3,52 @@
 # rofi-power
 # Use rofi to call systemctl for shutdown, reboot, etc
 
-# 2016 Oliver Kraitschy - http://okraits.de
+# 2021 Rizqi Nur Assyaufi - https://bandithijo.github.io
 
-OPTIONS="Reboot system\nPower-off system\nSuspend system\nHibernate system"
+# LAUNCHER="/usr/local/bin/dmenu"
+LAUNCHER="/usr/bin/rofi -dmenu -lines 5 -width 200"
 
-# source configuration or use default values
-if [ -f $HOME/.config/rofi-power/config ]; then
-  source $HOME/.config/rofi-power/config
-fi
+logout() {
+    # eval $1
+    pkill -15 xinit
+    # killall $1
+}
 
-# Show exit wm option if exit command is provided as an argument
-if [ ${#1} -gt 0 ]; then
-  OPTIONS="Exit window manager\n$OPTIONS"
-fi
+reboot() {
+    loginctl reboot
+    #systemctl reboot
+    #shutdown -r now
+}
 
-option=`echo -e $OPTIONS | $LAUNCHER | awk '{print $1}' | tr -d '\r\n'`
-if [ ${#option} -gt 0 ]
-then
-    case $option in
-      Exit)
-        # eval $1
-        pkill -15 $1
-        # killall $1
-        ;;
-      Reboot)
-        loginctl reboot
-        #systemctl reboot
-        #shutdown -r now
-        ;;
-      Power-off)
-        loginctl poweroff
-        #systemctl poweroff
-        #shutdown -p now
-        ;;
-      Suspend)
-        $($USE_LOCKER) && "$LOCKER"; loginctl suspend
-        #$($USE_LOCKER) && "$LOCKER"; systemctl suspend
-        #acpiconf -s 3
-        ;;
-      Hibernate)
-        $($USE_LOCKER) && "$LOCKER"; loginctl hibernate
-        #$($USE_LOCKER) && "$LOCKER"; systemctl hibernate
-        # notify-send "CAUTION!" "Hibernate Feature not implemented yet." --urgency=critical
-        ;;
-      *)
-        ;;
-    esac
-fi
+poweroff() {
+    loginctl poweroff
+    #systemctl poweroff
+    #shutdown -p now
+}
+
+suspend() {
+    loginctl suspend
+    #$($USE_LOCKER) && "$LOCKER"; systemctl suspend
+    #acpiconf -s 3
+}
+
+hibernate() {
+    loginctl hibernate
+    #$($USE_LOCKER) && "$LOCKER"; systemctl hibernate
+    # notify-send "CAUTION!" "Hibernate Feature not implemented yet." --urgency=critical
+}
+
+OPTIONS='''
+[
+[ " Exit window manager", "logout" ],
+[ " Reboot system",       "reboot" ],
+[ " Power-off system",    "poweroff" ],
+[ " Suspend system",      "suspend" ],
+[ " Hibernate system",    "hibernate" ]
+]
+'''
+
+obj_menu=$(echo $OPTIONS | jq -r ".[][0]" | $LAUNCHER -i -p " Sessions")
+obj_selected=$(echo $OPTIONS | jq -r ".[] | select(.[0] == \"$obj_menu\") | .[1]")
+
+$obj_selected

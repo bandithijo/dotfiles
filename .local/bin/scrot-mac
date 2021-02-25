@@ -14,7 +14,6 @@ else
   target_file     = original_file.split("").insert(-5, 'X').join
 end
 color_profile     = '/usr/share/color/icc/colord/sRGB.icc'
-border_size       = '1'
 border_radius     = '5'
 background_color  = '"#264A53"' # 'none' for transparent; Hex color use '"#0000000"'
 background_size   = '0'
@@ -24,21 +23,7 @@ font_size         = '11'
 color_fg          = '#002B36'
 color_bg          = '#CB4B16'
 author_position   = ['SouthWest', '+55+46']
-author            = ' : @' + `echo $USER`.strip
-
-# TODO: Add border around corner radius, not perfect yet
-# convert #{original_file} \\( +clone  -alpha extract \
-# -draw 'fill black polygon 0,0 0,#{border_radius} #{border_radius},0 \
-# fill white circle #{border_radius},#{border_radius} #{border_radius},0' \
-# \\( +clone -flip \\) -compose Multiply -composite \
-# \\( +clone -flop \\) -compose Multiply -composite \
-# \\) -alpha off -compose CopyOpacity -composite -compose over \
-# \\( -clone 0 -fill '#{color_bg}' -colorize 100 \\) \
-# \\( -clone 0 -alpha extract -virtual-pixel black -morphology edgein octagon:#{border_size} \\) \
-# -compose over -composite \
-# \\( +clone -background black -shadow #{shadow_size} \\) \
-# +swap -background none -layers merge +repage #{target_file}
-
+author            = " : @#{`echo $USER`.strip}"
 
 %x(
 convert #{original_file} \\( +clone  -alpha extract \
@@ -53,22 +38,6 @@ fill white circle #{border_radius},#{border_radius} #{border_radius},0' \
 convert #{target_file} \\( +clone -background black \
 -shadow #{shadow_size} \\) +swap -background none \
 -layers merge +repage #{target_file}; \
-
-# convert #{target_file} \
-# \\( -size 100x -background none -fill white -gravity center \
-# label:"bandithijo" -trim -rotate -45 \
-# -bordercolor #{background_color} -border 10 \
-# -write mpr:wm +delete \
-# +clone -fill mpr:wm  -draw 'color 0,0 reset' \\) \
-# -compose over -composite #{target_file}
-
-# convert #{target_file} \
-# \\( -size 100x -background none -fill white -gravity center \
-# label:"bandithijo" -trim -rotate -30 \
-# -bordercolor none -border 10 \
-# -write mpr:wm +delete \
-# +clone -fill mpr:wm  -draw 'color 0,0 reset' \\) \
-# -compose over -composite #{target_file}
 
 convert #{target_file} -bordercolor #{background_color} \
 -border #{background_size} #{target_file}

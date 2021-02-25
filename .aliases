@@ -19,7 +19,7 @@ alias :q="exit"
 alias :puts="funban.rb"
 
 # Firefox with Tor
-alias fireprox="firefox --private-window"
+alias fireprox="firefox --private-window -P tor"
 
 # Chromium with Tor
 alias chromeprox="chromium --proxy-server='socks5://127.0.0.1:9050'"
@@ -36,6 +36,7 @@ alias termdown="termdown -f nancyj"
 
 # vimdiff
 alias vimdiff="vim -d"
+alias vimc="cd ~/.config/nvim; vim README.md"
 
 # cal with monday as a first day in week
 alias cal="cal -ym"

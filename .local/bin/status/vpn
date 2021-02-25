@@ -23,6 +23,7 @@
 # SOFTWARE.
 
 icon=""
-if pgrep -f pppd > /dev/null; then
-    printf "$icon VPN "
-fi
+printf "$icon VPN "
+# if pgrep -f pppd > /dev/null; then
+#     printf "$icon VPN "
+# fi

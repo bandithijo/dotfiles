@@ -35,6 +35,8 @@ export QT_FONT_DPI=86
 export CM_LAUNCHER=dmenu-clipmenu
 export CM_DIR=/tmp
 
+export XDG_RUNTIME_DIR=/run/user/1000
+
 # For BSPWM and Ranger define Terminal
 export TERMCMD="st"
 

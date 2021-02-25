@@ -49,7 +49,11 @@ dwm_branches = [
   'focusmaster',       # 35*
   'resetlayout',       # 36* : noborder
   'ru-centeredmaster', # 37*
-  'aspectresize',      # 38* <-
+  'aspectresize',      # 38*
+  'bar-height',        # 41*
+  'dualstatus',        # 39* : statusallmons
+  'ipc',               # 40* : pertag, cfacts-dragcfact
+  'ewmhtags',          # 42  : ipc <-
 ]
 
 # For st
@@ -67,6 +71,7 @@ st_branches = [
   'alpha',                # : boxdraw
   'ligatures-boxdraw-alpha-scrollback', # : alpha
   'solarized-both',       # : ligatures-boxdraw-alpha-scrollback^, newterm^ <-
+  'w3m'
 ]
 
 # For slock

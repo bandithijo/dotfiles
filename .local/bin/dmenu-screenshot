@@ -1,6 +1,7 @@
 #!/bin/bash
 
-DMENU="/usr/local/bin/dmenu"
+# DMENU="/usr/local/bin/dmenu"
+DMENU="/usr/bin/rofi -dmenu -lines 8 -width 200"
 
 captureFullScreen() {
     $HOME/bin/scrot-full
@@ -67,7 +68,7 @@ if [ "$monitors" = "2" ]; then
     ]'''
 fi
 
-obj_menu=$(echo $OPTIONS | jq -r ".[][0]" | $DMENU -i -p " ScreenShot:")
+obj_menu=$(echo $OPTIONS | jq -r ".[][0]" | $DMENU -i -p " ScreenShot")
 obj_selected=$(echo $OPTIONS | jq -r ".[] | select(.[0] == \"$obj_menu\") | .[1]")
 
 $obj_selected

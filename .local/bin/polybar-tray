@@ -26,9 +26,9 @@
 status=${1}
 
 if [ $status = 'on' ]; then
-    polybar traybspwm &
+    polybar traydwm &
 elif [ $status = 'off' ]; then
-    kill `ps aux | awk '/[p]olybar traybspwm/ {print $2}'`
+    kill `ps aux | awk '/[p]olybar traydwm/ {print $2}'`
 else
     echo 'Wrong argument! [on/off]'
 fi

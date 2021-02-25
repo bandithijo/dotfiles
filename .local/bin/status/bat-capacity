@@ -40,39 +40,39 @@
 
 # GNU/Linux
 cap=$(cat /sys/devices/platform/smapi/BAT0/remaining_percent)
-if [ $cap -ge 0 ] && [ $cap -le 10 ]; then
+if   [ $cap -ge 0 ] && [ $cap -le 10 ]; then
     # echo "" $cap
-    printf "^r0,6,2,4^^r2,3,20,10^^c#002B36^^r3,4,18,8^^c#CB4B16^^r19,5,1,6^^d^^f25^"$cap
+    printf "^r0,6,2,4^^r2,3,18,10^^c#002B36^^r3,4,16,8^^c#CB4B16^^r17,5,1,6^^d^^f25^"$cap
 elif [ $cap -ge 11 ] && [ $cap -le 20 ]; then
     # echo "" $cap
-    printf "^r0,6,2,4^^r2,3,20,10^^c#002B36^^r3,4,18,8^^c#CB4B16^^r18,5,2,6^^d^^f25^"$cap
+    printf "^r0,6,2,4^^r2,3,18,10^^c#002B36^^r3,4,16,8^^c#CB4B16^^r15,5,3,6^^d^^f25^"$cap
 elif [ $cap -ge 21 ] && [ $cap -le 30 ]; then
     # echo "" $cap
-    printf "^r0,6,2,4^^r2,3,20,10^^c#002B36^^r3,4,18,8^^c#CB4B16^^r17,5,3,6^^d^^f25^"$cap
+    printf "^r0,6,2,4^^r2,3,18,10^^c#002B36^^r3,4,16,8^^c#CB4B16^^r14,5,4,6^^d^^f25^"$cap
 elif [ $cap -ge 31 ] && [ $cap -le 40 ]; then
     # echo "" $cap
-    printf "^r0,6,2,4^^r2,3,20,10^^c#002B36^^r3,4,18,8^^c#CB4B16^^r15,5,5,6^^d^^f25^"$cap
+    printf "^r0,6,2,4^^r2,3,18,10^^c#002B36^^r3,4,16,8^^c#CB4B16^^r13,5,5,6^^d^^f25^"$cap
 elif [ $cap -ge 41 ] && [ $cap -le 50 ]; then
     # echo "" $cap
-    printf "^r0,6,2,4^^r2,3,20,10^^c#002B36^^r3,4,18,8^^c#CB4B16^^r14,5,6,6^^d^^f25^"$cap
+    printf "^r0,6,2,4^^r2,3,18,10^^c#002B36^^r3,4,16,8^^c#CB4B16^^r12,5,6,6^^d^^f25^"$cap
 elif [ $cap -ge 51 ] && [ $cap -le 60 ]; then
     # echo "" $cap
-    printf "^r0,6,2,4^^r2,3,20,10^^c#002B36^^r3,4,18,8^^c#CB4B16^^r13,5,7,6^^d^^f25^"$cap
+    printf "^r0,6,2,4^^r2,3,18,10^^c#002B36^^r3,4,16,8^^c#CB4B16^^r11,5,7,6^^d^^f25^"$cap
 elif [ $cap -ge 61 ] && [ $cap -le 70 ]; then
     # echo "" $cap
-    printf "^r0,6,2,4^^r2,3,20,10^^c#002B36^^r3,4,18,8^^c#CB4B16^^r11,5,9,6^^d^^f25^"$cap
+    printf "^r0,6,2,4^^r2,3,18,10^^c#002B36^^r3,4,16,8^^c#CB4B16^^r10,5,8,6^^d^^f25^"$cap
 elif [ $cap -ge 71 ] && [ $cap -le 80 ]; then
     # echo "" $cap
-    printf "^r0,6,2,4^^r2,3,20,10^^c#002B36^^r3,4,18,8^^c#CB4B16^^r10,5,10,6^^d^^f25^"$cap
+    printf "^r0,6,2,4^^r2,3,18,10^^c#002B36^^r3,4,16,8^^c#CB4B16^^r9,5,9,6^^d^^f25^"$cap
 elif [ $cap -ge 81 ] && [ $cap -le 90 ]; then
     # echo "" $cap
-    printf "^r0,6,2,4^^r2,3,20,10^^c#002B36^^r3,4,18,8^^c#CB4B16^^r8,5,12,6^^d^^f25^"$cap
+    printf "^r0,6,2,4^^r2,3,18,10^^c#002B36^^r3,4,16,8^^c#CB4B16^^r8,5,10,6^^d^^f25^"$cap
 elif [ $cap -ge 91 ] && [ $cap -le 99 ]; then
     # echo "" $cap
-    printf "^r0,6,2,4^^r2,3,20,10^^c#002B36^^r3,4,18,8^^c#CB4B16^^r6,5,14,6^^d^^f25^"$cap
+    printf "^r0,6,2,4^^r2,3,18,10^^c#002B36^^r3,4,16,8^^c#CB4B16^^r6,5,12,6^^d^^f25^"$cap
 elif [ $cap -eq 100 ]; then
-    printf "^r0,6,2,4^^r2,3,20,10^^c#002B36^^r3,4,18,8^^c#CB4B16^^r4,5,16,6^^d^^f25^"$cap
+    printf "^r0,6,2,4^^r2,3,18,10^^c#002B36^^r3,4,16,8^^c#CB4B16^^r4,5,14,6^^d^^f25^"$cap
 else
     # echo ""
-    printf "^r0,6,2,4^^r2,3,20,10^^c#002B36^^r3,4,18,8^^c#002B36^^r3,4,16,8^^d^^f25^" "?"
+    printf "^r0,6,2,4^^r2,3,18,10^^c#002B36^^r3,4,16,8^^c#002B36^^r3,5,14,6^^d^^f25^" "?"
 fi

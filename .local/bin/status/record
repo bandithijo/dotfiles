@@ -1,41 +1,41 @@
 #!/bin/bash
 
-if pgrep -f ffmpeg > /dev/null || \
-   pgrep -f kazam > /dev/null || \
-   pgrep -f simplescreenrecorder > /dev/null
-then
-    if pgrep -f vokoscreen > /dev/null && \
-       pgrep -f ffmpeg > /dev/null
-    then
-        echo -e "^c#93A1A1^ REC^d^ "
-    elif pgrep -f ffmpeg > /dev/null
-    then
-        icon=$(cat ~/.recordingicon)
-        echo -e "^c#93A1A1^$icon^d^"
-    elif pgrep -f ffmpeg_inject_frame > /dev/null
-    then
-        icon=$(cat ~/.recordingicon)
-        echo -e "^c#93A1A1^$icon^d^"
-    elif pgrep -f simplescreenrecorder > /dev/null
-    then
-        file="/dev/shm/simplescreenrecorder-stats-*"
-        capture=$(head -n 1 $file)
-        if ls $file 1> /dev/null 2>&1; then
-            stat=$(echo $capture)
-            if [[ "$stat" == "capturing 0" ]]; then
-                echo -e "^c#93A1A1^ REC^d^ "
-            elif [[ "$stat" == "capturing 1" ]]; then
-                echo -e "^c#93A1A1^ REC^d^ "
-            fi
-        fi
-    else
-        echo -e "^c#93A1A1^ REC^d^ "
-    fi
-fi
-
-# blink=$(date +%s)
-# if [ $((blink % 2)) -eq 0 ]; then
-#     echo " REC "
-# else
-#     echo "  REC "
+# if pgrep -f ffmpeg > /dev/null || \
+#    pgrep -f kazam > /dev/null || \
+#    pgrep -f simplescreenrecorder > /dev/null
+# then
+#     if pgrep -f vokoscreen > /dev/null && \
+#        pgrep -f ffmpeg > /dev/null
+#     then
+#         echo -e "^c#93A1A1^ REC^d^ "
+#     elif pgrep -f ffmpeg > /dev/null
+#     then
+#         icon=$(cat ~/.recordingicon)
+#         echo -e "^c#93A1A1^$icon^d^"
+#     elif pgrep -f ffmpeg_inject_frame > /dev/null
+#     then
+#         icon=$(cat ~/.recordingicon)
+#         echo -e "^c#93A1A1^$icon^d^"
+#     elif pgrep -f simplescreenrecorder > /dev/null
+#     then
+#         file="/dev/shm/simplescreenrecorder-stats-*"
+#         capture=$(head -n 1 $file)
+#         if ls $file 1> /dev/null 2>&1; then
+#             stat=$(echo $capture)
+#             if [[ "$stat" == "capturing 0" ]]; then
+#                 echo -e "^c#93A1A1^ REC^d^ "
+#             elif [[ "$stat" == "capturing 1" ]]; then
+#                 echo -e "^c#93A1A1^ REC^d^ "
+#             fi
+#         fi
+#     else
+#         echo -e "^c#93A1A1^ REC^d^ "
+#     fi
 # fi
+
+blink=$(date +%s)
+if [ $((blink % 2)) -eq 0 ]; then
+    echo " REC"
+else
+    echo "  REC"
+fi

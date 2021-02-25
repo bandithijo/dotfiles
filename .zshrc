@@ -165,6 +165,17 @@ function ranger {
 # Count how many opened terminal
 #pgrep -x st | awk 'BEGIN{count=1}{ if(NR!=1){count++} }END{print " st:"count}'
 
+# Draw devider horizontal line
+preexec() {
+    preexec_called=1
+}
+precmd() {
+    if [ "$?" = 0 ] && [ "$preexec_called" = 1 ]; then
+        printf '\e[0;91m-%.s\e[0m' {1..$(tput cols)}
+        echo
+    fi
+}
+
 # FZF DWM color
 export FZF_DEFAULT_OPTS='
 --color=dark,fg:14,fg+:0,bg+:9,hl:9,hl+:7

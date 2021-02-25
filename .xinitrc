@@ -37,7 +37,6 @@ unclutter --timeout 3 &
 notify-hightemp &
 flameshot &
 clipmenud &
-xcompmgr &
 lxpolkit &
 
 # Lunch dbus-launch, this is important for some app

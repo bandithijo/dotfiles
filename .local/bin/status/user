@@ -24,4 +24,4 @@
 
 username=${USER^^}
 icon=" "
-printf "%s%s\\n" "$icon" "$username" | sed 's/[aiueoAIUEO]//g'
+printf "%s%s\\n" "$icon" "$username " | sed 's/[aiueoAIUEO]//g'
