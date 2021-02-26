@@ -10,7 +10,8 @@ LAUNCHER="/usr/bin/rofi -dmenu -lines 5 -width 200"
 
 logout() {
     # eval $1
-    pkill -15 xinit
+    # pkill -15 xinit
+    pkill -15 Xorg
     # killall $1
 }
 
