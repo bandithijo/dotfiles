@@ -34,7 +34,6 @@ sanitizer
 sxhkd -c ~/.config/sxhkd/sxhkdrc &
 dunst -config ~/.config/dunst/dunstrc &
 unclutter --timeout 3 &
-notify-hightemp &
 flameshot &
 clipmenud &
 lxpolkit &

@@ -171,7 +171,7 @@ preexec() {
 }
 precmd() {
     if [ "$?" = 0 ] && [ "$preexec_called" = 1 ]; then
-        printf '\e[0;91m-%.s\e[0m' {1..$(tput cols)}
+        printf '\e[0;30m-%.s\e[0m' {1..$(tput cols)}
         echo
     fi
 }
