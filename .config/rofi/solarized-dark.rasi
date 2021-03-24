@@ -37,8 +37,8 @@
 #window {
     background-color: @background;
     border-color:     @separatorcolor;
-    border:           1;
-    padding:          5;
+    border:           2;
+    padding:          3;
     /* border-radius:    4; */
     border-radius:    0;
 }

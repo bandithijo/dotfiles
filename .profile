@@ -35,7 +35,7 @@ export QT_FONT_DPI=86
 export CM_LAUNCHER=dmenu-clipmenu
 export CM_DIR=/tmp
 
-export XDG_RUNTIME_DIR=/run/user/1000
+#export XDG_RUNTIME_DIR=/run/user/1000
 
 # For BSPWM and Ranger define Terminal
 export TERMCMD="st"
@@ -83,10 +83,9 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp -Dswing.defaultlaf=com.
 # For cover some java application only show blank white
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-export WALLPAPER1="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11-dark.png"
-export WALLPAPER2="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11H-dark.png"
-export WALLPAPER3="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11L-dark.png"
-export WALLPAPER4="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-11GW-dark.png"
+export WALLPAPER1="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-16-dark.png"
+export WALLPAPER2="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-16H-dark.png"
+export WALLPAPER3="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-16L-dark.png"
 
 # For disable Spring load when running Rails Console
 export DISABLE_SPRING=true

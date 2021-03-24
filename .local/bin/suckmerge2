@@ -19,59 +19,60 @@
 # For dwm
 dwm_branches = [
   'config',            # 1*  : nodmenu
-  'sticky',            # 19*
-  'wasfocus',          # 20  : sticky
-  'ru-gaps',           # 17* : cfacts, noborder
-  'cfacts',            # 15*
-  'cfacts-dragcfact',  # 16* : cfacts
-  'actualfullscreen',  # 13* : sticky
+  'sticky',            # 17*
+  'wasfocus',          # 18  : sticky
+  'ru-gaps',           # 15* : cfacts, noborder
+  'cfacts',            # 13*
+  'cfacts-dragcfact',  # 14* : cfacts
+  'actualfullscreen',  # 12* : sticky
   'xrdb',              # 3*
   'pertag',            # 2
-  'noborder',          # 11
-  'movestack',         # 8*
-  'moveresize',        # 9*
-  'resizecorners',     # 6
-  'focusonnetactive',  # 7
-  'focusonclick',      # 24* : moveresize
-  'fixborders',        # 25
-  'scratchpad',        # 13*
+  'noborder',          # 9
+  'movestack',         # 7*
+  'moveresize',        # 8*
+  'resizecorners',     # 5
+  'focusonnetactive',  # 6
+  'focusonclick',      # 19* : moveresize
+  'fixborders',        # 20
+  'scratchpad',        # 11*
   'zoomswap',          # 4
-  'autostart',         # 26  : zoomswap
-  'savefloats',        # 28
-  'center',            # 29  : savefloats, wasfocus^1
-  'ru-bottomstack',    # 18*
-  'statusallmons',     # 12
-  'ru-fibonacci',      # 27*
-  'warp',              # 32
-  'nmaster-sym',       # 30  : pertag, cfacts-dragcfact^1, warp
-  'movethrow',         # 33* : moveresize
-  'status2d',          # 34  : autostart, statusallmons, focusonclick
-  'focusmaster',       # 35*
-  'resetlayout',       # 36* : noborder
-  'ru-centeredmaster', # 37*
-  'aspectresize',      # 38*
-  'bar-height',        # 41*
-  'dualstatus',        # 39* : statusallmons
-  'ipc',               # 40* : pertag, cfacts-dragcfact
-  'ewmhtags',          # 42  : ipc <-
+  'autostart',         # 21  : zoomswap
+  'savefloats',        # 23  : center
+  'center',            # 24  : savefloats, wasfocus^1
+  'ru-bottomstack',    # 16*
+  'statusallmons',     # 10
+  'ru-fibonacci',      # 22*
+  'warp',              # 26
+  'nmaster-sym',       # 25  : pertag, cfacts-dragcfact^1, warp
+  'movethrow',         # 27* : moveresize
+  'status2d',          # 28  : autostart, statusallmons, focusonclick
+  'focusmaster',       # 29*
+  'resetlayout',       # 30* : noborder
+  'ru-centeredmaster', # 31*
+  'aspectresize',      # 32*
+  'bar-height',        # 35*
+  'dualstatus',        # 33* : statusallmons
+  'ipc',               # 34* : pertag, cfacts-dragcfact
+  'canfocusfloating',  # 36* : center^3, actualfullscreen^1
+  'decorhints',        # 37* : ipc, center
+  'dwmc'               # 38* : zoomswap, ipc^2 <-
 ]
 
 # For st
 st_branches = [
-  'config',
-  'clipboard',
-  'font2',
-  'workingdir',
-  'boxdraw',
-  'newterm',              # : scrollback, open-copied-url
-  'scrollback',
-  'scrollback-mouse',
-  'open-copied-url',
-  'bold-is-not-bright',
-  'alpha',                # : boxdraw
-  'ligatures-boxdraw-alpha-scrollback', # : alpha
-  'solarized-both',       # : ligatures-boxdraw-alpha-scrollback^, newterm^ <-
-  'w3m'
+  'config',            # 1
+  'clipboard',         # 2
+  'font2',             # 3*
+  'workingdir',        # 4
+  'boxdraw',           # 5*
+  'scrollback',        # 6*
+  'openclipboard',     # 7* : scrollback
+  'newterm',           # 8* : openclipboard^1
+  'bold-is-not-bright',# 9
+  'xresources',        # 10*
+  'ligatures',         # 11 : boxdraw, scrollback
+  'w3m',               # 12
+  'cursorblink',       # 13 <-
 ]
 
 # For slock
@@ -83,12 +84,12 @@ slock_branches = [
 
 # For dmenu
 dmenu_branches = [
-  'config',          # 1
-  'password',        # 2
-  'xresources',      # 3
-  'numbers',         # 4
-  'grid',            # 5*
-  'symbols'          # 6*
+  'config',            # 1
+  'password',          # 2
+  'xresources',        # 3
+  'numbers',           # 4
+  'grid',              # 5*
+  'symbols'            # 6*
 ]
 
 # For tabbed
@@ -170,64 +171,9 @@ def make_install
   puts '=> Installation COMPLETE!'
 end
 
-def option_for_debugging(branches)
-  puts "
-+-----------------------+
-| SUCKMERGE2: DEBUGGING |
-+-----------------------+
-  "
-  sleep 1
-  clean_reset
-  merge_selected(branches)
-  make_only
-end
-
-def option_for_installing(branches)
-  puts "
-+------------------------+
-| SUCKMERGE2: INSTALLING |
-+------------------------+
-  "
-  sleep 1
-  clean_diff_reset
-  merge_selected(branches)
-  make_install
-end
-
-option = ARGV[0]
-
-if option == '-d'
-  option_for_debugging(branches)
-elsif option == '-i'
-  option_for_installing(branches)
-else
-  puts "\nERROR: You enter the wrong option!"
-  puts "
-Options:
-  -d for debugging  - Merge all selected branches and make only.
-  -i for installing - Merge all selected branches, make, & make install
-
-Usage:
-  $ suckmerge2 -[d/i]
-  "
-  puts '  Or,'
-  puts
-  puts '  Press (d) for debugging'
-  puts '  Press (i) for installing'
-  print "\n=> "
-  second_option = gets.chomp
-  if second_option == 'd'
-    option_for_debugging(branches)
-  elsif second_option == 'i'
-    option_for_installing(branches)
-  else
-    puts "\nERROR: You enter the wrong option!"
-    exit
-  end
-end
-
-if dir_name == 'dwm' && (option == '-i' || second_option == 'i')
-  puts "
+def guide_info(dir_name)
+  if dir_name == 'dwm'
+    puts "
   +----------------------------------------------------------------------+
   | STATUSBAR:                                                           |
   +----------------------------------------------------------------------+
@@ -261,4 +207,71 @@ if dir_name == 'dwm' && (option == '-i' || second_option == 'i')
   | Sample: https://s.id/bandithijo-autostart                            |
   +----------------------------------------------------------------------+
   "
+  end
+end
+
+def option_for_debugging(branches)
+  puts "
++-----------------------+
+| SUCKMERGE2: DEBUGGING |
++-----------------------+
+  "
+  sleep 1
+  clean_reset
+  merge_selected(branches)
+  make_only
+end
+
+def option_for_installing(branches, dir_name)
+  puts "
++------------------------+
+| SUCKMERGE2: INSTALLING |
++------------------------+
+  "
+  sleep 1
+  clean_diff_reset
+  merge_selected(branches)
+  make_install
+  guide_info(dir_name)
+end
+
+def option_for_help(branches, dir_name)
+  puts "
+Options:
+  -d for debugging  - Merge all selected branches and make only.
+  -i for installing - Merge all selected branches, make, & make install
+
+Usage:
+  $ suckmerge2 -[d/i]
+  "
+  puts '  Or,'
+  puts
+  puts '  Press (d) for debugging'
+  puts '  Press (i) for installing'
+  print "\n=> "
+
+  option = gets.chomp
+  case option
+  when 'd'
+    option_for_debugging(branches)
+  when 'i'
+    option_for_installing(branches, dir_name)
+  else
+    puts "\nERROR: You enter the wrong option!"
+    exit
+  end
+end
+
+option = ARGV[0]
+
+case option
+when '-d'
+  option_for_debugging(branches)
+when '-i'
+  option_for_installing(branches, dir_name)
+when nil
+  option_for_help(branches, dir_name)
+else
+  puts "\nERROR: You enter the wrong option!"
+  option_for_help
 end

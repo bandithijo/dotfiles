@@ -13,20 +13,24 @@ if [ ! "$reso_monitor_lg" = "1600x900+0+0" ]; then
 fi
 
 monitor_lg() {
-    sleep 1
     xrandr --output LVDS1 --primary --mode 1024x768 --pos 576x900 --rotate normal --output VGA1 --mode 1600x900 --pos 0x0 --rotate normal --output VIRTUAL1 --off
     sleep 1
     feh --bg-fill -Z $WALLPAPER3 --bg-fill $WALLPAPER1
+    restart_polybar
 }
 
 monitor_laptop() {
-    sleep 1
     xrandr --output LVDS1 --primary --mode 1024x768 --pos 0x0 --rotate normal --output VGA1 --off --output VIRTUAL1 --off
     sleep 1
     xrandr --delmode VGA1 1600x900
     xrandr --rmmode 1600x900
-    sleep 1
     feh --bg-fill -Z $WALLPAPER3
+    restart_polybar
+}
+
+restart_polybar() {
+    pkill -x "polybar"
+    $HOME/.config/polybar/launch.sh &
 }
 
 

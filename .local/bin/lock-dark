@@ -34,7 +34,7 @@ eval $(xdotool getdisplaygeometry --shell)
     # i3lock -n --beep --color 002B36 --force-clock -i $tmpwall \
         # --indpos="$WIDTH-88:$HEIGHT-75" --timepos="$WIDTH/2:$HEIGHT/2+30" \
 runlock () {
-    i3lock -n --beep --color 002B36EE --force-clock -i $wallpaper\
+    i3lock -C -n --beep --color 1E1E1E --force-clock -i $wallpaper\
         --indpos="$WIDTH/2:$HEIGHT/2+320" --timepos="$WIDTH/2:$HEIGHT/2+60" \
         --datepos="$WIDTH/2:$HEIGHT/2+130" \
         --insidevercolor=00000000 --insidewrongcolor=00000000 --insidecolor=00000000 \

@@ -3,7 +3,6 @@ configuration {
 	combi-modi: "window,drun,ssh";
 	font: "JetBrainsMono Nerd Font Bandit Medium 8";
 	hide-scrollbar: true;
-	theme: "solarized-dark";
-	/* theme: "base16-tomorrow-night-eighties"; */
+	theme: "codedark";
 	/* sidebar-mode: true; */
 }

@@ -82,8 +82,8 @@ macro . open-in-browser
 
 color listnormal        default default
 color listnormal_unread default default bold
-color listfocus         color0   color9 bold
-color listfocus_unread  color0   color9 bold
-color info              color0   color9 bold
+color listfocus         color0   color2 bold
+color listfocus_unread  color0   color2 bold
+color info              color0   color2 bold
 color background        default default
 color article           default default

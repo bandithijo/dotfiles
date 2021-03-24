@@ -37,7 +37,7 @@ elif pgrep -f "sudo" > /dev/null; then # add this to last
 fi
 
 if pgrep -f puma > /dev/null; then
-    printf " ";
+    printf " ";
 fi
 
 if pgrep -f "dockerd" > /dev/null; then

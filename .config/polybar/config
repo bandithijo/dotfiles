@@ -1,14 +1,5 @@
 ;==========================================================
 ;
-;
-;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
-;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
-;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
-;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
-;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
-;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-;
-;
 ;   To learn more about how to configure Polybar
 ;   go to https://github.com/jaagr/polybar
 ;
@@ -17,14 +8,10 @@
 ;==========================================================
 
 [colors]
-foreground = #93A1A1
-background = #00002B36
-midground = #3E3E3E
-background-trans = ${xrdb:color0:#1E1E1E}
-foreground-alt = #56696F
-background-alt = #073642
-alert = #DC322F
-orange = #CB4B16
+foreground = ${xrdb:foreground:}
+background = #001E1E1E
+midground  = ${xrdb:color10:}
+alert      = ${xrdb:color1:}
 
 [bar/bartop]
 monitor = ${env:MONITOR:}
@@ -73,7 +60,8 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 
 [bar/barbottom]
-monitor = ${env:MONITOR:}
+; monitor = ${env:MONITOR:}
+monitor = LVDS1
 width = 100%
 height = 15
 fixed-center = true
@@ -106,7 +94,7 @@ font-6 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=9;2
 
 modules-left = profile xkeyboard
 modules-center =
-modules-right = netspdwlan1 wlan1 temperature cpu memory filesystem volume backlight
+modules-right = netspdwlan1 wlan1 temperature cpu memory filesystem pulseaudio backlight
 
 ; wm-name = bspwm
 
@@ -121,7 +109,7 @@ cursor-scroll = ns-resize
 monitor = LVDS1
 width = 5.3%
 height = 14
-offset-x = 290
+offset-x = 335
 offset-y = 4
 fixed-center = false
 bottom = yes
@@ -180,7 +168,7 @@ content-background = ${colors.background}
 
 [module/profile]
 type = custom/text
-content = " %{T7} %{T-}%{T0}BANDITHIJO%{T-} %{T7} %{T-}ARTIXLINUX | THINKPAD X61 "
+content = " %{T7} %{T-}%{T0}BANDITHIJO%{T-} %{T7} %{T-}ARTIX%{T7}  %{T-}DWM%{T7}  %{T-}THINKPAD X61 "
 content-foreground = ${colors.foreground}
 content-background = ${colors.background}
 
@@ -308,7 +296,7 @@ format-background = ${colors.background}
 
 [module/puma]
 type = custom/script
-exec = "printf ' '"
+exec = "printf ' '"
 exec-if = pgrep -f puma
 interval = 60
 tail = true
@@ -652,7 +640,8 @@ adapter = AC
 poll-interval = 5
 
 label-charging = " %percentage%% "
-format-charging = <ramp-capacity> <label-charging>
+; format-charging = <ramp-capacity> <label-charging>
+format-charging = <animation-charging> <label-charging>
 format-charging-foreground = ${colors.foreground}
 format-charging-background = ${colors.background}
 
@@ -661,7 +650,7 @@ format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-foreground = ${colors.foreground}
 format-discharging-background = ${colors.background}
 
-label-full = "  100%"
+label-full = "  100% "
 label-full-foreground = ${colors.foreground}
 label-full-background = ${colors.background}
 
@@ -683,7 +672,7 @@ animation-discharging-1 = ""
 animation-discharging-2 = ""
 animation-discharging-3 = ""
 animation-discharging-4 = ""
-animation-discharging-framerate = 500
+animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
@@ -773,7 +762,7 @@ type = internal/fs
 mount-0 = /
 interval = 60
 fixed-values = true
-label-mounted = " %percentage_used%%"
+label-mounted = " %percentage_used%% "
 label-mounted-foreground = ${colors.foreground}
 label-mounted-background = ${colors.background}
 
@@ -785,13 +774,31 @@ type = internal/pulseaudio
 sink = alsa_output.pci-0000_12_00.3.analog-stereo
 use-ui-max = true
 interval = 5
-label-volume = "  %percentage%% "
+label-volume = " %percentage%% "
 label-volume-foreground = ${colors.foreground}
 label-volume-background = ${colors.background}
 
-label-muted = "  MUTED "
+label-muted = " MUTED "
 label-muted-foreground = ${colors.foreground}
 label-muted-background = ${colors.background}
+
+; format-volume = "<label-volume><bar-volume> "
+; bar-volume-width = 5
+; bar-volume-foreground-0 = ${colors.foreground}
+; bar-volume-foreground-1 = ${colors.foreground}
+; bar-volume-foreground-2 = ${colors.foreground}
+; bar-volume-foreground-3 = ${colors.foreground}
+; bar-volume-foreground-4 = ${colors.foreground}
+; bar-volume-foreground-5 = ${colors.foreground}
+; bar-volume-foreground-6 = ${colors.foreground}
+; bar-volume-gradient = false
+; bar-volume-indicator = |
+; bar-volume-indicator-font = 1
+; bar-volume-fill = -
+; bar-volume-fill-font = 1
+; bar-volume-empty = -
+; bar-volume-empty-font = 1
+; bar-volume-empty-foreground = ${colors.foreground}
 
 [module/backlight]
 type = internal/backlight
@@ -842,7 +849,7 @@ secondary-layout-symbol = [M]
 label-title = %title%
 label-title-padding = 0
 label-title-foreground = ${colors.foreground}
-label-title-maxlen = 60
+label-title-maxlen = 50
 
 ; Symbol of current layout
 ; Available tokens:
@@ -877,7 +884,7 @@ label-visible-padding = 0
 
 ; urgent = Unselected tag with window that has urgency hint set
 ; label-urgent = %name%
-label-urgent = "%{T6}  %{T-}%{F#DC322F}%name% %{F-}"
+label-urgent = "%{T6} %{T-}%{F#DC322F}%name% %{F-}"
 label-urgent-foreground = ${colors.alert}
 label-urgent-padding = 0
 

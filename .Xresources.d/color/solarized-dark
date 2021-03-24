@@ -73,4 +73,8 @@ dmenu.selforeground:      S_base03
 
 Sxiv.font:                JetBrainsMono Nerd Font Bandit:pixelsize=10
 
+St.foreground:            S_base1
+St.background:            S_base03
+St.cursorColor:           S_base1
+
 ! vim: ft=xdefaults

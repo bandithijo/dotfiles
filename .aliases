@@ -42,7 +42,7 @@ alias vimc="cd ~/.config/nvim; vim README.md"
 alias cal="cal -ym"
 
 # neofetch
-alias neofetch="neofetch --ascii ~/.config/neofetch/ascii-dwm"
+alias neofetchh="neofetch --ascii ~/.config/neofetch/ascii-dwm"
 
 # Enabling Menu Item Gnome
 alias menuitem-enable="gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{'Gtk/ButtonImages': <1>, 'Gtk/MenuImages': <1>}\""
@@ -128,7 +128,7 @@ alias mvi='mpv -profile image'
 # youtube-dl playlist
 alias youtube-dl-playlist="youtube-dl -f 'bestvideo+bestaudio[ext=m4a]/bestvideo+bestaudio/best' --merge-output-format mp4 -o '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s' -i"
 
-alias tmux="env TERM=screen-256color tmux"
+alias tmux='tmux -2'
 
 alias xpdf="xpdf -cfg ~/.config/xpdf/xpdfrc"
 

@@ -3,9 +3,16 @@
 # vim:ft=sxhkdrc
 # -----------------------------------------------------------------------------
 
+ctrl + alt + Delete
+   st -t 'st+ htop' -g 110x30+0+0 -e htop
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+# about
+super + F2
+    st -t 'st+ neofetch' -g 66x19+0+0 -e neofetch --loop
 
 # floating terminal emulator
 super + ctrl + Return
@@ -14,11 +21,14 @@ super + ctrl + Return
 # tabbed st
 super + alt + Return
     tabbed -r 2 st -w ''
-    # tabbed -r 2 -g 520x380-5-5 st -w ''
 
 # program launcher
 super + d
     $HOME/bin/dmenu-apps
+
+# mager
+XF86Launch1
+    $HOME/bin/dmenu-mager
 
 # quit dwm
 super + shift + End
@@ -51,26 +61,11 @@ super + shift + Pause
     [ $jack_stat = "off" ]  && icon="  Speaker"; \
     dunstify "$icon Output Volume: "$ou_vol -t 1000 -r 1
 
-# alsa controls speaker volume up & down
-#{XF86AudioRaiseVolume, XF86AudioLowerVolume}
-#    amixer sset Master {1%+, 1%-}; \
-#    ou_vol=$(pamixer --get-volume); \
-#    jack_stat=$($HOME/bin/has_headphone); \
-#    [ $jack_stat = "yes" ] && icon="  Headset"; \
-#    [ $jack_stat = "no" ]  && icon="  Speaker"; \
-#    dunstify "$icon Output Volume: "$ou_vol -t 1000 -r 1
-
 # pulseaudio controls mic volume up & down
 shift + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
     pamixer --source 1 {-i 1, -d 1}; \
     ou_mic=$(pamixer --source 1 --get-volume); \
     dunstify "  Microphone Input Volume: "$ou_mic -t 1000 -r 1
-
-# alsa controls mic volume up & down
-#shift + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
-#    amixer sset Capture {1%+, 1%-}; \
-#    ou_mic=$(pamixer --source 1 --get-volume); \
-#    dunstify "  Microphone Input Volume: "$ou_mic -t 1000 -r 1
 
 # pulseaudio controls monitor volume up & down
 alt + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
@@ -111,17 +106,21 @@ alt + XF86AudioMute
     get_brightness=$(xbacklight -get | cut -f 1 -d '.'); \
     dunstify "  Brightness: "$get_brightness -t 1000 -r 1
 
-super + F4
-    feh --bg-fill -Z $WALLPAPER3
+super + F3
+    monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: "); \
+    if [ $monitors = "2" ]; \
+    then feh --bg-fill -Z $WALLPAPER3 --bg-fill -Z $WALLPAPER1; \
+    else feh --bg-fill -Z $WALLPAPER3; \
+    fi
 
-super + F5
+super + F4
     monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: "); \
     if [ $monitors = "2" ]; \
     then feh --bg-fill -Z $WALLPAPER1 --bg-fill -Z $WALLPAPER1; \
     else feh --bg-fill -Z $WALLPAPER1; \
     fi
 
-super + shift + F5
+super + shift + F4
     monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: "); \
     if [ $monitors = "2" ]; \
     then feh --bg-fill -Z $WALLPAPER2 --bg-fill -Z $WALLPAPER1; \
@@ -159,12 +158,9 @@ super + ~F11
     {$HOME/bin/key-mon-launcher, killall key-mon}
 
 # toggle hide & show polybar
-super + ctrl + ~b
-    {pkill -x "polybar", $HOME/.config/polybar/launch.sh &}
-
-# dwmtray
-# super + shift + ~b
-#     {$HOME/bin/polybar-toggle show, $HOME/bin/polybar-toggle hide}
+super + ~b
+    {pkill -x "polybar"; sleep 1; dwmc togglebar; dwmc toggleextrabar, \
+     dwmc togglebar; dwmc toggleextrabar; $HOME/.config/polybar/launch.sh &}
 
 # polybar tray
 super + shift + ~b

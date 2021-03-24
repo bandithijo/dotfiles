@@ -82,6 +82,8 @@ DISABLE_MAGIC_FUNCTIONS=true
 # ---------------------------------------------------------------END OH-MY-ZSH
 
 
+# Extended glob
+setopt extendedglob
 
 # Disale url escape
 autoload -Uz url-quote-magic
@@ -171,15 +173,19 @@ preexec() {
 }
 precmd() {
     if [ "$?" = 0 ] && [ "$preexec_called" = 1 ]; then
-        printf '\e[0;30m-%.s\e[0m' {1..$(tput cols)}
+        printf '\e[0;92m-%.s\e[0m' {1..$(tput cols)}
         echo
     fi
 }
 
+# sxiv_init () {
+#     eval fst=\$$(($1 + 1)); sxiv "$fst" "${@:2}"
+# }
+
 # FZF DWM color
 export FZF_DEFAULT_OPTS='
---color=dark,fg:14,fg+:0,bg+:9,hl:9,hl+:7
---color=info:9,prompt:7,spinner:1,pointer:0,marker:7
+--color=dark,fg:14,fg+:0,bg+:2,hl:2,hl+:15
+--color=info:2,prompt:7,spinner:1,pointer:0,marker:7
 '
 
 # Ignore node_modulses directory on fzf

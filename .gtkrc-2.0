@@ -2,7 +2,7 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/bandithijo/.gtkrc-2.0.mine"
-gtk-theme-name="NumixSolarizedDarkOrange"
+gtk-theme-name="NumixCodedark"
 gtk-icon-theme-name="Newaita-dark"
 gtk-font-name="JetBrainsMono Nerd Font Medium 7.5"
 gtk-cursor-theme-name="ComixCursors-Opaque-White"

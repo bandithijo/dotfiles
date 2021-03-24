@@ -4,4 +4,4 @@
 # /usr/local/bin/dmenu -i -m 0 -l 8
 
 # rofi
-/usr/bin/rofi -dmenu -i -m 0 -lines 6 -width 400 -p ' Clipboard'
+/usr/bin/rofi -dmenu -i -lines 6 -width 400 -p ' Clipboard'

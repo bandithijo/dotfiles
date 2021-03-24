@@ -2,27 +2,27 @@
 
 if ARGV.empty?
   # Please wite your dir with ~/ first
-  screenshot_dir  = '~/pic/ScreenShots'
+  screenshot_dir  = "~/pic/ScreenShots"
   Dir.chdir(File.expand_path(screenshot_dir))
   ss_dir          = Dir.pwd
   list_file       = %x(ls -p | grep -v /)
   files           = list_file.split(" ")
   original_file   = files.last
-  target_file     = files.last.split("").insert(-5, 'X').join
+  target_file     = files.last.split("").insert(-5, "X").join
 else
   original_file   = ARGV[0]
-  target_file     = original_file.split("").insert(-5, 'X').join
+  target_file     = original_file.split("").insert(-5, "X").join
 end
-color_profile     = '/usr/share/color/icc/colord/sRGB.icc'
-border_radius     = '5'
-background_color  = '"#264A53"' # 'none' for transparent; Hex color use '"#0000000"'
-background_size   = '0'
-shadow_size       = '30x10+0+10'
-font              = 'JetBrains-Mono-Regular-Nerd-Font-Complete'
-font_size         = '11'
-color_fg          = '#002B36'
-color_bg          = '#CB4B16'
-author_position   = ['SouthWest', '+55+46']
+color_profile     = "/usr/share/color/icc/colord/sRGB.icc"
+border_radius     = "5"
+background_color  = "none" # "none" for transparent; Hex color use "'#0000000'"
+border_size       = "0"
+shadow_size       = "30x10+0+0"
+font              = "JetBrains-Mono-Regular-Nerd-Font-Complete"
+font_size         = "10"
+color_fg          = "#1E1E1E"
+color_bg          = "#608B4E"
+author_position   = ["SouthWest", "+55+47"]
 author            = " : @#{`echo $USER`.strip}"
 
 %x(
@@ -35,23 +35,23 @@ fill white circle #{border_radius},#{border_radius} #{border_radius},0' \
 \\( +clone -background black -shadow #{shadow_size} \\) \
 +swap -background none -layers merge +repage #{target_file}
 
-convert #{target_file} \\( +clone -background black \
--shadow #{shadow_size} \\) +swap -background none \
--layers merge +repage #{target_file}; \
+# convert #{target_file} \\( +clone -background black \
+# -shadow #{shadow_size} \\) +swap -background none \
+# -layers merge +repage #{target_file}; \
 
 convert #{target_file} -bordercolor #{background_color} \
--border #{background_size} #{target_file}
+-border #{border_size} #{target_file}
 
-echo -n " #{author} " | convert #{target_file} \
--gravity #{author_position[0]} -pointsize #{font_size} -fill '#{color_fg}' \
--undercolor '#{color_bg}' -font #{font} \
--annotate #{author_position[1]} @- #{target_file}
+# echo -n " #{author} " | convert #{target_file} \
+# -gravity #{author_position[0]} -pointsize #{font_size} -fill '#{color_fg}' \
+# -undercolor '#{color_bg}' -font #{font} \
+# -annotate #{author_position[1]} @- #{target_file}
 
-convert #{target_file} -gravity South -chop 0x#{(background_size.to_i / 2) + 14} \
-#{target_file}
+# convert #{target_file} -gravity South -chop 0x#{(border_size.to_i / 2) + 14} \
+# #{target_file}
 
-convert #{target_file} -gravity North -background #{background_color} \
--splice 0x#{(background_size.to_i / 2) + 10} #{target_file}
+# convert #{target_file} -gravity North -background #{background_color} \
+# -splice 0x#{(border_size.to_i / 2) + 20} #{target_file}
 
 convert #{target_file} -profile #{color_profile} #{target_file}
 )
@@ -64,15 +64,15 @@ TARGET: #{target_file}
 FRAMING SUCCESS!"
 
 list_file = `ls -p | grep -v /`
-last_file = list_file.split(' ').last
-if last_file.include? 'X'
+last_file = list_file.split(" ").last
+if last_file.include? "X"
   `notify-send "ImageMagick" "Improving success!" -t 1000`
   system "xclip -selection clipboard -i #{target_file} -t image/png"
   exit
 end
 
 size = `find #{last_file} -printf %s`
-if size == '0' || size <= '20'
+if size <= "20"
   `rm -rf #{last_file}`
   `notify-send "Flameshot" "Process Aborted!" -t 1000`
 end

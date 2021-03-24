@@ -23,19 +23,10 @@ URxvt.skipBuiltinGlyphs:      false
 
 ! Fonts
 URxvt.allow_bold:             true
-!                             size of terminus font : 12 14 16 18 20 22 24 28 32
-!URxvt.font:         	      -xos4-terminesspowerline-medium-r-normal--16-*-72-72-c-*-iso10646-1
-!URxvt.boldFont:               -xos4-terminesspowerline-bold-r-normal--16-*-72-72-c-*-iso10646-1
-!URxvt.font:                   xft:xos4 Terminess Powerline:pixelsize=16:antialias=true
-!URxvt.boldFont:               xft:xos4 Terminess Powerline:bold:pixelsize=16:antialias=true
-!URxvt.font:                   xft:Terminess Powerline:pixelsize=16:antialias=true
-!URxvt.boldFont:               xft:Terminess Powerline:bold:pixelsize=16:antialias=true
-URxvt*font:         xft:Fira Code Medium:pixelsize=10:antialias=true,\
+URxvt*font:         xft:JetBrainsMono Nerd Font Bandit:pixelsize=10:antialias=true, \
                     xft:Inconsolata Nerd Font Mono, \
-                    xft:Noto Color Emoji,\
-URxvt*boldFont:     xft:Fira Code Retina:bold:pixelsize=10:antialias=true,\
+URxvt*boldFont:     xft:JetBrainsMono Nerd Font Bandit:bold:pixelsize=10:antialias=true, \
                     xft:Inconsolata Nerd Font Mono, \
-                    xft:Noto Color Emoji,\
 
 ! Text
 URxvt.colorUL:                #879C00
@@ -59,7 +50,8 @@ URxvt.scrollTtyKeypress:      true
 ! Perl extensions
 URxvt.perl-lib:               ~/.config/urxvt/ext
 ! URxvt.perl-ext-common:        default,matcher,url-select,clipboard,resize-font,unichr,solarized
-URxvt.perl-ext-common:        default,matcher,url-select,clipboard
+! URxvt.perl-ext-common:        default,matcher,url-select,clipboard
+URxvt.perl-ext-common:        default,matcher
 URxvt.matcher.button:         1
 URxvt.keysym.M-u:             perl:url-select:select_next
 URxvt.url-select.launcher:    /usr/bin/xdg-open
