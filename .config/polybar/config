@@ -44,8 +44,10 @@ font-3 = JetBrainsMono Nerd Font Bandit:weight=Bold:size=8;2
 font-4 = JetBrainsMono Nerd Font Bandit:weight=Bold:size=6;-1
 font-5 = FontAwesome:width=Normal:pixelsize=5;-2
 font-6 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=9;2
+font-7 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=11;2
+font-8 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=25;4
 
-modules-left = sp1 dwm
+modules-left = sp1 dwm-logo dwm
 modules-center =
 ; modules-right = record-ffmpeg tor vpn transmission pacman docker puma keymon mailbox date bat-state battery
 modules-right = record-ffmpeg tor puma mailbox date bat-state battery
@@ -94,7 +96,7 @@ font-6 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=9;2
 
 modules-left = profile xkeyboard
 modules-center =
-modules-right = netspdwlan1 wlan1 temperature cpu memory filesystem pulseaudio backlight
+modules-right = netspdwlan1 wlan1 temperature cpu memory filesystem volume backlight
 
 ; wm-name = bspwm
 
@@ -166,9 +168,16 @@ content-background = ${colors.background}
 
 ;-----------------------------------------------------------------------------
 
+[module/dwm-logo]
+type = custom/text
+content = "%{T9} %{T-}"
+content-foreground = ${colors.foreground}
+content-background = ${colors.background}
+
+
 [module/profile]
 type = custom/text
-content = " %{T7} %{T-}%{T0}BANDITHIJO%{T-} %{T7} %{T-}ARTIX%{T7}  %{T-}DWM%{T7}  %{T-}THINKPAD X61 "
+content = " %{T7} %{T-}%{T0}BANDITHIJO%{T-} %{T7} %{T-}ARTIX%{T7}  %{T-}THINKPAD X61 "
 content-foreground = ${colors.foreground}
 content-background = ${colors.background}
 
@@ -251,7 +260,7 @@ type = custom/script
 exec = ~/bin/status/volume
 tail = true
 interval = 1
-format = "%{T1} <label> %{T-}"
+format = "%{T1}<label> %{T-}"
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
@@ -622,11 +631,10 @@ date = "%a %Y/%m/%d"
 
 time = " %I:%M %p "
 
-format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
 format-prefix-background = ${colors.background}
 
-label = %date%%time%
+label = " %date% %time%"
 label-foreground = ${colors.foreground}
 label-background = ${colors.background}
 
@@ -641,12 +649,12 @@ poll-interval = 5
 
 label-charging = " %percentage%% "
 ; format-charging = <ramp-capacity> <label-charging>
-format-charging = <animation-charging> <label-charging>
+format-charging = "%{T8}<animation-charging>%{T-} <label-charging>"
 format-charging-foreground = ${colors.foreground}
 format-charging-background = ${colors.background}
 
 label-discharging = " %percentage%%"
-format-discharging = <ramp-capacity> <label-discharging>
+format-discharging = "<ramp-capacity> <label-discharging>"
 format-discharging-foreground = ${colors.foreground}
 format-discharging-background = ${colors.background}
 

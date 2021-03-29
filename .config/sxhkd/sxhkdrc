@@ -3,9 +3,6 @@
 # vim:ft=sxhkdrc
 # -----------------------------------------------------------------------------
 
-ctrl + alt + Delete
-   st -t 'st+ htop' -g 110x30+0+0 -e htop
-
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
@@ -13,6 +10,14 @@ super + Escape
 # about
 super + F2
     st -t 'st+ neofetch' -g 66x19+0+0 -e neofetch --loop
+
+# launch Htop
+ctrl + alt + Delete
+    st -t 'st+ htop' -g 110x30+0+0 -e htop
+
+# launch gping
+ctrl + alt + End
+    st -t 'st+' -g 90x28+0+0 -e gping google.com
 
 # floating terminal emulator
 super + ctrl + Return
@@ -157,10 +162,18 @@ super + ~F10
 super + ~F11
     {$HOME/bin/key-mon-launcher, killall key-mon}
 
+# screenkey
+super + shift + ~F11
+    {screenkey, killall screenkey}
+
 # toggle hide & show polybar
 super + ~b
     {pkill -x "polybar"; sleep 1; dwmc togglebar; dwmc toggleextrabar, \
      dwmc togglebar; dwmc toggleextrabar; $HOME/.config/polybar/launch.sh &}
+
+# restart polybar
+super + ctrl + b
+    pkill -x "polybar"; $HOME/.config/polybar/launch.sh &
 
 # polybar tray
 super + shift + ~b
