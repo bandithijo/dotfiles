@@ -22,8 +22,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-icon=""
-printf "$icon VPN "
-# if pgrep -f pppd > /dev/null; then
-#     printf "$icon VPN "
-# fi
+icon=""
+# printf "$icon VPN "
+if pgrep -f pppd > /dev/null; then
+    printf "$icon VPN "
+fi

@@ -65,7 +65,7 @@ misc() {
 }
 
 status() {
-    printf " $(record)$(tor)$(vpn)$(misc)$(keymon)$(wlan) $(cputemp) $(mem) $(hdd) $(vol) $(mailbox) $(batstat) $(batcap) $(dte) $(user)"
+    printf " $(record)$(tor)$(vpn)$(misc)$(keymon)$(wlan) $(cputemp) $(mem) $(hdd) $(mailbox) $(batstat) $(batcap) $(dte) $(user)"
 }
 
 while true; do

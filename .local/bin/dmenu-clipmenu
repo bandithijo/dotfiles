@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # dmenu
-# /usr/local/bin/dmenu -i -m 0 -l 8
+/usr/local/bin/dmenu -i -m 0 -l 8
 
 # rofi
-/usr/bin/rofi -dmenu -i -lines 6 -width 500 -p ' Clipboard'
+# /usr/bin/rofi -dmenu -i -lines 6 -width 500 -p ' Clipboard'

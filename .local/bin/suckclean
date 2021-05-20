@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 make clean &&
-rm -f config.h && git reset --hard origin/master
-rm -f dwm-msg.o
+git reset --hard origin/master
+git clean -f

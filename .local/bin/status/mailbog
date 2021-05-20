@@ -15,14 +15,6 @@
 
 unread="$(find "${XDG_DATA_HOME:-$HOME/.local/share}"/mail/*/[Ii][Nn][Bb][Oo][Xx]/new -type f | wc -l 2>/dev/null)"
 
-pidof mbsync >/dev/null 2>&1 && icon=""
+pidof mbsync >/dev/null 2>&1 && icon=" "
 
-if [ "$unread" = "0" ] || [ "$icon" = "" ]; then
-    if [ $unread -ge 1 ]; then
-        echo -e " $unread"
-    else
-        echo " $unread"
-    fi
-else
-    echo -e "$icon $unread"
-fi
+[ "$unread" = "0" ] && [ "$icon" = "" ] || echo " $unread$icon"

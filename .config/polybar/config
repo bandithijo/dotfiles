@@ -16,7 +16,7 @@ alert      = ${xrdb:color1:}
 [bar/bartop]
 monitor = ${env:MONITOR:}
 width = 100%
-height = 15
+height = 19
 fixed-center = true
 bottom = false
 
@@ -37,20 +37,20 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=8;2
+font-0 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=9;2
 font-1 = FontAwesome:pixelsize=8;2
 font-2 = Font Awesome 5 Brands:size=8;2
 font-3 = JetBrainsMono Nerd Font Bandit:weight=Bold:size=8;2
 font-4 = JetBrainsMono Nerd Font Bandit:weight=Bold:size=6;-1
 font-5 = FontAwesome:width=Normal:pixelsize=5;-2
 font-6 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=9;2
-font-7 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=11;2
-font-8 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=25;4
+font-7 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=11;3
+font-8 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=29;5
 
 modules-left = sp1 dwm-logo dwm
 modules-center =
 ; modules-right = record-ffmpeg tor vpn transmission pacman docker puma keymon mailbox date bat-state battery
-modules-right = record-ffmpeg tor puma mailbox date bat-state battery
+modules-right = record-ffmpeg tor vpn puma mailbox date bat-state battery
 
 ; wm-name = bspwm
 
@@ -65,7 +65,7 @@ cursor-scroll = ns-resize
 ; monitor = ${env:MONITOR:}
 monitor = LVDS1
 width = 100%
-height = 15
+height = 19
 fixed-center = true
 bottom = true
 
@@ -75,7 +75,7 @@ background = ${colors.background}
 line-size = 1
 line-color = #002B36
 
-border-top-size = 4
+border-top-size = 5
 border-bottom-size = 4
 border-left-size = 0
 border-right-size = 0
@@ -86,13 +86,14 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=8;2
+font-0 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=9;2
 font-1 = FontAwesome:pixelsize=8;2
 font-2 = Font Awesome 5 Brands:size=8;2
 font-3 = JetBrainsMono Nerd Font Bandit:weight=Bold:size=8;2
 font-4 = JetBrainsMono Nerd Font Bandit:weight=Bold:size=6;-1
 font-5 = FontAwesome:width=Normal:pixelsize=5;-2
 font-6 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=9;2
+font-7 = JetBrainsMono Nerd Font Bandit:weight=Medium:size=11;3
 
 modules-left = profile xkeyboard
 modules-center =
@@ -110,7 +111,7 @@ cursor-scroll = ns-resize
 [bar/traydwm]
 monitor = LVDS1
 width = 5.3%
-height = 14
+height = 19
 offset-x = 335
 offset-y = 4
 fixed-center = false
@@ -166,6 +167,17 @@ content = "  "
 content-foreground = ${colors.foreground-alt}
 content-background = ${colors.background}
 
+[module/pbr]
+type = custom/text
+content = "%{F#66934B}%{T8}%{T-}%{F-}"
+content-foreground = ${colors.foreground-alt}
+content-background = ${colors.background}
+
+[module/pbl]
+type = custom/text
+content = "%{F#66934B}%{T8}%{T-}%{F-}"
+content-foreground = ${colors.foreground-alt}
+content-background = ${colors.background}
 ;-----------------------------------------------------------------------------
 
 [module/dwm-logo]
@@ -174,10 +186,9 @@ content = "%{T9} %{T-}"
 content-foreground = ${colors.foreground}
 content-background = ${colors.background}
 
-
 [module/profile]
 type = custom/text
-content = " %{T7} %{T-}%{T0}BANDITHIJO%{T-} %{T7} %{T-}ARTIX%{T7}  %{T-}THINKPAD X61 "
+content = " %{T8} %{T-}%{T0}BANDITHIJO%{T-} %{T7} %{T-}ARTIX%{T7}  %{T-}THINKPAD X61 "
 content-foreground = ${colors.foreground}
 content-background = ${colors.background}
 
@@ -195,6 +206,7 @@ format-background = ${colors.background}
 type = custom/script
 exec = ~/bin/status/bat-state
 interval = 5
+; format = "%{B#66934B} <label> %{B-}"
 format = " <label> "
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
@@ -269,6 +281,7 @@ type = custom/script
 exec = ~/bin/status/mailbox
 tail = true
 interval = 1
+; format = "%{B#66934B}%{T1}<label> %{T-}%{B-}"
 format = "%{T1}<label> %{T-}"
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
@@ -279,6 +292,7 @@ exec = ~/bin/status/record
 exec-if = "pgrep -x 'ffmpeg'"
 tail = true
 interval = 1
+; format = "%{B#66934B}%{T1}<label> %{T-}%{B-}"
 format = "%{T1}<label> %{T-}"
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
@@ -296,7 +310,7 @@ format-background = ${colors.background}
 [module/vpn]
 type = custom/script
 exec = ~/bin/status/vpn
-exec-if = pgrep -f pppd
+exec-if = pgrep -f openvpn
 tail = true
 interval = 60
 format = "%{T7}<label>%{T-}"
@@ -512,7 +526,7 @@ format-padding = 0
 
 ;label = " %title:0:45:...% "
 label = " %title% "
-label-maxlen = 90
+label-maxlen = 60
 label-foreground = ${colors.foreground}
 label-background = ${colors.background}
 
@@ -627,13 +641,14 @@ label-connected = "%local_ip%"
 type = internal/date
 interval = 1
 
-date = "%a %Y/%m/%d"
+date = "%a,%Y/%m/%d"
 
-time = " %I:%M %p "
+time = " %H:%M "
 
 format-prefix-foreground = ${colors.foreground}
 format-prefix-background = ${colors.background}
 
+; label = "%{B#66934B} %date% %time%%{B-}"
 label = " %date% %time%"
 label-foreground = ${colors.foreground}
 label-background = ${colors.background}
@@ -647,18 +662,19 @@ battery = BAT0
 adapter = AC
 poll-interval = 5
 
-label-charging = " %percentage%% "
+label-charging = " %percentage%%"
 ; format-charging = <ramp-capacity> <label-charging>
-format-charging = "%{T8}<animation-charging>%{T-} <label-charging>"
+; format-charging = "%{B#66934B}%{T8}<animation-charging> %{T-}<label-charging>%{B-}"
+format-charging = "%{T8}<animation-charging> %{T-}<label-charging> "
 format-charging-foreground = ${colors.foreground}
 format-charging-background = ${colors.background}
 
 label-discharging = " %percentage%%"
-format-discharging = "<ramp-capacity> <label-discharging>"
+format-discharging = "%{T8}<ramp-capacity>%{T-} <label-discharging>"
 format-discharging-foreground = ${colors.foreground}
 format-discharging-background = ${colors.background}
 
-label-full = "  100% "
+label-full = "%{T8} %{T-} 100% "
 label-full-foreground = ${colors.foreground}
 label-full-background = ${colors.background}
 
@@ -745,9 +761,9 @@ label-warn-background = ${colors.background}
 ; The icon selection will range from `base-temperature` to `warn-temperature`,
 ; temperatures above `warn-temperature` will use the last icon
 ; and temperatures below `base-temperature` will use `ramp-0`
-ramp-0 = ""
-ramp-1 = ""
-ramp-2 = ""
+ramp-0 = ""
+ramp-1 = ""
+ramp-2 = ""
 ramp-foreground = ${colors.foreground}
 ramp-background = ${colors.background}
 
@@ -761,7 +777,7 @@ label-background = ${colors.background}
 [module/memory]
 type = internal/memory
 interval = 3
-label = " %percentage_used%% "
+label = " %percentage_used%% "
 label-foreground = ${colors.foreground}
 label-background = ${colors.background}
 
@@ -824,10 +840,10 @@ label-background = ${colors.background}
 type = internal/dwm
 format = <label-tags><label-layout> <label-floating><label-title>
 ; Path to dwm socket (default: /tmp/dwm.sock)
-; socket-path = /tmp/dwm.sock
+socket-path = /tmp/dwm.sock
 
 ; Left-click to view tag, right-click to toggle tag view
-enable-tags-click = false
+enable-tags-click = true
 ; Scroll to cycle between available tags
 enable-tags-scroll = false
 ; If true and enable-tags-scroll = true, scrolling will view all tags regardless if occupied
@@ -874,18 +890,18 @@ label-floating = "%{T6}%{T-}"
 ;   %name%
 
 ; focused = Selected tag on focused monitor
-label-focused = "%{T6} %{T-}%{F#93A1A1}%name% %{F-}"
+label-focused = "%{T6} %{T-}%{F#D4D4D4}%name% %{F-}"
 label-focused-foreground = ${colors.foreground}
 label-focused-background = ${colors.background}
 label-focused-padding = 0
 
 ; unfocused = Unselected tag on unselected monitor
-label-unfocused = "%{T6} %{T-}%{T1}%{F#93A1A1}%name% %{F-}%{T-}"
+label-unfocused = "%{T6} %{T-}%{T1}%{F#D4D4D4}%name% %{F-}%{T-}"
 label-unfocused-foreground = #586E75
 label-unfocused-padding = 0
 
 ; visible = Unselected tag, but occupied tag on any monitor
-label-visible = "%{T6} %{T-}%{T1}%{F#93A1A1}%name% %{F-}%{T-}"
+label-visible = "%{T6} %{T-}%{T1}%{F#D4D4D4}%name% %{F-}%{T-}"
 label-visible-foreground = ${colors.foreground}
 label-visible-background = ${colors.background}
 label-visible-padding = 0
@@ -898,12 +914,12 @@ label-urgent-padding = 0
 
 ; empty = Unselected and unoccupied tag
 ; This can be set to an empty string to hide empty tags
-label-empty = "%{T6}%{F#00002B36} %{F-}%{T-}%{T1}%{F#93A1A1}%name% %{F-}%{T-}"
+label-empty = "%{T6}%{F#001E1E1E} %{F-}%{T-}%{T1}%{F#D4D4D4}%name% %{F-}%{T-}"
 label-empty-foreground = #586E75
 label-empty-background = ${colors.background}
 label-empty-padding = 0
 
-;----format-------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
 
 [settings]
 throttle-output = 5

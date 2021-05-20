@@ -62,6 +62,10 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
 
+# PATH: NODE
+export PATH="$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"
+
 # PATH: NPM
 PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix="$HOME/.node_modules"
@@ -85,7 +89,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 export WALLPAPER1="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-16-dark.png"
 export WALLPAPER2="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-16H-dark.png"
-export WALLPAPER3="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-16L-dark.png"
+export WALLPAPER3="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-16M-dark.png"
+export WALLPAPER4="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-16L-dark.png"
+export WALLPAPER5="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-16N-dark.png"
 
 # For disable Spring load when running Rails Console
 export DISABLE_SPRING=true

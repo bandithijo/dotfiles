@@ -40,21 +40,3 @@
 *.color13:      base06
 *.color14:      base0F
 *.color15:      base07
-
-dwm.normbordercolor:   base01
-dwm.normbgcolor:       base00
-dwm.normfgcolor:       base05
-dwm.selfgcolor:        base05
-dwm.selbordercolor:    base0B
-dwm.selbgcolor:        base0B
-
-dmenu.background:      base00
-dmenu.foreground:      base05
-dmenu.selbackground:   base0D
-dmenu.selforeground:   base00
-
-Sxiv.font:             JetBrainsMono Nerd Font Bandit:pixelsize=10
-
-St.foreground:         base05
-St.background:         base00
-St.cursorColor:        base05

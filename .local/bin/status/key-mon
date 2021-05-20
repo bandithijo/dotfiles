@@ -23,7 +23,7 @@
 # SOFTWARE.
 
 icon=""
-printf "$icon "
-# if pgrep -f 'python /usr/bin/key-mon' > /dev/null; then
-#     printf "$icon  "
-# fi
+# printf "$icon "
+if pgrep -f 'python /usr/bin/key-mon' > /dev/null; then
+    printf "$icon  "
+fi

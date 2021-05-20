@@ -39,7 +39,8 @@
 #fi
 
 # GNU/Linux
-cap=$(cat /sys/devices/platform/smapi/BAT0/remaining_percent)
+#cap=$(cat /sys/devices/platform/smapi/BAT0/remaining_percent)
+cap=$(cat /sys/class/power_supply/BAT0/capacity)
 if   [ $cap -ge 0 ] && [ $cap -le 10 ]; then
     # echo "" $cap
     printf "^r0,6,2,4^^r2,3,18,10^^c#002B36^^r3,4,16,8^^c#CB4B16^^r17,5,1,6^^d^^f25^"$cap

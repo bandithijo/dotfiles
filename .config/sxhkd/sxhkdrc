@@ -5,11 +5,15 @@
 
 # make sxhkd reload its configuration files:
 super + Escape
-	pkill -USR1 -x sxhkd
+	pkill -USR1 -x sxhkd; dunstify "SXHKD configuration reloaded"
 
 # about
-super + F2
-    st -t 'st+ neofetch' -g 66x19+0+0 -e neofetch --loop
+super + {_,shift} + F2
+    {st -t 'st+ neofetch' -g 63x19+0+0 -e neofetch --loop, \
+     st -t 'st+ neofetch' -f 'JetBrainsMono Nerd Font Bandit:size=10' \
+     -g 70x20+0+0 -e neofetch --w3m \
+     --source /home/bandithijo/.config/neofetch/artix.png \
+     --size 50% --yoffset 20 --loop}
 
 # launch Htop
 ctrl + alt + Delete
@@ -28,12 +32,13 @@ super + alt + Return
     tabbed -r 2 st -w ''
 
 # program launcher
-super + d
-    $HOME/bin/dmenu-apps
+super + {_,shift} d
+    {$HOME/bin/dmenu-apps, $HOME/bin/dmenu-mager}
 
 # mager
-XF86Launch1
-    $HOME/bin/dmenu-mager
+~XF86Launch1
+    {$HOME/bin/showoff, pkill -f 'neofetch' & pkill -f 'gping'}
+
 
 # quit dwm
 super + shift + End
@@ -62,8 +67,10 @@ super + shift + Pause
     pamixer {-i 1, -d 1}; \
     ou_vol=$(pamixer --get-volume); \
     jack_stat=$($HOME/bin/has_headphone); \
-    [ $jack_stat = "on" ] && icon="  Headset"; \
-    [ $jack_stat = "off" ]  && icon="  Speaker"; \
+    bluetooth_headset=$($HOME/bin/has_headset_head_unit); \
+    if   [ $jack_stat = "yes" ]; then icon="  Headset"; \
+    elif [ $jack_stat = "no"  ]  && [ $bluetooth_headset = "yes" ]; then icon="  Headset"; \
+    elif [ $jack_stat = "no"  ]; then icon="  Speaker"; fi; \
     dunstify "$icon Output Volume: "$ou_vol -t 1000 -r 1
 
 # pulseaudio controls mic volume up & down
@@ -84,9 +91,9 @@ XF86AudioMute
     --toggle-mute; \
     ou_mute=$(pamixer --get-mute); \
     jack_stat=$($HOME/bin/has_headphone); \
-    [ $jack_stat = "on" ]   && icon_on="  Headset" icon_off="  Headset"; \
-    [ $jack_stat = "off" ]    && icon_on="  Speaker" icon_off="  Speaker"; \
-    [ $ou_mute   = "true" ]  && dunstify "$icon_off MUTED" -t 1000 -r 1; \
+    [ $jack_stat = "yes"   ] && icon_on="  Headset" icon_off="  Headset"; \
+    [ $jack_stat = "no"    ] && icon_on="  Speaker" icon_off="  Speaker"; \
+    [ $ou_mute   = "true"  ] && dunstify "$icon_off MUTED" -t 1000 -r 1; \
     [ $ou_mute   = "false" ] && dunstify "$icon_on UNMUTED" -t 1000 -r 1
 
 # pulseaudio controls mute mic
@@ -94,7 +101,7 @@ shift + XF86AudioMute
     pamixer \
     --source 1 --toggle-mute; \
     in_mute=$(pamixer --source 1 --get-mute); \
-    [ $in_mute = "true" ]  && dunstify "  Microphone Input MUTED" -t 1000 -r 1; \
+    [ $in_mute = "true"  ] && dunstify "  Microphone Input MUTED" -t 1000 -r 1; \
     [ $in_mute = "false" ] && dunstify "  Microphone Input UNMUTED" -t 1000 -r 1
 
 # pulseaudio controls mute monitor
@@ -102,7 +109,7 @@ alt + XF86AudioMute
     pamixer \
     --source 0 --toggle-mute; \
     mo_mute=$(pamixer --source 0 --get-mute); \
-    [ $mo_mute = "true" ]  && dunstify "  Monitor Input MUTED" -t 1000 -r 1; \
+    [ $mo_mute = "true"  ] && dunstify "  Monitor Input MUTED" -t 1000 -r 1; \
     [ $mo_mute = "false" ] && dunstify "  Monitor Input UNMUTED" -t 1000 -r 1
 
 # screen brightness controls
@@ -113,9 +120,32 @@ alt + XF86AudioMute
 
 super + F3
     monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: "); \
-    if [ $monitors = "2" ]; \
+    current=$(xrandr --query | grep "current" | cut -d " " -f 8,9,10 | tr -d ","); \
+    if [ $current = "1024 x 768" ]; \
     then feh --bg-fill -Z $WALLPAPER3 --bg-fill -Z $WALLPAPER1; \
+    elif [ $monitors = "2" ]; \
+    then feh --bg-fill -Z $WALLPAPER3; \
     else feh --bg-fill -Z $WALLPAPER3; \
+    fi
+
+super + shift + F3
+    monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: "); \
+    current=$(xrandr --query | grep "current" | cut -d " " -f 8,9,10 | tr -d ","); \
+    if [ $current = "1024 x 768" ]; \
+    then feh --bg-fill -Z $WALLPAPER4 --bg-fill -Z $WALLPAPER1; \
+    elif [ $monitors = "2" ]; \
+    then feh --bg-fill -Z $WALLPAPER4; \
+    else feh --bg-fill -Z $WALLPAPER4; \
+    fi
+
+super + ctrl + F3
+    monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: "); \
+    current=$(xrandr --query | grep "current" | cut -d " " -f 8,9,10 | tr -d ","); \
+    if [ $current = "1024 x 768" ]; \
+    then feh --bg-fill -Z $WALLPAPER5 --bg-fill -Z $WALLPAPER1; \
+    elif [ $monitors = "2" ]; \
+    then feh --bg-fill -Z $WALLPAPER5; \
+    else feh --bg-fill -Z $WALLPAPER5; \
     fi
 
 super + F4
@@ -146,9 +176,17 @@ super + F6
     -dmenu -i -no-custom -multi-select -p "UDISKIE" -lines 5 -width 300 \
     -kb-accept-alt "" -kb-custom-1 "Shift+Return"
 
+# lsblk
+super + shift + F6
+    st -t 'st+ lsblk' -f 'JetBrainsMono Nerd Font Bandit:size=10' -g 70x20+0+0 -e watch lsblk
+
 # arandr
 super + F7
     $HOME/bin/dmenu-monitor
+
+# sensors
+super + shift + F7
+    st -t 'st+ sensors' -g 58x37+0+0 -e watch sensors
 
 # gromit-mpx
 super + F9
@@ -158,18 +196,18 @@ super + F9
 super + ~F10
 	{$HOME/bin/ffplay-launcher,pkill -x 'ffplay'}
 
-# key-mon
-super + ~F11
-    {$HOME/bin/key-mon-launcher, killall key-mon}
-
 # screenkey
-super + shift + ~F11
+super + ~F11
     {screenkey, killall screenkey}
 
+# key-mon
+super + shift + ~F11
+    {$HOME/bin/key-mon-launcher, killall key-mon}
+
 # toggle hide & show polybar
-super + ~b
-    {pkill -x "polybar"; sleep 1; dwmc togglebar; dwmc toggleextrabar, \
-     dwmc togglebar; dwmc toggleextrabar; $HOME/.config/polybar/launch.sh &}
+# super + ~b
+#     {pkill -x "polybar"; sleep 1; dwmc togglebar; dwmc toggleextrabar, \
+#      dwmc togglebar; dwmc toggleextrabar; $HOME/.config/polybar/launch.sh &}
 
 # restart polybar
 super + ctrl + b
@@ -205,3 +243,11 @@ super + Pause
 # dmenu-pass
 super + {_,shift} + backslash
     {$HOME/bin/passtore 0, $HOME/bin/dmenu-pass}
+
+# conky
+super + shift + ~F5
+    {$HOME/bin/conky-launch, pkill -f 'conky'}
+
+# zoom
+super + button4
+    $HOME/bin/zoom

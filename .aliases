@@ -37,6 +37,7 @@ alias termdown="termdown -f nancyj"
 # vimdiff
 alias vimdiff="vim -d"
 alias vimc="cd ~/.config/nvim; vim README.md"
+alias nvimc="cd ~/.config/nvim; vim README.md"
 
 # cal with monday as a first day in week
 alias cal="cal -ym"
@@ -132,7 +133,7 @@ alias tmux='tmux -2'
 
 alias xpdf="xpdf -cfg ~/.config/xpdf/xpdfrc"
 
-alias xfreerdp="xfreerdp /h:751 /w:1023 /sound:sys:oss /video"
+# alias xfreerdp="xfreerdp /h:751 /w:1023 /sound:sys:oss /video"
 
 alias shoes="~/.shoes/walkabout/shoes"
 
@@ -153,5 +154,15 @@ alias print-on="sudo rc-service avahi-daemon start; sudo rc-service cupsd start"
 alias print-off="sudo rc-service cupsd stop; sudo rc-service avahi-daemon stop"
 
 alias mocp="mocp -C ~/.config/moc/config"
+
+# simple terminal
+alias st:ranger="st -t 'st+' -e ranger"
+
+alias bluetooth-on="sudo bluetooth on; sudo rc-service bluetoothd start"
+alias bluetooth-off="sudo rc-service bluetoothd stop; sudo bluetooth off"
+
+# xrdb xresources
+alias use="xrdb merge ~/.Xresources"
+alias load="kill -USR1 $(pidof st) >> /dev/null"
 
 # -------------------------------------------------------------------END ALIAS

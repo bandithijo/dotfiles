@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# MENU="/usr/local/bin/dmenu"
-MENU="/usr/bin/rofi -dmenu -lines 3 -width 200"
+MENU="/usr/local/bin/dmenu"
+# MENU="/usr/bin/rofi -dmenu -lines 3 -width 200"
 
 updateicon() {
     echo "$1" > ~/.recordingicon
@@ -20,13 +20,14 @@ killRecording() {
     exit
 }
 
+    # -i $(echo $DISPLAY).0+$2,$3 \
 videoOnly() {
     ffmpeg \
     -f x11grab \
     -draw_mouse 1 \
     -framerate 30 \
     -s $1 \
-    -i $(echo $DISPLAY).0+$2,$3 \
+    -i :0.0+$2,$3 \
     -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 \
     -vf setpts=N/FR/TB \
     -c:v libx264 -pix_fmt yuv420p -preset veryfast -q:v 1 \
@@ -37,13 +38,34 @@ videoOnly() {
     updatestatus "record"
 }
 
+    # -i $(echo $DISPLAY).0+$X,$Y \
+videoOnlyArea() {
+    slop=$(slop -f "%x %y %w %h %g %i") || exit 1
+    read -r X Y W H G ID < <(echo $slop)
+    ffmpeg \
+    -f x11grab \
+    -draw_mouse 1 \
+    -framerate 30 \
+    -s "$W"x"$H" \
+    -i :0.0+$X,$Y \
+    -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 \
+    -vf setpts=N/FR/TB \
+    -c:v libx264 -pix_fmt yuv420p -preset veryfast -q:v 1 \
+    -threads 4 \
+    "$HOME/vid/ScreenRecorder/video-$(date '+%y%m%d-%H%M-%S').mp4" &
+    echo $! > ~/.recordingpid
+    updateicon " REC "
+    updatestatus "record"
+}
+
+    # -i $(echo $DISPLAY).0+$2,$3 \
 videoHighOnly() {
     ffmpeg \
     -f x11grab \
     -draw_mouse 1 \
     -framerate 30 \
     -s $1 \
-    -i $(echo $DISPLAY).0+$2,$3 \
+    -i :0.0+$2,$3 \
     -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 \
     -vf setpts=N/FR/TB \
     -c:v libx264rgb -preset veryfast -q:v 1 \
@@ -121,7 +143,7 @@ OPTIONS='''
 ["Effects ", "effects"]
 ]
 '''
-obj_menu=$(echo $OPTIONS | jq -r ".[][0]" | $MENU -i -p " ScreenShot")
+obj_menu=$(echo $OPTIONS | jq -r ".[][0]" | $MENU -i -p " Record")
 obj_selected=$(echo $OPTIONS | jq -r ".[] | select(.[0] == \"$obj_menu\") | .[1]")
 
 if [ "$obj_selected" = "videos" ]; then
@@ -141,6 +163,10 @@ if [ "$obj_selected" = "videos" ]; then
     else
         obj_selected="videoOnly $(xdpyinfo | grep dimensions | awk '{print $2;}') '0' '0'"
     fi
+
+elif [ "$obj_selected" = "videoOnlyArea" ]; then
+    # obj_selected="videoOnlyArea $(slop) '0' '0'"
+    obj_selected="videoOnlyArea"
 
 elif [ "$obj_selected" = "videoHighOnly" ]; then
     obj_selected="videoHighOnly $(xdpyinfo | grep dimensions | awk '{print $2;}') '0' '0'"

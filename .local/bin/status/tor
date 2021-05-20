@@ -29,7 +29,7 @@
 # curl ifconfig.co
 icon=""
 ip_addr=$(curl --socks5 127.0.0.1:9050 https://check.torproject.org |& grep -Po "(?<=strong>)[\d\.]+(?=</strong)")
-printf "$icon TOR $ip_addr"
-# if pgrep -f torrc > /dev/null; then
-#     printf "$icon TOR $ip_addr "
-# fi
+# printf "$icon TOR $ip_addr"
+if pgrep -f torrc > /dev/null 2>&1; then
+    printf "$icon TOR $ip_addr "
+fi

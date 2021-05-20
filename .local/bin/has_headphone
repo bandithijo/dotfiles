@@ -1,15 +1,15 @@
 #!/bin/sh
 
 # PulseAudio (output: yes | no)
-#pacmd list-sinks | grep 'Headphones' | awk '{print $10}' | tr -d ')'
+pacmd list-sinks | grep 'Headphones' | awk '{print $10}' | tr -d ')'
 
 # Alsa (output: on | off)
-amixer -c 1 contents | \
-awk -F"," '
-$1 == "numid=24" {
-    c=1
-} c && /: values/ {
-   split($0, a, "=")
-   print a[2];
-   exit
-}'
+#amixer -c 1 contents | \
+#awk -F"," '
+#$1 == "numid=24" {
+#    c=1
+#} c && /: values/ {
+#   split($0, a, "=")
+#   print a[2];
+#   exit
+#}'

@@ -1,8 +1,8 @@
 configuration {
-	modi: "drun,window";
-	combi-modi: "window,drun,ssh";
-	font: "JetBrainsMono Nerd Font Bandit Medium 8";
+	modi:           "drun,window";
+	combi-modi:     "window,drun,ssh";
+	font:           "JetBrainsMono Nerd Font Bandit Medium 8";
 	hide-scrollbar: true;
-	theme: "codedark";
+	theme:          "codedark";
 	/* sidebar-mode: true; */
 }

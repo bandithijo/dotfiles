@@ -4,7 +4,7 @@
 include "/home/bandithijo/.gtkrc-2.0.mine"
 gtk-theme-name="NumixCodedark"
 gtk-icon-theme-name="Newaita-dark"
-gtk-font-name="JetBrainsMono Nerd Font Medium 7.5"
+gtk-font-name="JetBrainsMono Nerd Font Bandit Medium 7.5"
 gtk-cursor-theme-name="ComixCursors-Opaque-White"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_ICONS

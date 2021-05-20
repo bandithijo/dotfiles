@@ -29,13 +29,16 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 [ -f ~/.zshrc-zgen ] && source ~/.zshrc-zgen
 # -------------------------------------------------------------END ZGEN CONFIG
 
+# ---------------------------------------------------------------ZGENOM CONFIG
+# [ -f ~/.zshrc-zgenom ] && source ~/.zshrc-zgenom
+# -----------------------------------------------------------END ZGENOM CONFIG
+
 # ---------------------------------------------------------------------MINIMAL
 MNML_OK_COLOR=7                      # default: 7
 MNML_ERR_COLOR=1                     # default: 1
 MNML_USER_CHAR='$'                   # default: λ
 MNML_INSERT_CHAR=''                  # default: ›
 MNML_NORMAL_CHAR=''                  # default: ·
-
 
 # Components on the left prompt
 MNML_PROMPT=(mnml_ssh mnml_status mnml_keymap)
@@ -157,6 +160,17 @@ function ranger {
     command rm -f -- "$tempfile" 2>/dev/null
 }
 
+# Git Subversion SVN
+git-svn(){
+  if [[ ! -z "$1" && ! -z "$2" ]]; then
+          echo "Starting clone/copy ..."
+          repo=$(echo $1 | sed 's/\/$\|.git$//')
+          svn export "$repo/trunk/$2"
+  else
+          echo "Use: git-svn <repository> <subdirectory>"
+  fi
+}
+
 # For handle Delete key
 # bindkey    "[3~"          delete-char
 # bindkey    "3;5~"         delete-char
@@ -181,6 +195,20 @@ precmd() {
 # sxiv_init () {
 #     eval fst=\$$(($1 + 1)); sxiv "$fst" "${@:2}"
 # }
+
+# Codi
+# Usage: codi [filetype] [filename]
+codi() {
+  local syntax="${1:-irb}"
+  shift
+  vim -c \
+    "let g:startify_disable_at_vimenter = 1 |\
+    set bt=nofile ls=0 noru nonu nornu |\
+    hi ColorColumn ctermbg=NONE |\
+    hi VertSplit ctermbg=NONE |\
+    hi NonText ctermfg=0 |\
+    Codi $syntax" "$@"
+}
 
 # FZF DWM color
 export FZF_DEFAULT_OPTS='

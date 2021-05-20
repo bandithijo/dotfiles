@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 scrot 'Screenshot_%Y-%m-%d_%H-%M-%S.png' \
--e 'mv *.png ~/pic/ScreenShots/'
+-e 'xclip -selection clipboard -t image/png -i $f && mv $f ~/pic/ss/'
 notify-send 'Scrot' 'Screen has been captured!'

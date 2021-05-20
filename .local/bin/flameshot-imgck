@@ -3,9 +3,9 @@
 require 'date'
 
 # Please wite your dir with ~/ first
-screenshot_dir    = '~/pic/ScreenShots'
+screenshot_dir = '~/pic/ss'
 Dir.chdir(File.expand_path(screenshot_dir))
-original_file     = Time.now.strftime('Screenshot_%Y-%m-%d_%H-%M-%S.png')
+original_file = Time.now.strftime('Screenshot_%Y-%m-%d_%H-%M-%S.png')
 
 system "
 flameshot gui --raw > #{original_file}
