@@ -14,7 +14,7 @@
 # if you're sure that you'll never log in via telnet or xterm or a
 # serial line.
 
-EDITOR=vim;   	                export EDITOR
+EDITOR=/usr/local/bin/nvim;   	export EDITOR
 PAGER=less;  	                export PAGER
 
 LANG=en_US.UTF-8;               export LANG
@@ -35,13 +35,11 @@ export QT_FONT_DPI=86
 export CM_LAUNCHER=dmenu-clipmenu
 export CM_DIR=/tmp
 
-#export XDG_RUNTIME_DIR=/run/user/1000
-
 # For BSPWM and Ranger define Terminal
 export TERMCMD="st"
 
 # For Ranger define Text Editor
-export VISUAL="vim"
+export VISUAL="/usr/local/bin/nvim"
 
 # For Pager always use Less
 export LESS="-SRXF"
@@ -77,6 +75,9 @@ PERL_LOCAL_LIB_ROOT="$HOME/.config/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB
 PERL_MB_OPT="--install_base \"$HOME/.config/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=$HOME/.config/perl5"; export PERL_MM_OPT;
 
+# Laravel
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+
 # PATH: local /bin
 PATH="$HOME/bin:$HOME/src:$HOME/.local/bin:$PATH"
 export PATH
@@ -92,6 +93,7 @@ export WALLPAPER2="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-16H-dark.png
 export WALLPAPER3="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-16M-dark.png"
 export WALLPAPER4="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-16L-dark.png"
 export WALLPAPER5="$HOME/pic/Wallpaper/archWallpaper/Arch-Wallpaper-16N-dark.png"
+export WALLPAPER6="$HOME/pic/Wallpaper/fWallpaper/Fc6-wallpaper.png.jpe"
 
 # For disable Spring load when running Rails Console
 export DISABLE_SPRING=true
@@ -100,5 +102,8 @@ export DISABLE_SPRING=true
 export PISTOL_CHROMA_STYLE=api
 
 # A hack to disable gtk+ 3 client side decoration
-export GTK_CSD=0
-export LD_PRELOAD=/usr/lib/libgtk3-nocsd.so.0
+#export GTK_CSD=0
+#export LD_PRELOAD=/usr/lib/libgtk3-nocsd.so.0
+
+# PostgreSQL
+export PGHOST=localhost

@@ -2,6 +2,23 @@
 ! author: "Tomas Iser (https://github.com/tomasiser)"
 ! vim: ft=xdefaults
 
+!#define base00 #1E1E1E
+!#define base01 #262626
+!#define base02 #303030
+!#define base03 #3C3C3C
+!#define base04 #808080
+!#define base05 #D4D4D4
+!#define base06 #E9E9E9
+!#define base07 #FFFFFF
+!#define base08 #F24646
+!#define base09 #CC9077
+!#define base0A #D7BA7D
+!#define base0B #608B4E
+!#define base0C #9CDCFE
+!#define base0D #5395D4
+!#define base0E #BB80C5
+!#define base0F #636594
+
 #define base00 #1E1E1E
 #define base01 #262626
 #define base02 #303030
@@ -10,14 +27,14 @@
 #define base05 #D4D4D4
 #define base06 #E9E9E9
 #define base07 #FFFFFF
-#define base08 #F24646
-#define base09 #CC9077
+#define base08 #D16969
+#define base09 #B5CEA8
 #define base0A #D7BA7D
 #define base0B #608B4E
 #define base0C #9CDCFE
-#define base0D #5395D4
-#define base0E #BB80C5
-#define base0F #636594
+#define base0D #569CD6
+#define base0E #C586C0
+#define base0F #CE9178
 
 *.foreground:   base05
 *.background:   base00
@@ -33,10 +50,19 @@
 *.color7:       base05
 
 *.color8:       base03
-*.color9:       base09
-*.color10:      base01
-*.color11:      base02
-*.color12:      base04
-*.color13:      base06
-*.color14:      base0F
+*.color9:       base08
+*.color10:      base0B
+*.color11:      base0A
+*.color12:      base0D
+*.color13:      base0E
+*.color14:      base0C
 *.color15:      base07
+
+! *.color8:       base03
+! *.color9:       base09
+! *.color10:      base01
+! *.color11:      base02
+! *.color12:      base04
+! *.color13:      base06
+! *.color14:      base0F
+! *.color15:      base07

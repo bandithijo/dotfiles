@@ -35,12 +35,13 @@
 #fi
 
 # GNU/Linux
-state=$(cat /sys/devices/platform/smapi/BAT0/state)
-if   [ $state = "charging" ]; then
+# state=$(cat /sys/devices/platform/smapi/BAT0/state)
+state=$(cat /sys/class/power_supply/BAT0/status)
+if   [ $state = "charging" ] || [ $state = "Charging" ]; then
     printf " " # charging
-elif [ $state = "discharging" ]; then
+elif [ $state = "discharging" ] || [ $state = "Discharging" ]; then
     printf " " # discharging
-elif [ $state = "idle" ]; then
+elif [ $state = "idle" ] || [ $state = "Unknown" ]; then
     printf " " # idle
 else
     printf "" # unknown

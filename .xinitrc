@@ -24,10 +24,10 @@ xrdb -load ~/.Xresources
 
 # Autostart (STATIC)
 xsetroot -solid "#1E1E1E"
-feh --bg-fill -Z $WALLPAPER3
 xinput set-button-map "TPPS/2 IBM TrackPoint" 1 0 3
 xmodmap ~/.xmodmap
 xcape -e 'Mode_switch=Escape'
+feh --bg-fill -Z $WALLPAPER1
 
 # Autostart (DYNAMIC)
 sanitizer
@@ -36,7 +36,8 @@ dunst -config ~/.config/dunst/dunstrc &
 unclutter --timeout 3 &
 flameshot &
 clipmenud &
-polkit-mate-authentication-agent-1 &
+/usr/libexec/polkit-mate-authentication-agent-1 &
+aria2c --enable-rpc &
 
 # Lunch dbus-launch, this is important for some app
 if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then

@@ -1,8 +1,8 @@
 QToolTip{
   background: palette(highlight);
   border-radius: 3px;
-  border: 1px solid #608B4E;
+  border: 1px solid #005F87;
   padding: 1px;
   /* color: palette(text); */
-  color: #000000;
+  color: #D4D4D4;
 }

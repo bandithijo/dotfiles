@@ -5,23 +5,28 @@
 
 # make sxhkd reload its configuration files:
 super + Escape
-	pkill -USR1 -x sxhkd; dunstify "SXHKD configuration reloaded"
+	pkill -USR1 -x sxhkd; dunstify "  SXHKD configuration reloaded" -t 1000 -r 1
 
 # about
 super + {_,shift} + F2
-    {st -t 'st+ neofetch' -g 63x19+0+0 -e neofetch --loop, \
+    {st -t 'st+ neofetch' -g 61x17+0+0 -e neofetch --w3m \
+        --source $HOME/.config/neofetch/fedora.png --size 150px --xoffset 20 --yoffset 30 --loop, \
      st -t 'st+ neofetch' -f 'JetBrainsMono Nerd Font Bandit:size=10' \
-     -g 70x20+0+0 -e neofetch --w3m \
-     --source /home/bandithijo/.config/neofetch/artix.png \
-     --size 50% --yoffset 20 --loop}
+        -g 65x17+0+0 -e neofetch --w3m \
+        --source $HOME/.config/neofetch/fedora.png \
+        --size 210px --xoffset 35 --yoffset 40 --loop}
 
 # launch Htop
 ctrl + alt + Delete
-    st -t 'st+ htop' -g 110x30+0+0 -e htop
+    st -t 'st+: htop' -g 168x30+4+20 -e htop
 
 # launch gping
 ctrl + alt + End
-    st -t 'st+' -g 90x28+0+0 -e gping google.com
+    st -t 'st+ gping' -g 90x28+0+0 -e gping google.com
+
+# launch ip a s
+ctrl + shift + End
+    st -t 'st+ ip address show' -g 105x30+0+0 -e watch ip a s
 
 # floating terminal emulator
 super + ctrl + Return
@@ -35,9 +40,11 @@ super + alt + Return
 super + {_,shift} d
     {$HOME/bin/dmenu-apps, $HOME/bin/dmenu-mager}
 
-# mager
-~XF86Launch1
-    {$HOME/bin/showoff, pkill -f 'neofetch' & pkill -f 'gping'}
+# UTC Time
+    # {$HOME/bin/showoff, pkill -f 'neofetch' & pkill -f 'gping'}
+{_,shift} + XF86Launch1
+    {st -t 'st+: utc' -g 33x1-5+21 -e watch -n 1 -t "TZ=UTC date +'%a %d %b %Y %r %Z'", \
+     st -t 'st+: utc' -g 33x1-5+21 -e watch -n 1 -t "TZ=America/New_York date +'%a %d %b %Y %r %Z'"}
 
 
 # quit dwm
@@ -70,20 +77,22 @@ super + shift + Pause
     bluetooth_headset=$($HOME/bin/has_headset_head_unit); \
     if   [ $jack_stat = "yes" ]; then icon="  Headset"; \
     elif [ $jack_stat = "no"  ]  && [ $bluetooth_headset = "yes" ]; then icon="  Headset"; \
-    elif [ $jack_stat = "no"  ]; then icon="  Speaker"; fi; \
-    dunstify "$icon Output Volume: "$ou_vol -t 1000 -r 1
+    elif [ $jack_stat = "no"  ]; then icon="  Speaker"; \
+    else icon="  Speaker"; \
+    fi; \
+    dunstify "$icon Output Volume: "$ou_vol -h "int:value:$ou_vol" -t 1000 -r 1
 
 # pulseaudio controls mic volume up & down
 shift + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
     pamixer --source 1 {-i 1, -d 1}; \
     ou_mic=$(pamixer --source 1 --get-volume); \
-    dunstify "  Microphone Input Volume: "$ou_mic -t 1000 -r 1
+    dunstify "  Microphone Input Volume: "$ou_mic -h "int:value:$ou_mic" -t 1000 -r 1
 
 # pulseaudio controls monitor volume up & down
 alt + {XF86AudioRaiseVolume, XF86AudioLowerVolume}
     pamixer --source 0 {-i 1, -d 1}; \
     ou_mon=$(pamixer --source 0 --get-volume); \
-    dunstify "  Monitor Input Volume: "$ou_mon -t 1000 -r 1
+    dunstify "  Monitor Input Volume: "$ou_mon -h "int:value:$ou_mon" -t 1000 -r 1
 
 # pulseaudio controls mute speaker
 XF86AudioMute
@@ -91,6 +100,7 @@ XF86AudioMute
     --toggle-mute; \
     ou_mute=$(pamixer --get-mute); \
     jack_stat=$($HOME/bin/has_headphone); \
+    icon_on="  Speaker"; icon_off="  Speaker"; \
     [ $jack_stat = "yes"   ] && icon_on="  Headset" icon_off="  Headset"; \
     [ $jack_stat = "no"    ] && icon_on="  Speaker" icon_off="  Speaker"; \
     [ $ou_mute   = "true"  ] && dunstify "$icon_off MUTED" -t 1000 -r 1; \
@@ -116,7 +126,7 @@ alt + XF86AudioMute
 {XF86MonBrightnessUp, XF86MonBrightnessDown}
     xbacklight {-inc 5, -dec 5}; \
     get_brightness=$(xbacklight -get | cut -f 1 -d '.'); \
-    dunstify "  Brightness: "$get_brightness -t 1000 -r 1
+    dunstify "  Brightness: "$get_brightness -h "int:value:$get_brightness" -t 1000 -r 1
 
 super + F3
     monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: "); \
@@ -168,7 +178,7 @@ super + F1
 
 # networkmanager-dmenu
 super + F8
-    /usr/bin/networkmanager_dmenu
+    $HOME/bin/networkmanager_dmenu
 
 # dmenu-udiskie
 super + F6
@@ -186,7 +196,7 @@ super + F7
 
 # sensors
 super + shift + F7
-    st -t 'st+ sensors' -g 58x37+0+0 -e watch sensors
+    st -t 'st+ sensors' -g 58x27+0+0 -e watch -n 1 -t sensors
 
 # gromit-mpx
 super + F9
@@ -196,13 +206,25 @@ super + F9
 super + ~F10
 	{$HOME/bin/ffplay-launcher,pkill -x 'ffplay'}
 
-# screenkey
+# screenkey bottom-right
 super + ~F11
-    {screenkey, killall screenkey}
+    {rm ~/.config/screenkey.json; \
+        ln -sf ~/.config/screenkey/screenkey-bottom-right.json \
+        ~/.config/screenkey.json; \
+        screenkey, \
+    pkill -f "screenkey"}
+
+# screenkey statusbar
+super + shift + ~F11
+    {rm ~/.config/screenkey.json; \
+        ln -sf ~/.config/screenkey/screenkey-statusbar.json \
+        ~/.config/screenkey.json; \
+        screenkey, \
+    pkill -f "screenkey"}
 
 # key-mon
-super + shift + ~F11
-    {$HOME/bin/key-mon-launcher, killall key-mon}
+# super + shift + ~F11
+#     {$HOME/bin/key-mon-launcher, killall key-mon}
 
 # toggle hide & show polybar
 # super + ~b
@@ -210,27 +232,31 @@ super + shift + ~F11
 #      dwmc togglebar; dwmc toggleextrabar; $HOME/.config/polybar/launch.sh &}
 
 # restart polybar
-super + ctrl + b
-    pkill -x "polybar"; $HOME/.config/polybar/launch.sh &
+# super + ctrl + b
+#     pkill -x "polybar"; $HOME/.config/polybar/launch.sh &
 
 # polybar tray
 super + shift + ~b
     {$HOME/bin/polybar-tray on, $HOME/bin/polybar-tray off}
 
 # polybar gap
-super + shift + bracketright
-    $HOME/bin/polybar-gap on
+# super + shift + bracketright
+#     $HOME/bin/polybar-gap on
 
-super + shift + bracketleft
-    $HOME/bin/polybar-gap off
+# super + shift + bracketleft
+#     $HOME/bin/polybar-gap off
 
 # clipmenu
 super + {_,shift} + p
-    {/usr/bin/clipmenu, /usr/bin/clipdel -d "."}
+    {$HOME/bin/clipmenu, $HOME/bin/clipdel -d "."}
 
 # rofi-emoji
 super + e
     $HOME/bin/rofi-emoji-run
+
+# rofi-calc
+super + shift + e
+    rofi -show calc -modi calc -no-show-match -no-sort -lines 3 -width 300 -display-calc ' CALC'
 
 # application tab
 super + grave

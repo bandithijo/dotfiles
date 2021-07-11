@@ -33,30 +33,31 @@ eval $(xdotool getdisplaygeometry --shell)
 
     # i3lock -n --beep --color 002B36 --force-clock -i $tmpwall \
         # --indpos="$WIDTH-88:$HEIGHT-75" --timepos="$WIDTH/2:$HEIGHT/2+30" \
+        # --indpos="$WIDTH/2:$HEIGHT/2+320" --timepos="$WIDTH/2:$HEIGHT/2+60" \
 runlock () {
     i3lock -C -n --beep --color 1E1E1E --force-clock -i $wallpaper\
-        --indpos="$WIDTH/2:$HEIGHT/2+320" --timepos="$WIDTH/2:$HEIGHT/2+60" \
-        --datepos="$WIDTH/2:$HEIGHT/2+130" \
-        --insidevercolor=00000000 --insidewrongcolor=00000000 --insidecolor=00000000 \
-        --ringvercolor=FFCC00aa --ringwrongcolor=ff0000aa --ringcolor=ededed77 \
-        --keyhlcolor=ededed99 --bshlcolor=ededed99 --separatorcolor=00000000 \
-        --layoutcolor=CCCCCCFF \
+        --ind-pos="$WIDTH/2:$HEIGHT/2+320" --time-pos="$WIDTH/2:$HEIGHT/2+60" \
+        --date-pos="$WIDTH/2:$HEIGHT/2+130" \
+        --insidever-color=00000000 --insidewrong-color=00000000 --inside-color=00000000 \
+        --ringver-color=FFCC00aa --ringwrong-color=ff0000aa --ring-color=ededed77 \
+        --keyhl-color=ededed99 --bshl-color=ededed99 --separator-color=00000000 \
+        --layout-color=CCCCCCFF \
         --line-uses-ring \
-        --timestr="%H%M" \
-        --timecolor=CCCCCCFF \
+        --time-str="%H%M" \
+        --time-color=CCCCCCFF \
         --time-font="JetBrainsMono Nerd Font Bandit" \
-        --timesize=150 \
-        --datestr="0%w%Y%m%d" \
-        --datecolor=CCCCCCAA \
+        --time-size=150 \
+        --date-str="0%w%Y%m%d" \
+        --date-color=CCCCCCAA \
         --date-font="JetBrainsMono Nerd Font Bandit" \
-        --datesize=12 \
+        --date-size=12 \
         --radius 20 --ring-width 15 \
         --indicator \
-        --veriftext="" \
-        --wrongtext="" \
-        --noinputtext="" \
-        --locktext="" \
-        --lockfailedtext=""
+        --verif-text="" \
+        --wrong-text="" \
+        --noinput-text="" \
+        --lock-text="" \
+        --lockfailed-text=""
 }
 
 # slowfade () {

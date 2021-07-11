@@ -1,2 +1,2 @@
 #!/bin/sh
-rofi -modi 'EMOJI:/bin/rofi-emoji,EMOJI-GIT:/bin/rofi-emoji-git,ASCII:~/bin/rofi-ascii' -show EMOJI -sidebar-mode -columns 1
+rofi -modi 'EMOJI:rofi-emoji,EMOJI-GIT:rofi-emoji-git,ASCII:rofi-ascii' -show EMOJI -sidebar-mode -columns 1

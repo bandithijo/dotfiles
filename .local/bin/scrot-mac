@@ -15,12 +15,12 @@ else
 end
 color_profile     = "/usr/share/color/icc/colord/sRGB.icc"
 border_radius     = "5"
-background_color  = "'#6A895D'" # "none" for transparent; Hex color use "'#0000000'"
+background_color  = "none" # "none" for transparent; Hex color use "'#0000000'"
 border_size       = "0"
-shadow_size       = "30x10+0+0"
+shadow_size       = "40x15+0+0"
 
 %x(
-magick convert #{original_file} \\( +clone  -alpha extract \
+convert #{original_file} \\( +clone  -alpha extract \
 -draw 'fill black polygon 0,0 0,#{border_radius} #{border_radius},0 \
 fill white circle #{border_radius},#{border_radius} #{border_radius},0' \
 \\( +clone -flip \\) -compose Multiply -composite \
@@ -29,20 +29,20 @@ fill white circle #{border_radius},#{border_radius} #{border_radius},0' \
 \\( +clone -background black -shadow #{shadow_size} \\) \
 +swap -background none -layers merge +repage #{target_file}
 
-magick convert #{target_file} -bordercolor #{background_color} \
+convert #{target_file} -bordercolor #{background_color} \
 -border #{border_size} #{target_file}
 
-magick convert #{target_file} -profile #{color_profile} #{target_file}
+convert #{target_file} -profile #{color_profile} #{target_file}
 )
 
 %x(optipng #{target_file}) if %x(which optipng > /dev/null 2>&1)
 
 require 'securerandom'
 
-font              = "JetBrains-Mono-Medium-Nerd-Font-Complete-Bandit"
+font              = "JetBrainsMono-Nerd-Font-Bandit-Medium"
 font_size         = "10"
-color_fg          = "#3E5136"
-author_position   = ["South", "+0+3"]
+color_fg          = "#cacaca"
+author_position   = ["South", "+0+7"]
 author            = "#{SecureRandom.uuid}"
 File.open("data.txt", "a") do |f|
   f.puts "#{author} - #{target_file}"

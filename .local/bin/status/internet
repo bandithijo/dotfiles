@@ -21,4 +21,4 @@ case "$(cat /sys/class/net/w*/operstate 2>/dev/null)" in
 	up)   wifiicon="$(awk '/^\s*w/ { print "", int($3 * 100 / 70) }' /proc/net/wireless)" ;;
 esac
 
-printf "%s%s%s%s\n" "$wifiicon" "$(sed "s/down//;s/up/ /" /sys/class/net/e*/operstate 2>/dev/null)" "$(sed "s/.*/  VPN/" /sys/class/net/tun*/operstate 2>/dev/null)" "$(if pgrep -f torrc >/dev/null 2>&1; then echo " TOR"; fi)"
+printf "%s%s%s%s%s\n" "$wifiicon" "$(sed "s/down//;s/up/ /" /sys/class/net/e*/operstate 2>/dev/null)" "$(sed "s/.*/  VPN/" /sys/class/net/tun*/operstate 2>/dev/null)" "$(if pgrep -x tor >/dev/null 2>&1; then echo "  TOR"; fi)" "$(if pgrep -x bluetoothd >/dev/null 2>&1; then echo " "; fi)"

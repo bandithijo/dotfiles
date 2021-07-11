@@ -110,12 +110,18 @@ cursor-scroll = ns-resize
 
 [bar/traydwm]
 monitor = LVDS1
+fixed-center = false
 width = 5.3%
 height = 19
-offset-x = 335
-offset-y = 4
-fixed-center = false
+; DWM
+offset-x = 5
+offset-y = 5
 bottom = yes
+
+; GNOME
+;offset-x = 380
+;offset-y = 5
+;bottom = no
 
 foreground = ${colors.foreground}
 background = ${colors.background}
@@ -137,9 +143,13 @@ modules-left = sp1
 modules-center =
 modules-right =
 
+; GNOME
+;tray-padding = 5
 ;tray-position = right
-tray-position = left
+
+; DWM
 tray-padding = 0
+tray-position = left
 tray-maxsize = 16
 tray-scale = 1.0
 tray-foreground = ${colors.foreground}

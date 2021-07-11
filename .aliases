@@ -22,11 +22,11 @@ alias :puts="funban.rb"
 alias fireprox="firefox --private-window -P tor"
 
 # Chromium with Tor
-alias chromeprox="chromium --proxy-server='socks5://127.0.0.1:9050'"
+alias chromeprox="chromium-freeworld --proxy-server='socks5://127.0.0.1:9050'"
 
 # BACKUP ENTIRE SYSTEM
 # https://wiki.archlinux.org/index.php/Rsync#Full_system_backup
-alias devika!="sudo rsync -aAXHv --progress --delete --exclude=/dev --exclude=/proc --exclude=/sys --exclude=/tmp --exclude=/run --exclude=/mnt --exclude=/media --exclude=/swapfile --exclude=/snap --exclude=/home/.ecryptfs --exclude=$HOME/.cache / /run/media/bandithijo/BACKUP-X61/ARCH"
+alias devika!="sudo rsync -aAXHv --progress --delete --exclude=/dev --exclude=/proc --exclude=/sys --exclude=/tmp --exclude=/run --exclude=/mnt --exclude=/media --exclude=/swapfile --exclude=/snap --exclude=/home/.ecryptfs --exclude=$HOME/.cache / /run/media/bandithijo/BACKUP-X61/FEDORA"
 
 # tty-clock
 alias clock="tty-clock -nscDC 7"
@@ -35,14 +35,16 @@ alias clock="tty-clock -nscDC 7"
 alias termdown="termdown -f nancyj"
 
 # vimdiff
+alias vimc="vim ~/.vimrc"
 alias vimdiff="vim -d"
-alias vimc="cd ~/.config/nvim; vim README.md"
-alias nvimc="cd ~/.config/nvim; vim README.md"
+alias nvimc="nvim $HOME/.config/nvim/README.md --cmd ':cd %:p:h' +'NvimTreeOpen' +'wincmd w'"
+alias nvimdiff="nvim -d"
 
 # cal with monday as a first day in week
 alias cal="cal -ym"
 
 # neofetch
+# alias neofetch="neofetch --w3m --source $HOME/.config/neofetch/fedora.png --xoffset 5 --yoffset 20"
 alias neofetchh="neofetch --ascii ~/.config/neofetch/ascii-dwm"
 
 # Enabling Menu Item Gnome
@@ -141,14 +143,14 @@ alias cpuinfo="watch -n1 \"cat /proc/cpuinfo | grep 'MHz'\""
 
 alias reshell="exec $SHELL"
 
-alias colortest="colortest -w -r -s"
-
 alias gtk_csd_default="GTK_CSD=1 LD_PRELOAD=''"
 
 alias __="sudoedit"
 
-alias cp="advcp -g"
-alias mv="advmv -g"
+# alias cp="advcp -g"
+# alias mv="advmv -g"
+alias cp="cpg -g"
+alias mv="mvg -g"
 
 alias print-on="sudo rc-service avahi-daemon start; sudo rc-service cupsd start"
 alias print-off="sudo rc-service cupsd stop; sudo rc-service avahi-daemon stop"
@@ -158,11 +160,15 @@ alias mocp="mocp -C ~/.config/moc/config"
 # simple terminal
 alias st:ranger="st -t 'st+' -e ranger"
 
-alias bluetooth-on="sudo bluetooth on; sudo rc-service bluetoothd start"
-alias bluetooth-off="sudo rc-service bluetoothd stop; sudo bluetooth off"
+alias bluetooth-on="sudo bluetooth on; sudo systemctl start bluetooth.service"
+alias bluetooth-off="sudo systemctl stop bluetooth.service; sudo bluetooth off"
 
 # xrdb xresources
 alias use="xrdb merge ~/.Xresources"
 alias load="kill -USR1 $(pidof st) >> /dev/null"
+
+alias btm="btm --color nord"
+
+alias hw-probe="sudo -E $HOME/app/hw-probe/./hw-probe-1.5-149-x86_64.AppImage -all -upload"
 
 # -------------------------------------------------------------------END ALIAS

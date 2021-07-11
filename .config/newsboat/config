@@ -18,7 +18,13 @@
 
 
 auto-reload yes
-datetime-format "%Y/%m/%d, %R"
+datetime-format "%Y/%m/%d,%R"
+scrolloff 0
+wrap-scroll no
+confirm-exit yes
+max-items 0
+
+goto-first-unread no
 
 external-url-viewer "urlview"
 
@@ -42,7 +48,6 @@ bind-key x pb-delete
 bind-key D delete-article
 bind-key U show-urls
 
-
 # Dark solarized color scheme for newsbeuter, based on
 # Ethan Schoonover's Solarized.
 #
@@ -59,13 +64,16 @@ bind-key U show-urls
 #color article            default   default
 
 # highlights
-highlight article "^(Title):.*$"         default default bold
-highlight article "^(Author):.*$"        default default bold
-highlight article "https?://[^ ]+"       default default
-highlight article "\\[image\\ [0-9]+\\]" default default
+highlight article  "^(Title):.*$"         default default bold
+highlight article  "^(Author):.*$"        default default bold
+highlight article  "https?://[^ ]+"       default default
+highlight article  "\\[image\\ [0-9]+\\]" default default
+
+highlight feedlist "---.*"                color243 default
+highlight feedlist ".*0/0.."              default default invis
 
 #browser linkhandler
-browser "firefox %u"
+browser "xdg-open %u"
 macro . open-in-browser
 #macro v set browser "i3 exec mpv"; open-in-browser ; set browser linkhandler
 #macro y set browser "spawndl"; open-in-browser ; set browser linkhandler
@@ -74,16 +82,19 @@ macro . open-in-browser
 
 # c copies the link to the clipboard
 # The line below is probably the skiddiest lien i've ever writer.
-#macro c set browser "copy(){ echo $1 | xclip ;}; copy "; open-in-browser ; set browser linkhandler
+macro c set browser "copy(){ echo $1 | xclip ;}; copy "; open-in-browser ; set browser linkhandler
 
+player mpv
+#macro m set browser "mpv %u"; open-in-browser ; set browser "w3m %u"
+macro m set browser "mpv --really-quiet %u &"; open-in-browser; set browser "xdg-open %u"
 
 # plain color scheme for newsbeuter <http://www.newsbeuter.org/>
 # boring black and white color configuration that resembles the classic look of really old terminals
 
 color listnormal        default default
 color listnormal_unread default default bold
-color listfocus         color0   color2 bold
-color listfocus_unread  color0   color2 bold
-color info              color0   color2 bold
+color listfocus         color14 color24
+color listfocus_unread  color14 color24 bold
+color info              color14 color24 bold
 color background        default default
 color article           default default

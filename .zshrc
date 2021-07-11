@@ -187,7 +187,8 @@ preexec() {
 }
 precmd() {
     if [ "$?" = 0 ] && [ "$preexec_called" = 1 ]; then
-        printf '\e[0;92m-%.s\e[0m' {1..$(tput cols)}
+        # color code: https://robotmoon.com/256-colors/
+        printf '\e[38;5;236m-%.s\e[0m' {1..$(tput cols)}
         echo
     fi
 }
@@ -212,8 +213,8 @@ codi() {
 
 # FZF DWM color
 export FZF_DEFAULT_OPTS='
---color=dark,fg:14,fg+:0,bg+:2,hl:2,hl+:15
---color=info:2,prompt:7,spinner:1,pointer:0,marker:7
+--color=dark,fg:15,fg+:15,bg+:24,hl:1,hl+:1
+--color=info:1,prompt:7,spinner:1,pointer:15,marker:7
 '
 
 # Ignore node_modulses directory on fzf

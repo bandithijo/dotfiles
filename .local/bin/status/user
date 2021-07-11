@@ -23,5 +23,5 @@
 # SOFTWARE.
 
 username=${USER^^}
-icon=" "
-printf "%s%s\\n" "$icon" "$username" | sed 's/[aiueoAIUEO]//g'
+icon="^r00,02,25,10^^c#1d1d1d^^r00,02,07,04^^r02,08,04,02^^r09,02,16,04^^r09,06,02,04^^r13,06,02,04^^r17,08,02,04^^r21,08,02,04^^d^^f25^"
+printf "%s %s \\n" "$username" "$icon" | sed 's/[aiueoAIUEO]//g'

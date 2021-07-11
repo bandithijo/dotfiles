@@ -15,7 +15,7 @@ from ranger.gui.color import (
 
 
 class Codedark(ColorScheme):
-    progress_bar_color = 2
+    progress_bar_color = 24
 
     def use(self, context):
         fg, bg, attr = default_colors
@@ -34,16 +34,16 @@ class Codedark(ColorScheme):
                 bg = red
                 attr = normal
             if context.border:  # jadi satu dengan r
-                fg = 2
+                fg = 14
             if context.media:
                 if context.image:
-                    fg = 3
+                    fg = 4
                 else:
-                    fg = 3
+                    fg = 4
             if context.container:
                 fg = 3
             if context.directory:
-                fg = 4
+                fg = 3
                 attr |= bold
             elif context.executable and not \
                     any((context.media, context.container,
@@ -74,13 +74,13 @@ class Codedark(ColorScheme):
                 attr |= bold
             if context.main_column:
                 if context.selected:
-                    fg = 2
-                    bg = 0
+                    fg = 24
+                    bg = 14
                     attr |= bold
                 if context.marked:
                     attr |= bold
-                    bg = 13
-                    fg = 0
+                    bg = 14
+                    fg = 24
             if context.badinfo:
                 if attr & reverse:
                     bg = 3
@@ -94,7 +94,7 @@ class Codedark(ColorScheme):
                 fg = 14
                 bg = 0
             elif context.directory:
-                fg = 4
+                fg = 3
             elif context.tab:
                 fg = 9 if context.good else default
                 bg = default
@@ -104,10 +104,11 @@ class Codedark(ColorScheme):
         elif context.in_statusbar:
             if context.permissions:
                 if context.good:
-                    fg = 9
+                    fg = 2
                     attr |= bold
                 elif context.bad:
-                    fg = 13
+                    fg = 9
+                    attr |= bold
             if context.marked:
                 attr |= bold | reverse
                 fg = 9
@@ -120,7 +121,7 @@ class Codedark(ColorScheme):
                     fg = black
                     bg = red
             if context.loaded:
-                fg = 0
+                fg = 7
                 bg = self.progress_bar_color
             if context.vcsinfo:
                 fg = yellow
@@ -147,7 +148,7 @@ class Codedark(ColorScheme):
                 if context.selected:
                     fg = self.progress_bar_color
                 else:
-                    fg = 0
+                    fg = 7
                     bg = self.progress_bar_color
 
 # tambahan -------------------------------------------------------------------

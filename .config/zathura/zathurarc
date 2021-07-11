@@ -20,10 +20,10 @@
 #set index-active-bg             "#586e75" # base01
 #set index-active-fg             "#eee8d5" # base2
 
-set inputbar-bg                 "#608b4e" # base00
+set inputbar-bg                 "#005f87" # base00
 set inputbar-fg                 "#1e1e1e" # base05
 
-set statusbar-bg                "#608b4e" # blue-dwm
+set statusbar-bg                "#d4d4d4" # blue-dwm
 set statusbar-fg                "#1e1e1e" # base05
 
 set highlight-color             "#d7ba7d" # base0A  # hightlight match when search keyword(vim's /)

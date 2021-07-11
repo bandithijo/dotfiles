@@ -1,7 +1,7 @@
 local mp = require "mp"
 
 local function set_clipboard(text)
-    os.execute("echo -n "..text.." | xclip -sel clip")
+    os.execute("echo -n "..text.." | xclip -selection clipboard")
 end
 
 local function copy_path()

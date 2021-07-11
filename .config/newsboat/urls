@@ -1,69 +1,162 @@
+# Fedora Things
+---------------------------------------------------------FEDORA
+https://fedoramagazine.org/feed/ "~Fedora Magazine"
+https://communityblog.fedoraproject.org/feed/ "~Fedora Community Blog"
+https://fedoraproject.org/people/atom.xml "~Fedora Planet"
+https://rss.simplecast.com/podcasts/4543/rss
+
+# Apps
+-----------------------------------------------------------APPS
+# URL_FORMAT:
+# https://gitlab.com/bandithijo.atom "~GitLab Account:BanditHijo"
+# https://github.com/bandithijo.atom "~GitHub Account:BanditHijo"
+# https://github.com/bandithijo/nvimrc/commits/master.atom "~GitHub:bandithijo:nvimrc"
+# https://gitlab.com/bandithijo/bandithijo.github.io/-/commits/source.atom "~GitLab:bandithijo:bandithijo.github.io"
+https://git.suckless.org/dwm/atom.xml "~Suckless:dwm:master"
+https://git.suckless.org/st/atom.xml "~Suckless:st:master"
+https://git.suckless.org/dmenu/atom.xml "~Suckless:dmenu:master"
+https://git.suckless.org/slstatus/atom.xml "~Suckless:slstatus:master"
+https://git.suckless.org/tabbed/atom.xml "~Suckless:tabbed:master"
+https://github.com/cdown/clipmenu/commits/develop.atom "~GitHub:clipmenu:develop"
+https://github.com/cdown/clipnotify/commits/master.atom "~GitHub:clipnotify:master"
+https://github.com/neovim/neovim/commits/master.atom "~GitHub:neovim:master"
+https://github.com/neovim/neovim/tags.atom "~GitHub:neovim:tags"
+https://github.com/tmux/tmux/commits/master.atom "~GitHub:tmux:master"
+https://github.com/tmux/tmux/tags.atom "~GitHub:tmux:tags"
+https://github.com/crow-translate/crow-translate/tags.atom "~GitHub:crow-translate:tags"
+https://github.com/neomutt/neomutt/tags.atom "~GitHub:neomutt:tags"
+https://github.com/cdemoulins/pamixer/tags.atom "~GitHub:pamixer:tags"
+https://github.com/ritze/pinentry-dmenu/tags.atom "~GitHub:pinentry-dmenu:tags"
+https://github.com/resurrecting-open-source-projects/scrot/tags.atom "~GitHub:scrot:tags"
+https://github.com/muennich/sxiv/tags.atom "~GitHub:sxiv:tags"
+https://github.com/smallhadroncollider/taskell/tags.atom "~GitHub:taskell:tags"
+https://github.com/weechat/weechat/tags.atom "~GitHub:weechat:tags"
+https://github.com/Airblader/unclutter-xfixes/tags.atom "~GitHub:unclutter-xfixes:tags"
+https://github.com/phase1geo/Minder/tags.atom "~GitHub:minder:tags"
+https://github.com/Paxa/postbird/tags.atom "~GitHub:postbird:tags"
+https://github.com/beekeeper-studio/beekeeper-studio/tags.atom "~GitHub:beekeeper-studio:tags"
+https://github.com/qutebrowser/qutebrowser/tags.atom "~GitHub:qutebrowser:tags"
+https://github.com/kotatogram/kotatogram-desktop/tags.atom "~GitHub:kotatogram:tags"
+https://github.com/telegramdesktop/tdesktop/tags.atom "~GitHub:telegram:tags"
+https://github.com/KDE/kdenlive/tags.atom "~GitHub:kdenlive:tags"
+https://github.com/DNSCrypt/dnscrypt-proxy/tags.atom "~GitHub:dnscrypt-proxy:tags"
+https://github.com/jesseduffield/lazygit/tags.atom "~GitHub:lazygit:tags"
+
+# YouTube Channel
+------------------------------------------------YOUTUBE_CHANNEL
+# URL_FORMAT:
+# https://www.youtube.com/feeds/videos.xml?channel_id=YOURCHANNELIDHERE
+# https://www.youtube.com/feeds/videos.xml?playlist_id=YOURPLAYLISTIDHERE
+---Linux_Users
+https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "~YouTube:DistroTube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCqcyAijXUTJPLY9LGepm0XQ "~YouTube:BanditHijo"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "~YouTube:Brodie Robertson"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA "~YouTube:Mental Outlaw"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCkf4VIqu3Acnfzuk3kRIFwA "~YouTube:gotbletu"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCRE3NFNtdjR96-H4QG4U1Fg "~YouTube:Hex DSL"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~YouTube:Luke Smith"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCFzGyNKXPAglNq28qWYTDFA "~YouTube:Kai Hendry"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCv1Kcz-CuGM6mxzL3B1_Eiw "~YouTube:Gardiner Bryant"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCf93fPKwotph47H3_KDcRyg "~YouTube:Kris Occhipinti"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCngn7SVujlvskHRvRKc1cTw "~YouTube:BugsWriter"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCvA_wgsX6eFAOXI8Rbg_WiQ "~YouTube:tutoriaLinux"
+---Vim/Neovim_Users
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8ENHE5xdFSwx71u3fDH5Xw "~YouTube:ThePrimeagen"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCd3dNckv1Za2coSaHGHl5aA "~YouTube:TJ DeVries"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCS97tchJDq17Qms3cux8wcA "~YouTube:ChrisAtMachine"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCjKCYQ21t4GMWWDQZI2jTYg "~YouTube:s1n7ax"
+---Software_Development
+https://www.youtube.com/feeds/videos.xml?channel_id=UC14ZKB9XsDZbnHVmr4AmUpQ "~YouTube:ProgrammerZamanNow"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCWUoaHcR9rYybTvjDnUhBIQ "~YouTube:Insiyur Online"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCkXmLjEr95LVtGuIm3l2dPg "~YouTube:Web Programming UNPAS"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCNYtBPeDrJ3SOZVvSrYG9Yw "~YouTube:Subur Anugerah"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCRQv-3VvPT9mArF5RfrlpKQ "~YouTube:Deanin"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCC7eynhXsqH-7RdsBB1E53g "~YouTube:Cloud Engineering with Imre"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC1QxjR5ipIEXbGeR3Wd2aTg "~YouTube:Jesse Duffield"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC46wWUso9H5KPQcoL9iE3Ug "~YouTube:CodingPhase"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCfV36TX5AejfAGIbtwTc7Zw "~YouTube:Chris Hawkes"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCgbzly83EZoSVjBIf9sNw5A "~YouTube:RubyThursday"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCpXtMg5_kerIimaR9C_SqRw "~YouTube:Jason Charnes"
+https://www.youtube.com/feeds/videos.xml?playlist_id=PLRO4gNnSWQ4J5sd8dAIH9Adm03-Gbno1U "~YouTube:Jason Charnes:Remote Ruby Podcasts"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCQXaIyeRqHjK9EK41b8J3yQ "~YouTube:Brett Codes"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCzqORs_CagOn8ah5-QysgdQ "~YouTube:David Battersby"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC29ju8bIPH5as8OGnQzwJyA "~YouTube:Traversy Media"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCshZ3rdoCLjDYuTR_RBubzw "~YouTube:Program With Erik"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC_ML5xP23TOWKUcc-oAE_Eg "~YouTube:Hussein Nasser"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8butISFwT-Wl7EV0hUK0BQ "~YouTube:freeCodeCamp.org"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCeYdh6WLzE88DSvk0yZ_k1w "~YouTube:Mike Rogers"
+---Security
+https://www.youtube.com/feeds/videos.xml?channel_id=UCVeW9qkBjo3zosnqUbG7CFw "~YouTube:John Hammond"
+https://www.youtube.com/feeds/videos.xml?channel_id=UClcE-kVhqyiHCcjYwcpfj9w "~YouTube:LiveOverflow"
+https://www.youtube.com/feeds/videos.xml?channel_id=UChjC1q6Ami7W0E71TzPZELA "~YouTube:Pentester Academy TV"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC0ZTPkdxlAKf-V33tqXwi3Q "~YouTube:HackerSploit"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCW6xlqxSY3gGur4PkGPEUeA "~YouTube:Seytonic"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC3s0BtrBJpwNDaflRSoiieQ "~YouTube:Hak5"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCry-Tkt5l3euMdQy4EXYfbg "~YouTube:KeamananSiber (Onno W. Purbo)"
+---Community
+https://www.youtube.com/feeds/videos.xml?channel_id=UCnIfca4LPFVn8-FjpPVc1ow "~YouTube:Fedora Project"
+https://www.youtube.com/feeds/videos.xml?playlist_id=PL0x39xti0_64FBQ7mcFt7uBXpG8EA7OF1 "~YouTube:Fedora Project:Classroom"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC4O8G9SZwqtkIAuKcT8-JpQ "~YouTube:Fedora Modulatiry"
+---OnlineTalks
+https://www.youtube.com/feeds/videos.xml?channel_id=UCM4tvQ_GLEJiJ1OKzW81Bew "~YouTube:GTALUG"
+
+# Programming Language & Framework
+-------------------------------------------PROGRAMMING_LANGUAGE
+https://www.ruby-lang.org/en/feeds/news.rss
+https://www.rubypigeon.com/feed.xml "~Ruby Pigeon"
+https://jekyllrb.com/feed.xml
+
+# Developer Blog
+-------------------------------------------------DEVELOPER_BLOG
+https://semaphoreci.com/feed "~Semaphore Blog"
+https://bandithijo%40gmail.com:Aiga3ohm0aKee\j@gorails.com/episodes/pro.rss "~GoRails"
+
+# Podcast
+--------------------------------------------------------PODCAST
+https://offtopical.net/pg/feed.xml
+https://anchor.fm/s/30348d4/podcast/rss "~Ceritanya Developer"
+
+# LINUX NEWS
+-----------------------------------------------------------NEWS
+https://pecelfloss.substack.com/feed "~Pecel FLOSS"
+
+# Security
+-------------------------------------------------------SECURITY
+https://teguh.co/rss.xml "~Teguh Aprianto"
+https://linuxsecurityblog.com/feed/ "~Linux Security Blog (ls /blog)"
+https://www.exploit-db.com/rss.xml "~Exploit-DB.com"
+https://hackaday.com/feed/ "~HackDay"
+
 # Teman Blogging
-------------------------------------------------------DOTFRIENDS
+-----------------------------------------------------DOTFRIENDS
 https://ethanschoonover.com/index.xml
 http://romisatriawahono.net/feed/atom/
 https://bandithijo.github.io/feed/blog.xml "~BanditHijo Blog"
+https://bandithijo.github.io/feed/note.xml "~BanditHijo Note"
 https://bandithijo.github.io/feed/vlog.xml "~BanditHijo Vlog"
 https://budrich.github.io/index.xml
 https://theriyanto.wordpress.com/feed/ "~Tedi Heriyanto"
 https://agung-setiawan.com/feed/ "Tech News"
 https://situsali.com/feed/ "Tech News"
 http://feeds.feedburner.com/Petruknisme
-https://alunux.github.io/index.xml "~Alunux"
 https://wonderneko.wordpress.com/feed/ "~Wonderneko.h"
 http://www.himawan.nu/feeds/posts/default "~Himawan"
-https://sucipto.net/atom.xml
-https://se7entime.wordpress.com/feed/
 https://epsi-rns.github.io/feed.xml "~Epsi-RNS | GitHub"
-https://epsi-rns.gitlab.io/index.xml "~Epsi-RNS | GitLab"
-http://feeds.feedburner.com/fathurhoho
+https://sucipto.id/index.xml "~Sucipto"
 https://ngonfig.net/feed "~Ngonfig.net"
 https://okitavera.me/article/feed.xml "~Nanda Okitavera"
 https://addy-dclxvi.github.io/index.xml "~Addy"
-https://yupraw.me/rss.xml
-https://aflasio.art/rss.xml "~Aflasio Art"
-https://raniaamina.github.io/atom.xml "~Rania Amina"
-https://raniaamina.id/rss2 "~Rania Amina | Mozleup!"
-https://chamelemon.site/stories/rss.xml "~Muktazam Hasbi"
 https://lukesmith.xyz/rss.xml
-https://www.meutiarahmah.com/index.xml
-https://themsaid.com/feed "~Mohamed Said's Journal"
 https://rizafahmi.com/rss.xml
 http://lifepluslinux.blogspot.com/feeds/posts/default
 https://www.i-bsd.com/feed.xml "~Donovan Nagel | iBSD"
-https://maidgirl21.github.io/feed.xml "~maidgirl21"
 https://nullprogram.com/feed/
 http://feeds.feedburner.com/esviai
 http://feeds.feedburner.com/blog/devnull
 https://tsarafatma.com/feed.xml "~Teh Tsara Fatma"
-http://vederis.id/feed/ "~Vederis Leunardus"
 https://protesilaos.com/master.xml "~Protesilaos Stavrou"
 https://elianiva.github.io/rss.xml "~Manusia Bernapas"
 https://yeripratama.com/blog/rss.xml "~Yeri's Blog"
 https://davidxiang.com/feed/ "~David Xiang"
 https://unixsheikh.com/feed.rss "~Unix Sheikh"
 https://ekickx.codes/feed.xml "~Ghani Rafif"
-
-# Linux Magazine
---------------------------------------------------------MAGAZINE
-https://hackaday.com/feed/ "~HackDay"
-
-# Programming Language & Framework
---------------------------------------------PROGRAMMING_LANGUAGE
-https://www.ruby-lang.org/en/feeds/news.rss
-https://jekyllrb.com/feed.xml
-https://www.rubypigeon.com/feed.xml "~Ruby Pigeon"
-https://www.python.org/dev/peps/peps.rss/
-https://www.djangoproject.com/rss/weblog/
-
-# Podcast
----------------------------------------------------------PODCAST
-https://rss.simplecast.com/podcasts/4543/rss
-https://offtopical.net/pg/feed.xml
-https://anchor.fm/s/30348d4/podcast/rss "~Ceritanya Developer"
-
-# Security
---------------------------------------------------------SECURITY
-https://teguh.co/rss.xml "~Teguh Aprianto"
-https://linuxsecurityblog.com/feed/ "~Linux Security Blog (ls /blog)"
-https://www.exploit-db.com/rss.xml "~Exploit-DB.com"

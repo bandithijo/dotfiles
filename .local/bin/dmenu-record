@@ -1,7 +1,7 @@
 #!/bin/sh
 
-MENU="/usr/local/bin/dmenu"
-# MENU="/usr/bin/rofi -dmenu -lines 3 -width 200"
+# MENU="/usr/local/bin/dmenu"
+MENU="/usr/bin/rofi -dmenu -lines 3 -width 200"
 
 updateicon() {
     echo "$1" > ~/.recordingicon

@@ -16,26 +16,28 @@ logout() {
 }
 
 reboot() {
-    loginctl reboot
-    #systemctl reboot
+    #loginctl reboot
+    systemctl reboot
     #shutdown -r now
 }
 
 poweroff() {
-    loginctl poweroff
-    #systemctl poweroff
+    #loginctl poweroff
+    systemctl poweroff
     #shutdown -p now
 }
 
 suspend() {
-    loginctl suspend
+    #loginctl suspend
     #$($USE_LOCKER) && "$LOCKER"; systemctl suspend
+    systemctl suspend
     #acpiconf -s 3
 }
 
 hibernate() {
-    loginctl hibernate
+    #loginctl hibernate
     #$($USE_LOCKER) && "$LOCKER"; systemctl hibernate
+    systemctl hibernate
     # notify-send "CAUTION!" "Hibernate Feature not implemented yet." --urgency=critical
 }
 
