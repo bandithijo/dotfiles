@@ -1,0 +1,216 @@
+#!/bin/sh
+
+MENU="/usr/bin/rofi -dmenu"
+
+updateicon() {
+    echo "$1" > ~/.recordingicon
+}
+
+updatestatus() {
+    echo "$1" > ~/.recordingstat
+}
+
+killRecording() {
+    recpid="$(cat ~/.recordingpid)"
+    kill -15 "$recpid"
+    rm -f ~/.recordingpid
+    rm -f ~/.recordingstat
+    updateicon ""
+    exit
+}
+
+    # -i $(echo $DISPLAY).0+$2,$3 \
+videoOnly() {
+    ffmpeg \
+    -f x11grab \
+    -draw_mouse 1 \
+    -framerate 30 \
+    -s $1 \
+    -i :0.0+$2,$3 \
+    -f lavfi -i anullsrc \
+    -vf setpts=N/FR/TB \
+    -c:v libx264 -pix_fmt yuv420p -preset veryfast -q:v 1 \
+    -threads 4 \
+    "$HOME/vid/ScreenRecorder/ffmpeg-$(date '+%y%m%d-%H%M-%S').mp4" &
+    echo $! > ~/.recordingpid
+    updateicon " REC "
+    updatestatus "record"
+}
+
+    # -i $(echo $DISPLAY).0+$X,$Y \
+videoOnlyArea() {
+    slop=$(slop -f "%x %y %w %h %g %i") || exit 1
+    read -r X Y W H G ID < <(echo $slop)
+    ffmpeg \
+    -f x11grab \
+    -draw_mouse 1 \
+    -framerate 30 \
+    -s "$W"x"$H" \
+    -i :0.0+$X,$Y \
+    -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 \
+    -vf setpts=N/FR/TB \
+    -c:v libx264 -pix_fmt yuv420p -preset veryfast -q:v 1 \
+    -threads 4 \
+    "$HOME/vid/ScreenRecorder/ffmpeg-$(date '+%y%m%d-%H%M-%S').mp4" &
+    echo $! > ~/.recordingpid
+    updateicon " REC "
+    updatestatus "record"
+}
+
+    # -i $(echo $DISPLAY).0+$2,$3 \
+videoHighOnly() {
+    ffmpeg \
+    -f x11grab \
+    -draw_mouse 1 \
+    -framerate 30 \
+    -s $1 \
+    -i :0.0+$2,$3 \
+    -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 \
+    -vf setpts=N/FR/TB \
+    -c:v libx264rgb -preset veryfast -q:v 1 \
+    -threads 4 \
+    "$HOME/vid/ScreenRecorder/ffmpeg-$(date '+%y%m%d-%H%M-%S').mp4" &
+    echo $! > ~/.recordingpid
+    updateicon " REC "
+    updatestatus "record"
+}
+
+
+injectMutedAudioToVideo() {
+    ffmpeg_inject_muted_audio
+}
+
+injectMutedAudioToVideoVoko() {
+    ffmpeg_inject_muted_audio_voko
+}
+
+injectMutedAudioToVideoSsr() {
+    ffmpeg_inject_muted_audio_ssr
+}
+
+injectFrame() {
+    ffmpeg_inject_frame
+    updateicon " FRM "
+}
+
+pauseRecording() {
+    pkill -STOP ffmpeg
+    updateicon " REC "
+    updatestatus "pause"
+}
+
+resumeRecording() {
+    pkill -CONT ffmpeg
+    updateicon " REC "
+    updatestatus "record"
+}
+
+asktoEnd() { \
+    response=$(printf "Pause\nNo\nYes" | $MENU -l 3 -theme-str 'window {width: 20%;}' -p "End Recording") &&
+    [ "$response" = "Pause" ] && pauseRecording
+    [ "$response" = "Yes" ] && killRecording
+    exit
+}
+
+asktoResume() { \
+    response=$(printf "Resume" | $MENU -l 1 -theme-str 'window {width: 20%;}' -p "Resume Recording") &&
+    [ "$response" = "Resume" ] && resumeRecording
+    exit
+}
+
+if [ -f ~/.recordingpid ]; then
+    if grep -q "record" ~/.recordingstat; then
+        asktoEnd
+        exit
+    elif grep -q "pause" ~/.recordingstat; then
+        asktoResume
+        exit
+    fi
+fi
+
+
+# +----------------+
+# | INTERFACE MENU |
+# +----------------+
+#
+# Don't put comma on last array element!
+# menu name         function name
+OPTIONS='''
+[
+["FFmpeg_Video",     "videos"],
+["FFmpeg_VideoHD",   "videoHighOnly"],
+["VKSCR",            "vokoscreen"],
+["SSR",              "simplescreenrecorder"],
+["Effects ", "effects"]
+]
+'''
+obj_menu=$(echo $OPTIONS | jq -r ".[][0]" | $MENU -i -l 5 -theme-str 'window {width: 20%;}' -p "Record")
+obj_selected=$(echo $OPTIONS | jq -r ".[] | select(.[0] == \"$obj_menu\") | .[1]")
+
+if [ "$obj_selected" = "videos" ]; then
+    screen_size=$(xdpyinfo | grep dimensions | awk '{print $2;}')
+    monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: ")
+
+    if [ "$monitors" = "2" ]; then
+        OPTIONS='''
+        [
+        ["All Monitor",         "videoOnly '1600x1668' '0' '0'"],
+        ["Laptop",              "videoOnly '1024x768' '576' '900'"],
+        ["Monitor",             "videoOnly '1600x900' '0' '0'"]
+        ]
+        '''
+        obj_menu=$(echo $OPTIONS | jq -r ".[][0]" | $MENU -i -l 3 -theme-str 'window {width: 20%;}' -p "Area")
+        obj_selected=$(echo $OPTIONS | jq -r ".[] | select(.[0] == \"$obj_menu\") | .[1]")
+    else
+        obj_selected="videoOnly $(xdpyinfo | grep dimensions | awk '{print $2;}') '0' '0'"
+    fi
+
+elif [ "$obj_selected" = "videoOnlyArea" ]; then
+    # obj_selected="videoOnlyArea $(slop) '0' '0'"
+    obj_selected="videoOnlyArea"
+
+elif [ "$obj_selected" = "videoHighOnly" ]; then
+    obj_selected="videoHighOnly $(xdpyinfo | grep dimensions | awk '{print $2;}') '0' '0'"
+
+elif [ "$obj_selected" = "effects" ]; then
+    OPTIONS='''
+    [
+    ["Inject: Frame",         "injectFrame"],
+    ["Inject: MuteAudioVoko", "injectMutedAudioToVideoVoko"],
+    ["Inject: MuteAudioSSR",  "injectMutedAudioToVideoSsr"]
+    ]
+    '''
+    obj_menu=$(echo $OPTIONS | jq -r ".[][0]" | $MENU -i -l 3 -theme-str 'window {width: 20%;}' -p "Effects")
+    obj_selected=$(echo $OPTIONS | jq -r ".[] | select(.[0] == \"$obj_menu\") | .[1]")
+fi
+
+$obj_selected
+
+
+
+# OLD BACKUP INTERFACE MENU
+# choice=$(printf "Video\nAudio\nEffects ∇" | $MENU -p " Record")
+# case "$choice" in
+#     "Video")
+#         monitors=$(xrandr --listmonitors | grep 'Monitors:' | tr -d "Monitors: ")
+#         if [ "$monitors" = "2" ]; then
+#             area=$(printf "All Screen\nLaptop\nMonitor" | $MENU -p " Area")
+#             case "$area" in
+#                 "All Screen") videoOnly $(xdpyinfo | grep dimensions | awk '{print $2;}') "0" "0";;
+#                 "Laptop")     videoOnly "1024x768" "576" "900";;
+#                 "Monitor")    videoOnly "1600x900" "0" "0";;
+#             esac
+#         else
+#             videoOnly $(xdpyinfo | grep dimensions | awk '{print $2;}') "0" "0"
+#         fi
+#         ;;
+#     "Audio") audioOnly;;
+#     "Effects ∇")
+#         effects=$(printf "Inject: Frame\nInject: MutedAudioVoko" | $MENU -p " Effects")
+#         case "$effects" in
+#         "Inject: Frame")          injectFrame;;
+#         "Inject: MutedAudioVoko") injectMutedAudioToVideoVoko;;
+#         "Inject: MutedAudioSSR")  injectMutedAudioToVideoSsr;;
+#         esac
+#         ;;
+# esac
